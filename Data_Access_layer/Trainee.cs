@@ -16,57 +16,57 @@ namespace GymDataAccesLayer
         /// <param name="EnrollmentStartDate"></param>
         /// <param name="EnrollmentEndDate"></param>
         /// <returns>True if Found False If Not</returns>
-        //public static bool GetTraineeInfoByID(int ID,
-        //    ref string Name, ref string Phone, ref string Photo,
-        //    ref DateTime EnrollmentStartDate, ref DateTime EnrollmentEndDate)
-        //{
-        //    SqlConnection connection = new SqlConnection(clsDataBaseSettings.ConnectionString);
+        public static bool GetTraineeInfoByID(int ID,
+            ref string Name, ref string Phone, ref string Photo,
+            ref DateTime EnrollmentStartDate, ref DateTime EnrollmentEndDate)
+        {
+            SqlConnection connection = new SqlConnection(clsDataBaseSettings.ConnectionString);
 
-        //    bool isFound = false;
-        //    // done
-        //    string query = "Select * From Trainers Where Trainers._id = @ID";
+            bool isFound = false;
+            // done
+            string query = "Select * From Trainers Where Trainers._id = @ID";
 
-        //    SqlCommand cmd = new SqlCommand(query, connection);
+            SqlCommand cmd = new SqlCommand(query, connection);
 
-        //    cmd.Parameters.AddWithValue("@ID", ID);
+            cmd.Parameters.AddWithValue("@ID", ID);
 
-        //    try
-        //    {
-        //        connection.Open();
+            try
+            {
+                connection.Open();
 
-        //        SqlDataReader reader = cmd.ExecuteReader();
+                SqlDataReader reader = cmd.ExecuteReader();
 
-        //        if (reader.Read())
-        //        {
-        //            isFound = true;
+                if (reader.Read())
+                {
+                    isFound = true;
 
-        //            Name = (string)reader["Name"];
-        //            Phone = (string)reader["Phone"];
-        //            EnrollmentStartDate = (DateTime)reader["EnrollmentStartDate"];
-        //            EnrollmentEndDate = (DateTime)reader["EnrollmentEndDate"];
-        //            if (reader["Photo"] != DBNull.Value)
-        //                Photo = (string)reader["Photo"];
-        //            else
-        //                Photo = "";
-        //        }
-        //        else
-        //        {
-        //            isFound = false;
-        //        }
-        //        reader.Close();
-        //    }
-        //    catch (Exception ex)
-        //    {
+                    Name = (string)reader["Name"];
+                    Phone = (string)reader["Phone"];
+                    EnrollmentStartDate = (DateTime)reader["EnrollmentStartDate"];
+                    EnrollmentEndDate = (DateTime)reader["EnrollmentEndDate"];
+                    if (reader["Photo"] != DBNull.Value)
+                        Photo = (string)reader["Photo"];
+                    else
+                        Photo = "";
+                }
+                else
+                {
+                    isFound = false;
+                }
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
 
-        //        return false;
-        //    }
-        //    finally
-        //    {
-        //        connection.Close();
-        //    }
+                return false;
+            }
+            finally
+            {
+                connection.Close();
+            }
 
-        //    return isFound;
-        //}
+            return isFound;
+        }
 
         /// <summary>
         /// function take Name And Search For It inDB

@@ -18,7 +18,7 @@ namespace GymBussniesLayer
         private bool _AddNewTrainee()
         {
             this.ID = clsTraineeDataAccess.AddNewTrainee(this.Name,
-                this.Phone, this.Photo, this.EnrollmentStartDate, this.EnrollmentEndDate);
+                this.Phone, this.Photo);
             return (this.ID != -1);
         }
 
@@ -88,21 +88,18 @@ namespace GymBussniesLayer
         {
             return clsTraineeDataAccess.GetAllTrainees();
         }
-        public bool DeleteTrainee(int ID)
-        {
-            return clsTraineeDataAccess.DeleteTrainee(ID);
-        }
+      
 
         public static bool IsTraineeExist(int ID)
         {
             return clsTraineeDataAccess.IsTraineeExisit(ID);
         }
-        public static List<clsTrainee> GetTraineesBetweenAge(int From, int To)
-        {
-            DataTable dt = clsTraineeDataAccess.GetTraineesBetweenAge(From, To);
-            List<clsTrainee> TraineesList = new List<clsTrainee>();
-            return new List<clsTrainee>();
-        }
+        //public static List<clsTrainee> GetTraineesBetweenAge(int From, int To)
+        //{
+        //    DataTable dt = clsTraineeDataAccess.GetTraineesBetweenAge(From, To);
+        //    List<clsTrainee> TraineesList = new List<clsTrainee>();
+        //    return new List<clsTrainee>();
+        //}
       
     }
 }

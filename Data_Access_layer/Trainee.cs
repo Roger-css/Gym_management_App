@@ -6,8 +6,6 @@ namespace GymDataAccesLayer
 {
     public class clsTraineeDataAccess
     {
-
-
         /// <summary>
         ///  Take ID And Search For It in DB
         /// </summary>
@@ -25,8 +23,8 @@ namespace GymDataAccesLayer
             SqlConnection connection = new SqlConnection(clsDataBaseSettings.ConnectionString);
 
             bool isFound = false;
-            // Here Become Your Trun Wolfy
-            string query = "Select * From Trainees Where TraineeID = @ID";
+            // done
+            string query = "Select * From Trainers Where Trainers._id = @ID";
 
             SqlCommand cmd = new SqlCommand(query, connection);
 
@@ -87,8 +85,8 @@ namespace GymDataAccesLayer
             SqlConnection connection = new SqlConnection(clsDataBaseSettings.ConnectionString);
 
             bool isFound = false;
-            // Here Become Your Trun Wolfy
-            string query = "Select * From Trainees Where  Name = @Name";
+            // done
+            string query = "SELECT Trainers.*, Subscriptions.EnrollmentStart, Subscriptions.EnrollmentEnd, Subscriptions.TotalAmount,Subscriptions.PaidAmount, Subscriptions.RemainingAmount, Subscriptions.DaysTillSubscriptionExpired FROM  Subscriptions INNER JOIN Trainers ON Subscriptions._id = Trainers._id Where Trainers.Name = @Name";
 
             SqlCommand cmd = new SqlCommand(query, connection);
 
@@ -133,23 +131,19 @@ namespace GymDataAccesLayer
             return isFound;
         }
 
-        public static int AddNewTrainee(
-            string Name, string Phone, string Photo,
-            DateTime EnrollmentStartDate, DateTime EnrollmentEndDate)
+        public static int AddNewTrainee(string Name, string Phone, string Photo)
         {
             int TrainneID = -1;
             SqlConnection connection = new SqlConnection(clsDataBaseSettings.ConnectionString);
 
-            string query = @"INSERT INTO Trainees
-                            (Name, Phone, Photo, EnrollmentStartDate, EnrollmentEndDate )
-                             VALUES(@Name, @Phone, @Photo, @EnrollmentStartDate, EnrollmentEndDate)
+            string query = @"INSERT INTO Trainers
+                            (Name, Phone, Photo )
+                             VALUES(@Name, @Phone, @Photo)
                              SELECT SCOPE_IDENTITY()";
             SqlCommand command = new SqlCommand(query, connection);
 
             command.Parameters.AddWithValue("@Name", Name);
-            command.Parameters.AddWithValue("Phone", Phone);
-            command.Parameters.AddWithValue("@EnrollmentStartDate", EnrollmentStartDate);
-            command.Parameters.AddWithValue("@EnrollmentEndDate", EnrollmentEndDate);
+            command.Parameters.AddWithValue("@Phone", Phone);
 
             if (Photo != "" && Photo != null)
                 command.Parameters.AddWithValue("@Photo", Photo);
@@ -185,11 +179,11 @@ namespace GymDataAccesLayer
             int rowsAffected = 0;
             SqlConnection connection = new SqlConnection(clsDataBaseSettings.ConnectionString);
 
-            string query = @"Update Trainees
+            string query = @"Update Trainers
                              set Name = @Name
                                   Phone = @Phone
                                   Photo = @Photo
-                                  Where TraineeID = @TraineeID";
+                                  Where _id = @TraineeID";
             SqlCommand  cmd = new SqlCommand(query, connection);
 
             cmd.Parameters.AddWithValue("@Name", Name);
@@ -226,7 +220,7 @@ namespace GymDataAccesLayer
 
             SqlConnection connection = new SqlConnection(clsDataBaseSettings.ConnectionString);
 
-            string query = "Select * From Trainees";
+            string query = "Select * From Trainers";
             SqlCommand cmd = new SqlCommand (query, connection);
 
             try
@@ -250,34 +244,6 @@ namespace GymDataAccesLayer
             }
             return dt;
         }
-    
-        public static bool DeleteTrainee(int ID)
-        {
-            int rowsAffected = 0;
-            SqlConnection connection = new SqlConnection(clsDataBaseSettings.ConnectionString);
-
-            string query = @"Delete Trainees
-                                     where TraineeID = @TraineeID";
-            SqlCommand cmd = new SqlCommand(query, connection);
-
-            cmd.Parameters.AddWithValue("@TraineeID", ID);
-
-            try
-            {
-                connection.Open();
-                rowsAffected = cmd.ExecuteNonQuery();
-            }
-            catch (Exception ex)
-            {
-
-                return false;
-            }
-            finally
-            {
-                connection.Close();
-            }
-            return (rowsAffected > 0);
-        }
 
         public static bool IsTraineeExisit(int ID)
         {
@@ -285,7 +251,7 @@ namespace GymDataAccesLayer
 
             SqlConnection connection = new SqlConnection(clsDataBaseSettings.ConnectionString);
 
-            string query = "SELECT Found=1 FROM Trainees WHERE TraineeID = @TraineeID";
+            string query = "SELECT Found=1 FROM Trainees WHERE _id = @TraineeID";
 
             SqlCommand command = new SqlCommand(query, connection);
 
@@ -311,42 +277,6 @@ namespace GymDataAccesLayer
             }
 
             return isFound;
-        }
-
-        public static DataTable GetTraineesBetweenAge(int From, int To)
-        {
-            DataTable dt = new DataTable();
-
-            SqlConnection connection = new SqlConnection(clsDataBaseSettings.ConnectionString);
-
-            string query = @"Select * From Trainees     
-                                Where Age >= @From && Age <= @To";
-            SqlCommand cmd = new SqlCommand(query, connection);
-
-            cmd.Parameters.AddWithValue("@From", From);
-            cmd.Parameters.AddWithValue("@To", To);
-
-            try
-            {
-                connection.Open();
-                SqlDataReader reader = cmd.ExecuteReader();
-
-                if (reader.HasRows)
-                {
-                    dt.Load(reader);
-                }
-                reader.Close();
-            }
-            catch (Exception ex)
-            {
-
-                return null;
-            }
-            finally
-            {
-                connection.Close();
-            }
-            return dt;
         }
     }
 

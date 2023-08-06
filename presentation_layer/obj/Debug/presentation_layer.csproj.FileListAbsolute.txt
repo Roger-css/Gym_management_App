@@ -1,0 +1,10 @@
+C:\Users\H1202\Source\Repos\Gym_management_App\presentation_layer\bin\Debug\presentation_layer.exe.config
+C:\Users\H1202\Source\Repos\Gym_management_App\presentation_layer\bin\Debug\presentation_layer.exe
+C:\Users\H1202\Source\Repos\Gym_management_App\presentation_layer\bin\Debug\presentation_layer.pdb
+C:\Users\H1202\Source\Repos\Gym_management_App\presentation_layer\obj\Debug\presentation_layer.csproj.AssemblyReference.cache
+C:\Users\H1202\Source\Repos\Gym_management_App\presentation_layer\obj\Debug\presentation_layer.csproj.SuggestedBindingRedirects.cache
+C:\Users\H1202\Source\Repos\Gym_management_App\presentation_layer\obj\Debug\presentation_layer.Properties.Resources.resources
+C:\Users\H1202\Source\Repos\Gym_management_App\presentation_layer\obj\Debug\presentation_layer.csproj.GenerateResource.cache
+C:\Users\H1202\Source\Repos\Gym_management_App\presentation_layer\obj\Debug\presentation_layer.csproj.CoreCompileInputs.cache
+C:\Users\H1202\Source\Repos\Gym_management_App\presentation_layer\obj\Debug\presentation_layer.exe
+C:\Users\H1202\Source\Repos\Gym_management_App\presentation_layer\obj\Debug\presentation_layer.pdb

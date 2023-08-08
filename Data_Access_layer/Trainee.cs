@@ -16,57 +16,57 @@ namespace GymDataAccesLayer
         /// <param name="EnrollmentStartDate"></param>
         /// <param name="EnrollmentEndDate"></param>
         /// <returns>True if Found False If Not</returns>
-        public static bool GetTraineeInfoByID(int ID,
-            ref string Name, ref string Phone, ref string Photo,
-            ref DateTime EnrollmentStartDate, ref DateTime EnrollmentEndDate)
-        {
-            SqlConnection connection = new SqlConnection(clsDataBaseSettings.ConnectionString);
+        //public static bool GetTraineeInfoByID(int ID,
+        //    ref string Name, ref string Phone, ref string Photo,
+        //    ref DateTime EnrollmentStartDate, ref DateTime EnrollmentEndDate)
+        //{
+        //    SqlConnection connection = new SqlConnection(clsDataBaseSettings.ConnectionString);
 
-            bool isFound = false;
-            // done
-            string query = "Select * From Trainers Where Trainers._id = @ID";
+        //    bool isFound = false;
+        //    // done
+        //    string query = "Select * From Trainers Where Trainers._id = @ID";
 
-            SqlCommand cmd = new SqlCommand(query, connection);
+        //    SqlCommand cmd = new SqlCommand(query, connection);
 
-            cmd.Parameters.AddWithValue("@ID", ID);
+        //    cmd.Parameters.AddWithValue("@ID", ID);
 
-            try
-            {
-                connection.Open();
+        //    try
+        //    {
+        //        connection.Open();
 
-                SqlDataReader reader = cmd.ExecuteReader();
+        //        SqlDataReader reader = cmd.ExecuteReader();
 
-                if (reader.Read())
-                {
-                    isFound = true;
+        //        if (reader.Read())
+        //        {
+        //            isFound = true;
 
-                    Name = (string)reader["Name"];
-                    Phone = (string)reader["Phone"];
-                    EnrollmentStartDate = (DateTime)reader["EnrollmentStartDate"];
-                    EnrollmentEndDate = (DateTime)reader["EnrollmentEndDate"];
-                    if (reader["Photo"] != DBNull.Value)
-                        Photo = (string)reader["Photo"];
-                    else
-                        Photo = "";
-                }
-                else
-                {
-                    isFound = false;
-                }
-                reader.Close();
-            }
-            catch (Exception ex)
-            {
+        //            Name = (string)reader["Name"];
+        //            Phone = (string)reader["Phone"];
+        //            EnrollmentStartDate = (DateTime)reader["EnrollmentStartDate"];
+        //            EnrollmentEndDate = (DateTime)reader["EnrollmentEndDate"];
+        //            if (reader["Photo"] != DBNull.Value)
+        //                Photo = (string)reader["Photo"];
+        //            else
+        //                Photo = "";
+        //        }
+        //        else
+        //        {
+        //            isFound = false;
+        //        }
+        //        reader.Close();
+        //    }
+        //    catch (Exception ex)
+        //    {
 
-                return false;
-            }
-            finally
-            {
-                connection.Close();
-            }
+        //        return false;
+        //    }
+        //    finally
+        //    {
+        //        connection.Close();
+        //    }
 
-            return isFound;
-        }
+        //    return isFound;
+        //}
 
         /// <summary>
         /// function take Name And Search For It inDB
@@ -370,6 +370,83 @@ namespace GymDataAccesLayer
             }
 
             return isFound;
+        }
+        public static DataTable GetAllSubscribtionsByPlayerID(int PlayerID)
+        {
+            DataTable dt = new DataTable();
+
+            SqlConnection connection = new SqlConnection(clsDataBaseSettings.ConnectionString);
+
+            string query = "Select * From Subscribtions Where PlayerID = @PlayerID";
+            SqlCommand cmd = new SqlCommand(query, connection);
+
+            cmd.Parameters.AddWithValue("@PlayerID", PlayerID);
+
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    dt.Load(reader);
+                }
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+
+                return null;
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return dt;
+        }
+        public static int AddNewSubscribtion(int playerID, DateTime startDate, DateTime endDate,
+          int totalAmount, float paidAmount, float remainingAmount,
+          int daysTillSubscribtionEnds)
+        {
+            int TrainneID = -1;
+            SqlConnection connection = new SqlConnection(clsDataBaseSettings.ConnectionString);
+
+            string query = @"INSERT INTO Subscribtions
+                             (PlayerID, startDate, endDate, totalAmount, paidAmount ,
+                             remainingAmount, daysTillSubscribtionEnds )
+                             VALUES
+                             (@playerID, @startDate, @endDate, @totalAmount, @paidAmount ,
+                             @remainingAmount, @daysTillSubscribtionEnds )
+                             SELECT SCOPE_IDENTITY()";
+            SqlCommand command = new SqlCommand(query, connection);
+
+            command.Parameters.AddWithValue("@playerID", playerID);
+            command.Parameters.AddWithValue("@startDate", startDate);
+            command.Parameters.AddWithValue("@endDate", endDate);
+            command.Parameters.AddWithValue("@totalAmount", totalAmount);
+            command.Parameters.AddWithValue("@paidAmount", paidAmount);
+            command.Parameters.AddWithValue("@remainingAmount", remainingAmount);
+            command.Parameters.AddWithValue("@daysTillSubscribtionEnds", daysTillSubscribtionEnds);
+            try
+            {
+                connection.Open();
+                object result = command.ExecuteScalar();
+                if (result != null && int.TryParse(result.ToString(), out int value))
+                {
+                    TrainneID = value;
+                }
+            }
+            catch (Exception ex)
+            {
+
+                return -1;
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return TrainneID;
         }
     }
 

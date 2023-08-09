@@ -23,14 +23,14 @@ namespace GymBussniesLayer
 
 
 
-        private bool _AddNewSubscribtion()
+        //private bool _AddNewSubscribtion()
             
-        {
-            this.ID = clsSubScribtionDataAccses.AddNewSubscribtion(this.PlayerID,
-                this.StartDate, this.EndDate, this.TotalAmount, this.PaidAmount,
-                this.RemainingAmount, this.DaysTillSubscribtionEnds);
-            return (this.ID != -1);
-        }
+        //{
+        //    this.ID = clsSubScribtionDataAccses.AddNewSubscribtion(this.PlayerID,
+        //        this.StartDate, this.EndDate, this.TotalAmount, this.PaidAmount,
+        //        this.RemainingAmount, this.DaysTillSubscribtionEnds);
+        //    return (this.ID != -1);
+        //}
 
         //private bool _UpdateSubscribtion()
         //{
@@ -95,60 +95,60 @@ namespace GymBussniesLayer
 
         //}
 
-        public static clsSubscription FindByPlayer(int PlayerID)
-        {
-            int ID = -1;
-            DateTime StartDate = DateTime.MinValue,
-            EndDate = DateTime.MinValue;
-            int TotalAmount = -1;
-            float PaidAmount = -1f, RemainingAmount = -1f;
-            int DaysTillSubscribtionEnds = -1;
+    //    public static clsSubscription FindByPlayer(int PlayerID)
+    //    {
+    //        int ID = -1;
+    //        DateTime StartDate = DateTime.MinValue,
+    //        EndDate = DateTime.MinValue;
+    //        int TotalAmount = -1;
+    //        float PaidAmount = -1f, RemainingAmount = -1f;
+    //        int DaysTillSubscribtionEnds = -1;
 
-            if (clsSubScribtionDataAccses.GetLastSubscribtionByPlayerID
-                (ref ID,  PlayerID, ref StartDate, ref EndDate,
-               ref TotalAmount, ref PaidAmount, ref RemainingAmount,
-               ref DaysTillSubscribtionEnds))
+    //        if (clsSubScribtionDataAccses.GetLastSubscribtionByPlayerID
+    //            (ref ID,  PlayerID, ref StartDate, ref EndDate,
+    //           ref TotalAmount, ref PaidAmount, ref RemainingAmount,
+    //           ref DaysTillSubscribtionEnds))
 
-                return new clsSubscription(ID, PlayerID, StartDate, EndDate, TotalAmount,
-                    PaidAmount, RemainingAmount, DaysTillSubscribtionEnds);
+    //            return new clsSubscription(ID, PlayerID, StartDate, EndDate, TotalAmount,
+    //                PaidAmount, RemainingAmount, DaysTillSubscribtionEnds);
 
-            else
-                return null;
+    //        else
+    //            return null;
 
-        }
+    //    }
 
-        public bool Save()
-        {
-            switch (Mode)
-            {
-                case enMode.AddNew:
-                    if (_AddNewSubscribtion())
-                    {
-                        Mode = enMode.Update;
+    //    public bool Save()
+    //    {
+    //        switch (Mode)
+    //        {
+    //            case enMode.AddNew:
+    //                if (_AddNewSubscribtion())
+    //                {
+    //                    Mode = enMode.Update;
 
-                    }
-                    break;
-                    //case enMode.Update:
-                    //    return _UpdateTrainee();
-            }
-            return false;
-        }
+    //                }
+    //                break;
+    //                //case enMode.Update:
+    //                //    return _UpdateTrainee();
+    //        }
+    //        return false;
+    //    }
 
 
 
-        public static DataTable GetAllSubscribtions()
-        {
-            return clsSubScribtionDataAccses.GetAllSubscribtions();
-        }
-        public static DataTable GetAllSubscribtionsByPlayerID(int PlayerID)
-        {
-            return clsSubScribtionDataAccses.GetAllSubscribtionsByPlayerID(PlayerID);
-        }
+    //    public static DataTable GetAllSubscribtions()
+    //    {
+    //        return clsSubScribtionDataAccses.GetAllSubscribtions();
+    //    }
+    //    public static DataTable GetAllSubscribtionsByPlayerID(int PlayerID)
+    //    {
+    //        return clsSubScribtionDataAccses.GetAllSubscribtionsByPlayerID(PlayerID);
+    //    }
 
-        public static DataTable GetSubscribtionBetweenDates(DateTime From,  DateTime To)
-        {
-            return clsSubScribtionDataAccses.GetSubscribtionBetweenDates(From, To);
-        }
+    //    public static DataTable GetSubscribtionBetweenDates(DateTime From,  DateTime To)
+    //    {
+    //        return clsSubScribtionDataAccses.GetSubscribtionBetweenDates(From, To);
+    //    }
 
     }
 }

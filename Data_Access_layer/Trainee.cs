@@ -118,7 +118,7 @@ namespace GymDataAccesLayer
                 }
                 reader.Close();
             }
-            catch (Exception ex)
+            catch (Exception )
             {
 
                 return false;
@@ -220,7 +220,7 @@ namespace GymDataAccesLayer
 
             SqlConnection connection = new SqlConnection(clsDataBaseSettings.ConnectionString);
 
-            string query = "SELECT Trainers.*, Subscriptions.EnrollmentStart, Subscriptions.EnrollmentEnd, Subscriptions.TotalAmount,Subscriptions.PaidAmount, Subscriptions.RemainingAmount, Subscriptions.DaysTillSubscriptionExpired FROM  Subscriptions INNER JOIN Trainers ON Subscriptions.[Player _id] = Trainers._id";
+            string query = "SELECT Trainers._id, Trainers.TraineeName, Trainers.Phone, Subscriptions.EnrollmentStart, Subscriptions.EnrollmentEnd,\r\nDATEDIFF(day, Subscriptions.EnrollmentStart, Subscriptions.EnrollmentEnd) AS DayLeft,\r\nSubscriptions.TotalAmount, Subscriptions.PaidAmount,\r\nSubscriptions.TotalAmount - Subscriptions.PaidAmount as RemainingAmount\r\nFROM   Subscriptions INNER JOIN\r\n             Trainers ON Subscriptions.Player_id = Trainers._id;";
             SqlCommand cmd = new SqlCommand (query, connection);
 
             try

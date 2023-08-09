@@ -41,7 +41,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="SubScribtion.cs" />
     <Compile Include="DataSettings.cs" />
     <Compile Include="Trainee.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -49,22 +49,22 @@ namespace GymBussniesLayer
         }
 
 
-        public static clsTrainee Find(int ID)
-        {
-            string Name = "", Phone = "", Photo = "";
-            DateTime enrollmentStartDate = DateTime.MinValue,
-                enrollmentEndDate = DateTime.MinValue;
+        //public static clsTrainee Find(int ID)
+        //{
+        //    string Name = "", Phone = "", Photo = "";
+        //    DateTime enrollmentStartDate = DateTime.MinValue,
+        //        enrollmentEndDate = DateTime.MinValue;
 
-            if (clsTraineeDataAccess.GetTraineeInfoByID
-                (ID, ref Name, ref Phone, ref Photo,
-               ref enrollmentStartDate, ref enrollmentEndDate))
+        //    if (clsTraineeDataAccess.GetTraineeInfoByID
+        //        (ID, ref Name, ref Phone, ref Photo,
+        //       ref enrollmentStartDate, ref enrollmentEndDate))
 
-                return new clsTrainee(ID, Name, Phone, Photo,
-                    enrollmentStartDate, enrollmentEndDate);
-            else
-                return null;
+        //        return new clsTrainee(ID, Name, Phone, Photo,
+        //            enrollmentStartDate, enrollmentEndDate);
+        //    else
+        //        return null;
                 
-        }
+        //}
 
         public bool Save()
         {

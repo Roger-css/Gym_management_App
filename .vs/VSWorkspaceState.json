@@ -1,9 +1,7 @@
 {
   "ExpandedNodes": [
-    "",
-    "\\Data_Access_layer",
-    "\\presentation_layer"
+    ""
   ],
-  "SelectedNode": "\\presentation_layer\\bin",
+  "SelectedNode": "\\presentation_layer.sln",
   "PreviewInSolutionExplorer": false
 }

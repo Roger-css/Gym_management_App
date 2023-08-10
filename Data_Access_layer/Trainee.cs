@@ -172,18 +172,18 @@ namespace GymDataAccesLayer
         {
             using (SqlConnection connection = new SqlConnection(clsDataBaseSettings.ConnectionString))
             {
-                string query = @"SELECT  *
-                        FROM (
-                            SELECT Trainers._id, Trainers.Name, Trainers.Phone,
-                                   Subscriptions.EnrollmentStart, Subscriptions.EnrollmentEnd,
-                                   Subscriptions.TotalAmount, Subscriptions.PaidAmount,
-                                   (Subscriptions.TotalAmount - Subscriptions.PaidAmount) AS RemainingAmount,
-                                   DATEDIFF(day, EnrollmentEnd, EnrollmentStart) AS DaysTillSubscriptionExpired
-                            FROM Subscriptions
-                            INNER JOIN Trainers ON Subscriptions.[Player_id] = Trainers._id
-                        ) R2
-                        WHERE DaysTillSubscriptionExpired BETWEEN 31 AND -30
-                        ORDER BY R1.EnrollmentStart DESC;";
+                string query = @"SELECT *
+                                FROM (
+                                    SELECT Trainers._id, Trainers.Name, Trainers.Phone,
+                                           Subscriptions.EnrollmentStart, Subscriptions.EnrollmentEnd,
+                                           Subscriptions.TotalAmount, Subscriptions.PaidAmount,
+                                           (Subscriptions.TotalAmount - Subscriptions.PaidAmount) AS RemainingAmount,
+                                           DATEDIFF(day, EnrollmentEnd, EnrollmentStart) AS DaysTillSubscriptionExpired,
+                                           ROW_NUMBER() OVER (PARTITION BY Trainers._id ORDER BY Subscriptions.EnrollmentStart DESC) AS RowNum
+                                    FROM Trainers
+                                    INNER JOIN Subscriptions ON Trainers._id = Subscriptions.Player_id
+                                ) R2
+                                WHERE RowNum = 1;";
 
                 using (SqlCommand cmd = new SqlCommand(query, connection))
                 {

@@ -7,3 +7,12 @@ C:\Users\H1202\source\repos\Gym_management_App\Buisness_layer\bin\Debug\Data_Acc
 C:\Users\H1202\source\repos\Gym_management_App\Buisness_layer\obj\Debug\Gym_Bussnies_Layer.csproj.CopyComplete
 C:\Users\H1202\source\repos\Gym_management_App\Buisness_layer\obj\Debug\Buisness_layer.dll
 C:\Users\H1202\source\repos\Gym_management_App\Buisness_layer\obj\Debug\Buisness_layer.pdb
+C:\Users\H1202\Source\Repos\Gym_management_App1\Buisness_layer\bin\Debug\Buisness_layer.dll
+C:\Users\H1202\Source\Repos\Gym_management_App1\Buisness_layer\bin\Debug\Buisness_layer.pdb
+C:\Users\H1202\Source\Repos\Gym_management_App1\Buisness_layer\bin\Debug\Data_Access_layer.dll
+C:\Users\H1202\Source\Repos\Gym_management_App1\Buisness_layer\bin\Debug\Data_Access_layer.pdb
+C:\Users\H1202\Source\Repos\Gym_management_App1\Buisness_layer\obj\Debug\Gym_Bussnies_Layer.csproj.AssemblyReference.cache
+C:\Users\H1202\Source\Repos\Gym_management_App1\Buisness_layer\obj\Debug\Gym_Bussnies_Layer.csproj.CoreCompileInputs.cache
+C:\Users\H1202\Source\Repos\Gym_management_App1\Buisness_layer\obj\Debug\Gym_Bussnies_Layer.csproj.CopyComplete
+C:\Users\H1202\Source\Repos\Gym_management_App1\Buisness_layer\obj\Debug\Buisness_layer.dll
+C:\Users\H1202\Source\Repos\Gym_management_App1\Buisness_layer\obj\Debug\Buisness_layer.pdb

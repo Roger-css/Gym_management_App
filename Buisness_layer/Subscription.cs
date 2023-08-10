@@ -24,7 +24,6 @@ namespace GymBussniesLayer
 
 
 
-<<<<<<< HEAD
         private bool _AddNewSubscribtion()
 
         {
@@ -32,21 +31,12 @@ namespace GymBussniesLayer
                 this.StartDate, this.EndDate, this.TotalAmount, this.PaidAmount);
             return (this.ID != -1);
         }
-=======
-        //private bool _AddNewSubscribtion()
-            
-        //{
-        //    this.ID = clsSubScribtionDataAccses.AddNewSubscribtion(this.PlayerID,
-        //        this.StartDate, this.EndDate, this.TotalAmount, this.PaidAmount,
-        //        this.RemainingAmount, this.DaysTillSubscribtionEnds);
-        //    return (this.ID != -1);
-        //}
->>>>>>> 86782089f99ba96f53e1fad80185526fc9914c08
+
 
         private bool _UpdateSubscribtion()
         {
-            return clsTraineeDataAccess.UpdateTraineeSubscribtion(this.ID, this.PlayerID,
-                  this.StartDate,  this.EndDate, this.TotalAmount, this.PaidAmount);
+            return clsTraineeDataAccess.UpdateTraineeSubscribtion(this.PlayerID,
+                  this.StartDate, this.EndDate, this.TotalAmount, this.PaidAmount);
         }
 
         public clsSubscription()
@@ -73,37 +63,9 @@ namespace GymBussniesLayer
             this.EndDate = EndDate;
             this.TotalAmount = totalAmount;
             this.PaidAmount = paidAmount;
-            this.RemainingAmount = remainingAmount;
-            this.DaysTillSubscribtionEnds = daysTillSubscribtionEnds;
 
             Mode = enMode.Update;
         }
-
-
-        //public static clsSubscription Find(int ID)
-        //{
-        //    int PlayerID = -1;
-        //    DateTime StartDate = DateTime.MinValue,
-        //    EndDate = DateTime.MinValue;
-        //    int TotalAmount = -1;
-        //    float PaidAmount = -1f, RemainingAmount = -1f;
-        //    int DaysTillSubscribtionEnds = -1;
-
-        //    if (clsSubScribtionDataAccses.GetSubscribtionInfoByID
-        //        (ID, ref PlayerID, ref StartDate, ref EndDate,
-        //       ref TotalAmount, ref PaidAmount, ref RemainingAmount,
-        //       ref DaysTillSubscribtionEnds))
-
-        //        return new clsSubscription(ID, PlayerID, StartDate, EndDate, TotalAmount,
-        //            PaidAmount, RemainingAmount, DaysTillSubscribtionEnds);
-
-        //    else
-        //        return null;
-
-        //}
-
-<<<<<<< HEAD
-
 
         //public static clsSubscription FindByPlayer(int PlayerID)
         //{
@@ -114,8 +76,8 @@ namespace GymBussniesLayer
         //    float PaidAmount = -1f, RemainingAmount = -1f;
         //    int DaysTillSubscribtionEnds = -1;
 
-        //    if (clsTraineeDataAccess.GetLastSubscribtionByPlayerID
-        //        (ref ID,  PlayerID, ref StartDate, ref EndDate,
+        //    if (clsTraineeDataAccess.GetTraineeLastSub(
+        //        (ref ID, PlayerID, ref StartDate, ref EndDate,
         //       ref TotalAmount, ref PaidAmount, ref RemainingAmount,
         //       ref DaysTillSubscribtionEnds))
 
@@ -143,73 +105,17 @@ namespace GymBussniesLayer
             return false;
         }
 
- 
-    
+
+
         public static DataTable GetAllSubscribtionsByPlayerID(int PlayerID)
         {
             return clsTraineeDataAccess.GetAllSubscribtionsByPlayerID(PlayerID);
         }
 
-        public static decimal GetBalanceByDates (DateTime startDate, DateTime endDate)
+        public static decimal GetBalanceByDates(DateTime startDate, DateTime endDate)
         {
             return clsTraineeDataAccess.GetBalanceByDates(startDate, endDate);
         }
-=======
-    //    public static clsSubscription FindByPlayer(int PlayerID)
-    //    {
-    //        int ID = -1;
-    //        DateTime StartDate = DateTime.MinValue,
-    //        EndDate = DateTime.MinValue;
-    //        int TotalAmount = -1;
-    //        float PaidAmount = -1f, RemainingAmount = -1f;
-    //        int DaysTillSubscribtionEnds = -1;
-
-    //        if (clsSubScribtionDataAccses.GetLastSubscribtionByPlayerID
-    //            (ref ID,  PlayerID, ref StartDate, ref EndDate,
-    //           ref TotalAmount, ref PaidAmount, ref RemainingAmount,
-    //           ref DaysTillSubscribtionEnds))
-
-    //            return new clsSubscription(ID, PlayerID, StartDate, EndDate, TotalAmount,
-    //                PaidAmount, RemainingAmount, DaysTillSubscribtionEnds);
-
-    //        else
-    //            return null;
-
-    //    }
-
-    //    public bool Save()
-    //    {
-    //        switch (Mode)
-    //        {
-    //            case enMode.AddNew:
-    //                if (_AddNewSubscribtion())
-    //                {
-    //                    Mode = enMode.Update;
-
-    //                }
-    //                break;
-    //                //case enMode.Update:
-    //                //    return _UpdateTrainee();
-    //        }
-    //        return false;
-    //    }
-
-
-
-    //    public static DataTable GetAllSubscribtions()
-    //    {
-    //        return clsSubScribtionDataAccses.GetAllSubscribtions();
-    //    }
-    //    public static DataTable GetAllSubscribtionsByPlayerID(int PlayerID)
-    //    {
-    //        return clsSubScribtionDataAccses.GetAllSubscribtionsByPlayerID(PlayerID);
-    //    }
-
-    //    public static DataTable GetSubscribtionBetweenDates(DateTime From,  DateTime To)
-    //    {
-    //        return clsSubScribtionDataAccses.GetSubscribtionBetweenDates(From, To);
-    //    }
->>>>>>> 86782089f99ba96f53e1fad80185526fc9914c08
 
         public static decimal GetRemainingByDates(DateTime startDate, DateTime endDate)
         {

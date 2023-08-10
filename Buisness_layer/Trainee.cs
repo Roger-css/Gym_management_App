@@ -8,8 +8,8 @@ namespace GymBussniesLayer
 {
     public class clsTrainee : Person
     {
-        public enum enMode { AddNew = 1 , Update = 2 }
-        public enMode Mode  = enMode.AddNew;
+        public enum enMode { AddNew = 1, Update = 2 }
+        public enMode Mode = enMode.AddNew;
 
         public DateTime EnrollmentStartDate { get; set; }
         public DateTime EnrollmentEndDate { get; set; }
@@ -28,10 +28,10 @@ namespace GymBussniesLayer
         private bool _UpdateTrainee()
         {
             return clsTraineeDataAccess.UpdateTrainee(this.ID, this.Name,
-                this.Phone,this.Photo);
+                this.Phone, this.Photo);
         }
 
-        public clsTrainee(DateTime enrollmentStartDate, DateTime enrollmentEndDate) : base( -1 , "", "", "")
+        public clsTrainee(DateTime enrollmentStartDate, DateTime enrollmentEndDate) : base(-1, "", "", "")
         {
             this.EnrollmentStartDate = enrollmentStartDate;
             this.EnrollmentEndDate = enrollmentEndDate;
@@ -41,9 +41,9 @@ namespace GymBussniesLayer
 
 
         private clsTrainee
-            (int id,string name,  string phone,
-            string photo , DateTime enrollmentStartDate, DateTime enrollmentEndDate)
-            : base( id,  name,  phone,  photo)
+            (int id, string name, string phone,
+            string photo, DateTime enrollmentStartDate, DateTime enrollmentEndDate)
+            : base(id, name, phone, photo)
         {
 
             this.EnrollmentStartDate = enrollmentStartDate;
@@ -51,11 +51,10 @@ namespace GymBussniesLayer
             Mode = enMode.Update;
         }
 
-        public static bool AddPalyerWithSubscribtion(string name, string phone , string photo,
-            DateTime enrollmentStartDate, DateTime enrollmentEndDate, int totalAmount , int paidAmount)
+        public static bool AddPalyerWithSubscribtion(string name, string phone, string photo,
+            DateTime enrollmentStartDate, DateTime enrollmentEndDate, int totalAmount, int paidAmount)
         {
 
-<<<<<<< HEAD
             clsTrainee TrainneToAdd = new clsTrainee(enrollmentStartDate, enrollmentEndDate);
             TrainneToAdd.Name = name;
             TrainneToAdd.Phone = phone;
@@ -75,8 +74,8 @@ namespace GymBussniesLayer
             return false;
         }
 
-        public static bool UpdatePlayerSubScribtion(int PlayerID, string name , DateTime enrollmentStartDate
-            , DateTime enrollmentEndDate , string phone , string photo, int totalAmount, int paidAmount)
+        public static bool UpdatePlayerSubScribtion(int PlayerID, string name, DateTime enrollmentStartDate
+            , DateTime enrollmentEndDate, string phone, string photo, int totalAmount, int paidAmount)
         {
 
             clsTrainee TrainneToUpdate = clsTrainee.Find(PlayerID);
@@ -99,29 +98,25 @@ namespace GymBussniesLayer
             }
             return false;
         }
+
+
         public static clsTrainee Find(int ID)
         {
             string Name = "", Phone = "", Photo = "";
             DateTime enrollmentStartDate = DateTime.MinValue,
                 enrollmentEndDate = DateTime.MinValue;
-=======
-        //public static clsTrainee Find(int ID)
-        //{
-        //    string Name = "", Phone = "", Photo = "";
-        //    DateTime enrollmentStartDate = DateTime.MinValue,
-        //        enrollmentEndDate = DateTime.MinValue;
->>>>>>> 86782089f99ba96f53e1fad80185526fc9914c08
 
-        //    if (clsTraineeDataAccess.GetTraineeInfoByID
-        //        (ID, ref Name, ref Phone, ref Photo,
-        //       ref enrollmentStartDate, ref enrollmentEndDate))
+            if (clsTraineeDataAccess.GetTraineeInfoByID
+                (ID, ref Name, ref Phone, ref Photo,
+               ref enrollmentStartDate, ref enrollmentEndDate))
 
-        //        return new clsTrainee(ID, Name, Phone, Photo,
-        //            enrollmentStartDate, enrollmentEndDate);
-        //    else
-        //        return null;
-                
-        //}
+                return new clsTrainee(ID, Name, Phone, Photo,
+                    enrollmentStartDate, enrollmentEndDate);
+            else
+                return null;
+
+        }
+
 
         public bool Save()
         {
@@ -130,8 +125,8 @@ namespace GymBussniesLayer
                 case enMode.AddNew:
                     if (_AddNewTrainee())
                     {
-                       Mode = enMode.Update;
-                       return true;
+                        Mode = enMode.Update;
+                        return true;
                     }
                     break;
                 case enMode.Update:
@@ -140,19 +135,20 @@ namespace GymBussniesLayer
             return false;
         }
 
-        public static DataTable GetTraineesLastSub() 
+        public static DataTable GetTraineesLastSub()
             => clsTraineeDataAccess.GetTraineesLastSub();
-        public static DataTable GetTraineesAllSub() 
+        public static DataTable GetTraineesAllSub()
             => clsTraineeDataAccess.GetTraineesAllSubs();
-       
-        public static DataTable GetTraineeLastSub(string Name) 
+
+        public static DataTable GetTraineeLastSub(string Name)
             => clsTraineeDataAccess.GetTraineeLastSub(Name);
-        public static DataTable GetTraineeAllSubsByName(string Name) 
+        public static DataTable GetTraineeAllSubsByName(string Name)
             => clsTraineeDataAccess.GetTraineeAllSubsByName(Name);
 
         public static DataTable GetTraineeByDatesWithRemaining(DateTime startDate, DateTime endDate)
                 => clsTraineeDataAccess.GetTraineesByDatesWithRemaining(startDate, endDate);
 
-        
+
+
     }
 }

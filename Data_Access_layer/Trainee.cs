@@ -57,7 +57,7 @@ namespace GymDataAccesLayer
                 }
                 reader.Close();
             }
-            catch (Exception )
+            catch (Exception)
             {
 
                 return false;
@@ -115,7 +115,7 @@ namespace GymDataAccesLayer
                             }
                         }
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
                         dt = null;
                         // Handle the exception appropriately
@@ -413,7 +413,7 @@ namespace GymDataAccesLayer
             }
         }
 
-        public static bool UpdateTrainee(int ID ,string Name, string Phone, string Photo)
+        public static bool UpdateTrainee(int ID, string Name, string Phone, string Photo)
         {
             int rowsAffected = 0;
             SqlConnection connection = new SqlConnection(clsDataBaseSettings.ConnectionString);
@@ -437,44 +437,36 @@ namespace GymDataAccesLayer
 
             try
             {
-                connection.Open ();
+                connection.Open();
                 rowsAffected = cmd.ExecuteNonQuery();
             }
-            catch (Exception ex )
+            catch (Exception ex)
             {
 
-                return false ;
-            } 
+                return false;
+            }
             finally
             {
                 connection.Close();
             }
             return (rowsAffected > 0);
         }
-        public static bool UpdateTraineeSubscribtion(int ,  DateTime EnrollmentStartDate,
+        public static bool UpdateTraineeSubscribtion(int PalyerID, DateTime EnrollmentStartDate,
              DateTime EnrollmentEndDate, int totalAmount, float paidAmount)
         {
-<<<<<<< HEAD
+
             bool success = false;
             using (SqlConnection connection = new SqlConnection(clsDataBaseSettings.ConnectionString))
-=======
-
-            DataTable dt = new DataTable();
-
-            SqlConnection connection = new SqlConnection(clsDataBaseSettings.ConnectionString);
-
-            string query = "SELECT Trainers._id, Trainers.TraineeName, Trainers.Phone, Subscriptions.EnrollmentStart, Subscriptions.EnrollmentEnd,\r\nDATEDIFF(day, Subscriptions.EnrollmentStart, Subscriptions.EnrollmentEnd) AS DayLeft,\r\nSubscriptions.TotalAmount, Subscriptions.PaidAmount,\r\nSubscriptions.TotalAmount - Subscriptions.PaidAmount as RemainingAmount\r\nFROM   Subscriptions INNER JOIN\r\n             Trainers ON Subscriptions.Player_id = Trainers._id;";
-            SqlCommand cmd = new SqlCommand (query, connection);
-
-            try
->>>>>>> 86782089f99ba96f53e1fad80185526fc9914c08
             {
-                string query = @"UPDATE Subscriptions
-                         SET EnrollmentStart = @EnrollmentStartDate,
-                             EnrollmentEnd = @EnrollmentEndDate,
-                             TotalAmount = @TotalAmount,
-                             PaidAmount = @PaidAmount,
-                         WHERE Subscriptions._id = @ID";
+
+                string query = @"
+                               UPDATE TOP (1) Subscriptions
+                               SET EnrollmentStart = @EnrollmentStartDate,
+                                    EnrollmentEnd = @EnrollmentEndDate,
+                                    TotalAmount = @TotalAmount,
+                                    PaidAmount = @PaidAmount
+                                WHERE playerid = @PlayerID
+                                ORDER BY EnrollmentStart DESC;";
 
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
@@ -482,8 +474,7 @@ namespace GymDataAccesLayer
                     command.Parameters.AddWithValue("@EnrollmentEndDate", EnrollmentEndDate);
                     command.Parameters.AddWithValue("@TotalAmount", totalAmount);
                     command.Parameters.AddWithValue("@PaidAmount", paidAmount);
-                    command.Parameters.AddWithValue("@ID", ID);
-                    command.Parameters.AddWithValue("@PlayerID", PlayerID);
+                    command.Parameters.AddWithValue("@PlayerID", PalyerID);
 
                     try
                     {
@@ -585,7 +576,6 @@ namespace GymDataAccesLayer
 
             return subscriptionID;
         }
-
 
 
 

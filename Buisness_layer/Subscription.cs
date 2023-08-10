@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Diagnostics;
 using System.Runtime.InteropServices.ComTypes;
 using System.Xml.Linq;
 using GymDataAccesLayer;
@@ -14,30 +15,28 @@ namespace GymBussniesLayer
 
         public int ID { get; private set; }
         public int PlayerID { get; set; }
-        public DateTime StartDate { get; }
-        public DateTime EndDate { get; }
-        public int TotalAmount { get; }
+        public DateTime StartDate { get; set; }
+        public DateTime EndDate { get; set; }
+        public int TotalAmount { get; set; }
         public float PaidAmount { get; set; }
-        public float RemainingAmount { get; set; }
-        public int DaysTillSubscribtionEnds { get; set; }
+        //public float RemainingAmount { get; set; }
+        //public int DaysTillSubscribtionEnds { get; set; }
 
 
 
         private bool _AddNewSubscribtion()
-            
+
         {
-            this.ID = clsSubScribtionDataAccses.AddNewSubscribtion(this.PlayerID,
-                this.StartDate, this.EndDate, this.TotalAmount, this.PaidAmount,
-                this.RemainingAmount, this.DaysTillSubscribtionEnds);
+            this.ID = clsTraineeDataAccess.AddNewSubscribtion(this.PlayerID,
+                this.StartDate, this.EndDate, this.TotalAmount, this.PaidAmount);
             return (this.ID != -1);
         }
 
-        //private bool _UpdateSubscribtion()
-        //{
-        //    return clsSubScribtionDataAccses.UpdateTrainee(this.ID, this.PlayerID,
-        //        this.StartDate, this.EndDate, this.TotalAmount, this.PaidAmount,
-        //        this.RemainingAmount, this.DaysTillSubscribtionEnds);
-        //}
+        private bool _UpdateSubscribtion()
+        {
+            return clsTraineeDataAccess.UpdateTraineeSubscribtion(this.ID, this.PlayerID,
+                  this.StartDate,  this.EndDate, this.TotalAmount, this.PaidAmount);
+        }
 
         public clsSubscription()
         {
@@ -47,9 +46,6 @@ namespace GymBussniesLayer
             this.EndDate = DateTime.MinValue;
             this.TotalAmount = -1;
             this.PaidAmount = -1;
-            this.RemainingAmount = -1;
-            this.DaysTillSubscribtionEnds = -1;
-
             Mode = enMode.AddNew;
         }
 
@@ -95,27 +91,29 @@ namespace GymBussniesLayer
 
         //}
 
-        public static clsSubscription FindByPlayer(int PlayerID)
-        {
-            int ID = -1;
-            DateTime StartDate = DateTime.MinValue,
-            EndDate = DateTime.MinValue;
-            int TotalAmount = -1;
-            float PaidAmount = -1f, RemainingAmount = -1f;
-            int DaysTillSubscribtionEnds = -1;
 
-            if (clsSubScribtionDataAccses.GetLastSubscribtionByPlayerID
-                (ref ID,  PlayerID, ref StartDate, ref EndDate,
-               ref TotalAmount, ref PaidAmount, ref RemainingAmount,
-               ref DaysTillSubscribtionEnds))
 
-                return new clsSubscription(ID, PlayerID, StartDate, EndDate, TotalAmount,
-                    PaidAmount, RemainingAmount, DaysTillSubscribtionEnds);
+        //public static clsSubscription FindByPlayer(int PlayerID)
+        //{
+        //    int ID = -1;
+        //    DateTime StartDate = DateTime.MinValue,
+        //    EndDate = DateTime.MinValue;
+        //    int TotalAmount = -1;
+        //    float PaidAmount = -1f, RemainingAmount = -1f;
+        //    int DaysTillSubscribtionEnds = -1;
 
-            else
-                return null;
+        //    if (clsTraineeDataAccess.GetLastSubscribtionByPlayerID
+        //        (ref ID,  PlayerID, ref StartDate, ref EndDate,
+        //       ref TotalAmount, ref PaidAmount, ref RemainingAmount,
+        //       ref DaysTillSubscribtionEnds))
 
-        }
+        //        return new clsSubscription(ID, PlayerID, StartDate, EndDate, TotalAmount,
+        //            PaidAmount, RemainingAmount, DaysTillSubscribtionEnds);
+
+        //    else
+        //        return null;
+
+        //}
 
         public bool Save()
         {
@@ -125,30 +123,32 @@ namespace GymBussniesLayer
                     if (_AddNewSubscribtion())
                     {
                         Mode = enMode.Update;
-
                     }
                     break;
-                    //case enMode.Update:
-                    //    return _UpdateTrainee();
+                case enMode.Update:
+                    return _UpdateSubscribtion();
             }
             return false;
         }
 
-
-
-        public static DataTable GetAllSubscribtions()
-        {
-            return clsSubScribtionDataAccses.GetAllSubscribtions();
-        }
+ 
+    
         public static DataTable GetAllSubscribtionsByPlayerID(int PlayerID)
         {
-            return clsSubScribtionDataAccses.GetAllSubscribtionsByPlayerID(PlayerID);
+            return clsTraineeDataAccess.GetAllSubscribtionsByPlayerID(PlayerID);
         }
 
-        public static DataTable GetSubscribtionBetweenDates(DateTime From,  DateTime To)
+        public static decimal GetBalanceByDates (DateTime startDate, DateTime endDate)
         {
-            return clsSubScribtionDataAccses.GetSubscribtionBetweenDates(From, To);
+            return clsTraineeDataAccess.GetBalanceByDates(startDate, endDate);
         }
+
+        public static decimal GetRemainingByDates(DateTime startDate, DateTime endDate)
+        {
+            return clsTraineeDataAccess.GetRemainingByDates(startDate, endDate);
+        }
+
+
 
     }
 }

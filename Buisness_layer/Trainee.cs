@@ -11,8 +11,8 @@ namespace GymBussniesLayer
         public enum enMode { AddNew = 1 , Update = 2 }
         public enMode Mode  = enMode.AddNew;
 
-        DateTime EnrollmentStartDate { get; set; }
-        DateTime EnrollmentEndDate { get; set; }
+        public DateTime EnrollmentStartDate { get; set; }
+        public DateTime EnrollmentEndDate { get; set; }
 
 
         private bool _AddNewTrainee()
@@ -22,16 +22,19 @@ namespace GymBussniesLayer
             return (this.ID != -1);
         }
 
+        // 1-Name, 2- POHNE, 3- PHOTO, ENROLMENT START DATE, ENRLMMENT END DATE, 
+
+
         private bool _UpdateTrainee()
         {
             return clsTraineeDataAccess.UpdateTrainee(this.ID, this.Name,
                 this.Phone,this.Photo);
         }
 
-        public clsTrainee() : base( -1 , "", "", "")
+        public clsTrainee(DateTime enrollmentStartDate, DateTime enrollmentEndDate) : base( -1 , "", "", "")
         {
-            this.EnrollmentStartDate = DateTime.MinValue;
-            this.EnrollmentEndDate = DateTime.MinValue;
+            this.EnrollmentStartDate = enrollmentStartDate;
+            this.EnrollmentEndDate = enrollmentEndDate;
 
             Mode = enMode.AddNew;
         }
@@ -48,7 +51,53 @@ namespace GymBussniesLayer
             Mode = enMode.Update;
         }
 
+        public static bool AddPalyerWithSubscribtion(string name, string phone , string photo,
+            DateTime enrollmentStartDate, DateTime enrollmentEndDate, int totalAmount , int paidAmount)
+        {
 
+            clsTrainee TrainneToAdd = new clsTrainee(enrollmentStartDate, enrollmentEndDate);
+            TrainneToAdd.Name = name;
+            TrainneToAdd.Phone = phone;
+            TrainneToAdd.Photo = photo;
+            if (TrainneToAdd.Save())
+            {
+                clsSubscription NewSubScribtion = new clsSubscription();
+
+                NewSubScribtion.PlayerID = TrainneToAdd.ID;
+                NewSubScribtion.StartDate = TrainneToAdd.EnrollmentStartDate;
+                NewSubScribtion.EndDate = TrainneToAdd.EnrollmentEndDate;
+                NewSubScribtion.TotalAmount = totalAmount;
+                NewSubScribtion.PaidAmount = paidAmount;
+                if (NewSubScribtion.Save())
+                    return true;
+            }
+            return false;
+        }
+
+        public static bool UpdatePlayerSubScribtion(int PlayerID, string name , DateTime enrollmentStartDate
+            , DateTime enrollmentEndDate , string phone , string photo, int totalAmount, int paidAmount)
+        {
+
+            clsTrainee TrainneToUpdate = clsTrainee.Find(PlayerID);
+            TrainneToUpdate.Name = name;
+            TrainneToUpdate.EnrollmentStartDate = enrollmentStartDate;
+            TrainneToUpdate.EnrollmentEndDate = enrollmentEndDate;
+            TrainneToUpdate.Phone = phone;
+            TrainneToUpdate.Photo = photo;
+            if (TrainneToUpdate.Save())
+            {
+                clsSubscription NewSubScribtion = new clsSubscription();
+
+                NewSubScribtion.PlayerID = TrainneToUpdate.ID;
+                NewSubScribtion.StartDate = TrainneToUpdate.EnrollmentStartDate;
+                NewSubScribtion.EndDate = TrainneToUpdate.EnrollmentEndDate;
+                NewSubScribtion.TotalAmount = totalAmount;
+                NewSubScribtion.PaidAmount = paidAmount;
+                if (TrainneToUpdate.Save())
+                    return true;
+            }
+            return false;
+        }
         public static clsTrainee Find(int ID)
         {
             string Name = "", Phone = "", Photo = "";
@@ -74,7 +123,7 @@ namespace GymBussniesLayer
                     if (_AddNewTrainee())
                     {
                        Mode = enMode.Update;
-                        return true;
+                       return true;
                     }
                     break;
                 case enMode.Update:
@@ -83,23 +132,19 @@ namespace GymBussniesLayer
             return false;
         }
 
+        public static DataTable GetTraineesLastSub() 
+            => clsTraineeDataAccess.GetTraineesLastSub();
+        public static DataTable GetTraineesAllSub() 
+            => clsTraineeDataAccess.GetTraineesAllSubs();
+       
+        public static DataTable GetTraineeLastSub(string Name) 
+            => clsTraineeDataAccess.GetTraineeLastSub(Name);
+        public static DataTable GetTraineeAllSubsByName(string Name) 
+            => clsTraineeDataAccess.GetTraineeAllSubsByName(Name);
 
-        public static DataTable GetAllTrainees()
-        {
-            return clsTraineeDataAccess.GetAllTrainees();
-        }
-      
+        public static DataTable GetTraineeByDatesWithRemaining(DateTime startDate, DateTime endDate)
+                => clsTraineeDataAccess.GetTraineesByDatesWithRemaining(startDate, endDate);
 
-        public static bool IsTraineeExist(int ID)
-        {
-            return clsTraineeDataAccess.IsTraineeExisit(ID);
-        }
-        //public static List<clsTrainee> GetTraineesBetweenAge(int From, int To)
-        //{
-        //    DataTable dt = clsTraineeDataAccess.GetTraineesBetweenAge(From, To);
-        //    List<clsTrainee> TraineesList = new List<clsTrainee>();
-        //    return new List<clsTrainee>();
-        //}
-      
+        
     }
 }

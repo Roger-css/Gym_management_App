@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Data;
 using System.Data.SqlClient;
+using System.Runtime.InteropServices.ComTypes;
+using System.Xml.Linq;
 
 namespace GymDataAccesLayer
 {
@@ -16,81 +18,19 @@ namespace GymDataAccesLayer
         /// <param name="EnrollmentStartDate"></param>
         /// <param name="EnrollmentEndDate"></param>
         /// <returns>True if Found False If Not</returns>
-        //public static bool GetTraineeInfoByID(int ID,
-        //    ref string Name, ref string Phone, ref string Photo,
-        //    ref DateTime EnrollmentStartDate, ref DateTime EnrollmentEndDate)
-        //{
-        //    SqlConnection connection = new SqlConnection(clsDataBaseSettings.ConnectionString);
-
-        //    bool isFound = false;
-        //    // done
-        //    string query = "Select * From Trainers Where Trainers._id = @ID";
-
-        //    SqlCommand cmd = new SqlCommand(query, connection);
-
-        //    cmd.Parameters.AddWithValue("@ID", ID);
-
-        //    try
-        //    {
-        //        connection.Open();
-
-        //        SqlDataReader reader = cmd.ExecuteReader();
-
-        //        if (reader.Read())
-        //        {
-        //            isFound = true;
-
-        //            Name = (string)reader["Name"];
-        //            Phone = (string)reader["Phone"];
-        //            EnrollmentStartDate = (DateTime)reader["EnrollmentStartDate"];
-        //            EnrollmentEndDate = (DateTime)reader["EnrollmentEndDate"];
-        //            if (reader["Photo"] != DBNull.Value)
-        //                Photo = (string)reader["Photo"];
-        //            else
-        //                Photo = "";
-        //        }
-        //        else
-        //        {
-        //            isFound = false;
-        //        }
-        //        reader.Close();
-        //    }
-        //    catch (Exception ex)
-        //    {
-
-        //        return false;
-        //    }
-        //    finally
-        //    {
-        //        connection.Close();
-        //    }
-
-        //    return isFound;
-        //}
-
-        /// <summary>
-        /// function take Name And Search For It inDB
-        /// </summary>
-        /// <param name="ID"></param>
-        /// <param name="Name"></param>
-        /// <param name="Phone"></param>
-        /// <param name="Photo"></param>
-        /// <param name="EnrollmentStartDate"></param>
-        /// <param name="EnrollmentEndDate"></param>
-        /// <returns> True if Found False If Not </returns>
-        public static bool GetTraineeInfoByName(ref int ID,
-            string Name, ref string Phone, ref string Photo,
+        public static bool GetTraineeInfoByID(int ID,
+            ref string Name, ref string Phone, ref string Photo,
             ref DateTime EnrollmentStartDate, ref DateTime EnrollmentEndDate)
         {
             SqlConnection connection = new SqlConnection(clsDataBaseSettings.ConnectionString);
 
             bool isFound = false;
             // done
-            string query = "SELECT top(1) Trainers.*, Subscriptions.EnrollmentStart, Subscriptions.EnrollmentEnd, Subscriptions.TotalAmount,Subscriptions.PaidAmount, Subscriptions.RemainingAmount, Subscriptions.DaysTillSubscriptionExpired FROM  Subscriptions INNER JOIN Trainers ON Subscriptions.[Player _id] = Trainers._id Where Trainers.Name = @Name order by Subscriptions.EnrollmentStart";
+            string query = "Select * From Trainers Where Trainers._id = @ID";
 
             SqlCommand cmd = new SqlCommand(query, connection);
 
-            cmd.Parameters.AddWithValue("@Name", Name);
+            cmd.Parameters.AddWithValue("@ID", ID);
 
             try
             {
@@ -102,7 +42,6 @@ namespace GymDataAccesLayer
                 {
                     isFound = true;
 
-                    ID = (int)reader["ID"];
                     Name = (string)reader["Name"];
                     Phone = (string)reader["Phone"];
                     EnrollmentStartDate = (DateTime)reader["EnrollmentStartDate"];
@@ -131,48 +70,348 @@ namespace GymDataAccesLayer
             return isFound;
         }
 
+        /// <summary>
+        /// function take Name And Search For It inDB
+        /// </summary>
+        /// <param name="ID"></param>
+        /// <param name="Name"></param>
+        /// <param name="Phone"></param>
+        /// <param name="Photo"></param>
+        /// <param name="EnrollmentStartDate"></param>
+        /// <param name="EnrollmentEndDate"></param>
+        /// <returns> True if Found False If Not </returns>
+
+        public static DataTable GetTraineeLastSub(string Name)
+        {
+            using (SqlConnection connection = new SqlConnection(clsDataBaseSettings.ConnectionString))
+            {
+                string query = @"SELECT  Top(1) *
+                        FROM (
+                            SELECT Trainers._id, Trainers.Name, Trainers.Phone,
+                                   Subscriptions.EnrollmentStart, Subscriptions.EnrollmentEnd,
+                                   Subscriptions.TotalAmount, Subscriptions.PaidAmount,
+                                   (Subscriptions.TotalAmount - Subscriptions.PaidAmount) AS RemainingAmount,
+                                   DATEDIFF(day, EnrollmentEnd, EnrollmentStart) AS DaysTillSubscriptionExpired
+                            FROM Subscriptions
+                            INNER JOIN Trainers ON Subscriptions.[Player_id] = Trainers._id
+                             Where Name = @Name
+                        ) R1
+                        WHERE DaysTillSubscriptionExpired BETWEEN 31 AND -30
+                        ORDER BY REnrollmentStart DESC;";
+
+                using (SqlCommand cmd = new SqlCommand(query, connection))
+                {
+                    cmd.Parameters.AddWithValue("@Name", Name);
+                    DataTable dt = new DataTable();
+                    try
+                    {
+                        connection.Open();
+
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                dt.Load(reader);
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        dt = null;
+                        // Handle the exception appropriately
+                    }
+
+                    return dt;
+                }
+            }
+        }
+
+        public static DataTable GetTraineeAllSubsByName(string name)
+        {
+            using (SqlConnection connection = new SqlConnection(clsDataBaseSettings.ConnectionString))
+            {
+                string query = @"SELECT Trainers._id, Trainers.Name, Trainers.Phone,
+                                 Subscriptions.EnrollmentStart, Subscriptions.EnrollmentEnd,
+                                 Subscriptions.TotalAmount, Subscriptions.PaidAmount,
+                                 (Subscriptions.TotalAmount - Subscriptions.PaidAmount) AS RemainingAmount,
+                                 DATEDIFF(day, EnrollmentEnd, EnrollmentStart) AS DaysTillSubscriptionExpired
+                            FROM Subscriptions
+                            INNER JOIN Trainers ON Subscriptions.[Player_id] = Trainers._id
+                            WHERE Trainers.Name = @Name
+                            ORDER BY EnrollmentStart DESC";
+
+                using (SqlCommand cmd = new SqlCommand(query, connection))
+                {
+                    cmd.Parameters.AddWithValue("@Name", name);
+
+                    DataTable dt = new DataTable();
+                    try
+                    {
+                        connection.Open();
+
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                dt.Load(reader);
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        dt = null;
+                        // Handle the exception appropriately
+                    }
+
+                    return dt;
+                }
+            }
+        }
+
+        public static DataTable GetTraineesLastSub()
+        {
+            using (SqlConnection connection = new SqlConnection(clsDataBaseSettings.ConnectionString))
+            {
+                string query = @"SELECT  *
+                        FROM (
+                            SELECT Trainers._id, Trainers.Name, Trainers.Phone,
+                                   Subscriptions.EnrollmentStart, Subscriptions.EnrollmentEnd,
+                                   Subscriptions.TotalAmount, Subscriptions.PaidAmount,
+                                   (Subscriptions.TotalAmount - Subscriptions.PaidAmount) AS RemainingAmount,
+                                   DATEDIFF(day, EnrollmentEnd, EnrollmentStart) AS DaysTillSubscriptionExpired
+                            FROM Subscriptions
+                            INNER JOIN Trainers ON Subscriptions.[Player_id] = Trainers._id
+                        ) R2
+                        WHERE DaysTillSubscriptionExpired BETWEEN 31 AND -30
+                        ORDER BY R1.EnrollmentStart DESC;";
+
+                using (SqlCommand cmd = new SqlCommand(query, connection))
+                {
+                    DataTable dt = new DataTable();
+                    try
+                    {
+                        connection.Open();
+
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                dt.Load(reader);
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        dt = null;
+                        // Handle the exception appropriately
+                    }
+
+                    return dt;
+                }
+            }
+        }
+        public static DataTable GetTraineesAllSubs()
+        {
+            using (SqlConnection connection = new SqlConnection(clsDataBaseSettings.ConnectionString))
+            {
+                string query = @"SELECT Trainers._id, Trainers.Name, Trainers.Phone,
+                               Subscriptions.EnrollmentStart, Subscriptions.EnrollmentEnd,
+                               Subscriptions.TotalAmount, Subscriptions.PaidAmount,
+                               (Subscriptions.TotalAmount - Subscriptions.PaidAmount) AS RemainingAmount,
+                               DATEDIFF(day, EnrollmentEnd, EnrollmentStart) AS DaysTillSubscriptionExpired
+                        FROM Subscriptions
+                        INNER JOIN Trainers ON Subscriptions.[Player_id] = Trainers._id
+                        ORDER BY Trainers.Name, EnrollmentStart DESC";
+
+                using (SqlCommand cmd = new SqlCommand(query, connection))
+                {
+                    DataTable dt = new DataTable();
+                    try
+                    {
+                        connection.Open();
+
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                dt.Load(reader);
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        dt = null;
+                        // Handle the exception appropriately
+                    }
+
+                    return dt;
+                }
+            }
+        }
+
+
         public static int AddNewTrainee(string Name, string Phone, string Photo)
         {
             int TrainneID = -1;
-            SqlConnection connection = new SqlConnection(clsDataBaseSettings.ConnectionString);
-
-            string query = @"INSERT INTO Trainers
-                            (Name, Phone, Photo )
-                             VALUES(@Name, @Phone, @Photo)
-                             SELECT SCOPE_IDENTITY()";
-            SqlCommand command = new SqlCommand(query, connection);
-
-            command.Parameters.AddWithValue("@Name", Name);
-            command.Parameters.AddWithValue("@Phone", Phone);
-
-            if (Photo != "" && Photo != null)
-                command.Parameters.AddWithValue("@Photo", Photo);
-            else
-                command.Parameters.AddWithValue("@Photo", System.DBNull.Value);
-            try
+            using (SqlConnection connection = new SqlConnection(clsDataBaseSettings.ConnectionString))
             {
-                connection.Open();
-                object result = command.ExecuteScalar();
-                if (result != null && int.TryParse(result.ToString(), out int value))
+                string query = @"select PlayerID FROM 
+                                 (
+                                 INSERT INTO Trainers
+                                    (Name, Phone, Photo )
+                                    VALUES(@Name, @Phone, @Photo)
+                                    SELECT SCOPE_IDENTITY()    
+                                 )  ";
+                using (SqlCommand command = new SqlCommand(query, connection))
                 {
-                    TrainneID = value;
-                }
-            }
-            catch (Exception ex)
-            {
+                    command.Parameters.AddWithValue("@Name", Name);
+                    command.Parameters.AddWithValue("@Phone", Phone);
 
-                return -1;
-            }
-            finally
-            {
-                connection.Close();
+                    if (!string.IsNullOrEmpty(Photo))
+                        command.Parameters.AddWithValue("@Photo", Photo);
+                    else
+                        command.Parameters.AddWithValue("@Photo", DBNull.Value);
+
+                    try
+                    {
+                        connection.Open();
+                        object result = command.ExecuteScalar();
+                        if (result != null && int.TryParse(result.ToString(), out int value))
+                        {
+                            TrainneID = value;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        return -1;
+                        // Handle the exception appropriately
+                    }
+                }
             }
 
             return TrainneID;
         }
 
+        public static decimal GetBalanceByDates(DateTime startDate, DateTime endDate)
+        {
+            decimal totalAmount = 0;
 
+            using (SqlConnection connection = new SqlConnection(clsDataBaseSettings.ConnectionString))
+            {
+                string query = @"SELECT SUM(Subscriptions.TotalAmount) As TotalAmount
+                         FROM  Subscriptions 
+                         WHERE Subscriptions.EnrollmentStart BETWEEN @StartDate AND @EndDate";
 
+                using (SqlCommand cmd = new SqlCommand(query, connection))
+                {
+                    cmd.Parameters.AddWithValue("@StartDate", startDate);
+                    cmd.Parameters.AddWithValue("@EndDate", endDate);
+
+                    try
+                    {
+                        connection.Open();
+                        object result = cmd.ExecuteScalar();
+
+                        if (result != null && decimal.TryParse(result.ToString(),
+                            out decimal value))
+                        {
+                            totalAmount = value;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        // Handle the exception here or log it
+                        // Return an appropriate value or rethrow the exception
+                        return -1;
+                    }
+                }
+            }
+            return totalAmount;
+        }
+        public static decimal GetRemainingByDates(DateTime startDate, DateTime endDate)
+        {
+            decimal totalAmount = 0;
+
+            using (SqlConnection connection = new SqlConnection(clsDataBaseSettings.ConnectionString))
+            {
+                string query = @"SELECT SUM(RemainingAmount) As TotalAmount
+                                FROM (
+                                    SELECT (Subscriptions.TotalAmount - Subscriptions.PaidAmount) AS RemainingAmount
+                                    FROM Subscriptions
+                                    WHERE Subscriptions.EnrollmentStart BETWEEN @StartDate AND @EndDate
+                                    )";
+
+                using (SqlCommand cmd = new SqlCommand(query, connection))
+                {
+                    cmd.Parameters.AddWithValue("@StartDate", startDate);
+                    cmd.Parameters.AddWithValue("@EndDate", endDate);
+
+                    try
+                    {
+                        connection.Open();
+                        object result = cmd.ExecuteScalar();
+
+                        if (result != null && decimal.TryParse(result.ToString(),
+                            out decimal value))
+                        {
+                            totalAmount = value;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        // Handle the exception here or log it
+                        // Return an appropriate value or rethrow the exception
+                        return -1;
+                    }
+                }
+            }
+            return totalAmount;
+        }
+        public static DataTable GetTraineesByDatesWithRemaining(DateTime startDate, DateTime endDate)
+        {
+            using (SqlConnection connection = new SqlConnection(clsDataBaseSettings.ConnectionString))
+            {
+                string query = @"SELECT *
+                FROM (
+                    SELECT Trainers._id, Trainers.Name, Trainers.Phone,
+                           Subscriptions.EnrollmentStart, Subscriptions.EnrollmentEnd,
+                           Subscriptions.TotalAmount, Subscriptions.PaidAmount,
+                           (Subscriptions.TotalAmount - Subscriptions.PaidAmount) AS RemainingAmount,
+                           DATEDIFF(day, EnrollmentEnd, EnrollmentStart) AS DaysTillSubscriptionExpired
+                    FROM Subscriptions
+                    INNER JOIN Trainers ON Subscriptions.[Player_id] = Trainers._id
+                    WHERE Subscriptions.EnrollmentStart BETWEEN @StartDate AND @EndDate
+                ) DateRemaining
+                WHERE RemainingAmount > 0";
+
+                using (SqlCommand cmd = new SqlCommand(query, connection))
+                {
+                    cmd.Parameters.AddWithValue("@StartDate", startDate);
+                    cmd.Parameters.AddWithValue("@EndDate", endDate);
+
+                    DataTable dt = new DataTable();
+                    try
+                    {
+                        connection.Open();
+
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                dt.Load(reader);
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        dt = null;
+                        // Handle the exception appropriately
+                    }
+
+                    return dt;
+                }
+            }
+        }
 
         public static bool UpdateTrainee(int ID ,string Name, string Phone, string Photo)
         {
@@ -212,172 +451,62 @@ namespace GymDataAccesLayer
             }
             return (rowsAffected > 0);
         }
-
-        public static DataTable GetAllTrainees()
+        public static bool UpdateTraineeSubscribtion(int ,  DateTime EnrollmentStartDate,
+             DateTime EnrollmentEndDate, int totalAmount, float paidAmount)
         {
-
-            DataTable dt = new DataTable();
-
-            SqlConnection connection = new SqlConnection(clsDataBaseSettings.ConnectionString);
-
-            string query = "SELECT Trainers.*, Subscriptions.EnrollmentStart, Subscriptions.EnrollmentEnd, Subscriptions.TotalAmount,Subscriptions.PaidAmount, Subscriptions.RemainingAmount, Subscriptions.DaysTillSubscriptionExpired FROM  Subscriptions INNER JOIN Trainers ON Subscriptions.[Player _id] = Trainers._id";
-            SqlCommand cmd = new SqlCommand (query, connection);
-
-            try
+            bool success = false;
+            using (SqlConnection connection = new SqlConnection(clsDataBaseSettings.ConnectionString))
             {
-                connection.Open();
-                SqlDataReader reader = cmd.ExecuteReader();
+                string query = @"UPDATE Subscriptions
+                         SET EnrollmentStart = @EnrollmentStartDate,
+                             EnrollmentEnd = @EnrollmentEndDate,
+                             TotalAmount = @TotalAmount,
+                             PaidAmount = @PaidAmount,
+                         WHERE Subscriptions._id = @ID";
 
-                if (reader.HasRows)
+                using (SqlCommand command = new SqlCommand(query, connection))
                 {
-                    dt.Load(reader);
+                    command.Parameters.AddWithValue("@EnrollmentStartDate", EnrollmentStartDate);
+                    command.Parameters.AddWithValue("@EnrollmentEndDate", EnrollmentEndDate);
+                    command.Parameters.AddWithValue("@TotalAmount", totalAmount);
+                    command.Parameters.AddWithValue("@PaidAmount", paidAmount);
+                    command.Parameters.AddWithValue("@ID", ID);
+                    command.Parameters.AddWithValue("@PlayerID", PlayerID);
+
+                    try
+                    {
+                        connection.Open();
+                        int rowsAffected = command.ExecuteNonQuery();
+                        if (rowsAffected > 0)
+                        {
+                            success = true;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        success = false;
+                    }
                 }
-                reader.Close();
             }
-            catch (Exception ex)
-            {
-
-                return null;
-            }
-            finally { 
-                connection.Close(); 
-            }
-            return dt;
+            return success;
         }
-        public static DataTable GetAllActiveTrainees()
-        {
 
-            DataTable dt = new DataTable();
-
-            SqlConnection connection = new SqlConnection(clsDataBaseSettings.ConnectionString);
-            string query = "SELECT Trainers.*, Subscriptions.EnrollmentStart, Subscriptions.EnrollmentEnd, Subscriptions.TotalAmount,Subscriptions.PaidAmount, Subscriptions.RemainingAmount, Subscriptions.DaysTillSubscriptionExpired FROM  Subscriptions INNER JOIN Trainers ON Subscriptions.[Player _id] = Trainers._id where Subscriptions.DaysTillSubscriptionExpired >= 0";
-            SqlCommand cmd = new SqlCommand(query, connection);
-
-            try
-            {
-                connection.Open();
-                SqlDataReader reader = cmd.ExecuteReader();
-
-                if (reader.HasRows)
-                {
-                    dt.Load(reader);
-                }
-                reader.Close();
-            }
-            catch (Exception ex)
-            {
-
-                return null;
-            }
-            finally
-            {
-                connection.Close();
-            }
-            return dt;
-        }
-        public static DataTable GetAllBalance(string startDate,string endDate)
-        {
-
-            DataTable dt = new DataTable();
-
-            SqlConnection connection = new SqlConnection(clsDataBaseSettings.ConnectionString);
-            string query = "SELECT Trainers.*, Subscriptions.TotalAmount,Subscriptions.PaidAmount FROM  Subscriptions INNER JOIN Trainers ON Subscriptions.[Player _id] = Trainers._id where Subscriptions.EnrollmentStart between @StartDate and @EndDate";
-            SqlCommand cmd = new SqlCommand(query, connection);
-            cmd.Parameters.AddWithValue("@StartDate", startDate);
-            cmd.Parameters.AddWithValue("@EndDate", endDate);
-            try
-            {
-                connection.Open();
-                SqlDataReader reader = cmd.ExecuteReader();
-
-                if (reader.HasRows)
-                {
-                    dt.Load(reader);
-                }
-                reader.Close();
-            }
-            catch (Exception ex)
-            {
-
-                return null;
-            }
-            finally
-            {
-                connection.Close();
-            }
-            return dt;
-        }
-        public static DataTable GetAllTraineesWithRemainings()
-        {
-
-            DataTable dt = new DataTable();
-
-            SqlConnection connection = new SqlConnection(clsDataBaseSettings.ConnectionString);
-            string query = "SELECT Trainers.*, Subscriptions.EnrollmentStart, Subscriptions.EnrollmentEnd, Subscriptions.TotalAmount,Subscriptions.PaidAmount, Subscriptions.RemainingAmount, Subscriptions.DaysTillSubscriptionExpired FROM  Subscriptions INNER JOIN Trainers ON Subscriptions.[Player _id] = Trainers._id where RemainingAmount > 0";
-            SqlCommand cmd = new SqlCommand(query, connection);
-
-            try
-            {
-                connection.Open();
-                SqlDataReader reader = cmd.ExecuteReader();
-
-                if (reader.HasRows)
-                {
-                    dt.Load(reader);
-                }
-                reader.Close();
-            }
-            catch (Exception ex)
-            {
-
-                return null;
-            }
-            finally
-            {
-                connection.Close();
-            }
-            return dt;
-        }
-        public static bool IsTraineeExisit(int ID)
-        {
-            bool isFound = false;
-
-            SqlConnection connection = new SqlConnection(clsDataBaseSettings.ConnectionString);
-
-            string query = "SELECT Found=1 FROM Trainers WHERE _id = @TraineeID";
-
-            SqlCommand command = new SqlCommand(query, connection);
-
-            command.Parameters.AddWithValue("@TraineeID", ID);
-
-            try
-            {
-                connection.Open();
-                SqlDataReader reader = command.ExecuteReader();
-
-                isFound = reader.HasRows;
-
-                reader.Close();
-            }
-            catch (Exception ex)
-            {
-                //Console.WriteLine("Error: " + ex.Message);
-                isFound = false;
-            }
-            finally
-            {
-                connection.Close();
-            }
-
-            return isFound;
-        }
         public static DataTable GetAllSubscribtionsByPlayerID(int PlayerID)
         {
             DataTable dt = new DataTable();
 
             SqlConnection connection = new SqlConnection(clsDataBaseSettings.ConnectionString);
 
-            string query = "Select * From Subscribtions Where PlayerID = @PlayerID";
+
+            string query = @"SELECT Trainers._id, Trainers.Name, Trainers.Phone,
+                                 Subscriptions.EnrollmentStart, Subscriptions.EnrollmentEnd,
+                                 Subscriptions.TotalAmount, Subscriptions.PaidAmount,
+                                 (Subscriptions.TotalAmount - Subscriptions.PaidAmount) AS RemainingAmount,
+                                 DATEDIFF(day, EnrollmentEnd, EnrollmentStart) AS DaysTillSubscriptionExpired
+                            FROM Subscriptions
+                            INNER JOIN Trainers ON Subscriptions.[Player_id] = Trainers._id
+                            WHERE Trainers.Name = @PlayerID
+                            ORDER BY EnrollmentStart DESC";
             SqlCommand cmd = new SqlCommand(query, connection);
 
             cmd.Parameters.AddWithValue("@PlayerID", PlayerID);
@@ -404,50 +533,50 @@ namespace GymDataAccesLayer
             }
             return dt;
         }
+
         public static int AddNewSubscribtion(int playerID, DateTime startDate, DateTime endDate,
-          int totalAmount, float paidAmount, float remainingAmount,
-          int daysTillSubscribtionEnds)
+     int totalAmount, float paidAmount)
         {
-            int TrainneID = -1;
-            SqlConnection connection = new SqlConnection(clsDataBaseSettings.ConnectionString);
-
-            string query = @"INSERT INTO Subscribtions
-                             (PlayerID, startDate, endDate, totalAmount, paidAmount ,
-                             remainingAmount, daysTillSubscribtionEnds )
-                             VALUES
-                             (@playerID, @startDate, @endDate, @totalAmount, @paidAmount ,
-                             @remainingAmount, @daysTillSubscribtionEnds )
-                             SELECT SCOPE_IDENTITY()";
-            SqlCommand command = new SqlCommand(query, connection);
-
-            command.Parameters.AddWithValue("@playerID", playerID);
-            command.Parameters.AddWithValue("@startDate", startDate);
-            command.Parameters.AddWithValue("@endDate", endDate);
-            command.Parameters.AddWithValue("@totalAmount", totalAmount);
-            command.Parameters.AddWithValue("@paidAmount", paidAmount);
-            command.Parameters.AddWithValue("@remainingAmount", remainingAmount);
-            command.Parameters.AddWithValue("@daysTillSubscribtionEnds", daysTillSubscribtionEnds);
-            try
+            int subscriptionID = -1;
+            using (SqlConnection connection = new SqlConnection(clsDataBaseSettings.ConnectionString))
             {
-                connection.Open();
-                object result = command.ExecuteScalar();
-                if (result != null && int.TryParse(result.ToString(), out int value))
+                string query = @"INSERT INTO Subscribtions
+                         (PlayerID, startDate, endDate, totalAmount, paidAmount ,
+                          )
+                         VALUES
+                         (@playerID, @startDate, @endDate, @totalAmount, @paidAmount ,
+                          )
+                         SELECT SCOPE_IDENTITY()";
+                using (SqlCommand command = new SqlCommand(query, connection))
                 {
-                    TrainneID = value;
+                    command.Parameters.AddWithValue("@playerID", playerID);
+                    command.Parameters.AddWithValue("@startDate", startDate);
+                    command.Parameters.AddWithValue("@endDate", endDate);
+                    command.Parameters.AddWithValue("@totalAmount", totalAmount);
+                    command.Parameters.AddWithValue("@paidAmount", paidAmount);
+                    try
+                    {
+                        connection.Open();
+                        object result = command.ExecuteScalar();
+                        if (result != null && int.TryParse(result.ToString(), out int value))
+                        {
+                            subscriptionID = value;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        return -1;
+                        // Handle the exception appropriately
+                    }
                 }
             }
-            catch (Exception ex)
-            {
 
-                return -1;
-            }
-            finally
-            {
-                connection.Close();
-            }
-
-            return TrainneID;
+            return subscriptionID;
         }
-    }
 
+
+
+
+
+    }
 }

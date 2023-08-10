@@ -31,15 +31,15 @@
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.panelLogo = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.LblTitle = new System.Windows.Forms.Label();
-            this.panelDesktopPane = new System.Windows.Forms.Panel();
             this.AddBtn = new System.Windows.Forms.Button();
             this.SearchBtn = new System.Windows.Forms.Button();
             this.playersListBtn = new System.Windows.Forms.Button();
             this.ExpiredListBtn = new System.Windows.Forms.Button();
             this.UncompleteSubs = new System.Windows.Forms.Button();
             this.BalanceBtn = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.LblTitle = new System.Windows.Forms.Label();
+            this.panelDesktopPane = new System.Windows.Forms.Panel();
             this.flowLayoutPanel1.SuspendLayout();
             this.panelLogo.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -83,36 +83,6 @@
             this.label1.Size = new System.Drawing.Size(194, 28);
             this.label1.TabIndex = 0;
             this.label1.Text = "نظام ادارة النادي الرياضي";
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(136)))), ((int)(((byte)(150)))));
-            this.panel1.Controls.Add(this.LblTitle);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(224, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(950, 80);
-            this.panel1.TabIndex = 1;
-            // 
-            // LblTitle
-            // 
-            this.LblTitle.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.LblTitle.AutoSize = true;
-            this.LblTitle.Font = new System.Drawing.Font("Felix Titling", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblTitle.Location = new System.Drawing.Point(425, 26);
-            this.LblTitle.Name = "LblTitle";
-            this.LblTitle.Size = new System.Drawing.Size(96, 28);
-            this.LblTitle.TabIndex = 1;
-            this.LblTitle.Text = "إضافة لاعب";
-            // 
-            // panelDesktopPane
-            // 
-            this.panelDesktopPane.BackColor = System.Drawing.Color.Transparent;
-            this.panelDesktopPane.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelDesktopPane.Location = new System.Drawing.Point(224, 80);
-            this.panelDesktopPane.Name = "panelDesktopPane";
-            this.panelDesktopPane.Size = new System.Drawing.Size(950, 640);
-            this.panelDesktopPane.TabIndex = 2;
             // 
             // AddBtn
             // 
@@ -255,6 +225,36 @@
             this.BalanceBtn.UseVisualStyleBackColor = false;
             this.BalanceBtn.Click += new System.EventHandler(this.BalanceBtn_Click);
             // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(136)))), ((int)(((byte)(150)))));
+            this.panel1.Controls.Add(this.LblTitle);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(224, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(950, 80);
+            this.panel1.TabIndex = 1;
+            // 
+            // LblTitle
+            // 
+            this.LblTitle.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.LblTitle.AutoSize = true;
+            this.LblTitle.Font = new System.Drawing.Font("Felix Titling", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblTitle.Location = new System.Drawing.Point(425, 26);
+            this.LblTitle.Name = "LblTitle";
+            this.LblTitle.Size = new System.Drawing.Size(96, 28);
+            this.LblTitle.TabIndex = 1;
+            this.LblTitle.Text = "إضافة لاعب";
+            // 
+            // panelDesktopPane
+            // 
+            this.panelDesktopPane.BackColor = System.Drawing.Color.Transparent;
+            this.panelDesktopPane.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelDesktopPane.Location = new System.Drawing.Point(224, 80);
+            this.panelDesktopPane.Name = "panelDesktopPane";
+            this.panelDesktopPane.Size = new System.Drawing.Size(950, 640);
+            this.panelDesktopPane.TabIndex = 2;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -264,7 +264,6 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.flowLayoutPanel1);
             this.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Form1";
             this.Text = "Gym Management System";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

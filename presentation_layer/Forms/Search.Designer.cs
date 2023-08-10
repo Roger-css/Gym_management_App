@@ -37,6 +37,8 @@
             this.CmsList = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.تعديلبياناتاللاعبToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.تجديدالاشتراكToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.QuickSubBtn = new System.Windows.Forms.ToolStripMenuItem();
+            this.ManualSubBtn = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvList)).BeginInit();
             this.CmsList.SuspendLayout();
@@ -118,20 +120,37 @@
             this.تعديلبياناتاللاعبToolStripMenuItem,
             this.تجديدالاشتراكToolStripMenuItem});
             this.CmsList.Name = "contextMenuStrip1";
-            this.CmsList.Size = new System.Drawing.Size(234, 68);
+            this.CmsList.Size = new System.Drawing.Size(241, 101);
             // 
             // تعديلبياناتاللاعبToolStripMenuItem
             // 
             this.تعديلبياناتاللاعبToolStripMenuItem.Name = "تعديلبياناتاللاعبToolStripMenuItem";
-            this.تعديلبياناتاللاعبToolStripMenuItem.Size = new System.Drawing.Size(233, 32);
+            this.تعديلبياناتاللاعبToolStripMenuItem.Size = new System.Drawing.Size(240, 32);
             this.تعديلبياناتاللاعبToolStripMenuItem.Text = "تعديل بيانات اللاعب";
             this.تعديلبياناتاللاعبToolStripMenuItem.Click += new System.EventHandler(this.EditToolStripMenuItem_Click);
             // 
             // تجديدالاشتراكToolStripMenuItem
             // 
+            this.تجديدالاشتراكToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.QuickSubBtn,
+            this.ManualSubBtn});
             this.تجديدالاشتراكToolStripMenuItem.Name = "تجديدالاشتراكToolStripMenuItem";
-            this.تجديدالاشتراكToolStripMenuItem.Size = new System.Drawing.Size(233, 32);
+            this.تجديدالاشتراكToolStripMenuItem.Size = new System.Drawing.Size(240, 32);
             this.تجديدالاشتراكToolStripMenuItem.Text = "تجديد الاشتراك";
+            // 
+            // QuickSubBtn
+            // 
+            this.QuickSubBtn.Name = "QuickSubBtn";
+            this.QuickSubBtn.Size = new System.Drawing.Size(270, 34);
+            this.QuickSubBtn.Text = "تجديد سريع";
+            this.QuickSubBtn.Click += new System.EventHandler(this.QuickSubBtn_Click);
+            // 
+            // ManualSubBtn
+            // 
+            this.ManualSubBtn.Name = "ManualSubBtn";
+            this.ManualSubBtn.Size = new System.Drawing.Size(270, 34);
+            this.ManualSubBtn.Text = "تجديد يدوي";
+            this.ManualSubBtn.Click += new System.EventHandler(this.ManualSub_click);
             // 
             // SearchForm
             // 
@@ -160,5 +179,7 @@
         private System.Windows.Forms.ContextMenuStrip CmsList;
         private System.Windows.Forms.ToolStripMenuItem تعديلبياناتاللاعبToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem تجديدالاشتراكToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem QuickSubBtn;
+        private System.Windows.Forms.ToolStripMenuItem ManualSubBtn;
     }
 }

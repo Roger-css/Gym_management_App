@@ -76,5 +76,16 @@ namespace presentation_layer
             EditPlayer form = new EditPlayer((int) DgvList.CurrentRow.Cells[0].Value);
             form.Show();
         }
+
+        private void ManualSub_click(object sender, EventArgs e)
+        {
+            LongSubscriptionForm form = new LongSubscriptionForm((int)DgvList.CurrentRow.Cells[0].Value);
+            form.Show();
+        }
+
+        private void QuickSubBtn_Click(object sender, EventArgs e)
+        {
+            // do a quick subscription method here
+        }
     }
 }

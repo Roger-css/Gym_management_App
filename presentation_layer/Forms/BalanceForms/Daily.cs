@@ -8,18 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace presentation_layer
+namespace presentation_layer.Forms.BalanceForms
 {
-    public partial class AddPlayer : Form
+    public partial class Daily : Form
     {
-        public AddPlayer()
+        public Daily()
         {
             InitializeComponent();
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

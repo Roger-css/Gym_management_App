@@ -31,7 +31,7 @@ namespace presentation_layer
             panelDesktopPane.Tag = childForm;
             childForm.BringToFront();
             childForm.Show();
-            LblTitle.Text = ((Button)btnSender).Text.ToString(); ;
+            LblTitle.Text = ((Button)btnSender).Text.ToString();
         }
 
         private void AddBtn_Click(object sender, EventArgs e)

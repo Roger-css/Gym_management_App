@@ -57,7 +57,7 @@ namespace GymDataAccesLayer
                 }
                 reader.Close();
             }
-            catch (Exception ex)
+            catch (Exception )
             {
 
                 return false;
@@ -454,8 +454,20 @@ namespace GymDataAccesLayer
         public static bool UpdateTraineeSubscribtion(int ,  DateTime EnrollmentStartDate,
              DateTime EnrollmentEndDate, int totalAmount, float paidAmount)
         {
+<<<<<<< HEAD
             bool success = false;
             using (SqlConnection connection = new SqlConnection(clsDataBaseSettings.ConnectionString))
+=======
+
+            DataTable dt = new DataTable();
+
+            SqlConnection connection = new SqlConnection(clsDataBaseSettings.ConnectionString);
+
+            string query = "SELECT Trainers._id, Trainers.TraineeName, Trainers.Phone, Subscriptions.EnrollmentStart, Subscriptions.EnrollmentEnd,\r\nDATEDIFF(day, Subscriptions.EnrollmentStart, Subscriptions.EnrollmentEnd) AS DayLeft,\r\nSubscriptions.TotalAmount, Subscriptions.PaidAmount,\r\nSubscriptions.TotalAmount - Subscriptions.PaidAmount as RemainingAmount\r\nFROM   Subscriptions INNER JOIN\r\n             Trainers ON Subscriptions.Player_id = Trainers._id;";
+            SqlCommand cmd = new SqlCommand (query, connection);
+
+            try
+>>>>>>> 86782089f99ba96f53e1fad80185526fc9914c08
             {
                 string query = @"UPDATE Subscriptions
                          SET EnrollmentStart = @EnrollmentStartDate,

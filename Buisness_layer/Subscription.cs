@@ -97,6 +97,7 @@ namespace GymBussniesLayer
                     if (_AddNewSubscription())
                     {
                         Mode = enMode.Update;
+                        return true;
                     }
                     break;
                 case enMode.Update:
@@ -123,7 +124,16 @@ namespace GymBussniesLayer
         {
             return clsTraineeDataAccess.GetTraineesSubscriptionsByDates(startDate, endDate);
         }
-
+        public static DataTable GetTraineesWithRemaining()
+        {
+            return clsTraineeDataAccess.GetTraineesWithRemaining();
+        }
+        public static int AddNewSubscription(int playerID, DateTime startDate,
+            DateTime endDate, int totalAmount, int paidAmount)
+        {
+            return clsTraineeDataAccess.AddNewSubscription(playerID, startDate,
+                endDate, totalAmount, paidAmount);
+        }
 
     }
 }

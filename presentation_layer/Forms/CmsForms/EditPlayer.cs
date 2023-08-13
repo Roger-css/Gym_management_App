@@ -37,5 +37,7 @@ namespace presentation_layer.Forms.CmsForms
                 imagePath = openFileDialog1.FileName;
             }
         }
+
+ 
     }
 }

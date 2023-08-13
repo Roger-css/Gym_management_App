@@ -1,0 +1,250 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D47381E5-B451-4522-9C19-9171DB424E8C}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>presentation_layer</RootNamespace>
+    <AssemblyName>presentation_layer</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <NoWin32Manifest>true</NoWin32Manifest>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CmsMethods.cs" />
+    <Compile Include="Forms\AddPlayer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AddPlayer.Designer.cs">
+      <DependentUpon>AddPlayer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Balance.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Balance.Designer.cs">
+      <DependentUpon>Balance.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\BalanceForms\Custom.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\BalanceForms\Custom.Designer.cs">
+      <DependentUpon>Custom.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\BalanceForms\Daily.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\BalanceForms\Daily.Designer.cs">
+      <DependentUpon>Daily.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\BalanceForms\monthly.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\BalanceForms\monthly.Designer.cs">
+      <DependentUpon>monthly.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\BalanceForms\yearly.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\BalanceForms\yearly.Designer.cs">
+      <DependentUpon>yearly.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CmsForms\EditPlayer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CmsForms\EditPlayer.Designer.cs">
+      <DependentUpon>EditPlayer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CmsForms\LongSubscriptionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CmsForms\LongSubscriptionForm.Designer.cs">
+      <DependentUpon>LongSubscriptionForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Expired.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Expired.Designer.cs">
+      <DependentUpon>Expired.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PlayersList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PlayersList.Designer.cs">
+      <DependentUpon>PlayersList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\UncompleteSubs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\UncompleteSubs.Designer.cs">
+      <DependentUpon>UncompleteSubs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Forms\Search.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Search.Designer.cs">
+      <DependentUpon>Search.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AddPlayer.resx">
+      <DependentUpon>AddPlayer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Balance.resx">
+      <DependentUpon>Balance.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\BalanceForms\Custom.resx">
+      <DependentUpon>Custom.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\BalanceForms\Daily.resx">
+      <DependentUpon>Daily.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\BalanceForms\monthly.resx">
+      <DependentUpon>monthly.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\BalanceForms\yearly.resx">
+      <DependentUpon>yearly.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CmsForms\EditPlayer.resx">
+      <DependentUpon>EditPlayer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CmsForms\LongSubscriptionForm.resx">
+      <DependentUpon>LongSubscriptionForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Expired.resx">
+      <DependentUpon>Expired.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PlayersList.resx">
+      <DependentUpon>PlayersList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Search.resx">
+      <DependentUpon>Search.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\UncompleteSubs.resx">
+      <DependentUpon>UncompleteSubs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Add1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Add2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Add3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Plus Math.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Add4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\list.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Cancel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Cancel1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MoneyBag.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cf78c96172bb2c979dd49e88dde4ad22.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Data_Access_layer\Gym_Data_Acces_Layer.csproj">
+      <Project>{586253b1-ff35-4a81-b7d0-c26438c77b07}</Project>
+      <Name>Gym_Data_Acces_Layer</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Donate.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Donate1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cf78c96172bb2c979dd49e88dde4ad22.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Import.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Import1.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

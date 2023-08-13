@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GeneralMethods.cs" />
     <Compile Include="Forms\AddPlayer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -170,18 +171,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
@@ -190,18 +191,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Add.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Add1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Add2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Add3.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Plus Math.png" />
@@ -213,25 +202,10 @@
     <None Include="Resources\list.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Cancel.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\Cancel1.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\MoneyBag.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\cf78c96172bb2c979dd49e88dde4ad22.gif" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Data_Access_layer\Gym_Data_Acces_Layer.csproj">
-      <Project>{586253b1-ff35-4a81-b7d0-c26438c77b07}</Project>
-      <Name>Gym_Data_Acces_Layer</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Donate.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Donate1.png" />
@@ -240,10 +214,16 @@
     <None Include="Resources\cf78c96172bb2c979dd49e88dde4ad22.PNG" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Import.png" />
+    <None Include="Resources\Import1.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Import1.png" />
+    <ProjectReference Include="..\Buisness_layer\Gym_Bussnies_Layer.csproj">
+      <Project>{60be1024-e5da-4d5f-91a1-96c0930f23a3}</Project>
+      <Name>Gym_Bussnies_Layer</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Refresh.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

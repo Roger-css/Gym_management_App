@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GymBussniesLayer;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -19,7 +20,10 @@ namespace presentation_layer.Forms.CmsForms
             InitializeComponent();
             PlayerId = playerId;
         }
-
+        private void ShowTraineeDetails()
+        {
+            DataTable trainee = clsTrainee.GetLastSubscriptionsByPlayerID(PlayerId);
+        }
         private void EditPlayer_Load(object sender, EventArgs e)
         {
             _id.Text = PlayerId.ToString();

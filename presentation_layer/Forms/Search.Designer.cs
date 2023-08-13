@@ -30,8 +30,9 @@
         {
             this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.RefreshBtn = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.TbSearch = new System.Windows.Forms.TextBox();
             this.SearchBtn = new System.Windows.Forms.Button();
             this.DgvList = new System.Windows.Forms.DataGridView();
             this.CmsList = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -39,6 +40,7 @@
             this.تجديدالاشتراكToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.QuickSubBtn = new System.Windows.Forms.ToolStripMenuItem();
             this.ManualSubBtn = new System.Windows.Forms.ToolStripMenuItem();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvList)).BeginInit();
             this.CmsList.SuspendLayout();
@@ -46,8 +48,9 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.RefreshBtn);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.textBox1);
+            this.panel1.Controls.Add(this.TbSearch);
             this.panel1.Controls.Add(this.SearchBtn);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -55,6 +58,22 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1117, 178);
             this.panel1.TabIndex = 4;
+            // 
+            // RefreshBtn
+            // 
+            this.RefreshBtn.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.RefreshBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(244)))), ((int)(((byte)(255)))));
+            this.RefreshBtn.FlatAppearance.BorderSize = 0;
+            this.RefreshBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.RefreshBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.RefreshBtn.ForeColor = System.Drawing.Color.Gainsboro;
+            this.RefreshBtn.Image = global::presentation_layer.Properties.Resources.Refresh1;
+            this.RefreshBtn.Location = new System.Drawing.Point(1062, 121);
+            this.RefreshBtn.Name = "RefreshBtn";
+            this.RefreshBtn.Size = new System.Drawing.Size(43, 42);
+            this.RefreshBtn.TabIndex = 3;
+            this.RefreshBtn.UseVisualStyleBackColor = false;
+            this.RefreshBtn.Click += new System.EventHandler(this.RefreshBtn_Click);
             // 
             // label1
             // 
@@ -68,15 +87,15 @@
             this.label1.TabIndex = 2;
             this.label1.Text = ":اسم اللاعب";
             // 
-            // textBox1
+            // TbSearch
             // 
-            this.textBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(334, 86);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(250, 44);
-            this.textBox1.TabIndex = 0;
-            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.TbSearch.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.TbSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TbSearch.Location = new System.Drawing.Point(334, 86);
+            this.TbSearch.Name = "TbSearch";
+            this.TbSearch.Size = new System.Drawing.Size(250, 44);
+            this.TbSearch.TabIndex = 0;
+            this.TbSearch.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // SearchBtn
             // 
@@ -92,6 +111,7 @@
             this.SearchBtn.TabIndex = 1;
             this.SearchBtn.Text = "بحث";
             this.SearchBtn.UseVisualStyleBackColor = false;
+            this.SearchBtn.Click += new System.EventHandler(this.SearchBtn_Click);
             // 
             // DgvList
             // 
@@ -120,12 +140,12 @@
             this.تعديلبياناتاللاعبToolStripMenuItem,
             this.تجديدالاشتراكToolStripMenuItem});
             this.CmsList.Name = "contextMenuStrip1";
-            this.CmsList.Size = new System.Drawing.Size(241, 101);
+            this.CmsList.Size = new System.Drawing.Size(234, 68);
             // 
             // تعديلبياناتاللاعبToolStripMenuItem
             // 
             this.تعديلبياناتاللاعبToolStripMenuItem.Name = "تعديلبياناتاللاعبToolStripMenuItem";
-            this.تعديلبياناتاللاعبToolStripMenuItem.Size = new System.Drawing.Size(240, 32);
+            this.تعديلبياناتاللاعبToolStripMenuItem.Size = new System.Drawing.Size(233, 32);
             this.تعديلبياناتاللاعبToolStripMenuItem.Text = "تعديل بيانات اللاعب";
             this.تعديلبياناتاللاعبToolStripMenuItem.Click += new System.EventHandler(this.EditToolStripMenuItem_Click);
             // 
@@ -135,20 +155,20 @@
             this.QuickSubBtn,
             this.ManualSubBtn});
             this.تجديدالاشتراكToolStripMenuItem.Name = "تجديدالاشتراكToolStripMenuItem";
-            this.تجديدالاشتراكToolStripMenuItem.Size = new System.Drawing.Size(240, 32);
+            this.تجديدالاشتراكToolStripMenuItem.Size = new System.Drawing.Size(233, 32);
             this.تجديدالاشتراكToolStripMenuItem.Text = "تجديد الاشتراك";
             // 
             // QuickSubBtn
             // 
             this.QuickSubBtn.Name = "QuickSubBtn";
-            this.QuickSubBtn.Size = new System.Drawing.Size(270, 34);
+            this.QuickSubBtn.Size = new System.Drawing.Size(201, 34);
             this.QuickSubBtn.Text = "تجديد سريع";
             this.QuickSubBtn.Click += new System.EventHandler(this.QuickSubBtn_Click);
             // 
             // ManualSubBtn
             // 
             this.ManualSubBtn.Name = "ManualSubBtn";
-            this.ManualSubBtn.Size = new System.Drawing.Size(270, 34);
+            this.ManualSubBtn.Size = new System.Drawing.Size(201, 34);
             this.ManualSubBtn.Text = "تجديد يدوي";
             this.ManualSubBtn.Click += new System.EventHandler(this.ManualSub_click);
             // 
@@ -172,7 +192,7 @@
 
         #endregion
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox TbSearch;
         private System.Windows.Forms.Button SearchBtn;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView DgvList;
@@ -181,5 +201,7 @@
         private System.Windows.Forms.ToolStripMenuItem تجديدالاشتراكToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem QuickSubBtn;
         private System.Windows.Forms.ToolStripMenuItem ManualSubBtn;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.Windows.Forms.Button RefreshBtn;
     }
 }

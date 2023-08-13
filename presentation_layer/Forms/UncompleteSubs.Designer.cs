@@ -59,6 +59,7 @@
             this.Controls.Add(this.DgvList);
             this.Name = "UncompleteSubs";
             this.Text = "UncompleteSubs";
+            this.Load += new System.EventHandler(this.UncompleteSubs_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DgvList)).EndInit();
             this.ResumeLayout(false);
 

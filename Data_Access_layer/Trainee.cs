@@ -460,6 +460,49 @@ namespace GymDataAccesLayer
             }
         }
 
+        public static DataTable GetTraineesSubscriptionsByDates(DateTime startDate, DateTime endDate)
+        {
+            using (SqlConnection connection = new SqlConnection(clsDataBaseSettings.ConnectionString))
+            {
+                string query = @" 
+                               SELECT Trainers._id, Trainers.Name, Trainers.Phone,
+                               Subscriptions.EnrollmentStart, Subscriptions.EnrollmentEnd,
+                               Subscriptions.TotalAmount, Subscriptions.PaidAmount,
+                               (Subscriptions.TotalAmount - Subscriptions.PaidAmount) AS RemainingAmount,
+                               DATEDIFF(day, GETDATE(), Subscriptions.EnrollmentEnd) AS DaysTillSubscriptionExpired
+                                FROM Subscriptions
+                                INNER JOIN Trainers ON Subscriptions.[Player_id] = Trainers._id
+                                WHERE Subscriptions.EnrollmentStart BETWEEN @StartDate AND @EndDate";
+
+                using (SqlCommand cmd = new SqlCommand(query, connection))
+                {
+                    cmd.Parameters.AddWithValue("@StartDate", startDate);
+                    cmd.Parameters.AddWithValue("@EndDate", endDate);
+
+                    DataTable dt = new DataTable();
+                    try
+                    {
+                        connection.Open();
+
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                dt.Load(reader);
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        dt = null;
+                        // Handle the exception appropriately
+                    }
+
+                    return dt;
+                }
+            }
+        }
+
         public static bool UpdateTrainee(int ID, string Name, string Phone, string Photo)
         {
             int rowsAffected = 0;

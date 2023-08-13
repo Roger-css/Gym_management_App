@@ -119,7 +119,10 @@ namespace GymBussniesLayer
         {
             return clsTraineeDataAccess.GetRemainingByDates(startDate, endDate);
         }
-
+        public static DataTable GetTraineesSubscriptionsByDates(DateTime startDate, DateTime endDate)
+        {
+            return clsTraineeDataAccess.GetTraineesSubscriptionsByDates(startDate, endDate);
+        }
 
 
     }

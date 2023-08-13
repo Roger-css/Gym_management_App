@@ -24,18 +24,18 @@ namespace GymBussniesLayer
 
 
 
-        private bool _AddNewSubscribtion()
+        private bool _AddNewSubscription()
 
         {
-            this.ID = clsTraineeDataAccess.AddNewSubscribtion(this.PlayerID,
+            this.ID = clsTraineeDataAccess.AddNewSubscription(this.PlayerID,
                 this.StartDate, this.EndDate, this.TotalAmount, this.PaidAmount);
             return (this.ID != -1);
         }
 
 
-        private bool _UpdateSubscribtion()
+        private bool _UpdateSubscription()
         {
-            return clsTraineeDataAccess.UpdateTraineeSubscribtion(this.PlayerID,
+            return clsTraineeDataAccess.UpdateTraineeSubscription(this.PlayerID,
                   this.StartDate, this.EndDate, this.TotalAmount, this.PaidAmount);
         }
 
@@ -94,23 +94,21 @@ namespace GymBussniesLayer
             switch (Mode)
             {
                 case enMode.AddNew:
-                    if (_AddNewSubscribtion())
+                    if (_AddNewSubscription())
                     {
                         Mode = enMode.Update;
                     }
                     break;
                 case enMode.Update:
-                    return _UpdateSubscribtion();
+                    return _UpdateSubscription();
             }
             return false;
         }
 
 
+    
 
-        public static DataTable GetAllSubscribtionsByPlayerID(int PlayerID)
-        {
-            return clsTraineeDataAccess.GetAllSubscribtionsByPlayerID(PlayerID);
-        }
+    
 
         public static decimal GetBalanceByDates(DateTime startDate, DateTime endDate)
         {

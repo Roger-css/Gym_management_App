@@ -51,7 +51,7 @@ namespace GymBussniesLayer
             Mode = enMode.Update;
         }
 
-        public static bool AddPalyerWithSubscribtion(string name, string phone, string photo,
+        public static int AddPalyerWithSubscribtion(string name, string phone, string photo,
             DateTime enrollmentStartDate, DateTime enrollmentEndDate, int totalAmount, int paidAmount)
         {
 
@@ -69,9 +69,9 @@ namespace GymBussniesLayer
                 NewSubScribtion.TotalAmount = totalAmount;
                 NewSubScribtion.PaidAmount = paidAmount;
                 if (NewSubScribtion.Save())
-                    return true;
+                    return TrainneToAdd.ID;
             }
-            return false;
+            return -1;
         }
 
         public static bool UpdatePlayerSubScribtion(int PlayerID, string name, DateTime enrollmentStartDate
@@ -80,21 +80,12 @@ namespace GymBussniesLayer
 
             clsTrainee TrainneToUpdate = clsTrainee.Find(PlayerID);
             TrainneToUpdate.Name = name;
-            TrainneToUpdate.EnrollmentStartDate = enrollmentStartDate;
-            TrainneToUpdate.EnrollmentEndDate = enrollmentEndDate;
             TrainneToUpdate.Phone = phone;
             TrainneToUpdate.Photo = photo;
             if (TrainneToUpdate.Save())
             {
-                clsSubscription NewSubScribtion = new clsSubscription();
-
-                NewSubScribtion.PlayerID = TrainneToUpdate.ID;
-                NewSubScribtion.StartDate = TrainneToUpdate.EnrollmentStartDate;
-                NewSubScribtion.EndDate = TrainneToUpdate.EnrollmentEndDate;
-                NewSubScribtion.TotalAmount = totalAmount;
-                NewSubScribtion.PaidAmount = paidAmount;
-                if (TrainneToUpdate.Save())
-                    return true;
+               return  clsTraineeDataAccess.UpdateTraineeSubscribtion(PlayerID, enrollmentStartDate,
+                    enrollmentEndDate, totalAmount, paidAmount);
             }
             return false;
         }
@@ -148,7 +139,17 @@ namespace GymBussniesLayer
         public static DataTable GetTraineeByDatesWithRemaining(DateTime startDate, DateTime endDate)
                 => clsTraineeDataAccess.GetTraineesByDatesWithRemaining(startDate, endDate);
 
+        public static DataTable GetTraineesExpiredSubscription()
+            => clsTraineeDataAccess.GetTraineesExpiredSubscription();
 
+        public static DataTable GetAllSubscriptionsByPlayerID(int PlayerID)
+        
+            => clsTraineeDataAccess.GetAllSubscriptionsByPlayerID(PlayerID);
+        
+        public static DataTable GetLastSubscriptionsByPlayerID(int PlayerID)
+        
+            => clsTraineeDataAccess.GetLastSubscriptionByPlayerID(PlayerID);
+        
 
     }
 }

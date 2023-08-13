@@ -31,8 +31,9 @@
             this.DgvList = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.TbSearch = new System.Windows.Forms.TextBox();
             this.SearchBtn = new System.Windows.Forms.Button();
+            this.RefreshBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.DgvList)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -58,8 +59,9 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.RefreshBtn);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.textBox1);
+            this.panel1.Controls.Add(this.TbSearch);
             this.panel1.Controls.Add(this.SearchBtn);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -80,15 +82,15 @@
             this.label1.TabIndex = 2;
             this.label1.Text = ":اسم اللاعب";
             // 
-            // textBox1
+            // TbSearch
             // 
-            this.textBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(368, 86);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(250, 44);
-            this.textBox1.TabIndex = 0;
-            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.TbSearch.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.TbSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TbSearch.Location = new System.Drawing.Point(368, 86);
+            this.TbSearch.Name = "TbSearch";
+            this.TbSearch.Size = new System.Drawing.Size(250, 44);
+            this.TbSearch.TabIndex = 0;
+            this.TbSearch.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // SearchBtn
             // 
@@ -104,6 +106,23 @@
             this.SearchBtn.TabIndex = 1;
             this.SearchBtn.Text = "بحث";
             this.SearchBtn.UseVisualStyleBackColor = false;
+            this.SearchBtn.Click += new System.EventHandler(this.SearchBtn_Click);
+            // 
+            // RefreshBtn
+            // 
+            this.RefreshBtn.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.RefreshBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(244)))), ((int)(((byte)(255)))));
+            this.RefreshBtn.FlatAppearance.BorderSize = 0;
+            this.RefreshBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.RefreshBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.RefreshBtn.ForeColor = System.Drawing.Color.Gainsboro;
+            this.RefreshBtn.Image = global::presentation_layer.Properties.Resources.Refresh1;
+            this.RefreshBtn.Location = new System.Drawing.Point(1130, 119);
+            this.RefreshBtn.Name = "RefreshBtn";
+            this.RefreshBtn.Size = new System.Drawing.Size(43, 42);
+            this.RefreshBtn.TabIndex = 4;
+            this.RefreshBtn.UseVisualStyleBackColor = false;
+            this.RefreshBtn.Click += new System.EventHandler(this.RefreshBtn_Click);
             // 
             // PlayersList
             // 
@@ -114,6 +133,7 @@
             this.Controls.Add(this.panel1);
             this.Name = "PlayersList";
             this.Text = "PlayersList";
+            this.Load += new System.EventHandler(this.PlayersList_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DgvList)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -126,7 +146,8 @@
         private System.Windows.Forms.DataGridView DgvList;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox TbSearch;
         private System.Windows.Forms.Button SearchBtn;
+        private System.Windows.Forms.Button RefreshBtn;
     }
 }

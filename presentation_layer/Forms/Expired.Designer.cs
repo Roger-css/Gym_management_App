@@ -59,6 +59,7 @@
             this.Controls.Add(this.DgvList);
             this.Name = "Expired";
             this.Text = "Expired";
+            this.Load += new System.EventHandler(this.Expired_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DgvList)).EndInit();
             this.ResumeLayout(false);
 

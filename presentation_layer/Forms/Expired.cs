@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GymBussniesLayer;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,13 @@ namespace presentation_layer.Forms
         public Expired()
         {
             InitializeComponent();
+        }
+        private void Expired_Load(object sender, EventArgs e)
+        {
+            DgvList.DataSource = clsTrainee.GetTraineesExpiredSubscription();
+            DgvList.ForeColor = Color.Black;
+            DgvList.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            GeneralMethods.ChangeColumnNames(ref DgvList);
         }
     }
 }

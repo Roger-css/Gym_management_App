@@ -20,17 +20,11 @@ namespace presentation_layer
         }
         public void RefreshList()
         {
-            DataTable dt = clsTrainee.GetTraineesLastSub();
-            DgvList.DataSource = dt;
+            DgvList.DataSource = clsTrainee.GetTraineesLastSub();
             DgvList.ForeColor = Color.Black;
             DgvList.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             GeneralMethods.ChangeColumnNames(ref DgvList);
         }
-        private void SearchBtn_Click(object sender, EventArgs e)
-        {
-            
-        }
-
         private void SearchForm_Load(object sender, EventArgs e)
         {
             RefreshList();
@@ -38,19 +32,28 @@ namespace presentation_layer
 
         private void EditToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            EditPlayer form = new EditPlayer((int) DgvList.CurrentRow.Cells[0].Value);
-            form.Show();
+            GeneralMethods.EditToolStripMenuItem_Click(DgvList.CurrentRow.Cells[0].Value);
         }
 
         private void ManualSub_click(object sender, EventArgs e)
         {
-            LongSubscriptionForm form = new LongSubscriptionForm((int)DgvList.CurrentRow.Cells[0].Value);
-            form.Show();
+            GeneralMethods.ManualSub_click(DgvList.CurrentRow.Cells[0].Value);
         }
 
         private void QuickSubBtn_Click(object sender, EventArgs e)
         {
-            // do a quick subscription method here
+            GeneralMethods.QuickSubBtn_Click(DgvList.CurrentRow.Cells[0].Value);
+        }
+        private void SearchBtn_Click(object sender, EventArgs e)
+        {
+            if(TbSearch.Text != string.Empty)
+            {
+                DgvList.DataSource = clsTrainee.GetTraineeLastSub(TbSearch.Text);
+            }
+        }
+        private void RefreshBtn_Click(object sender, EventArgs e)
+        {
+            RefreshList();
         }
     }
 }

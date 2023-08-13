@@ -84,7 +84,7 @@ namespace GymBussniesLayer
             TrainneToUpdate.Photo = photo;
             if (TrainneToUpdate.Save())
             {
-               return  clsTraineeDataAccess.UpdateTraineeSubscribtion(PlayerID, enrollmentStartDate,
+               return  clsTraineeDataAccess.UpdateTraineeSubscription(PlayerID, enrollmentStartDate,
                     enrollmentEndDate, totalAmount, paidAmount);
             }
             return false;

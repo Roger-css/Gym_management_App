@@ -52,9 +52,14 @@ namespace presentation_layer
                 int.Parse(LbPrices.Text), int.Parse(TbPaidPrice.Text));
                 if (added != -1)
                 {
-                    MessageBox.Show($"اللاعب {TbName.Text} تمت اضافته بنجاح");
+                    MessageBox.Show($"رقم بطاقة اللاعب هي {added}");
                 }
             }
+        }
+
+        private void AddPlayer_Load(object sender, EventArgs e)
+        {
+            DtpEndDate.Value = DateTime.Now.AddMonths(1);
         }
     }
 }

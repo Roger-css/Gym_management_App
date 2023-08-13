@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GymBussniesLayer;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,14 @@ namespace presentation_layer.Forms
         public UncompleteSubs()
         {
             InitializeComponent();
+        }
+
+        private void UncompleteSubs_Load(object sender, EventArgs e)
+        {
+            //DgvList.DataSource = clsTrainee;
+            DgvList.ForeColor = Color.Black;
+            DgvList.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            GeneralMethods.ChangeColumnNames(ref DgvList);
         }
     }
 }

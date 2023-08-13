@@ -30,9 +30,9 @@
         {
             this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
+            this.RefreshBtn = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.TbSearch = new System.Windows.Forms.TextBox();
             this.SearchBtn = new System.Windows.Forms.Button();
             this.DgvList = new System.Windows.Forms.DataGridView();
             this.CmsList = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -48,9 +48,9 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.RefreshBtn);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.textBox1);
+            this.panel1.Controls.Add(this.TbSearch);
             this.panel1.Controls.Add(this.SearchBtn);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -59,20 +59,21 @@
             this.panel1.Size = new System.Drawing.Size(1117, 178);
             this.panel1.TabIndex = 4;
             // 
-            // button1
+            // RefreshBtn
             // 
-            this.button1.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(244)))), ((int)(((byte)(255)))));
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.button1.ForeColor = System.Drawing.Color.Gainsboro;
-            this.button1.Image = global::presentation_layer.Properties.Resources.Refresh1;
-            this.button1.Location = new System.Drawing.Point(1062, 121);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(43, 42);
-            this.button1.TabIndex = 3;
-            this.button1.UseVisualStyleBackColor = false;
+            this.RefreshBtn.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.RefreshBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(244)))), ((int)(((byte)(255)))));
+            this.RefreshBtn.FlatAppearance.BorderSize = 0;
+            this.RefreshBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.RefreshBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.RefreshBtn.ForeColor = System.Drawing.Color.Gainsboro;
+            this.RefreshBtn.Image = global::presentation_layer.Properties.Resources.Refresh1;
+            this.RefreshBtn.Location = new System.Drawing.Point(1062, 121);
+            this.RefreshBtn.Name = "RefreshBtn";
+            this.RefreshBtn.Size = new System.Drawing.Size(43, 42);
+            this.RefreshBtn.TabIndex = 3;
+            this.RefreshBtn.UseVisualStyleBackColor = false;
+            this.RefreshBtn.Click += new System.EventHandler(this.RefreshBtn_Click);
             // 
             // label1
             // 
@@ -86,15 +87,15 @@
             this.label1.TabIndex = 2;
             this.label1.Text = ":اسم اللاعب";
             // 
-            // textBox1
+            // TbSearch
             // 
-            this.textBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(334, 86);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(250, 44);
-            this.textBox1.TabIndex = 0;
-            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.TbSearch.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.TbSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TbSearch.Location = new System.Drawing.Point(334, 86);
+            this.TbSearch.Name = "TbSearch";
+            this.TbSearch.Size = new System.Drawing.Size(250, 44);
+            this.TbSearch.TabIndex = 0;
+            this.TbSearch.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // SearchBtn
             // 
@@ -110,6 +111,7 @@
             this.SearchBtn.TabIndex = 1;
             this.SearchBtn.Text = "بحث";
             this.SearchBtn.UseVisualStyleBackColor = false;
+            this.SearchBtn.Click += new System.EventHandler(this.SearchBtn_Click);
             // 
             // DgvList
             // 
@@ -190,7 +192,7 @@
 
         #endregion
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox TbSearch;
         private System.Windows.Forms.Button SearchBtn;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView DgvList;
@@ -200,6 +202,6 @@
         private System.Windows.Forms.ToolStripMenuItem QuickSubBtn;
         private System.Windows.Forms.ToolStripMenuItem ManualSubBtn;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button RefreshBtn;
     }
 }

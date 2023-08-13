@@ -60,3 +60,5 @@ C:\Users\H1202\source\repos\Gym_management_App1\presentation_layer\bin\Debug\pre
 C:\Users\H1202\source\repos\Gym_management_App1\presentation_layer\bin\Debug\Data_Access_layer.dll
 C:\Users\H1202\source\repos\Gym_management_App1\presentation_layer\bin\Debug\Data_Access_layer.pdb
 C:\Users\H1202\source\repos\Gym_management_App1\presentation_layer\obj\Debug\presentation_layer.csproj.CopyComplete
+D:\Gym_management_App\presentation_layer\bin\Debug\Buisness_layer.dll
+D:\Gym_management_App\presentation_layer\bin\Debug\Buisness_layer.pdb

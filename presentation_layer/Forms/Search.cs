@@ -1,4 +1,4 @@
-﻿using GymDataAccesLayer;
+﻿using GymBussniesLayer;
 using presentation_layer.Forms.CmsForms;
 using System;
 using System.Collections.Generic;
@@ -20,46 +20,11 @@ namespace presentation_layer
         }
         public void RefreshList()
         {
-            DataTable dt = clsTraineeDataAccess.GetAllTrainees();
+            DataTable dt = clsTrainee.GetTraineesLastSub();
             DgvList.DataSource = dt;
             DgvList.ForeColor = Color.Black;
             DgvList.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            foreach (DataGridViewColumn column in DgvList.Columns)
-            {
-                switch (column.Name)
-                {
-                    case "_id":
-                        column.HeaderText = "رقم البطاقة";
-                        break;
-                    case "TraineeName":
-                        column.HeaderText = "اسم اللاعب";
-                        break;
-                    case "Phone":
-                        column.HeaderText = "رقم الهاتف";
-                        break;
-                    case "EnrollmentStart":
-                        column.HeaderText = "تاريخ البداية";
-                        break;
-                    case "EnrollmentEnd":
-                        column.HeaderText = "تاريخ النهاية";
-                        break;
-                    case "DayLeft":
-                        column.HeaderText = "الايام المتبقية";
-                        break;
-                    case "TotalAmount":
-                        column.HeaderText = "المبلغ الكلي";
-                        break;
-                    case "PaidAmount":
-                        column.HeaderText = "المبلغ المدفوع";
-                        break;
-                    case "RemainingAmount":
-                        column.HeaderText = "المبلغ المتبقي";
-                        break;
-                    case "Photo":
-                        column.HeaderText = "الصورة";
-                        break;
-                }
-            }
+            GeneralMethods.ChangeColumnNames(ref DgvList);
         }
         private void SearchBtn_Click(object sender, EventArgs e)
         {

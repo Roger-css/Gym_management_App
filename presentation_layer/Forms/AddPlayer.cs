@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GymBussniesLayer;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,10 +17,44 @@ namespace presentation_layer
         {
             InitializeComponent();
         }
-
+        string imagePath;
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-
+            if (OfdPicture.ShowDialog() == DialogResult.OK)
+            {
+                pictureBox1.Load(OfdPicture.FileName);
+                imagePath = OfdPicture.FileName;
+            }
+        }
+        private void Lb_valueChange(object sender, EventArgs e)
+        {
+            TbPaidPrice.Text = LbPrices.Text;
+        }
+        private void SaveBtn_Click(object sender, EventArgs e)
+        {
+            bool ValidData = true;
+            if (TbName.Text == "")
+            {
+                ValidData = false;
+            }
+            if (DtpStartDate.Value >= DtpEndDate.Value)
+            {
+                ValidData = false;
+            }
+            if (TbPaidPrice.Text == "")
+            {
+                TbPaidPrice.Text = "0";
+            }
+            if (ValidData)
+            {
+                int added = clsTrainee.AddPalyerWithSubscribtion(TbName.Text, TbPhone.Text,
+                imagePath, DtpStartDate.Value, DtpEndDate.Value,
+                int.Parse(LbPrices.Text), int.Parse(TbPaidPrice.Text));
+                if (added != -1)
+                {
+                    MessageBox.Show($"اللاعب {TbName.Text} تمت اضافته بنجاح");
+                }
+            }
         }
     }
 }

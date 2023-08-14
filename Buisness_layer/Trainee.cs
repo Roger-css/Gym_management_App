@@ -61,20 +61,20 @@ namespace GymBussniesLayer
             TrainneToAdd.Photo = photo;
             if (TrainneToAdd.Save())
             {
-                clsSubscription NewSubScribtion = new clsSubscription();
+                clsSubscription NewSubScription = new clsSubscription();
 
-                NewSubScribtion.PlayerID = TrainneToAdd.ID;
-                NewSubScribtion.StartDate = TrainneToAdd.EnrollmentStartDate;
-                NewSubScribtion.EndDate = TrainneToAdd.EnrollmentEndDate;
-                NewSubScribtion.TotalAmount = totalAmount;
-                NewSubScribtion.PaidAmount = paidAmount;
-                if (NewSubScribtion.Save())
+                NewSubScription.PlayerID = TrainneToAdd.ID;
+                NewSubScription.StartDate = TrainneToAdd.EnrollmentStartDate;
+                NewSubScription.EndDate = TrainneToAdd.EnrollmentEndDate;
+                NewSubScription.TotalAmount = totalAmount;
+                NewSubScription.PaidAmount = paidAmount;
+                if (NewSubScription.Save())
                     return TrainneToAdd.ID;
             }
             return -1;
         }
 
-        public static bool UpdatePlayerSubScribtion(int PlayerID, string name, DateTime enrollmentStartDate
+        public static bool UpdatePlayerSubScription(int PlayerID, string name, DateTime enrollmentStartDate
             , DateTime enrollmentEndDate, string phone, string photo, int totalAmount, int paidAmount)
         {
 

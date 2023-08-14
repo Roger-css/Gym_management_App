@@ -21,6 +21,7 @@ namespace presentation_layer
         public void RefreshList()
         {
             DgvList.DataSource = clsTrainee.GetTraineesLastSub();
+            //MessageBox.Show(clsTrainee.GetTraineesLastSub().Rows[0][0].ToString());
             DgvList.ForeColor = Color.Black;
             DgvList.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             GeneralMethods.ChangeColumnNames(ref DgvList);
@@ -54,6 +55,11 @@ namespace presentation_layer
         private void RefreshBtn_Click(object sender, EventArgs e)
         {
             RefreshList();
+        }
+
+        private void HandleEnter_key(object sender, KeyPressEventArgs e)
+        {
+            MessageBox.Show(e.KeyChar.ToString());
         }
     }
 }

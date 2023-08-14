@@ -182,6 +182,7 @@
             this.Name = "SearchForm";
             this.Text = "search";
             this.Load += new System.EventHandler(this.SearchForm_Load);
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.HandleEnter_key);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvList)).EndInit();

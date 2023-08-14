@@ -23,10 +23,18 @@ namespace presentation_layer.Forms.CmsForms
         private void ShowTraineeDetails()
         {
             DataTable trainee = clsTrainee.GetLastSubscriptionsByPlayerID(PlayerId);
+            TbName.Text = trainee.Rows[0]["Name"].ToString();
+            TbPhone.Text = trainee.Rows[0]["Phone"].ToString();
+            SubPrices.SelectedValue = SubPrices.FindString(trainee.Rows[0]["TotalAmount"].ToString());
+            TbPaid.Text = trainee.Rows[0]["PaidAmount"].ToString();
+            DtpStart.Text = trainee.Rows[0]["EnrollmentStart"].ToString();
+            DtpEnd.Text = trainee.Rows[0]["EnrollmentEnd"].ToString();
         }
         private void EditPlayer_Load(object sender, EventArgs e)
         {
             _id.Text = PlayerId.ToString();
+            
+            //ShowTraineeDetails();
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -38,6 +46,9 @@ namespace presentation_layer.Forms.CmsForms
             }
         }
 
- 
+        private void ValueChanged(object sender, EventArgs e)
+        {
+            TbPaid.Text = SubPrices.Text;
+        }
     }
 }

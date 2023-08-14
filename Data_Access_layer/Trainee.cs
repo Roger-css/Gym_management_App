@@ -14,7 +14,7 @@ namespace GymDataAccesLayer
         /// </summary>
         /// <param name="ID"></param>
         /// <param name="Name"></param>
-        /// <param name="Phone"></param>
+        /// <param name="Phone"></param>s
         /// <param name="Photo"></param>
         /// <param name="EnrollmentStartDate"></param>
         /// <param name="EnrollmentEndDate"></param>

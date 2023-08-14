@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.lblMonth = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.DtpStart = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.DtpEnd = new System.Windows.Forms.DateTimePicker();
             this.SuspendLayout();
             // 
             // lblMonth
@@ -46,14 +46,15 @@
             this.lblMonth.TabIndex = 7;
             this.lblMonth.Text = "نهاية التاريخ";
             // 
-            // dateTimePicker1
+            // DtpStart
             // 
-            this.dateTimePicker1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.dateTimePicker1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker1.Location = new System.Drawing.Point(367, 78);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(414, 44);
-            this.dateTimePicker1.TabIndex = 6;
+            this.DtpStart.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.DtpStart.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DtpStart.Location = new System.Drawing.Point(367, 78);
+            this.DtpStart.Name = "DtpStart";
+            this.DtpStart.Size = new System.Drawing.Size(414, 44);
+            this.DtpStart.TabIndex = 6;
+            this.DtpStart.ValueChanged += new System.EventHandler(this.DtpStart_ValueChanged);
             // 
             // label1
             // 
@@ -67,14 +68,15 @@
             this.label1.TabIndex = 9;
             this.label1.Text = "بداية التاريخ";
             // 
-            // dateTimePicker2
+            // DtpEnd
             // 
-            this.dateTimePicker2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.dateTimePicker2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker2.Location = new System.Drawing.Point(367, 189);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(414, 44);
-            this.dateTimePicker2.TabIndex = 8;
+            this.DtpEnd.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.DtpEnd.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DtpEnd.Location = new System.Drawing.Point(367, 189);
+            this.DtpEnd.Name = "DtpEnd";
+            this.DtpEnd.Size = new System.Drawing.Size(414, 44);
+            this.DtpEnd.TabIndex = 8;
+            this.DtpEnd.ValueChanged += new System.EventHandler(this.DtpEnd_ValueChanged);
             // 
             // Custom
             // 
@@ -82,9 +84,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1234, 355);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.dateTimePicker2);
+            this.Controls.Add(this.DtpEnd);
             this.Controls.Add(this.lblMonth);
-            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.DtpStart);
             this.Name = "Custom";
             this.Text = "Custom";
             this.ResumeLayout(false);
@@ -95,8 +97,8 @@
         #endregion
 
         private System.Windows.Forms.Label lblMonth;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker DtpStart;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private System.Windows.Forms.DateTimePicker DtpEnd;
     }
 }

@@ -12,9 +12,15 @@ namespace presentation_layer.Forms.BalanceForms
 {
     public partial class Daily : Form
     {
+        public DateTime Date = DateTime.Now;
         public Daily()
         {
             InitializeComponent();
+        }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+            Date = ((DateTimePicker)sender).Value;
         }
     }
 }

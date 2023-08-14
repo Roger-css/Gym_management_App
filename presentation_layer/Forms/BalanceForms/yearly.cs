@@ -12,9 +12,15 @@ namespace presentation_layer.Forms.BalanceForms
 {
     public partial class yearly : Form
     {
+        public DateTime Date = DateTime.Now;
         public yearly()
         {
             InitializeComponent();
+        }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+            Date = ((DateTimePicker)sender).Value;
         }
 
         private void yearly_Load(object sender, EventArgs e)

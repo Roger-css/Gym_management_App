@@ -30,18 +30,17 @@
         {
             this.SubPrices = new System.Windows.Forms.ListBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.DtpEndOfSub = new System.Windows.Forms.DateTimePicker();
+            this.DtpEnd = new System.Windows.Forms.DateTimePicker();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.PnlUp = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
-            this.LblId = new System.Windows.Forms.Label();
-            this.DtpStartSub = new System.Windows.Forms.DateTimePicker();
-            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
+            this.DtpStart = new System.Windows.Forms.DateTimePicker();
+            this.TbPaid = new System.Windows.Forms.MaskedTextBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
+            this.LblName = new System.Windows.Forms.Label();
             this.PnlUp.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -67,6 +66,7 @@
             this.SubPrices.Name = "SubPrices";
             this.SubPrices.Size = new System.Drawing.Size(122, 33);
             this.SubPrices.TabIndex = 35;
+            this.SubPrices.SelectedValueChanged += new System.EventHandler(this.ValueChanged);
             // 
             // label8
             // 
@@ -79,17 +79,17 @@
             this.label8.TabIndex = 34;
             this.label8.Text = ":سعر الاشتراك";
             // 
-            // DtpEndOfSub
+            // DtpEnd
             // 
-            this.DtpEndOfSub.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.DtpEndOfSub.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DtpEndOfSub.CalendarForeColor = System.Drawing.Color.Black;
-            this.DtpEndOfSub.CalendarTitleForeColor = System.Drawing.Color.Black;
-            this.DtpEndOfSub.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DtpEndOfSub.Location = new System.Drawing.Point(201, 469);
-            this.DtpEndOfSub.Name = "DtpEndOfSub";
-            this.DtpEndOfSub.Size = new System.Drawing.Size(321, 35);
-            this.DtpEndOfSub.TabIndex = 33;
+            this.DtpEnd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.DtpEnd.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DtpEnd.CalendarForeColor = System.Drawing.Color.Black;
+            this.DtpEnd.CalendarTitleForeColor = System.Drawing.Color.Black;
+            this.DtpEnd.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DtpEnd.Location = new System.Drawing.Point(201, 469);
+            this.DtpEnd.Name = "DtpEnd";
+            this.DtpEnd.Size = new System.Drawing.Size(321, 35);
+            this.DtpEnd.TabIndex = 33;
             // 
             // label7
             // 
@@ -157,37 +157,26 @@
             this.label2.TabIndex = 9;
             this.label2.Text = "تجديد الاشتراك اليدوي";
             // 
-            // LblId
+            // DtpStart
             // 
-            this.LblId.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.LblId.AutoSize = true;
-            this.LblId.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblId.Location = new System.Drawing.Point(680, 25);
-            this.LblId.Name = "LblId";
-            this.LblId.Size = new System.Drawing.Size(141, 37);
-            this.LblId.TabIndex = 20;
-            this.LblId.Text = ":رقم البطاقة";
+            this.DtpStart.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.DtpStart.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DtpStart.CalendarForeColor = System.Drawing.Color.Black;
+            this.DtpStart.CalendarTitleForeColor = System.Drawing.Color.Black;
+            this.DtpStart.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DtpStart.Location = new System.Drawing.Point(201, 383);
+            this.DtpStart.Name = "DtpStart";
+            this.DtpStart.Size = new System.Drawing.Size(321, 35);
+            this.DtpStart.TabIndex = 25;
             // 
-            // DtpStartSub
+            // TbPaid
             // 
-            this.DtpStartSub.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.DtpStartSub.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DtpStartSub.CalendarForeColor = System.Drawing.Color.Black;
-            this.DtpStartSub.CalendarTitleForeColor = System.Drawing.Color.Black;
-            this.DtpStartSub.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DtpStartSub.Location = new System.Drawing.Point(201, 383);
-            this.DtpStartSub.Name = "DtpStartSub";
-            this.DtpStartSub.Size = new System.Drawing.Size(321, 35);
-            this.DtpStartSub.TabIndex = 25;
-            // 
-            // maskedTextBox1
-            // 
-            this.maskedTextBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.maskedTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.maskedTextBox1.Location = new System.Drawing.Point(383, 298);
-            this.maskedTextBox1.Name = "maskedTextBox1";
-            this.maskedTextBox1.Size = new System.Drawing.Size(139, 35);
-            this.maskedTextBox1.TabIndex = 23;
+            this.TbPaid.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.TbPaid.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TbPaid.Location = new System.Drawing.Point(383, 298);
+            this.TbPaid.Name = "TbPaid";
+            this.TbPaid.Size = new System.Drawing.Size(139, 35);
+            this.TbPaid.TabIndex = 23;
             // 
             // button1
             // 
@@ -201,36 +190,36 @@
             this.button1.TabIndex = 21;
             this.button1.Text = "اشتراك";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // label1
+            // LblName
             // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(423, 134);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(99, 29);
-            this.label1.TabIndex = 36;
-            this.label1.Text = "غير معرف";
+            this.LblName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.LblName.AutoSize = true;
+            this.LblName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblName.Location = new System.Drawing.Point(423, 134);
+            this.LblName.Name = "LblName";
+            this.LblName.Size = new System.Drawing.Size(99, 29);
+            this.LblName.TabIndex = 36;
+            this.LblName.Text = "غير معرف";
             // 
             // LongSubscriptionForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(785, 688);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.LblName);
             this.Controls.Add(this.SubPrices);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.DtpEndOfSub);
+            this.Controls.Add(this.DtpEnd);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.PnlUp);
-            this.Controls.Add(this.LblId);
-            this.Controls.Add(this.DtpStartSub);
-            this.Controls.Add(this.maskedTextBox1);
+            this.Controls.Add(this.DtpStart);
+            this.Controls.Add(this.TbPaid);
             this.Controls.Add(this.button1);
+            this.Controls.Add(this.PnlUp);
             this.MaximizeBox = false;
             this.Name = "LongSubscriptionForm";
             this.Text = "LongSubscriptionForm";
@@ -245,17 +234,16 @@
         #endregion
         private System.Windows.Forms.ListBox SubPrices;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.DateTimePicker DtpEndOfSub;
+        private System.Windows.Forms.DateTimePicker DtpEnd;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel PnlUp;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label LblId;
-        private System.Windows.Forms.DateTimePicker DtpStartSub;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox1;
+        private System.Windows.Forms.DateTimePicker DtpStart;
+        private System.Windows.Forms.MaskedTextBox TbPaid;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label LblName;
     }
 }

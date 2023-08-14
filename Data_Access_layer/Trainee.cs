@@ -114,7 +114,10 @@ namespace GymDataAccesLayer
 
                         using (SqlDataReader reader = cmd.ExecuteReader())
                         {
+                            if (reader.HasRows)
+                            {
                                 dt.Load(reader);
+                            }
                         }
                     }
                     catch (Exception)
@@ -144,8 +147,11 @@ namespace GymDataAccesLayer
                         connection.Open();
 
                         using (SqlDataReader reader = cmd.ExecuteReader())
-                        {            
+                        {
+                            if (reader.HasRows)
+                            {
                                 dt.Load(reader);
+                            }
                         }
                     }
                     catch (Exception ex)
@@ -187,7 +193,10 @@ namespace GymDataAccesLayer
 
                         using (SqlDataReader reader = cmd.ExecuteReader())
                         {
+                            if (reader.HasRows)
+                            {
                                 dt.Load(reader);
+                            }
                         }
                     }
                     catch (Exception ex)
@@ -216,7 +225,10 @@ namespace GymDataAccesLayer
                         using (SqlDataReader reader = cmd.ExecuteReader(CommandBehavior.SequentialAccess))
                         {
 
+                            if (reader.HasRows)
+                            {
                                 dt.Load(reader);
+                            }
                         }
                     }
                     catch (Exception ex)
@@ -257,7 +269,7 @@ namespace GymDataAccesLayer
 
                         using (SqlDataReader reader = cmd.ExecuteReader())
                         {
-                            if (reader.Read())
+                            if (reader.HasRows)
                             {
                                 dt.Load(reader);
                             }
@@ -418,7 +430,7 @@ namespace GymDataAccesLayer
 
                         using (SqlDataReader reader = cmd.ExecuteReader())
                         {
-                            if (reader.Read())
+                            if (reader.HasRows)
                             {
                                 dt.Load(reader);
                             }
@@ -460,7 +472,7 @@ namespace GymDataAccesLayer
 
                         using (SqlDataReader reader = cmd.ExecuteReader())
                         {
-                            if (reader.Read())
+                            if (reader.HasRows)
                             {
                                 dt.Load(reader);
                             }
@@ -503,7 +515,7 @@ namespace GymDataAccesLayer
 
                         using (SqlDataReader reader = cmd.ExecuteReader())
                         {
-                            if (reader.Read())
+                            if (reader.HasRows)
                             {
                                 dt.Load(reader);
                             }
@@ -566,14 +578,17 @@ namespace GymDataAccesLayer
             using (SqlConnection connection = new SqlConnection(clsDataBaseSettings.ConnectionString))
             {
 
-                string query = @"
-                               UPDATE TOP (1) Subscriptions
-                               SET EnrollmentStart = @EnrollmentStartDate,
-                                    EnrollmentEnd = @EnrollmentEndDate,
+                string query = @"WITH LatestSubscription AS (
+                                    SELECT TOP (1) *
+                                    FROM Subscriptions
+                                    WHERE Player_id = @PlayerID
+                                    ORDER BY EnrollmentStart DESC
+                                )
+                                UPDATE LatestSubscription
+                                SET EnrollmentStart = @EnrollmentStartDate,
+                                     EnrollmentEnd = @EnrollmentEndDate,
                                     TotalAmount = @TotalAmount,
-                                    PaidAmount = @PaidAmount
-                                WHERE Player_id = @PlayerID
-                                ORDER BY EnrollmentStart DESC";
+                                    PaidAmount = @PaidAmount;";
 
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
@@ -609,16 +624,16 @@ namespace GymDataAccesLayer
                                Subscriptions.EnrollmentStart, Subscriptions.EnrollmentEnd,
                                Subscriptions.TotalAmount, Subscriptions.PaidAmount,
                                (Subscriptions.TotalAmount - Subscriptions.PaidAmount) AS RemainingAmount,
-                               DATEDIFF(day, EnrollmentEnd, EnrollmentStart) AS DaysTillSubscriptionExpired
+                               DATEDIFF(day, GETDATE(), Subscriptions.EnrollmentEnd) AS DaysTillSubscriptionExpired
                                 FROM Subscriptions
                                 INNER JOIN Trainers ON Subscriptions.[Player_id] = Trainers._id
                                 WHERE Trainers._id = @ID
-                                ORDER BY EnrollmentStart DESC;";
+                                ORDER BY EnrollmentStart DESC";
 
 
                 using (SqlCommand cmd = new SqlCommand(query, connection))
                 {
-                    cmd.Parameters.AddWithValue("@Name", ID);
+                    cmd.Parameters.AddWithValue("@ID", ID);
                     DataTable dt = new DataTable();
                     try
                     {
@@ -626,7 +641,7 @@ namespace GymDataAccesLayer
 
                         using (SqlDataReader reader = cmd.ExecuteReader())
                         {
-                            if (reader.Read())
+                            if (reader.HasRows)
                             {
                                 dt.Load(reader);
                             }

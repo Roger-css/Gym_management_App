@@ -34,7 +34,7 @@ namespace presentation_layer.Forms.CmsForms
         {
             _id.Text = PlayerId.ToString();
             
-            //ShowTraineeDetails();
+            ShowTraineeDetails();
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -50,5 +50,7 @@ namespace presentation_layer.Forms.CmsForms
         {
             TbPaid.Text = SubPrices.Text;
         }
+
+
     }
 }

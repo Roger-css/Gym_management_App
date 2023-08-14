@@ -572,8 +572,8 @@ namespace GymDataAccesLayer
                                     EnrollmentEnd = @EnrollmentEndDate,
                                     TotalAmount = @TotalAmount,
                                     PaidAmount = @PaidAmount
-                                WHERE playerid = @PlayerID
-                                ORDER BY EnrollmentStart DESC;";
+                                WHERE Player_id = @PlayerID
+                                ORDER BY EnrollmentStart DESC";
 
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {

@@ -49,6 +49,7 @@
             // DtpStart
             // 
             this.DtpStart.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.DtpStart.CustomFormat = "yyyy-mm-dd";
             this.DtpStart.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DtpStart.Location = new System.Drawing.Point(367, 78);
             this.DtpStart.Name = "DtpStart";
@@ -71,6 +72,7 @@
             // DtpEnd
             // 
             this.DtpEnd.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.DtpEnd.CustomFormat = "yyyy-mm-dd";
             this.DtpEnd.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DtpEnd.Location = new System.Drawing.Point(367, 189);
             this.DtpEnd.Name = "DtpEnd";

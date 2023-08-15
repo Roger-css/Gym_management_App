@@ -79,15 +79,15 @@
             this.LbPrices.FormattingEnabled = true;
             this.LbPrices.ItemHeight = 32;
             this.LbPrices.Items.AddRange(new object[] {
-            "10",
-            "15",
-            "20",
-            "25",
-            "30",
-            "35",
-            "40",
-            "45",
-            "50"});
+            "10000",
+            "15000",
+            "20000",
+            "25000",
+            "30000",
+            "35000",
+            "40000",
+            "45000",
+            "50000"});
             this.LbPrices.Location = new System.Drawing.Point(702, 358);
             this.LbPrices.Name = "LbPrices";
             this.LbPrices.Size = new System.Drawing.Size(170, 36);

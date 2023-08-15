@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.RefreshBtn = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -41,6 +42,7 @@
             this.QuickSubBtn = new System.Windows.Forms.ToolStripMenuItem();
             this.ManualSubBtn = new System.Windows.Forms.ToolStripMenuItem();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.QuickAddMoney = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvList)).BeginInit();
             this.CmsList.SuspendLayout();
@@ -129,23 +131,27 @@
             this.DgvList.ReadOnly = true;
             this.DgvList.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.DgvList.RowHeadersWidth = 62;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DgvList.RowsDefaultCellStyle = dataGridViewCellStyle1;
             this.DgvList.RowTemplate.Height = 28;
             this.DgvList.Size = new System.Drawing.Size(1117, 272);
             this.DgvList.TabIndex = 5;
             // 
             // CmsList
             // 
+            this.CmsList.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CmsList.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.CmsList.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.تعديلبياناتاللاعبToolStripMenuItem,
-            this.تجديدالاشتراكToolStripMenuItem});
+            this.تجديدالاشتراكToolStripMenuItem,
+            this.QuickAddMoney});
             this.CmsList.Name = "contextMenuStrip1";
-            this.CmsList.Size = new System.Drawing.Size(234, 68);
+            this.CmsList.Size = new System.Drawing.Size(319, 136);
             // 
             // تعديلبياناتاللاعبToolStripMenuItem
             // 
             this.تعديلبياناتاللاعبToolStripMenuItem.Name = "تعديلبياناتاللاعبToolStripMenuItem";
-            this.تعديلبياناتاللاعبToolStripMenuItem.Size = new System.Drawing.Size(233, 32);
+            this.تعديلبياناتاللاعبToolStripMenuItem.Size = new System.Drawing.Size(318, 44);
             this.تعديلبياناتاللاعبToolStripMenuItem.Text = "تعديل بيانات اللاعب";
             this.تعديلبياناتاللاعبToolStripMenuItem.Click += new System.EventHandler(this.EditToolStripMenuItem_Click);
             // 
@@ -155,22 +161,29 @@
             this.QuickSubBtn,
             this.ManualSubBtn});
             this.تجديدالاشتراكToolStripMenuItem.Name = "تجديدالاشتراكToolStripMenuItem";
-            this.تجديدالاشتراكToolStripMenuItem.Size = new System.Drawing.Size(233, 32);
+            this.تجديدالاشتراكToolStripMenuItem.Size = new System.Drawing.Size(318, 44);
             this.تجديدالاشتراكToolStripMenuItem.Text = "تجديد الاشتراك";
             // 
             // QuickSubBtn
             // 
             this.QuickSubBtn.Name = "QuickSubBtn";
-            this.QuickSubBtn.Size = new System.Drawing.Size(201, 34);
+            this.QuickSubBtn.Size = new System.Drawing.Size(254, 46);
             this.QuickSubBtn.Text = "تجديد سريع";
             this.QuickSubBtn.Click += new System.EventHandler(this.QuickSubBtn_Click);
             // 
             // ManualSubBtn
             // 
             this.ManualSubBtn.Name = "ManualSubBtn";
-            this.ManualSubBtn.Size = new System.Drawing.Size(201, 34);
+            this.ManualSubBtn.Size = new System.Drawing.Size(254, 46);
             this.ManualSubBtn.Text = "تجديد يدوي";
             this.ManualSubBtn.Click += new System.EventHandler(this.ManualSub_click);
+            // 
+            // QuickAddMoney
+            // 
+            this.QuickAddMoney.Name = "QuickAddMoney";
+            this.QuickAddMoney.Size = new System.Drawing.Size(318, 44);
+            this.QuickAddMoney.Text = "تسديد الفاتورة";
+            this.QuickAddMoney.Click += new System.EventHandler(this.QuickAddMoney_click);
             // 
             // SearchForm
             // 
@@ -204,5 +217,6 @@
         private System.Windows.Forms.ToolStripMenuItem ManualSubBtn;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.Button RefreshBtn;
+        private System.Windows.Forms.ToolStripMenuItem QuickAddMoney;
     }
 }

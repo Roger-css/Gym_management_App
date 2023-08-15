@@ -32,12 +32,12 @@
             this.CbCalcType = new System.Windows.Forms.ComboBox();
             this.Test = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.FormsPanel = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.Dgv = new System.Windows.Forms.DataGridView();
+            this.FormsPanel = new System.Windows.Forms.Panel();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Dgv)).BeginInit();
             this.SuspendLayout();
             // 
             // CbCalcType
@@ -82,24 +82,17 @@
             this.panel2.Size = new System.Drawing.Size(1303, 93);
             this.panel2.TabIndex = 7;
             // 
-            // dataGridView1
+            // label1
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 93);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 62;
-            this.dataGridView1.RowTemplate.Height = 28;
-            this.dataGridView1.Size = new System.Drawing.Size(1303, 487);
-            this.dataGridView1.TabIndex = 8;
-            // 
-            // FormsPanel
-            // 
-            this.FormsPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.FormsPanel.Location = new System.Drawing.Point(0, 93);
-            this.FormsPanel.Name = "FormsPanel";
-            this.FormsPanel.Size = new System.Drawing.Size(1303, 214);
-            this.FormsPanel.TabIndex = 9;
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Black;
+            this.label1.Location = new System.Drawing.Point(85, 30);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(35, 37);
+            this.label1.TabIndex = 10;
+            this.label1.Text = "0";
             // 
             // button1
             // 
@@ -117,32 +110,43 @@
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // label1
+            // Dgv
             // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(85, 30);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 37);
-            this.label1.TabIndex = 10;
-            this.label1.Text = "0";
+            this.Dgv.AllowUserToAddRows = false;
+            this.Dgv.AllowUserToDeleteRows = false;
+            this.Dgv.AllowUserToOrderColumns = true;
+            this.Dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.Dgv.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Dgv.Location = new System.Drawing.Point(0, 307);
+            this.Dgv.Name = "Dgv";
+            this.Dgv.ReadOnly = true;
+            this.Dgv.RowHeadersWidth = 62;
+            this.Dgv.RowTemplate.Height = 28;
+            this.Dgv.Size = new System.Drawing.Size(1303, 273);
+            this.Dgv.TabIndex = 8;
+            // 
+            // FormsPanel
+            // 
+            this.FormsPanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.FormsPanel.Location = new System.Drawing.Point(0, 93);
+            this.FormsPanel.Name = "FormsPanel";
+            this.FormsPanel.Size = new System.Drawing.Size(1303, 214);
+            this.FormsPanel.TabIndex = 9;
             // 
             // Balance
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1303, 580);
+            this.Controls.Add(this.Dgv);
             this.Controls.Add(this.FormsPanel);
-            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.panel2);
             this.Name = "Balance";
             this.Text = "Balance";
             this.Load += new System.EventHandler(this.Balance_Load);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Dgv)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -152,7 +156,7 @@
         private System.Windows.Forms.ComboBox CbCalcType;
         private System.Windows.Forms.Label Test;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView Dgv;
         private System.Windows.Forms.Panel FormsPanel;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label1;

@@ -20,7 +20,7 @@ namespace presentation_layer.Forms
 
         private void UncompleteSubs_Load(object sender, EventArgs e)
         {
-            //DgvList.DataSource = clsTrainee;
+            DgvList.DataSource = clsSubscription.GetTraineesWithRemaining();
             DgvList.ForeColor = Color.Black;
             DgvList.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             GeneralMethods.ChangeColumnNames(ref DgvList);

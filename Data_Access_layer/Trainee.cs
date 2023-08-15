@@ -55,7 +55,7 @@ namespace GymDataAccesLayer
                 }
                 reader.Close();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
                 return false;
@@ -534,11 +534,11 @@ namespace GymDataAccesLayer
             int rowsAffected = 0;
             SqlConnection connection = new SqlConnection(clsDataBaseSettings.ConnectionString);
 
-            string query = @"Update Trainers
-                             set Name = @Name
-                                  Phone = @Phone
-                                  Photo = @Photo
-                                  Where _id = @TraineeID";
+            string query = @"UPDATE Trainers
+                 SET Name = @Name,
+                     Phone = @Phone,
+                     Photo = @Photo
+                 WHERE _id = @TraineeID";
             SqlCommand cmd = new SqlCommand(query, connection);
 
             cmd.Parameters.AddWithValue("@Name", Name);

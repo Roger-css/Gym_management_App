@@ -253,7 +253,7 @@ namespace GymDataAccesLayer
                                 FROM Subscriptions
                                 INNER JOIN Trainers ON Subscriptions.[Player_id] = Trainers._id  
                             ) DateRemaining
-                            WHERE DaysTillSubscriptionExpired BETWEEN 0 AND -31";
+                            WHERE DaysTillSubscriptionExpired <= 0 AND DaysTillSubscriptionExpired >= -31;";
 
                 using (SqlCommand cmd = new SqlCommand(query, connection))
                 {

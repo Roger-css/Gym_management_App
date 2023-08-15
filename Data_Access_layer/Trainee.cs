@@ -20,8 +20,7 @@ namespace GymDataAccesLayer
         /// <param name="EnrollmentEndDate"></param>
         /// <returns>True if Found False If Not</returns>
         public static bool GetTraineeInfoByID(int ID,
-            ref string Name, ref string Phone, ref string Photo,
-            ref DateTime EnrollmentStartDate, ref DateTime EnrollmentEndDate)
+            ref string Name, ref string Phone, ref string Photo)
         {
             SqlConnection connection = new SqlConnection(clsDataBaseSettings.ConnectionString);
 
@@ -45,8 +44,6 @@ namespace GymDataAccesLayer
 
                     Name = (string)reader["Name"];
                     Phone = (string)reader["Phone"];
-                    EnrollmentStartDate = (DateTime)reader["EnrollmentStartDate"];
-                    EnrollmentEndDate = (DateTime)reader["EnrollmentEndDate"];
                     if (reader["Photo"] != DBNull.Value)
                         Photo = (string)reader["Photo"];
                     else

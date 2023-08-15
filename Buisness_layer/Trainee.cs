@@ -31,10 +31,9 @@ namespace GymBussniesLayer
                 this.Phone, this.Photo);
         }
 
-        public clsTrainee(DateTime enrollmentStartDate, DateTime enrollmentEndDate) : base(-1, "", "", "")
+        public clsTrainee() : base(-1, "", "", "")
         {
-            this.EnrollmentStartDate = enrollmentStartDate;
-            this.EnrollmentEndDate = enrollmentEndDate;
+           
 
             Mode = enMode.AddNew;
         }
@@ -42,12 +41,10 @@ namespace GymBussniesLayer
 
         private clsTrainee
             (int id, string name, string phone,
-            string photo, DateTime enrollmentStartDate, DateTime enrollmentEndDate)
+            string photo)
             : base(id, name, phone, photo)
         {
 
-            this.EnrollmentStartDate = enrollmentStartDate;
-            this.EnrollmentEndDate = enrollmentEndDate;
             Mode = enMode.Update;
         }
 
@@ -55,7 +52,7 @@ namespace GymBussniesLayer
             DateTime enrollmentStartDate, DateTime enrollmentEndDate, int totalAmount, int paidAmount)
         {
 
-            clsTrainee TrainneToAdd = new clsTrainee(enrollmentStartDate, enrollmentEndDate);
+            clsTrainee TrainneToAdd = new clsTrainee();
             TrainneToAdd.Name = name;
             TrainneToAdd.Phone = phone;
             TrainneToAdd.Photo = photo;
@@ -89,20 +86,43 @@ namespace GymBussniesLayer
             }
             return false;
         }
+        
+        public static bool quickSubscribe(int PlayerID)
+        {
+            DataTable lastSub = clsTraineeDataAccess.GetLastSubscriptionByPlayerID(PlayerID);
+            DataRow row = lastSub.Rows[0];
 
+            DateTime enrollmentStartDate = DateTime.Now;
+            DateTime enrollmentEndDate = DateTime.Now.AddMonths(1);
+            int TotalAmount = (int)row["TotalAmount"];
+            int paidAmount = TotalAmount;
+
+            int SubNumber = clsTraineeDataAccess.AddNewSubscription(PlayerID, enrollmentStartDate,
+                enrollmentEndDate, TotalAmount, paidAmount);
+             return SubNumber > -1 ? true : false;
+        }
+        public static bool AutoPayRemaining(int PlayerID)
+        {
+             DataTable lastSub = clsTraineeDataAccess.GetLastSubscriptionByPlayerID(PlayerID);
+            DataRow row = lastSub.Rows[0];
+
+            DateTime enrollmentStartDate = (DateTime)row["EnrollmentStart"];
+            DateTime enrollmentEndDate = (DateTime)row["EnrollmentStart"];
+            int totalAmount = (int)row["TotalAmount"];
+            int paidAmount = (int)row["PaidAmount"];
+            return clsTraineeDataAccess.UpdateTraineeSubscription(PlayerID, enrollmentStartDate,
+                    enrollmentEndDate, totalAmount, totalAmount);
+
+        }
 
         public static clsTrainee Find(int ID)
         {
             string Name = "", Phone = "", Photo = "";
-            DateTime enrollmentStartDate = DateTime.MinValue,
-                enrollmentEndDate = DateTime.MinValue;
 
             if (clsTraineeDataAccess.GetTraineeInfoByID
-                (ID, ref Name, ref Phone, ref Photo,
-               ref enrollmentStartDate, ref enrollmentEndDate))
+                (ID, ref Name, ref Phone, ref Photo))
 
-                return new clsTrainee(ID, Name, Phone, Photo,
-                    enrollmentStartDate, enrollmentEndDate);
+                return new clsTrainee(ID, Name, Phone, Photo);
             else
                 return null;
 

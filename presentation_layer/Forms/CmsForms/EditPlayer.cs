@@ -15,6 +15,9 @@ namespace presentation_layer.Forms.CmsForms
     {
         int PlayerId = -1;
         string imagePath = string.Empty;
+        int TotalPrice = 10,
+            PaidPrice = 10;
+
         public EditPlayer(int playerId = -1)
         {
             InitializeComponent();
@@ -35,6 +38,7 @@ namespace presentation_layer.Forms.CmsForms
             _id.Text = PlayerId.ToString();
             
             ShowTraineeDetails();
+            
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -49,8 +53,35 @@ namespace presentation_layer.Forms.CmsForms
         private void ValueChanged(object sender, EventArgs e)
         {
             TbPaid.Text = SubPrices.Text;
+            TotalPrice = Convert.ToInt32(((ListBox)sender).Text);
         }
 
+        private void PaidPrice_Changed(object sender, EventArgs e)
+        {
+            PaidPrice = Convert.ToInt32(((MaskedTextBox)sender).Text);
+        }
 
+        private void Button1_Click(object sender, EventArgs e)
+        {
+            bool ValidData = true;
+            if (TbName.Text == "")
+            {
+                ValidData = false;
+            }
+            if (DtpStart.Value >= DtpEnd.Value)
+            {
+                ValidData = false;
+            }
+            if (TbPaid.Text == "")
+            {
+                TbPaid.Text = "0";
+            }
+            if (ValidData)
+            {
+                clsTrainee.UpdatePlayerSubScription(PlayerId, TbName.Text, DtpStart.Value, DtpEnd.Value
+                , TbPhone.Text, pictureBox1.ImageLocation, TotalPrice,
+                PaidPrice);
+            }
+        }
     }
 }

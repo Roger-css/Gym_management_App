@@ -1,5 +1,6 @@
 ﻿using presentation_layer.Forms.CmsForms;
 using System;
+using GymBussniesLayer;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,12 +22,11 @@ namespace presentation_layer
             LongSubscriptionForm form = new LongSubscriptionForm((int) value);
             form.Show();
         }
-
         static public void QuickSubBtn_Click(object value)
         {
-            // do a quick subscription method here
+            // do a quick Subscribe method here
         }
-        static public void QuickAddMoney_click()
+        static public void QuickAddMoney_click(object value)
         {
             // do a quick add money method here
         }

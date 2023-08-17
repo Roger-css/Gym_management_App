@@ -568,7 +568,7 @@ namespace GymDataAccesLayer
             return (rowsAffected > 0);
         }
         public static bool UpdateTraineeSubscription(int PalyerID, DateTime EnrollmentStartDate,
-             DateTime EnrollmentEndDate, int totalAmount, float paidAmount)
+             DateTime EnrollmentEndDate, float totalAmount, float paidAmount)
         {
 
             bool success = false;
@@ -618,6 +618,7 @@ namespace GymDataAccesLayer
             using (SqlConnection connection = new SqlConnection(clsDataBaseSettings.ConnectionString))
             {
                 string query = @"SELECT TOP(1) Trainers._id, Trainers.Name, Trainers.Phone,
+                               Trainers.Photo,
                                Subscriptions.EnrollmentStart, Subscriptions.EnrollmentEnd,
                                Subscriptions.TotalAmount, Subscriptions.PaidAmount,
                                (Subscriptions.TotalAmount - Subscriptions.PaidAmount) AS RemainingAmount,
@@ -629,7 +630,7 @@ namespace GymDataAccesLayer
 
 
                 using (SqlCommand cmd = new SqlCommand(query, connection))
-                {
+                 {
                     cmd.Parameters.AddWithValue("@ID", ID);
                     DataTable dt = new DataTable();
                     try

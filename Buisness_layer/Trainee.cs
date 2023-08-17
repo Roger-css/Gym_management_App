@@ -94,7 +94,8 @@ namespace GymBussniesLayer
 
             DateTime enrollmentStartDate = (DateTime)row["EnrollmentEnd"];
             DateTime enrollmentEndDate = enrollmentStartDate.AddMonths(1);
-            int TotalAmount = (int)row["TotalAmount"];
+            double typ = (double)row["TotalAmount"];
+            int TotalAmount = (int)typ;
             int paidAmount = TotalAmount;
 
             int SubNumber = clsTraineeDataAccess.AddNewSubscription(PlayerID, enrollmentStartDate,
@@ -108,8 +109,9 @@ namespace GymBussniesLayer
 
             DateTime enrollmentStartDate = (DateTime)row["EnrollmentStart"];
             DateTime enrollmentEndDate = (DateTime)row["EnrollmentEnd"];
-            int totalAmount = (int)row["TotalAmount"];
-            int paidAmount = (int)row["PaidAmount"];
+            double typ = (double)row["TotalAmount"];
+            int totalAmount = (int)typ;
+            //float totalAmount = (float)row["TotalAmount"];
             return clsTraineeDataAccess.UpdateTraineeSubscription(PlayerID, enrollmentStartDate,
                     enrollmentEndDate, totalAmount, totalAmount);
 

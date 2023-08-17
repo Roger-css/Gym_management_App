@@ -32,7 +32,7 @@ namespace presentation_layer.Forms.CmsForms
         private void LongSubscriptionForm_Load(object sender, EventArgs e)
         {
             SubPrices.SelectedItem = SubPrices.Items[SubPrices.FindString(Convert.ToString(25))];
-            //ShowTraineeDetails();
+            ShowTraineeDetails();
         }
 
         private void ValueChanged(object sender, EventArgs e)
@@ -59,7 +59,12 @@ namespace presentation_layer.Forms.CmsForms
             }
             if (Valid)
             {
-                //clsSubscription.AddNewSubscription(_id, Start, End, Tprice, PaidAmount);
+                int ok = clsSubscription.AddNewSubscription(_id, Start, End, Tprice, PaidAmount);
+                if (ok != -1)
+                {
+                    MessageBox.Show("تمت اضافة الاشتراك بنجاح");
+                    Close();
+                }
             }
         }
     }

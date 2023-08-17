@@ -24,11 +24,19 @@ namespace presentation_layer
         }
         static public void QuickSubBtn_Click(object value)
         {
-            // do a quick Subscribe method here
+            int _id = (int)value;
+            if (MessageBox.Show("هل انت متأكد؟","",MessageBoxButtons.OKCancel) == DialogResult.OK)
+            {
+                clsTrainee.quickSubscribe(_id);
+            }
         }
         static public void QuickAddMoney_click(object value)
         {
-            // do a quick add money method here
+            int _id = (int)value;
+            if (MessageBox.Show("هل انت متأكد؟", "", MessageBoxButtons.OKCancel) == DialogResult.OK)
+            {
+                clsTrainee.AutoPayRemaining(_id);
+            }
         }
         static public void ChangeColumnNames(ref DataGridView dataGrid)
         {

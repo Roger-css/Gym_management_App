@@ -24,7 +24,7 @@ namespace presentation_layer.Forms.CmsForms
         {
             DataTable trainee = clsTrainee.GetLastSubscriptionsByPlayerID(_id);
             LblName.Text = trainee.Rows[0]["Name"].ToString();
-            SubPrices.SelectedValue = SubPrices.FindString(trainee.Rows[0]["TotalAmount"].ToString());
+            SubPrices.SelectedIndex = SubPrices.FindString(trainee.Rows[0]["TotalAmount"].ToString());
             TbPaid.Text = trainee.Rows[0]["PaidAmount"].ToString();
             DtpStart.Text = trainee.Rows[0]["EnrollmentStart"].ToString();
             DtpEnd.Text = trainee.Rows[0]["EnrollmentEnd"].ToString();

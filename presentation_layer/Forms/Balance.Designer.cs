@@ -32,7 +32,7 @@
             this.CbCalcType = new System.Windows.Forms.ComboBox();
             this.Test = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
+            this.LblTotalAmount = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.Dgv = new System.Windows.Forms.DataGridView();
             this.FormsPanel = new System.Windows.Forms.Panel();
@@ -72,7 +72,7 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.label1);
+            this.panel2.Controls.Add(this.LblTotalAmount);
             this.panel2.Controls.Add(this.button1);
             this.panel2.Controls.Add(this.Test);
             this.panel2.Controls.Add(this.CbCalcType);
@@ -82,17 +82,17 @@
             this.panel2.Size = new System.Drawing.Size(1303, 93);
             this.panel2.TabIndex = 7;
             // 
-            // label1
+            // LblTotalAmount
             // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(85, 30);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 37);
-            this.label1.TabIndex = 10;
-            this.label1.Text = "0";
+            this.LblTotalAmount.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.LblTotalAmount.AutoSize = true;
+            this.LblTotalAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblTotalAmount.ForeColor = System.Drawing.Color.Black;
+            this.LblTotalAmount.Location = new System.Drawing.Point(85, 30);
+            this.LblTotalAmount.Name = "LblTotalAmount";
+            this.LblTotalAmount.Size = new System.Drawing.Size(35, 37);
+            this.LblTotalAmount.TabIndex = 10;
+            this.LblTotalAmount.Text = "0";
             // 
             // button1
             // 
@@ -159,6 +159,6 @@
         private System.Windows.Forms.DataGridView Dgv;
         private System.Windows.Forms.Panel FormsPanel;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label LblTotalAmount;
     }
 }

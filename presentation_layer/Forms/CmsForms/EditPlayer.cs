@@ -78,9 +78,14 @@ namespace presentation_layer.Forms.CmsForms
             }
             if (ValidData)
             {
-                clsTrainee.UpdatePlayerSubScription(PlayerId, TbName.Text, DtpStart.Value, DtpEnd.Value
+                bool ok = clsTrainee.UpdatePlayerSubScription(PlayerId, TbName.Text, DtpStart.Value, DtpEnd.Value
                 , TbPhone.Text, pictureBox1.ImageLocation, TotalPrice,
                 PaidPrice);
+                if (ok)
+                {
+                    MessageBox.Show("تم تعديل بيانات اللاعب بنجاح");
+                    Close();
+                }
             }
         }
     }

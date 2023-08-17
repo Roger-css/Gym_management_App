@@ -617,8 +617,7 @@ namespace GymDataAccesLayer
         {
             using (SqlConnection connection = new SqlConnection(clsDataBaseSettings.ConnectionString))
             {
-                string query = @"SELECT TOP(1) Trainers._id, Trainers.Name, Trainers.Phone,
-                               Trainers.Photo,
+                string query = @"SELECT TOP(1) Trainers._id, Trainers.Name, Trainers.Phone,Trainers.Photo,
                                Subscriptions.EnrollmentStart, Subscriptions.EnrollmentEnd,
                                Subscriptions.TotalAmount, Subscriptions.PaidAmount,
                                (Subscriptions.TotalAmount - Subscriptions.PaidAmount) AS RemainingAmount,

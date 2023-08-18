@@ -180,6 +180,7 @@
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.DgvList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.DgvList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DgvList.ContextMenuStrip = this.CmsList;
             this.DgvList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DgvList.Location = new System.Drawing.Point(0, 178);
             this.DgvList.Name = "DgvList";

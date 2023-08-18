@@ -34,7 +34,7 @@ namespace presentation_layer
                 
                 if (int.TryParse(DgvList.Rows[i].Cells[8].Value.ToString(), out int cellValue))
                 {
-                    if (cellValue < 1)
+                    if (cellValue < 0)
                     {
                         DgvList.Rows[i].Cells[8].Style.BackColor = Color.Firebrick;
                     }

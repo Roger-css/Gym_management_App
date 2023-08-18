@@ -24,5 +24,14 @@ namespace presentation_layer.Forms
             DgvList.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             GeneralMethods.ChangeColumnNames(ref DgvList);
         }
+        private void QuickSub_Click(object sender, EventArgs e)
+        {
+            GeneralMethods.QuickSubBtn_Click(DgvList.CurrentRow.Cells[0].Value);
+        }
+
+        private void ManualSub_Click(object sender, EventArgs e)
+        {
+            GeneralMethods.ManualSub_click(DgvList.CurrentRow.Cells[0].Value);
+        }
     }
 }

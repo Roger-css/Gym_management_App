@@ -64,6 +64,7 @@ D:\Gym_management_App\presentation_layer\bin\Debug\Buisness_layer.dll
 D:\Gym_management_App\presentation_layer\bin\Debug\Buisness_layer.pdb
 C:\Users\H1202\source\repos\Gym_management_App1\presentation_layer\bin\Debug\Buisness_layer.dll
 C:\Users\H1202\source\repos\Gym_management_App1\presentation_layer\bin\Debug\Buisness_layer.pdb
+<<<<<<< HEAD
 C:\Users\H1202\source\repos\Gym_management_App2\presentation_layer\bin\Debug\presentation_layer.exe.config
 C:\Users\H1202\source\repos\Gym_management_App2\presentation_layer\bin\Debug\presentation_layer.exe
 C:\Users\H1202\source\repos\Gym_management_App2\presentation_layer\bin\Debug\presentation_layer.pdb
@@ -92,3 +93,26 @@ C:\Users\H1202\source\repos\Gym_management_App2\presentation_layer\obj\Debug\pre
 C:\Users\H1202\source\repos\Gym_management_App2\presentation_layer\obj\Debug\presentation_layer.csproj.CopyComplete
 C:\Users\H1202\source\repos\Gym_management_App2\presentation_layer\obj\Debug\presentation_layer.exe
 C:\Users\H1202\source\repos\Gym_management_App2\presentation_layer\obj\Debug\presentation_layer.pdb
+=======
+D:\Gym_management_App_personal\presentation_layer\obj\Debug\presentation_layer.csproj.AssemblyReference.cache
+D:\Gym_management_App_personal\presentation_layer\obj\Debug\presentation_layer.csproj.SuggestedBindingRedirects.cache
+D:\Gym_management_App_personal\presentation_layer\obj\Debug\presentation_layer.Form1.resources
+D:\Gym_management_App_personal\presentation_layer\obj\Debug\presentation_layer.AddPlayer.resources
+D:\Gym_management_App_personal\presentation_layer\obj\Debug\presentation_layer.Forms.Balance.resources
+D:\Gym_management_App_personal\presentation_layer\obj\Debug\presentation_layer.Forms.BalanceForms.Custom.resources
+D:\Gym_management_App_personal\presentation_layer\obj\Debug\presentation_layer.Forms.BalanceForms.Daily.resources
+D:\Gym_management_App_personal\presentation_layer\obj\Debug\presentation_layer.Forms.BalanceForms.monthly.resources
+D:\Gym_management_App_personal\presentation_layer\obj\Debug\presentation_layer.Forms.BalanceForms.yearly.resources
+D:\Gym_management_App_personal\presentation_layer\obj\Debug\presentation_layer.Forms.CmsForms.EditPlayer.resources
+D:\Gym_management_App_personal\presentation_layer\obj\Debug\presentation_layer.Forms.CmsForms.LongSubscriptionForm.resources
+D:\Gym_management_App_personal\presentation_layer\obj\Debug\presentation_layer.Forms.Expired.resources
+D:\Gym_management_App_personal\presentation_layer\obj\Debug\presentation_layer.Forms.PlayersList.resources
+D:\Gym_management_App_personal\presentation_layer\obj\Debug\presentation_layer.SearchForm.resources
+D:\Gym_management_App_personal\presentation_layer\obj\Debug\presentation_layer.Forms.UncompleteSubs.resources
+D:\Gym_management_App_personal\presentation_layer\obj\Debug\presentation_layer.Properties.Resources.resources
+D:\Gym_management_App_personal\presentation_layer\obj\Debug\presentation_layer.csproj.GenerateResource.cache
+D:\Gym_management_App_personal\presentation_layer\obj\Debug\presentation_layer.csproj.CoreCompileInputs.cache
+D:\Gym_management_App_personal\presentation_layer\obj\Debug\presentation_layer.exe
+D:\Gym_management_App_personal\presentation_layer\obj\Debug\presentation_layer.pdb
+D:\Gym_management_App\presentation_layer\obj\Debug\presentation_layer.Forms.Login.resources
+>>>>>>> eeae49bc6e05adbc7778a6008bf7d7c3f1680386

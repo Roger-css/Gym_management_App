@@ -90,6 +90,8 @@ namespace presentation_layer.Forms
             if (activeForm == CustomControl)
             {
                 Dgv.DataSource = clsSubscription.GetTraineesSubscriptionsByDates(CustomControl.Start,CustomControl.End);
+                LblTotalAmount.Text = Convert.ToString(clsSubscription.GetBalanceByDates
+                    (Convert.ToDateTime(CustomControl.Start), Convert.ToDateTime(CustomControl.End)));
             }
             else if(activeForm == MonthlyControl)
             {
@@ -105,7 +107,8 @@ namespace presentation_layer.Forms
                 Dgv.DataSource =
                 clsSubscription.GetTraineesSubscriptionsByDates
                 (Convert.ToDateTime(startDate), Convert.ToDateTime(endDate));
-
+                LblTotalAmount.Text = Convert.ToString(clsSubscription.GetBalanceByDates
+                    (Convert.ToDateTime(startDate), Convert.ToDateTime(endDate)));
 
             }
             else if (activeForm == DailyControl)
@@ -114,6 +117,8 @@ namespace presentation_layer.Forms
                 Dgv.DataSource =
                 clsSubscription.GetTraineesSubscriptionsByDates
                 (Convert.ToDateTime(Date), Convert.ToDateTime(Date).AddHours(23).AddMinutes(59).AddSeconds(59));
+                LblTotalAmount.Text = Convert.ToString(clsSubscription.GetBalanceByDates
+                    (Convert.ToDateTime(Date), Convert.ToDateTime(Date).AddHours(23).AddMinutes(59).AddSeconds(59)));
             }
             else if (activeForm == YearControl)
             {
@@ -124,6 +129,8 @@ namespace presentation_layer.Forms
                 Dgv.DataSource =
                 clsSubscription.GetTraineesSubscriptionsByDates
                 (Convert.ToDateTime(startDate), Convert.ToDateTime(endDate));
+                LblTotalAmount.Text = Convert.ToString(clsSubscription.GetBalanceByDates
+                    (Convert.ToDateTime(startDate), Convert.ToDateTime(endDate)));
             }
             else
             {

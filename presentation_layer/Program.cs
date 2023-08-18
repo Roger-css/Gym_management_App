@@ -1,9 +1,9 @@
-﻿using System;
+﻿using presentation_layer.Forms;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
 namespace presentation_layer
 {
     internal static class Program
@@ -20,7 +20,7 @@ namespace presentation_layer
             }
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new Login());
         }
         [System.Runtime.InteropServices.DllImport("user32.dll")]
         private static extern void SetProcessDPIAware();

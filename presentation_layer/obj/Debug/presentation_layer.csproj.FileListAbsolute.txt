@@ -116,3 +116,4 @@ D:\Gym_management_App_personal\presentation_layer\obj\Debug\presentation_layer.e
 D:\Gym_management_App_personal\presentation_layer\obj\Debug\presentation_layer.pdb
 D:\Gym_management_App\presentation_layer\obj\Debug\presentation_layer.Forms.Login.resources
 >>>>>>> eeae49bc6e05adbc7778a6008bf7d7c3f1680386
+C:\Users\H1202\source\repos\Gym_management_App2\presentation_layer\obj\Debug\presentation_layer.Forms.Login.resources

@@ -28,12 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.DgvList = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.RefreshBtn = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.TbSearch = new System.Windows.Forms.TextBox();
             this.SearchBtn = new System.Windows.Forms.Button();
-            this.RefreshBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.DgvList)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -42,10 +43,16 @@
             // 
             this.DgvList.AllowUserToAddRows = false;
             this.DgvList.AllowUserToDeleteRows = false;
-            this.DgvList.AllowUserToOrderColumns = true;
             this.DgvList.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.DgvList.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.DgvList.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DgvList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.DgvList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgvList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DgvList.Location = new System.Drawing.Point(0, 178);
@@ -69,6 +76,22 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1185, 178);
             this.panel1.TabIndex = 6;
+            // 
+            // RefreshBtn
+            // 
+            this.RefreshBtn.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.RefreshBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(244)))), ((int)(((byte)(255)))));
+            this.RefreshBtn.FlatAppearance.BorderSize = 0;
+            this.RefreshBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.RefreshBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.RefreshBtn.ForeColor = System.Drawing.Color.Gainsboro;
+            this.RefreshBtn.Image = global::presentation_layer.Properties.Resources.Refresh1;
+            this.RefreshBtn.Location = new System.Drawing.Point(1130, 119);
+            this.RefreshBtn.Name = "RefreshBtn";
+            this.RefreshBtn.Size = new System.Drawing.Size(43, 42);
+            this.RefreshBtn.TabIndex = 4;
+            this.RefreshBtn.UseVisualStyleBackColor = false;
+            this.RefreshBtn.Click += new System.EventHandler(this.RefreshBtn_Click);
             // 
             // label1
             // 
@@ -108,22 +131,6 @@
             this.SearchBtn.UseVisualStyleBackColor = false;
             this.SearchBtn.Click += new System.EventHandler(this.SearchBtn_Click);
             // 
-            // RefreshBtn
-            // 
-            this.RefreshBtn.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.RefreshBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(244)))), ((int)(((byte)(255)))));
-            this.RefreshBtn.FlatAppearance.BorderSize = 0;
-            this.RefreshBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.RefreshBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.RefreshBtn.ForeColor = System.Drawing.Color.Gainsboro;
-            this.RefreshBtn.Image = global::presentation_layer.Properties.Resources.Refresh1;
-            this.RefreshBtn.Location = new System.Drawing.Point(1130, 119);
-            this.RefreshBtn.Name = "RefreshBtn";
-            this.RefreshBtn.Size = new System.Drawing.Size(43, 42);
-            this.RefreshBtn.TabIndex = 4;
-            this.RefreshBtn.UseVisualStyleBackColor = false;
-            this.RefreshBtn.Click += new System.EventHandler(this.RefreshBtn_Click);
-            // 
             // PlayersList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -133,7 +140,6 @@
             this.Controls.Add(this.panel1);
             this.Name = "PlayersList";
             this.Text = "PlayersList";
-            this.Load += new System.EventHandler(this.PlayersList_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DgvList)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

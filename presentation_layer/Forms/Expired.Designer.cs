@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.DgvList = new System.Windows.Forms.DataGridView();
             this.Cmd = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.QuickSub = new System.Windows.Forms.ToolStripMenuItem();
@@ -43,8 +44,15 @@
             this.DgvList.AllowUserToDeleteRows = false;
             this.DgvList.AllowUserToOrderColumns = true;
             this.DgvList.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.DgvList.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.DgvList.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DgvList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.DgvList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgvList.ContextMenuStrip = this.Cmd;
             this.DgvList.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -64,19 +72,19 @@
             this.QuickSub,
             this.ManualSub});
             this.Cmd.Name = "Cmd";
-            this.Cmd.Size = new System.Drawing.Size(241, 101);
+            this.Cmd.Size = new System.Drawing.Size(172, 68);
             // 
             // QuickSub
             // 
             this.QuickSub.Name = "QuickSub";
-            this.QuickSub.Size = new System.Drawing.Size(240, 32);
+            this.QuickSub.Size = new System.Drawing.Size(171, 32);
             this.QuickSub.Text = "تجديد سريع";
             this.QuickSub.Click += new System.EventHandler(this.QuickSub_Click);
             // 
             // ManualSub
             // 
             this.ManualSub.Name = "ManualSub";
-            this.ManualSub.Size = new System.Drawing.Size(240, 32);
+            this.ManualSub.Size = new System.Drawing.Size(171, 32);
             this.ManualSub.Text = "تجديد يدوي";
             this.ManualSub.Click += new System.EventHandler(this.ManualSub_Click);
             // 

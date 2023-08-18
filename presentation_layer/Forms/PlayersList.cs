@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Common;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -18,13 +19,14 @@ namespace presentation_layer.Forms
             InitializeComponent();
             Shown += Form_Shown;
         }
+        
         private void Form_Shown(object sender, EventArgs e)
         {
             RefreshList();
         }
         private void RefreshList()
         {
-            DgvList.DataSource = clsTrainee.GetTraineesAllSub();
+            DgvList.DataSource = clsTrainee.GetTraineesAllSub(); 
             DgvList.ForeColor = Color.Black;
             DgvList.Columns[8].DefaultCellStyle.ForeColor = Color.White;
             for (int i = 0; i < DgvList.Rows.Count; i++)
@@ -34,7 +36,7 @@ namespace presentation_layer.Forms
                 {
                     if (cellValue < 0)
                     {
-                        DgvList.Rows[i].Cells[8].Style.BackColor = Color.Firebrick;
+                        DgvList.Rows[i].Cells[8].Style.BackColor = Color.Red;
                     }
                     else
                     {
@@ -44,11 +46,11 @@ namespace presentation_layer.Forms
             }
             DgvList.Refresh();
             DgvList.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            for(int i = 0;i < 9;i++)
+            {
+                DgvList.Columns[i].SortMode = DataGridViewColumnSortMode.NotSortable; 
+            }
             GeneralMethods.ChangeColumnNames(ref DgvList);
-        }
-        private void PlayersList_Load(object sender, EventArgs e)
-        {
-            RefreshList();
         }
 
         private void SearchBtn_Click(object sender, EventArgs e)

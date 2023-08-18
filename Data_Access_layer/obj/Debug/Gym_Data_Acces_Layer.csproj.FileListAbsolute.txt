@@ -16,3 +16,9 @@ C:\Users\H1202\Source\Repos\Gym_management_App1\Data_Access_layer\obj\Debug\Gym_
 C:\Users\H1202\Source\Repos\Gym_management_App1\Data_Access_layer\obj\Debug\Gym_Data_Acces_Layer.csproj.CoreCompileInputs.cache
 C:\Users\H1202\Source\Repos\Gym_management_App1\Data_Access_layer\obj\Debug\Data_Access_layer.dll
 C:\Users\H1202\Source\Repos\Gym_management_App1\Data_Access_layer\obj\Debug\Data_Access_layer.pdb
+C:\Users\H1202\source\repos\Gym_management_App2\Data_Access_layer\bin\Debug\Data_Access_layer.dll
+C:\Users\H1202\source\repos\Gym_management_App2\Data_Access_layer\bin\Debug\Data_Access_layer.pdb
+C:\Users\H1202\source\repos\Gym_management_App2\Data_Access_layer\obj\Debug\Gym_Data_Acces_Layer.csproj.AssemblyReference.cache
+C:\Users\H1202\source\repos\Gym_management_App2\Data_Access_layer\obj\Debug\Gym_Data_Acces_Layer.csproj.CoreCompileInputs.cache
+C:\Users\H1202\source\repos\Gym_management_App2\Data_Access_layer\obj\Debug\Data_Access_layer.dll
+C:\Users\H1202\source\repos\Gym_management_App2\Data_Access_layer\obj\Debug\Data_Access_layer.pdb

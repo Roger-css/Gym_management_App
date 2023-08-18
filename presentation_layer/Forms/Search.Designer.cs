@@ -30,22 +30,23 @@
         {
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.RefreshBtn = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.TbSearch = new System.Windows.Forms.TextBox();
             this.SearchBtn = new System.Windows.Forms.Button();
-            this.DgvList = new System.Windows.Forms.DataGridView();
             this.CmsList = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.تعديلبياناتاللاعبToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.تجديدالاشتراكToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.QuickSubBtn = new System.Windows.Forms.ToolStripMenuItem();
             this.ManualSubBtn = new System.Windows.Forms.ToolStripMenuItem();
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.QuickAddMoney = new System.Windows.Forms.ToolStripMenuItem();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.DgvList = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DgvList)).BeginInit();
             this.CmsList.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DgvList)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -115,28 +116,6 @@
             this.SearchBtn.UseVisualStyleBackColor = false;
             this.SearchBtn.Click += new System.EventHandler(this.SearchBtn_Click);
             // 
-            // DgvList
-            // 
-            this.DgvList.AllowUserToAddRows = false;
-            this.DgvList.AllowUserToDeleteRows = false;
-            this.DgvList.AllowUserToOrderColumns = true;
-            this.DgvList.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.DgvList.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.DgvList.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.DgvList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DgvList.ContextMenuStrip = this.CmsList;
-            this.DgvList.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.DgvList.Location = new System.Drawing.Point(0, 178);
-            this.DgvList.Name = "DgvList";
-            this.DgvList.ReadOnly = true;
-            this.DgvList.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.DgvList.RowHeadersWidth = 62;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DgvList.RowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.DgvList.RowTemplate.Height = 28;
-            this.DgvList.Size = new System.Drawing.Size(1117, 272);
-            this.DgvList.TabIndex = 5;
-            // 
             // CmsList
             // 
             this.CmsList.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -185,6 +164,39 @@
             this.QuickAddMoney.Text = "تسديد الفاتورة";
             this.QuickAddMoney.Click += new System.EventHandler(this.QuickAddMoney_click);
             // 
+            // DgvList
+            // 
+            this.DgvList.AllowUserToAddRows = false;
+            this.DgvList.AllowUserToDeleteRows = false;
+            this.DgvList.AllowUserToOrderColumns = true;
+            this.DgvList.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.DgvList.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DgvList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.DgvList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DgvList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.DgvList.Location = new System.Drawing.Point(0, 178);
+            this.DgvList.Name = "DgvList";
+            this.DgvList.ReadOnly = true;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DgvList.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.DgvList.RowHeadersWidth = 62;
+            this.DgvList.RowTemplate.Height = 28;
+            this.DgvList.Size = new System.Drawing.Size(1117, 272);
+            this.DgvList.TabIndex = 5;
+            // 
             // SearchForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -195,11 +207,10 @@
             this.Name = "SearchForm";
             this.Text = "search";
             this.Load += new System.EventHandler(this.SearchForm_Load);
-            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.HandleEnter_key);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DgvList)).EndInit();
             this.CmsList.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.DgvList)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -209,7 +220,6 @@
         private System.Windows.Forms.TextBox TbSearch;
         private System.Windows.Forms.Button SearchBtn;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridView DgvList;
         private System.Windows.Forms.ContextMenuStrip CmsList;
         private System.Windows.Forms.ToolStripMenuItem تعديلبياناتاللاعبToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem تجديدالاشتراكToolStripMenuItem;
@@ -218,5 +228,6 @@
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.Button RefreshBtn;
         private System.Windows.Forms.ToolStripMenuItem QuickAddMoney;
+        private System.Windows.Forms.DataGridView DgvList;
     }
 }

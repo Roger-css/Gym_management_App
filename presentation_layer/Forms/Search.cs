@@ -23,6 +23,11 @@ namespace presentation_layer
         private void Form_Shown(object sender, EventArgs e)
         {
             RefreshList();
+            DgvList.AllowUserToOrderColumns = false;
+            for (int i = 0; i < 9; i++)
+            {
+                DgvList.Columns[i].SortMode = DataGridViewColumnSortMode.NotSortable;
+            }
         }
         public void RefreshList()
         {
@@ -44,15 +49,9 @@ namespace presentation_layer
                     }
                 }
             }
-            DgvList.Refresh();
             DgvList.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             GeneralMethods.ChangeColumnNames(ref DgvList);
         }
-        private void SearchForm_Load(object sender, EventArgs e)
-        {
-            RefreshList();
-        }
-
         private void EditToolStripMenuItem_Click(object sender, EventArgs e)
         {
             GeneralMethods.EditToolStripMenuItem_Click(DgvList.CurrentRow.Cells[0].Value);

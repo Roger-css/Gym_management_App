@@ -109,7 +109,10 @@ namespace GymBussniesLayer
 
     
 
-    
+    public static decimal GetPaidByDates(DateTime startDate, DateTime endDate)
+        {
+            return clsTraineeDataAccess.GetPaidByDates(startDate, endDate);
+        }
 
         public static decimal GetBalanceByDates(DateTime startDate, DateTime endDate)
         {

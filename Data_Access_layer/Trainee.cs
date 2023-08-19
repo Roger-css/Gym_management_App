@@ -322,6 +322,42 @@ namespace GymDataAccesLayer
 
             return TrainneID;
         }
+        public static decimal GetPaidByDates(DateTime startDate, DateTime endDate)
+        {
+            decimal totalAmount = 0;
+
+            using (SqlConnection connection = new SqlConnection(clsDataBaseSettings.ConnectionString))
+            {
+                string query = @"SELECT SUM(Subscriptions.PaidAmount) As PaidAmount
+                         FROM  Subscriptions 
+                         WHERE Subscriptions.EnrollmentStart BETWEEN @StartDate AND @EndDate";
+
+                using (SqlCommand cmd = new SqlCommand(query, connection))
+                {
+                    cmd.Parameters.AddWithValue("@StartDate", startDate);
+                    cmd.Parameters.AddWithValue("@EndDate", endDate);
+
+                    try
+                    {
+                        connection.Open();
+                        object result = cmd.ExecuteScalar();
+
+                        if (result != null && decimal.TryParse(result.ToString(),
+                            out decimal value))
+                        {
+                            totalAmount = value;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        // Handle the exception here or log it
+                        // Return an appropriate value or rethrow the exception
+                        return -1;
+                    }
+                }
+            }
+            return totalAmount;
+        }
 
         public static decimal GetBalanceByDates(DateTime startDate, DateTime endDate)
         {

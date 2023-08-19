@@ -53,7 +53,7 @@
             "شهري",
             "يومي",
             "يدوي"});
-            this.CbCalcType.Location = new System.Drawing.Point(502, 22);
+            this.CbCalcType.Location = new System.Drawing.Point(502, 67);
             this.CbCalcType.Name = "CbCalcType";
             this.CbCalcType.Size = new System.Drawing.Size(251, 45);
             this.CbCalcType.TabIndex = 6;
@@ -65,7 +65,7 @@
             this.Test.AutoSize = true;
             this.Test.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Test.ForeColor = System.Drawing.Color.Black;
-            this.Test.Location = new System.Drawing.Point(774, 31);
+            this.Test.Location = new System.Drawing.Point(774, 76);
             this.Test.Name = "Test";
             this.Test.Size = new System.Drawing.Size(118, 29);
             this.Test.TabIndex = 8;
@@ -80,7 +80,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1303, 93);
+            this.panel2.Size = new System.Drawing.Size(1303, 183);
             this.panel2.TabIndex = 7;
             // 
             // LblTotalAmount
@@ -89,7 +89,7 @@
             this.LblTotalAmount.AutoSize = true;
             this.LblTotalAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblTotalAmount.ForeColor = System.Drawing.Color.Black;
-            this.LblTotalAmount.Location = new System.Drawing.Point(85, 30);
+            this.LblTotalAmount.Location = new System.Drawing.Point(85, 75);
             this.LblTotalAmount.Name = "LblTotalAmount";
             this.LblTotalAmount.Size = new System.Drawing.Size(35, 37);
             this.LblTotalAmount.TabIndex = 10;
@@ -103,7 +103,7 @@
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.button1.Location = new System.Drawing.Point(1019, 12);
+            this.button1.Location = new System.Drawing.Point(1019, 57);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(144, 75);
             this.button1.TabIndex = 9;
@@ -126,20 +126,20 @@
             this.Dgv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.Dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.Dgv.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Dgv.Location = new System.Drawing.Point(0, 307);
+            this.Dgv.Location = new System.Drawing.Point(0, 385);
             this.Dgv.Name = "Dgv";
             this.Dgv.ReadOnly = true;
             this.Dgv.RowHeadersWidth = 62;
             this.Dgv.RowTemplate.Height = 28;
-            this.Dgv.Size = new System.Drawing.Size(1303, 273);
+            this.Dgv.Size = new System.Drawing.Size(1303, 195);
             this.Dgv.TabIndex = 8;
             // 
             // FormsPanel
             // 
             this.FormsPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.FormsPanel.Location = new System.Drawing.Point(0, 93);
+            this.FormsPanel.Location = new System.Drawing.Point(0, 183);
             this.FormsPanel.Name = "FormsPanel";
-            this.FormsPanel.Size = new System.Drawing.Size(1303, 214);
+            this.FormsPanel.Size = new System.Drawing.Size(1303, 202);
             this.FormsPanel.TabIndex = 9;
             // 
             // Balance

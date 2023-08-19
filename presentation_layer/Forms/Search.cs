@@ -49,7 +49,6 @@ namespace presentation_layer
                     }
                 }
             }
-            DgvList.Refresh();
             DgvList.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             GeneralMethods.ChangeColumnNames(ref DgvList);
         }

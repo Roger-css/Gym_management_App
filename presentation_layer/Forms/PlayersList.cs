@@ -44,7 +44,6 @@ namespace presentation_layer.Forms
                     }
                 }
             }
-            DgvList.Refresh();
             DgvList.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             for(int i = 0;i < 9;i++)
             {

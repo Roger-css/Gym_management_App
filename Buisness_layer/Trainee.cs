@@ -61,8 +61,8 @@ namespace GymBussniesLayer
                 clsSubscription NewSubScription = new clsSubscription();
 
                 NewSubScription.PlayerID = TrainneToAdd.ID;
-                NewSubScription.StartDate = TrainneToAdd.EnrollmentStartDate;
-                NewSubScription.EndDate = TrainneToAdd.EnrollmentEndDate;
+                NewSubScription.StartDate = enrollmentStartDate;
+                NewSubScription.EndDate = enrollmentEndDate;
                 NewSubScription.TotalAmount = totalAmount;
                 NewSubScription.PaidAmount = paidAmount;
                 if (NewSubScription.Save())

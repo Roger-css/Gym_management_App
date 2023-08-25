@@ -43,6 +43,7 @@ namespace presentation_layer.Forms.CmsForms
         private void button1_Click(object sender, EventArgs e)
         {
             bool Valid = true;
+            SubPrices.Text = "999";
             int Tprice = Convert.ToInt32(SubPrices.Text),
                 PaidAmount = Convert.ToInt32(TbPaid.Text);
             DateTime Start = DtpStart.Value,

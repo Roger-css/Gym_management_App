@@ -243,17 +243,21 @@ namespace GymDataAccesLayer
         {
             using (SqlConnection connection = new SqlConnection(clsDataBaseSettings.ConnectionString))
             {
-                string query = @"SELECT *
+                string query = @"SELECT _id, Name, Phone,
+                                   EnrollmentStart, EnrollmentEnd,
+                                   TotalAmount, PaidAmount,
+                                   (TotalAmount - PaidAmount) AS RemainingAmount,
+                                    DaysTillSubscriptionExpired
                             FROM (
                                 SELECT Trainers._id, Trainers.Name, Trainers.Phone,
                                        Subscriptions.EnrollmentStart, Subscriptions.EnrollmentEnd,
                                        Subscriptions.TotalAmount, Subscriptions.PaidAmount,
-                                       (Subscriptions.TotalAmount - Subscriptions.PaidAmount) AS RemainingAmount,
-                                       DATEDIFF(day, GETDATE(), Subscriptions.EnrollmentEnd) AS DaysTillSubscriptionExpired
-                                FROM Subscriptions
-                                INNER JOIN Trainers ON Subscriptions.[Player_id] = Trainers._id  
-                            ) DateRemaining
-                            WHERE DaysTillSubscriptionExpired <= 0 AND DaysTillSubscriptionExpired >= -31;";
+                                    DATEDIFF(day, GETDATE(), EnrollmentEnd) AS DaysTillSubscriptionExpired,                              
+                                       ROW_NUMBER() OVER (PARTITION BY Trainers._id ORDER BY Subscriptions.EnrollmentEnd DESC) AS RowNum
+                                FROM Trainers
+                                INNER JOIN Subscriptions ON Trainers._id = Subscriptions.Player_id
+                            ) R2
+                            WHERE RowNum = 1  And DaysTillSubscriptionExpired Between -31 And 0;";
 
                 using (SqlCommand cmd = new SqlCommand(query, connection))
                 {

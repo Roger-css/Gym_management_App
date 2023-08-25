@@ -136,7 +136,7 @@ namespace presentation_layer.Forms
             {
                 MessageBox.Show("حدث خطأ يرجى التواصل مع المطور");
             }
-
+            GeneralMethods.ChangeColumnNames(ref Dgv);
         }
     }
 }

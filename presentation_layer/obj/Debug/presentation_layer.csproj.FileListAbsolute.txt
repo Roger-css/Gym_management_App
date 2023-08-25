@@ -12,7 +12,6 @@ D:\Gym_management_App\presentation_layer\bin\Debug\presentation_layer.exe.config
 D:\Gym_management_App\presentation_layer\bin\Debug\presentation_layer.exe
 D:\Gym_management_App\presentation_layer\bin\Debug\presentation_layer.pdb
 D:\Gym_management_App\presentation_layer\obj\Debug\presentation_layer.csproj.AssemblyReference.cache
-D:\Gym_management_App\presentation_layer\obj\Debug\presentation_layer.csproj.SuggestedBindingRedirects.cache
 D:\Gym_management_App\presentation_layer\obj\Debug\presentation_layer.Form1.resources
 D:\Gym_management_App\presentation_layer\obj\Debug\presentation_layer.Properties.Resources.resources
 D:\Gym_management_App\presentation_layer\obj\Debug\presentation_layer.csproj.GenerateResource.cache

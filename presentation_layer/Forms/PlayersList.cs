@@ -23,12 +23,16 @@ namespace presentation_layer.Forms
         private void Form_Shown(object sender, EventArgs e)
         {
             RefreshList();
+            for (int i = 0; i < 9; i++)
+            {
+                DgvList.Columns[i].SortMode = DataGridViewColumnSortMode.NotSortable;
+            }
         }
-        private void RefreshList()
+        private void ChangeListColors()
         {
-            DgvList.DataSource = clsTrainee.GetTraineesAllSub(); 
             DgvList.ForeColor = Color.Black;
-            DgvList.Columns[8].DefaultCellStyle.ForeColor = Color.White;
+            if (DgvList.Rows.Count > 0)
+                DgvList.Columns[8].DefaultCellStyle.ForeColor = Color.White;
             for (int i = 0; i < DgvList.Rows.Count; i++)
             {
 
@@ -45,11 +49,12 @@ namespace presentation_layer.Forms
                 }
             }
             DgvList.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            for(int i = 0;i < 9;i++)
-            {
-                DgvList.Columns[i].SortMode = DataGridViewColumnSortMode.NotSortable; 
-            }
             GeneralMethods.ChangeColumnNames(ref DgvList);
+        }
+        private void RefreshList()
+        {
+            DgvList.DataSource = clsTrainee.GetTraineesAllSub(); 
+           ChangeListColors();
         }
 
         private void SearchBtn_Click(object sender, EventArgs e)
@@ -57,6 +62,7 @@ namespace presentation_layer.Forms
             if (TbSearch.Text != string.Empty)
             {
                 DgvList.DataSource = clsTrainee.GetTraineeAllSubsByName(TbSearch.Text);
+                ChangeListColors();
             }
         }
 

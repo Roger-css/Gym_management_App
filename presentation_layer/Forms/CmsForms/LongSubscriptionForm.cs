@@ -43,9 +43,12 @@ namespace presentation_layer.Forms.CmsForms
         private void button1_Click(object sender, EventArgs e)
         {
             bool Valid = true;
-            SubPrices.Text = "999";
-            int Tprice = Convert.ToInt32(SubPrices.Text),
-                PaidAmount = Convert.ToInt32(TbPaid.Text);
+            int Tprice = Convert.ToInt32(SubPrices.Text);
+            if(!int.TryParse(TbPaid.Text, out int PaidAmount))
+            {
+                MessageBox.Show("المبلغ المدفوع ليس رقما صالحاً");
+                Valid = false;
+            }
             DateTime Start = DtpStart.Value,
                  End = DtpEnd.Value;
             if (End <= Start)
@@ -66,6 +69,20 @@ namespace presentation_layer.Forms.CmsForms
                     MessageBox.Show("تمت اضافة الاشتراك بنجاح");
                     Close();
                 }
+            }
+        }
+
+        private void PaidAmount_valueChanged(object sender, EventArgs e)
+        {
+            if (int.TryParse(((MaskedTextBox)sender).Text, out int PaidPrice))
+            {
+
+            }
+            else
+            {
+                ((MaskedTextBox)sender).Text = ((MaskedTextBox)sender).Text
+                    .Substring(0, ((MaskedTextBox)sender).Text.Length - 1);
+                MessageBox.Show("يرجى ادخال الارقام فقط في هذا الحقل");
             }
         }
     }

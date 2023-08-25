@@ -61,7 +61,7 @@ namespace presentation_layer.Forms
         {
             if (TbSearch.Text != string.Empty)
             {
-                DgvList.DataSource = clsTrainee.GetTraineeAllSubsByName(TbSearch.Text);
+                DgvList.DataSource = clsTrainee.GetTraineeAllSubsByName(TbSearch.Text.Trim());
                 ChangeListColors();
             }
         }

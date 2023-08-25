@@ -47,7 +47,6 @@ namespace presentation_layer
             }
             if (ValidData)
             {
-                LbPrices.Text = "999";
                 int added = clsTrainee.AddPalyerWithSubscribtion(TbName.Text, TbPhone.Text,
                 imagePath, DtpStartDate.Value, DtpEndDate.Value,
                 int.Parse(LbPrices.Text), int.Parse(TbPaidPrice.Text));
@@ -61,6 +60,20 @@ namespace presentation_layer
         private void AddPlayer_Load(object sender, EventArgs e)
         {
             DtpEndDate.Value = DateTime.Now.AddMonths(1);
+        }
+
+        private void PaidAmount_valueChanged(object sender, EventArgs e)
+        {
+            if (int.TryParse(((MaskedTextBox)sender).Text, out int PaidPrice))
+            {
+
+            }
+            else
+            {
+                ((MaskedTextBox)sender).Text = ((MaskedTextBox)sender).Text
+                    .Substring(0, ((MaskedTextBox)sender).Text.Length - 1);
+                MessageBox.Show("يرجى ادخال الارقام فقط في هذا الحقل");
+            }
         }
     }
 }

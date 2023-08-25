@@ -63,7 +63,16 @@ namespace presentation_layer.Forms.CmsForms
 
         private void PaidPrice_Changed(object sender, EventArgs e)
         {
-            PaidPrice = Convert.ToInt32(((MaskedTextBox)sender).Text);
+            if(int.TryParse(((MaskedTextBox)sender).Text, out PaidPrice))
+            {
+
+            }
+            else
+            {
+                ((MaskedTextBox)sender).Text = ((MaskedTextBox)sender).Text
+                    .Substring(0, ((MaskedTextBox)sender).Text.Length - 1);
+                MessageBox.Show("يرجى ادخال الارقام فقط في هذا الحقل");                
+            }
         }
 
         private void Button1_Click(object sender, EventArgs e)
@@ -84,7 +93,7 @@ namespace presentation_layer.Forms.CmsForms
             if (ValidData)
             {
                 bool ok = clsTrainee.UpdatePlayerSubScription(PlayerId, TbName.Text, DtpStart.Value, DtpEnd.Value
-                , TbPhone.Text, pictureBox1.ImageLocation, TotalPrice,
+                , TbPhone.Text, imagePath, TotalPrice,
                 PaidPrice);
                 if (ok)
                 {

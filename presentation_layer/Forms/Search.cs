@@ -18,25 +18,24 @@ namespace presentation_layer
         {
             InitializeComponent();
 
-            this.Shown += Form_Shown;
+            Shown += Form_Shown;
         }
         private void Form_Shown(object sender, EventArgs e)
         {
             RefreshList();
-            DgvList.AllowUserToOrderColumns = false;
             for (int i = 0; i < 9; i++)
             {
                 DgvList.Columns[i].SortMode = DataGridViewColumnSortMode.NotSortable;
             }
         }
-        public void RefreshList()
+        private void ChangeListColors()
         {
-            DgvList.DataSource = clsTrainee.GetTraineesLastSub();
             DgvList.ForeColor = Color.Black;
-            DgvList.Columns[8].DefaultCellStyle.ForeColor = Color.White;
+            if(DgvList.Rows.Count > 0)
+                DgvList.Columns[8].DefaultCellStyle.ForeColor = Color.White;
             for (int i = 0; i < DgvList.Rows.Count; i++)
             {
-                
+
                 if (int.TryParse(DgvList.Rows[i].Cells[8].Value.ToString(), out int cellValue))
                 {
                     if (cellValue < 0)
@@ -51,6 +50,11 @@ namespace presentation_layer
             }
             DgvList.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             GeneralMethods.ChangeColumnNames(ref DgvList);
+        }
+        public void RefreshList()
+        {
+            DgvList.DataSource = clsTrainee.GetTraineesLastSub();
+            ChangeListColors();
         }
         private void EditToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -70,7 +74,8 @@ namespace presentation_layer
         {
             if(TbSearch.Text != string.Empty)
             {
-                DgvList.DataSource = clsTrainee.GetTraineeLastSub(TbSearch.Text);
+                DgvList.DataSource = clsTrainee.GetTraineeLastSub(TbSearch.Text.Trim());
+                ChangeListColors();
             }
         }
         private void RefreshBtn_Click(object sender, EventArgs e)

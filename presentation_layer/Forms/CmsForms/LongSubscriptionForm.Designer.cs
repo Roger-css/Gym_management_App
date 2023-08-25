@@ -177,6 +177,7 @@
             this.TbPaid.Name = "TbPaid";
             this.TbPaid.Size = new System.Drawing.Size(139, 35);
             this.TbPaid.TabIndex = 23;
+            this.TbPaid.TextChanged += new System.EventHandler(this.PaidAmount_valueChanged);
             // 
             // button1
             // 

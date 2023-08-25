@@ -25,5 +25,10 @@ namespace presentation_layer.Forms
             DgvList.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             GeneralMethods.ChangeColumnNames(ref DgvList);
         }
+
+        private void PayTheRest_Click(object sender, EventArgs e)
+        {
+            GeneralMethods.QuickAddMoney_click(DgvList.CurrentRow.Cells[0].Value);
+        }
     }
 }

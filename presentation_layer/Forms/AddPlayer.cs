@@ -53,7 +53,6 @@ namespace presentation_layer
             }
             if (ValidData)
             {
-                LbPrices.Text = "999";
                 int added = clsTrainee.AddPalyerWithSubscribtion(TbName.Text, TbPhone.Text,
                 imagePath, DtpStartDate.Value, DtpEndDate.Value,
                 int.Parse(LbPrices.Text), paidPrices);
@@ -67,6 +66,7 @@ namespace presentation_layer
         private void AddPlayer_Load(object sender, EventArgs e)
         {
             DtpEndDate.Value = DateTime.Now.AddMonths(1);
+            LbPrices.SelectedIndex = 0;
         }
         private void PaidAmount_valueChanged(object sender, EventArgs e)
         {

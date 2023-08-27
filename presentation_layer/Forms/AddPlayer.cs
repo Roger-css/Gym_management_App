@@ -46,7 +46,7 @@ namespace presentation_layer
             {
                 TbPaidPrice.Text = "0";
             }
-            if (int.TryParse(TbPaidPrice.Text,out int paidPrices))
+            if (!int.TryParse(TbPaidPrice.Text,out int paidPrices))
             {
                 MessageBox.Show("يرجى ادخال الارقام فقط في حقل المبلغ المدفوع");
                 ValidData = false;

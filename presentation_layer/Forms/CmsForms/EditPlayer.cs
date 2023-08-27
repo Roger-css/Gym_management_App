@@ -41,7 +41,6 @@ namespace presentation_layer.Forms.CmsForms
         private void EditPlayer_Load(object sender, EventArgs e)
         {
             _id.Text = PlayerId.ToString();
-            
             ShowTraineeDetails();
             
         }

@@ -7,3 +7,12 @@ D:\Gym_management_App\Buisness_layer\obj\Release\Gym_Bussnies_Layer.csproj.CoreC
 D:\Gym_management_App\Buisness_layer\obj\Release\Gym_Bussnies_Layer.csproj.CopyComplete
 D:\Gym_management_App\Buisness_layer\obj\Release\Buisness_layer.dll
 D:\Gym_management_App\Buisness_layer\obj\Release\Buisness_layer.pdb
+C:\Users\H1202\source\repos\Gym_management_App-Production\Buisness_layer\bin\Release\Buisness_layer.dll
+C:\Users\H1202\source\repos\Gym_management_App-Production\Buisness_layer\bin\Release\Buisness_layer.pdb
+C:\Users\H1202\source\repos\Gym_management_App-Production\Buisness_layer\bin\Release\Data_Access_layer.dll
+C:\Users\H1202\source\repos\Gym_management_App-Production\Buisness_layer\bin\Release\Data_Access_layer.pdb
+C:\Users\H1202\source\repos\Gym_management_App-Production\Buisness_layer\obj\Release\Gym_Bussnies_Layer.csproj.AssemblyReference.cache
+C:\Users\H1202\source\repos\Gym_management_App-Production\Buisness_layer\obj\Release\Gym_Bussnies_Layer.csproj.CoreCompileInputs.cache
+C:\Users\H1202\source\repos\Gym_management_App-Production\Buisness_layer\obj\Release\Gym_Bussnies_Layer.csproj.CopyComplete
+C:\Users\H1202\source\repos\Gym_management_App-Production\Buisness_layer\obj\Release\Buisness_layer.dll
+C:\Users\H1202\source\repos\Gym_management_App-Production\Buisness_layer\obj\Release\Buisness_layer.pdb

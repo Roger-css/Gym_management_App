@@ -4,3 +4,9 @@ D:\Gym_management_App\Data_Access_layer\obj\Release\Gym_Data_Acces_Layer.csproj.
 D:\Gym_management_App\Data_Access_layer\obj\Release\Gym_Data_Acces_Layer.csproj.CoreCompileInputs.cache
 D:\Gym_management_App\Data_Access_layer\obj\Release\Data_Access_layer.dll
 D:\Gym_management_App\Data_Access_layer\obj\Release\Data_Access_layer.pdb
+C:\Users\H1202\source\repos\Gym_management_App-Production\Data_Access_layer\bin\Release\Data_Access_layer.dll
+C:\Users\H1202\source\repos\Gym_management_App-Production\Data_Access_layer\bin\Release\Data_Access_layer.pdb
+C:\Users\H1202\source\repos\Gym_management_App-Production\Data_Access_layer\obj\Release\Gym_Data_Acces_Layer.csproj.AssemblyReference.cache
+C:\Users\H1202\source\repos\Gym_management_App-Production\Data_Access_layer\obj\Release\Gym_Data_Acces_Layer.csproj.CoreCompileInputs.cache
+C:\Users\H1202\source\repos\Gym_management_App-Production\Data_Access_layer\obj\Release\Data_Access_layer.dll
+C:\Users\H1202\source\repos\Gym_management_App-Production\Data_Access_layer\obj\Release\Data_Access_layer.pdb

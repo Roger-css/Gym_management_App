@@ -47,6 +47,7 @@ namespace presentation_layer
             }
             if (ValidData)
             {
+                LbPrices.Text = "999";
                 int added = clsTrainee.AddPalyerWithSubscribtion(TbName.Text, TbPhone.Text,
                 imagePath, DtpStartDate.Value, DtpEndDate.Value,
                 int.Parse(LbPrices.Text), int.Parse(TbPaidPrice.Text));

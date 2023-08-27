@@ -17,18 +17,22 @@ namespace presentation_layer.Forms
         {
             InitializeComponent();
         }
-
-        private void UncompleteSubs_Load(object sender, EventArgs e)
+        private void RefreshList()
         {
             DgvList.DataSource = clsSubscription.GetTraineesWithRemaining();
             DgvList.ForeColor = Color.Black;
             DgvList.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             GeneralMethods.ChangeColumnNames(ref DgvList);
         }
+        private void UncompleteSubs_Load(object sender, EventArgs e)
+        {
+            RefreshList();
+        }
 
         private void PayTheRest_Click(object sender, EventArgs e)
         {
             GeneralMethods.QuickAddMoney_click(DgvList.CurrentRow.Cells[0].Value);
+            RefreshList();
         }
     }
 }

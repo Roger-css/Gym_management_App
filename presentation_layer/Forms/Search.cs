@@ -59,16 +59,19 @@ namespace presentation_layer
         private void EditToolStripMenuItem_Click(object sender, EventArgs e)
         {
             GeneralMethods.EditToolStripMenuItem_Click(DgvList.CurrentRow.Cells[0].Value);
+            RefreshList();
         }
 
         private void ManualSub_click(object sender, EventArgs e)
         {
             GeneralMethods.ManualSub_click(DgvList.CurrentRow.Cells[0].Value);
+            RefreshList();
         }
 
         private void QuickSubBtn_Click(object sender, EventArgs e)
         {
             GeneralMethods.QuickSubBtn_Click(DgvList.CurrentRow.Cells[0].Value);
+            RefreshList();
         }
         private void SearchBtn_Click(object sender, EventArgs e)
         {
@@ -86,6 +89,7 @@ namespace presentation_layer
         private void QuickAddMoney_click(object sender, EventArgs e)
         {
             GeneralMethods.QuickAddMoney_click(DgvList.CurrentRow.Cells[0].Value);
+            RefreshList();
         }
     }
 }

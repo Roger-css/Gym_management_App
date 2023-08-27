@@ -63,16 +63,11 @@ namespace presentation_layer.Forms.CmsForms
 
         private void PaidPrice_Changed(object sender, EventArgs e)
         {
-            if(int.TryParse(((MaskedTextBox)sender).Text, out PaidPrice))
+            if(!int.TryParse(((MaskedTextBox)sender).Text, out PaidPrice) && ((MaskedTextBox)sender).Text != "")
             {
-
+                MessageBox.Show("يرجى ادخال الارقام فقط في هذا الحقل");
             }
-            else
-            {
-                ((MaskedTextBox)sender).Text = ((MaskedTextBox)sender).Text
-                    .Substring(0, ((MaskedTextBox)sender).Text.Length - 1);
-                MessageBox.Show("يرجى ادخال الارقام فقط في هذا الحقل");                
-            }
+            
         }
 
         private void Button1_Click(object sender, EventArgs e)
@@ -80,6 +75,7 @@ namespace presentation_layer.Forms.CmsForms
             bool ValidData = true;
             if (TbName.Text == "")
             {
+                MessageBox.Show("لايمكن ان يكون الاسم فارغ");
                 ValidData = false;
             }
             if (DtpStart.Value >= DtpEnd.Value)
@@ -89,6 +85,11 @@ namespace presentation_layer.Forms.CmsForms
             if (TbPaid.Text == "")
             {
                 TbPaid.Text = "0";
+            }
+            if (!int.TryParse(TbPaid.Text, out PaidPrice))
+            {
+                MessageBox.Show("يرجى ادخال الارقام فقط في حقل المبلغ المدفوع");
+                ValidData = false;
             }
             if (ValidData)
             {

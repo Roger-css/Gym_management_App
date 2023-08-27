@@ -23,7 +23,7 @@ namespace presentation_layer
         private void Form_Shown(object sender, EventArgs e)
         {
             RefreshList();
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < DgvList.ColumnCount; i++)
             {
                 DgvList.Columns[i].SortMode = DataGridViewColumnSortMode.NotSortable;
             }

@@ -61,6 +61,7 @@ namespace presentation_layer.Forms.CmsForms
                 Valid = false;
                 MessageBox.Show("لايمكن ان يكون المبلغ المدفوع اكبر من سعر الاشتراك");
             }
+
             if (Valid)
             {
                 int ok = clsSubscription.AddNewSubscription(_id, Start, End, Tprice, PaidAmount);
@@ -74,14 +75,8 @@ namespace presentation_layer.Forms.CmsForms
 
         private void PaidAmount_valueChanged(object sender, EventArgs e)
         {
-            if (int.TryParse(((MaskedTextBox)sender).Text, out int PaidPrice))
+            if ((!int.TryParse(((MaskedTextBox)sender).Text, out int PaidPrice)) && ((MaskedTextBox)sender).Text != "")
             {
-
-            }
-            else
-            {
-                ((MaskedTextBox)sender).Text = ((MaskedTextBox)sender).Text
-                    .Substring(0, ((MaskedTextBox)sender).Text.Length - 1);
                 MessageBox.Show("يرجى ادخال الارقام فقط في هذا الحقل");
             }
         }

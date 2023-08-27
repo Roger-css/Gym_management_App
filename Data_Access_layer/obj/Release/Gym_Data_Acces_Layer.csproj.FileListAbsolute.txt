@@ -1,0 +1,6 @@
+D:\Gym_management_App\Data_Access_layer\bin\Release\Data_Access_layer.dll
+D:\Gym_management_App\Data_Access_layer\bin\Release\Data_Access_layer.pdb
+D:\Gym_management_App\Data_Access_layer\obj\Release\Gym_Data_Acces_Layer.csproj.AssemblyReference.cache
+D:\Gym_management_App\Data_Access_layer\obj\Release\Gym_Data_Acces_Layer.csproj.CoreCompileInputs.cache
+D:\Gym_management_App\Data_Access_layer\obj\Release\Data_Access_layer.dll
+D:\Gym_management_App\Data_Access_layer\obj\Release\Data_Access_layer.pdb

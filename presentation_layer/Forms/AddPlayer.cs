@@ -35,6 +35,7 @@ namespace presentation_layer
             bool ValidData = true;
             if (TbName.Text == "")
             {
+                MessageBox.Show("لايمكن ان يكون الاسم فارغ");
                 ValidData = false;
             }
             if (DtpStartDate.Value >= DtpEndDate.Value)
@@ -45,12 +46,17 @@ namespace presentation_layer
             {
                 TbPaidPrice.Text = "0";
             }
+            if (!int.TryParse(TbPaidPrice.Text,out int paidPrices))
+            {
+                MessageBox.Show("يرجى ادخال الارقام فقط في حقل المبلغ المدفوع");
+                ValidData = false;
+            }
             if (ValidData)
             {
                 LbPrices.Text = "999";
                 int added = clsTrainee.AddPalyerWithSubscribtion(TbName.Text, TbPhone.Text,
                 imagePath, DtpStartDate.Value, DtpEndDate.Value,
-                int.Parse(LbPrices.Text), int.Parse(TbPaidPrice.Text));
+                int.Parse(LbPrices.Text), paidPrices);
                 if (added != -1)
                 {
                     MessageBox.Show($"رقم بطاقة اللاعب هي {added}");
@@ -62,17 +68,10 @@ namespace presentation_layer
         {
             DtpEndDate.Value = DateTime.Now.AddMonths(1);
         }
-
         private void PaidAmount_valueChanged(object sender, EventArgs e)
         {
-            if (int.TryParse(((MaskedTextBox)sender).Text, out int PaidPrice))
+            if (!int.TryParse(((MaskedTextBox)sender).Text, out int PaidPrice) && ((MaskedTextBox)sender).Text != "")
             {
-
-            }
-            else
-            {
-                ((MaskedTextBox)sender).Text = ((MaskedTextBox)sender).Text
-                    .Substring(0, ((MaskedTextBox)sender).Text.Length - 1);
                 MessageBox.Show("يرجى ادخال الارقام فقط في هذا الحقل");
             }
         }

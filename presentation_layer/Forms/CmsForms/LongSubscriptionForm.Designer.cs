@@ -62,7 +62,7 @@
             "40000",
             "45000",
             "50000"});
-            this.SubPrices.Location = new System.Drawing.Point(383, 208);
+            this.SubPrices.Location = new System.Drawing.Point(400, 215);
             this.SubPrices.Name = "SubPrices";
             this.SubPrices.Size = new System.Drawing.Size(122, 33);
             this.SubPrices.TabIndex = 35;
@@ -73,7 +73,7 @@
             this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(544, 208);
+            this.label8.Location = new System.Drawing.Point(544, 219);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(127, 29);
             this.label8.TabIndex = 34;
@@ -86,7 +86,7 @@
             this.DtpEnd.CalendarForeColor = System.Drawing.Color.Black;
             this.DtpEnd.CalendarTitleForeColor = System.Drawing.Color.Black;
             this.DtpEnd.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DtpEnd.Location = new System.Drawing.Point(201, 446);
+            this.DtpEnd.Location = new System.Drawing.Point(201, 469);
             this.DtpEnd.Name = "DtpEnd";
             this.DtpEnd.Size = new System.Drawing.Size(321, 35);
             this.DtpEnd.TabIndex = 33;
@@ -96,7 +96,7 @@
             this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(541, 370);
+            this.label7.Location = new System.Drawing.Point(541, 389);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(127, 29);
             this.label7.TabIndex = 32;
@@ -107,7 +107,7 @@
             this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(534, 450);
+            this.label6.Location = new System.Drawing.Point(534, 474);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(129, 29);
             this.label6.TabIndex = 31;
@@ -118,7 +118,7 @@
             this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(566, 127);
+            this.label5.Location = new System.Drawing.Point(566, 134);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(105, 29);
             this.label5.TabIndex = 30;
@@ -129,7 +129,7 @@
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(544, 289);
+            this.label4.Location = new System.Drawing.Point(544, 304);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(122, 29);
             this.label4.TabIndex = 29;
@@ -142,7 +142,7 @@
             this.PnlUp.Dock = System.Windows.Forms.DockStyle.Top;
             this.PnlUp.Location = new System.Drawing.Point(0, 0);
             this.PnlUp.Name = "PnlUp";
-            this.PnlUp.Size = new System.Drawing.Size(785, 91);
+            this.PnlUp.Size = new System.Drawing.Size(785, 96);
             this.PnlUp.TabIndex = 27;
             // 
             // label2
@@ -151,7 +151,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Gainsboro;
-            this.label2.Location = new System.Drawing.Point(493, 24);
+            this.label2.Location = new System.Drawing.Point(493, 25);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(280, 40);
             this.label2.TabIndex = 9;
@@ -164,7 +164,7 @@
             this.DtpStart.CalendarForeColor = System.Drawing.Color.Black;
             this.DtpStart.CalendarTitleForeColor = System.Drawing.Color.Black;
             this.DtpStart.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DtpStart.Location = new System.Drawing.Point(201, 364);
+            this.DtpStart.Location = new System.Drawing.Point(201, 383);
             this.DtpStart.Name = "DtpStart";
             this.DtpStart.Size = new System.Drawing.Size(321, 35);
             this.DtpStart.TabIndex = 25;
@@ -173,7 +173,7 @@
             // 
             this.TbPaid.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.TbPaid.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TbPaid.Location = new System.Drawing.Point(383, 283);
+            this.TbPaid.Location = new System.Drawing.Point(383, 298);
             this.TbPaid.Name = "TbPaid";
             this.TbPaid.Size = new System.Drawing.Size(139, 35);
             this.TbPaid.TabIndex = 23;
@@ -185,9 +185,9 @@
             this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(119)))), ((int)(((byte)(186)))));
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button1.Location = new System.Drawing.Point(539, 526);
+            this.button1.Location = new System.Drawing.Point(539, 554);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(116, 58);
+            this.button1.Size = new System.Drawing.Size(116, 61);
             this.button1.TabIndex = 21;
             this.button1.Text = "اشتراك";
             this.button1.UseVisualStyleBackColor = false;
@@ -198,7 +198,7 @@
             this.LblName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.LblName.AutoSize = true;
             this.LblName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblName.Location = new System.Drawing.Point(423, 127);
+            this.LblName.Location = new System.Drawing.Point(362, 134);
             this.LblName.Name = "LblName";
             this.LblName.Size = new System.Drawing.Size(99, 29);
             this.LblName.TabIndex = 36;
@@ -206,9 +206,9 @@
             // 
             // LongSubscriptionForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(785, 654);
+            this.ClientSize = new System.Drawing.Size(785, 688);
             this.Controls.Add(this.LblName);
             this.Controls.Add(this.SubPrices);
             this.Controls.Add(this.label8);

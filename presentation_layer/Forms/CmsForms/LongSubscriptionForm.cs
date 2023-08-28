@@ -38,6 +38,7 @@ namespace presentation_layer.Forms.CmsForms
         private void ValueChanged(object sender, EventArgs e)
         {
             TbPaid.Text = SubPrices.Text;
+
         }
 
         private void button1_Click(object sender, EventArgs e)

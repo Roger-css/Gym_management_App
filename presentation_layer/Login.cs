@@ -22,8 +22,8 @@ namespace presentation_layer.Forms
             if(TbUserName.Text == "Admin" && TbPassword.Text == "admin")
             {
                 Form frm = new Form1();
-                frm.Show();
-                WindowState = FormWindowState.Minimized;
+                frm.ShowDialog();
+                Close();
             }
             else
             {

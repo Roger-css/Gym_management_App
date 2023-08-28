@@ -56,7 +56,7 @@
             this.LblId.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.LblId.AutoSize = true;
             this.LblId.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblId.Location = new System.Drawing.Point(717, 135);
+            this.LblId.Location = new System.Drawing.Point(717, 128);
             this.LblId.Name = "LblId";
             this.LblId.Size = new System.Drawing.Size(141, 37);
             this.LblId.TabIndex = 0;
@@ -68,9 +68,9 @@
             this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(119)))), ((int)(((byte)(186)))));
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button1.Location = new System.Drawing.Point(582, 724);
+            this.button1.Location = new System.Drawing.Point(582, 688);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(116, 61);
+            this.button1.Size = new System.Drawing.Size(116, 58);
             this.button1.TabIndex = 1;
             this.button1.Text = "حفظ";
             this.button1.UseVisualStyleBackColor = false;
@@ -80,7 +80,7 @@
             // 
             this.TbName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.TbName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TbName.Location = new System.Drawing.Point(406, 251);
+            this.TbName.Location = new System.Drawing.Point(406, 238);
             this.TbName.Name = "TbName";
             this.TbName.Size = new System.Drawing.Size(294, 35);
             this.TbName.TabIndex = 2;
@@ -89,7 +89,7 @@
             // 
             this.TbPaid.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.TbPaid.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TbPaid.Location = new System.Drawing.Point(561, 506);
+            this.TbPaid.Location = new System.Drawing.Point(561, 481);
             this.TbPaid.Name = "TbPaid";
             this.TbPaid.Size = new System.Drawing.Size(139, 35);
             this.TbPaid.TabIndex = 3;
@@ -102,7 +102,7 @@
             this.DtpStart.CalendarForeColor = System.Drawing.Color.Black;
             this.DtpStart.CalendarTitleForeColor = System.Drawing.Color.Black;
             this.DtpStart.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DtpStart.Location = new System.Drawing.Point(379, 583);
+            this.DtpStart.Location = new System.Drawing.Point(379, 554);
             this.DtpStart.Name = "DtpStart";
             this.DtpStart.Size = new System.Drawing.Size(321, 35);
             this.DtpStart.TabIndex = 5;
@@ -111,7 +111,7 @@
             // 
             this.TbPhone.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.TbPhone.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TbPhone.Location = new System.Drawing.Point(406, 332);
+            this.TbPhone.Location = new System.Drawing.Point(406, 315);
             this.TbPhone.Name = "TbPhone";
             this.TbPhone.Size = new System.Drawing.Size(298, 35);
             this.TbPhone.TabIndex = 7;
@@ -123,7 +123,7 @@
             this.PnlUp.Dock = System.Windows.Forms.DockStyle.Top;
             this.PnlUp.Location = new System.Drawing.Point(0, 0);
             this.PnlUp.Name = "PnlUp";
-            this.PnlUp.Size = new System.Drawing.Size(891, 96);
+            this.PnlUp.Size = new System.Drawing.Size(891, 91);
             this.PnlUp.TabIndex = 8;
             // 
             // label2
@@ -132,7 +132,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Gainsboro;
-            this.label2.Location = new System.Drawing.Point(637, 25);
+            this.label2.Location = new System.Drawing.Point(637, 24);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(251, 40);
             this.label2.TabIndex = 9;
@@ -143,7 +143,7 @@
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(603, 300);
+            this.label3.Location = new System.Drawing.Point(603, 285);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(101, 29);
             this.label3.TabIndex = 9;
@@ -154,7 +154,7 @@
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(583, 474);
+            this.label4.Location = new System.Drawing.Point(583, 450);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(122, 29);
             this.label4.TabIndex = 10;
@@ -165,7 +165,7 @@
             this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(595, 219);
+            this.label5.Location = new System.Drawing.Point(595, 208);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(105, 29);
             this.label5.TabIndex = 11;
@@ -176,7 +176,7 @@
             this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(576, 634);
+            this.label6.Location = new System.Drawing.Point(576, 602);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(129, 29);
             this.label6.TabIndex = 12;
@@ -187,7 +187,7 @@
             this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(578, 551);
+            this.label7.Location = new System.Drawing.Point(578, 523);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(127, 29);
             this.label7.TabIndex = 13;
@@ -200,7 +200,7 @@
             this.DtpEnd.CalendarForeColor = System.Drawing.Color.Black;
             this.DtpEnd.CalendarTitleForeColor = System.Drawing.Color.Black;
             this.DtpEnd.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DtpEnd.Location = new System.Drawing.Point(379, 666);
+            this.DtpEnd.Location = new System.Drawing.Point(379, 633);
             this.DtpEnd.Name = "DtpEnd";
             this.DtpEnd.Size = new System.Drawing.Size(321, 35);
             this.DtpEnd.TabIndex = 14;
@@ -210,7 +210,7 @@
             this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(577, 387);
+            this.label8.Location = new System.Drawing.Point(577, 368);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(127, 29);
             this.label8.TabIndex = 16;
@@ -234,7 +234,7 @@
             "40000",
             "45000",
             "50000"});
-            this.SubPrices.Location = new System.Drawing.Point(578, 419);
+            this.SubPrices.Location = new System.Drawing.Point(578, 398);
             this.SubPrices.Name = "SubPrices";
             this.SubPrices.Size = new System.Drawing.Size(122, 33);
             this.SubPrices.TabIndex = 17;
@@ -245,7 +245,7 @@
             this._id.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this._id.AutoSize = true;
             this._id.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this._id.Location = new System.Drawing.Point(593, 135);
+            this._id.Location = new System.Drawing.Point(593, 128);
             this._id.Name = "_id";
             this._id.Size = new System.Drawing.Size(43, 37);
             this._id.TabIndex = 18;
@@ -260,9 +260,9 @@
             this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pictureBox1.InitialImage = null;
-            this.pictureBox1.Location = new System.Drawing.Point(52, 111);
+            this.pictureBox1.Location = new System.Drawing.Point(52, 105);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(163, 137);
+            this.pictureBox1.Size = new System.Drawing.Size(163, 130);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 4;
             this.pictureBox1.TabStop = false;
@@ -270,9 +270,9 @@
             // 
             // EditPlayer
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(891, 792);
+            this.ClientSize = new System.Drawing.Size(891, 752);
             this.Controls.Add(this._id);
             this.Controls.Add(this.SubPrices);
             this.Controls.Add(this.label8);

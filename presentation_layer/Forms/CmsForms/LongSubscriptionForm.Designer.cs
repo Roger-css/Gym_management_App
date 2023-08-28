@@ -62,7 +62,7 @@
             "40000",
             "45000",
             "50000"});
-            this.SubPrices.Location = new System.Drawing.Point(383, 219);
+            this.SubPrices.Location = new System.Drawing.Point(400, 215);
             this.SubPrices.Name = "SubPrices";
             this.SubPrices.Size = new System.Drawing.Size(122, 33);
             this.SubPrices.TabIndex = 35;
@@ -198,7 +198,7 @@
             this.LblName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.LblName.AutoSize = true;
             this.LblName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblName.Location = new System.Drawing.Point(378, 134);
+            this.LblName.Location = new System.Drawing.Point(362, 134);
             this.LblName.Name = "LblName";
             this.LblName.Size = new System.Drawing.Size(99, 29);
             this.LblName.TabIndex = 36;

@@ -67,7 +67,8 @@ namespace presentation_layer
         {
             DtpEndDate.Value = DateTime.Now.AddMonths(1);
             LbPrices.SelectedIndex = 0;
-        }
+            LbPrices.Size = new System.Drawing.Size(170, 36);
+        } 
         private void PaidAmount_valueChanged(object sender, EventArgs e)
         {
             if (!int.TryParse(((MaskedTextBox)sender).Text, out int PaidPrice) && ((MaskedTextBox)sender).Text != "")

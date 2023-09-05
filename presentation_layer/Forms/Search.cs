@@ -75,11 +75,33 @@ namespace presentation_layer
         }
         private void SearchBtn_Click(object sender, EventArgs e)
         {
-            if(TbSearch.Text != string.Empty)
+            DataTable dt = new DataTable();
+            if (TbSearch.Text != string.Empty)
             {
-                DgvList.DataSource = clsTrainee.GetTraineeLastSub(TbSearch.Text.Trim());
-                ChangeListColors();
+                switch (CBSearch.SelectedItem.ToString())
+                {
+                    case "الاسم":
+                        dt = clsTrainee.GetTraineeLastSub(TbSearch.Text.Trim());
+                        ChangeListColors();
+                        break;
+                    case "رقم البطاقة":
+                        if (!int.TryParse(TbSearch.Text, out int id))
+                        {
+                            MessageBox.Show("يرجى ادخال رقم صحيح");
+                            return;
+                        }
+                        dt = clsTrainee.GetLastSubscriptionsByPlayerID(id);
+                        break;
+                    case "رقم الهاتف":
+                        dt = clsTrainee.GetTraineeLastSubByPhone(TbSearch.Text.Trim());
+                        break;
+                    default:
+                        MessageBox.Show("حدث خطأ غير متوقع تواصل مع المطور");
+                        break;
+                }
             }
+            DgvList.DataSource = dt;
+            ChangeListColors();
         }
         private void RefreshBtn_Click(object sender, EventArgs e)
         {
@@ -90,6 +112,11 @@ namespace presentation_layer
         {
             GeneralMethods.QuickAddMoney_click(DgvList.CurrentRow.Cells[0].Value);
             RefreshList();
+        }
+
+        private void SearchForm_Load(object sender, EventArgs e)
+        {
+            CBSearch.SelectedIndex = 0;
         }
     }
 }

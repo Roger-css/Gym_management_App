@@ -45,6 +45,7 @@
             this.QuickAddMoney = new System.Windows.Forms.ToolStripMenuItem();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.DgvList = new System.Windows.Forms.DataGridView();
+            this.CBSearch = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             this.CmsList.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvList)).BeginInit();
@@ -52,6 +53,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.CBSearch);
             this.panel1.Controls.Add(this.RefreshBtn);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.TbSearch);
@@ -60,7 +62,7 @@
             this.panel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1117, 178);
+            this.panel1.Size = new System.Drawing.Size(1190, 178);
             this.panel1.TabIndex = 4;
             // 
             // RefreshBtn
@@ -72,7 +74,7 @@
             this.RefreshBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.RefreshBtn.ForeColor = System.Drawing.Color.Gainsboro;
             this.RefreshBtn.Image = global::presentation_layer.Properties.Resources.Refresh1;
-            this.RefreshBtn.Location = new System.Drawing.Point(1062, 121);
+            this.RefreshBtn.Location = new System.Drawing.Point(1135, 121);
             this.RefreshBtn.Name = "RefreshBtn";
             this.RefreshBtn.Size = new System.Drawing.Size(43, 42);
             this.RefreshBtn.TabIndex = 3;
@@ -85,7 +87,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(374, 26);
+            this.label1.Location = new System.Drawing.Point(411, 26);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(182, 46);
             this.label1.TabIndex = 2;
@@ -95,11 +97,11 @@
             // 
             this.TbSearch.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.TbSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TbSearch.Location = new System.Drawing.Point(334, 86);
+            this.TbSearch.Location = new System.Drawing.Point(371, 86);
             this.TbSearch.Name = "TbSearch";
+            this.TbSearch.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.TbSearch.Size = new System.Drawing.Size(250, 44);
             this.TbSearch.TabIndex = 0;
-            this.TbSearch.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // SearchBtn
             // 
@@ -109,7 +111,7 @@
             this.SearchBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SearchBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.SearchBtn.ForeColor = System.Drawing.Color.Gainsboro;
-            this.SearchBtn.Location = new System.Drawing.Point(647, 72);
+            this.SearchBtn.Location = new System.Drawing.Point(684, 72);
             this.SearchBtn.Name = "SearchBtn";
             this.SearchBtn.Size = new System.Drawing.Size(148, 71);
             this.SearchBtn.TabIndex = 1;
@@ -197,18 +199,34 @@
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DgvList.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.DgvList.RowTemplate.Height = 28;
-            this.DgvList.Size = new System.Drawing.Size(1117, 272);
+            this.DgvList.Size = new System.Drawing.Size(1190, 358);
             this.DgvList.TabIndex = 5;
+            // 
+            // CBSearch
+            // 
+            this.CBSearch.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.CBSearch.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CBSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CBSearch.FormattingEnabled = true;
+            this.CBSearch.Items.AddRange(new object[] {
+            "الاسم",
+            "رقم البطاقة",
+            "رقم الهاتف"});
+            this.CBSearch.Location = new System.Drawing.Point(149, 86);
+            this.CBSearch.Name = "CBSearch";
+            this.CBSearch.Size = new System.Drawing.Size(167, 45);
+            this.CBSearch.TabIndex = 5;
             // 
             // SearchForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1117, 450);
+            this.ClientSize = new System.Drawing.Size(1190, 536);
             this.Controls.Add(this.DgvList);
             this.Controls.Add(this.panel1);
             this.Name = "SearchForm";
             this.Text = "search";
+            this.Load += new System.EventHandler(this.SearchForm_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.CmsList.ResumeLayout(false);
@@ -231,5 +249,6 @@
         private System.Windows.Forms.Button RefreshBtn;
         private System.Windows.Forms.ToolStripMenuItem QuickAddMoney;
         private System.Windows.Forms.DataGridView DgvList;
+        private System.Windows.Forms.ComboBox CBSearch;
     }
 }

@@ -19,7 +19,7 @@ namespace presentation_layer.Forms
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if(TbUserName.Text == "Admin" && TbPassword.Text == "admin")
+            if(TbUserName.Text == "hm" && TbPassword.Text == "123456")
             {
                 Form frm = new Form1();
                 frm.ShowDialog();

@@ -28,10 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.DgvList = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.CBSearch = new System.Windows.Forms.ComboBox();
             this.RefreshBtn = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.TbSearch = new System.Windows.Forms.TextBox();
@@ -46,14 +47,14 @@
             this.DgvList.AllowUserToDeleteRows = false;
             this.DgvList.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.DgvList.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DgvList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DgvList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.DgvList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgvList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DgvList.Location = new System.Drawing.Point(0, 178);
@@ -61,14 +62,15 @@
             this.DgvList.ReadOnly = true;
             this.DgvList.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.DgvList.RowHeadersWidth = 62;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DgvList.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DgvList.RowsDefaultCellStyle = dataGridViewCellStyle8;
             this.DgvList.RowTemplate.Height = 28;
             this.DgvList.Size = new System.Drawing.Size(1185, 354);
             this.DgvList.TabIndex = 7;
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.CBSearch);
             this.panel1.Controls.Add(this.RefreshBtn);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.TbSearch);
@@ -79,6 +81,21 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1185, 178);
             this.panel1.TabIndex = 6;
+            // 
+            // CBSearch
+            // 
+            this.CBSearch.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.CBSearch.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CBSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CBSearch.FormattingEnabled = true;
+            this.CBSearch.Items.AddRange(new object[] {
+            "الاسم",
+            "رقم البطاقة",
+            "رقم الهاتف"});
+            this.CBSearch.Location = new System.Drawing.Point(146, 85);
+            this.CBSearch.Name = "CBSearch";
+            this.CBSearch.Size = new System.Drawing.Size(167, 45);
+            this.CBSearch.TabIndex = 6;
             // 
             // RefreshBtn
             // 
@@ -114,9 +131,9 @@
             this.TbSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TbSearch.Location = new System.Drawing.Point(368, 86);
             this.TbSearch.Name = "TbSearch";
+            this.TbSearch.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.TbSearch.Size = new System.Drawing.Size(250, 44);
             this.TbSearch.TabIndex = 0;
-            this.TbSearch.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // SearchBtn
             // 
@@ -143,6 +160,7 @@
             this.Controls.Add(this.panel1);
             this.Name = "PlayersList";
             this.Text = "PlayersList";
+            this.Load += new System.EventHandler(this.PlayersList_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DgvList)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -158,5 +176,6 @@
         private System.Windows.Forms.TextBox TbSearch;
         private System.Windows.Forms.Button SearchBtn;
         private System.Windows.Forms.Button RefreshBtn;
+        private System.Windows.Forms.ComboBox CBSearch;
     }
 }

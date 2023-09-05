@@ -90,7 +90,7 @@ namespace presentation_layer
                             MessageBox.Show("يرجى ادخال رقم صحيح");
                             return;
                         }
-                        dt = clsTrainee.GetLastSubscriptionsByPlayerID(id);
+                        dt = clsTrainee.GetLastSubscriptionByPlayerIDWithoutPhoto(id);
                         break;
                     case "رقم الهاتف":
                         dt = clsTrainee.GetTraineeLastSubByPhone(TbSearch.Text.Trim());

@@ -175,5 +175,7 @@ namespace GymBussniesLayer
             => clsTraineeDataAccess.GetTraineeLastSubByPhone(Phone);
         public static DataTable GetTraineeAllSubsByPhone(string Phone)
             => clsTraineeDataAccess.GetTraineeAllSubByPhone(Phone);
+        public static DataTable GetLastSubscriptionByPlayerIDWithoutPhoto(int PlayerID)
+            => clsTraineeDataAccess.GetLastSubscriptionByPlayerIDWithoutPhoto(PlayerID);
     }
 }

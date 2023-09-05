@@ -908,6 +908,88 @@ namespace GymDataAccesLayer
                 }
             }
         }
+
+        public static DataTable GetPalyersWithOutSubs()
+        {
+                using (SqlConnection connection = new SqlConnection(clsDataBaseSettings.ConnectionString))
+            {
+                string query = @" SELECT _id, Name, Phone
+                                    FROM Trainers
+                                    WHERE NOT EXISTS (
+                                        SELECT 1
+                                        FROM Subscriptions
+                                        WHERE Trainers._id = Subscriptions.Player_id
+                                    )
+                                    ORDER BY Name;";
+
+
+                using (SqlCommand cmd = new SqlCommand(query, connection))
+                {
+                    
+                    DataTable dt = new DataTable();
+                    try
+                    {
+                        connection.Open();
+
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            if (reader.HasRows)
+                            {
+                                dt.Load(reader);
+                            }
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        dt = null;
+                        // Handle the exception appropriately
+                    }
+
+                    return dt;
+                }
+            }
+        }
+
+        public static DataTable DeletePlayerSub(int playerID)
+        {
+            using (SqlConnection connection = new SqlConnection(clsDataBaseSettings.ConnectionString))
+            {
+                string query = @"DELETE FROM Subscriptions
+                                WHERE Subscriptions._id IN (
+                                    SELECT TOP(1) s._id
+                                    FROM Subscriptions s
+                                    INNER JOIN Trainers  ON s.Player_id = Trainers._id
+                                    WHERE Trainers._id = 3
+                                    ORDER BY s.EnrollmentStart DESC
+                                );";
+
+
+                using (SqlCommand cmd = new SqlCommand(query, connection))
+                {
+                    cmd.Parameters.AddWithValue("@ID", playerID);
+                    DataTable dt = new DataTable();
+                    try
+                    {
+                        connection.Open();
+
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            if (reader.HasRows)
+                            {
+                                dt.Load(reader);
+                            }
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        dt = null;
+                        // Handle the exception appropriately
+                    }
+
+                    return dt;
+                }
+            }
+        }
     }
 
 }

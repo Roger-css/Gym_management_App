@@ -180,5 +180,9 @@ namespace GymBussniesLayer
             => clsTraineeDataAccess.GetTraineeAllSubByPhone(Phone);
         public static DataTable GetLastSubscriptionByPlayerIDWithoutPhoto(int PlayerID)
             => clsTraineeDataAccess.GetLastSubscriptionByPlayerIDWithoutPhoto(PlayerID);
+        public static DataTable GetPalyersWithOutSubs()
+            => clsTraineeDataAccess.GetPalyersWithOutSubs();
+        public static DataTable DeletePlayerSub(int PlayerID)
+            => clsTraineeDataAccess.DeletePlayerSub(PlayerID);
     }
 }

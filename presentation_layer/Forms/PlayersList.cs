@@ -59,16 +59,43 @@ namespace presentation_layer.Forms
 
         private void SearchBtn_Click(object sender, EventArgs e)
         {
+            DataTable dt = new DataTable();
             if (TbSearch.Text != string.Empty)
             {
-                DgvList.DataSource = clsTrainee.GetTraineeAllSubsByName(TbSearch.Text.Trim());
-                ChangeListColors();
+                switch (CBSearch.SelectedItem.ToString())
+                {
+                    case "الاسم":
+                        dt = clsTrainee.GetTraineeAllSubsByName(TbSearch.Text.Trim());
+                        ChangeListColors();
+                        break;
+                    case "رقم البطاقة":
+                        if (!int.TryParse(TbSearch.Text, out int id))
+                        {
+                            MessageBox.Show("يرجى ادخال رقم صحيح");
+                            return;
+                        }
+                        dt = clsTrainee.GetAllSubscriptionsByPlayerID(id);
+                        break;
+                    case "رقم الهاتف":
+                        dt = clsTrainee.GetTraineeAllSubsByPhone(TbSearch.Text.Trim());
+                        break;
+                    default:
+                        MessageBox.Show("حدث خطأ غير متوقع تواصل مع المطور");
+                        break;
+                }
             }
+            DgvList.DataSource = dt;
+            ChangeListColors();
         }
 
         private void RefreshBtn_Click(object sender, EventArgs e)
         {
             RefreshList();
+        }
+
+        private void PlayersList_Load(object sender, EventArgs e)
+        {
+            CBSearch.SelectedIndex = 0;
         }
     }
 }

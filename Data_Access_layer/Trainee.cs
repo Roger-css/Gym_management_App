@@ -776,9 +776,90 @@ namespace GymDataAccesLayer
 
             return subscriptionID;
         }
+        public static DataTable GetTraineeLastSubByPhone(string phone)
+        {
+            DataTable dt = new DataTable();
+            using (SqlConnection connection = new SqlConnection(clsDataBaseSettings.ConnectionString))
+            {
+                string query = @"select top(1) *,
+                                (r1.TotalAmount - r1.PaidAmount) AS RemainingAmount,
+                                DATEDIFF(day, GETDATE(), EnrollmentEnd) AS DaysTillSubscriptionExpired
+                                from (SELECT Trainers._id, Trainers.Name,
+                                Trainers.Phone, Subscriptions.EnrollmentStart, Subscriptions.EnrollmentEnd,
+                                Subscriptions.TotalAmount, Subscriptions.PaidAmount
+                                FROM   Subscriptions INNER JOIN
+                                Trainers ON Subscriptions.Player_id = Trainers._id) r1
+                                where r1.Phone = @Phone
+                                order by r1.EnrollmentEnd desc"
+;
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@Phone", phone);
+                    try
+                    {
+                        connection.Open();
+                        
+                        using (SqlDataReader result = command.ExecuteReader())
+                        {
+                            if (result.HasRows)
+                            {
+                                dt.Load(result);
+                            }
+                            result.Close();
+                            connection.Close();
+                        }
+                        
+                    }
+                    catch (Exception ex)
+                    {
+                        return dt;
+                        // Handle the exception appropriately
+                    }
+                }
+            }
+            return dt;
+        }
+        public static DataTable GetTraineeAllSubByPhone(string phone)
+        {
+            DataTable dt = new DataTable();
+            using (SqlConnection connection = new SqlConnection(clsDataBaseSettings.ConnectionString))
+            {
+                string query = @"select *,
+                                (r1.TotalAmount - r1.PaidAmount) AS RemainingAmount,
+                                DATEDIFF(day, GETDATE(), EnrollmentEnd) AS DaysTillSubscriptionExpired
+                                from (SELECT Trainers._id, Trainers.Name,
+                                Trainers.Phone, Subscriptions.EnrollmentStart, Subscriptions.EnrollmentEnd,
+                                Subscriptions.TotalAmount, Subscriptions.PaidAmount
+                                FROM   Subscriptions INNER JOIN
+                                Trainers ON Subscriptions.Player_id = Trainers._id) r1
+                                where r1.Phone = @Phone
+                                order by r1.EnrollmentEnd desc";
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@Phone", phone);
+                    try
+                    {
+                        connection.Open();
 
+                        using (SqlDataReader result = command.ExecuteReader())
+                        {
+                            if (result.HasRows)
+                            {
+                                dt.Load(result);
+                            }
+                            result.Close();
+                            connection.Close();
+                        }
 
-        
-
+                    }
+                    catch (Exception ex)
+                    {
+                        // Handle the exception appropriately
+                    }
+                }
+            }
+            return dt;
+        }
     }
+
 }

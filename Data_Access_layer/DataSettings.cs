@@ -6,6 +6,6 @@ namespace GymDataAccesLayer
 {
     static class clsDataBaseSettings
     {
-        public static string ConnectionString = "Server=LAPTOP-OJUCE3T8;Database=Gym_management21;User Id=sado;Password=1234567;";
+        public static string ConnectionString = "Data Source=DESKTOP-MH7VVJ1\\SQLEXPRESS;Initial Catalog=Gym_management;User ID=rm;Password=rm123456;";//"server=.;database=Gym_management;User id=sa;password=sa123456";
     }
 }

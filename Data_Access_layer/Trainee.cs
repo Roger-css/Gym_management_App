@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Runtime.InteropServices.ComTypes;
+using System.Security.Policy;
 using System.Xml.Linq;
 
 namespace GymDataAccesLayer
@@ -500,7 +501,7 @@ namespace GymDataAccesLayer
                 WHERE RemainingAmount > 0";
 
                 using (SqlCommand cmd = new SqlCommand(query, connection))
-                {   
+                {
 
                     DataTable dt = new DataTable();
                     try
@@ -669,7 +670,7 @@ namespace GymDataAccesLayer
 
 
                 using (SqlCommand cmd = new SqlCommand(query, connection))
-                 {
+                {
                     cmd.Parameters.AddWithValue("@ID", ID);
                     DataTable dt = new DataTable();
                     try
@@ -803,7 +804,7 @@ namespace GymDataAccesLayer
                     try
                     {
                         connection.Open();
-                        
+
                         using (SqlDataReader result = command.ExecuteReader())
                         {
                             if (result.HasRows)
@@ -813,7 +814,7 @@ namespace GymDataAccesLayer
                             result.Close();
                             connection.Close();
                         }
-                        
+
                     }
                     catch (Exception ex)
                     {
@@ -911,7 +912,7 @@ namespace GymDataAccesLayer
 
         public static DataTable GetPalyersWithOutSubs()
         {
-                using (SqlConnection connection = new SqlConnection(clsDataBaseSettings.ConnectionString))
+            using (SqlConnection connection = new SqlConnection(clsDataBaseSettings.ConnectionString))
             {
                 string query = @" SELECT _id, Name, Phone
                                     FROM Trainers
@@ -925,7 +926,7 @@ namespace GymDataAccesLayer
 
                 using (SqlCommand cmd = new SqlCommand(query, connection))
                 {
-                    
+
                     DataTable dt = new DataTable();
                     try
                     {
@@ -990,6 +991,40 @@ namespace GymDataAccesLayer
                 }
             }
         }
-    }
 
+        public static bool IsPlayerExisit(string palyerName)
+        {
+            bool IsFound = false;
+            using (SqlConnection connection = new SqlConnection(clsDataBaseSettings.ConnectionString))
+            {
+                string query = @"select 1 from Trainers where Trainers.Name = @palyerName";
+
+
+                using (SqlCommand cmd = new SqlCommand(query, connection))
+                {
+                    cmd.Parameters.AddWithValue("@palyerName", palyerName);
+                    try
+                    {
+                        connection.Open();
+
+                        object scalar = cmd.ExecuteScalar();
+
+                        if (scalar != null)
+                        {
+                            int result = Convert.ToInt32(scalar);
+                            IsFound = true;
+                            // Perform the desired action with the result
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        IsFound = false;
+                        // Handle the exception appropriately
+                    }
+                    return IsFound;
+                }
+            }
+        }
+
+    }
 }

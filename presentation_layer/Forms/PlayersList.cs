@@ -49,6 +49,9 @@ namespace presentation_layer.Forms
                 }
             }
             DgvList.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            DgvList.Columns[0].Width = 80;
+            DgvList.Columns[1].Width = 300;
+            DgvList.Columns[8].Width = 300;
             GeneralMethods.ChangeColumnNames(ref DgvList);
         }
         private void RefreshList()
@@ -96,6 +99,11 @@ namespace presentation_layer.Forms
         private void PlayersList_Load(object sender, EventArgs e)
         {
             CBSearch.SelectedIndex = 0;
+        }
+
+        private void CBSearch_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LblSearchMethod.Text = $": {CBSearch.Text}";
         }
     }
 }

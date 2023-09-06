@@ -1,6 +1,6 @@
-﻿namespace presentation_layer
+﻿namespace presentation_layer.Forms
 {
-    partial class SearchForm
+    partial class NoSubsPlayers
     {
         /// <summary>
         /// Required designer variable.
@@ -38,18 +38,12 @@
             this.LblSearchMethod = new System.Windows.Forms.Label();
             this.TbSearch = new System.Windows.Forms.TextBox();
             this.SearchBtn = new System.Windows.Forms.Button();
-            this.CmsList = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.تعديلبياناتاللاعبToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.تجديدالاشتراكToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.QuickSubBtn = new System.Windows.Forms.ToolStripMenuItem();
-            this.ManualSubBtn = new System.Windows.Forms.ToolStripMenuItem();
-            this.QuickAddMoney = new System.Windows.Forms.ToolStripMenuItem();
-            this.DeleteSub = new System.Windows.Forms.ToolStripMenuItem();
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.DgvList = new System.Windows.Forms.DataGridView();
+            this.CmsList = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.AddSub = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
-            this.CmsList.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvList)).BeginInit();
+            this.CmsList.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -63,8 +57,8 @@
             this.panel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1190, 178);
-            this.panel1.TabIndex = 4;
+            this.panel1.Size = new System.Drawing.Size(1217, 178);
+            this.panel1.TabIndex = 12;
             // 
             // CBSearch
             // 
@@ -76,7 +70,7 @@
             "الاسم",
             "رقم البطاقة",
             "رقم الهاتف"});
-            this.CBSearch.Location = new System.Drawing.Point(149, 86);
+            this.CBSearch.Location = new System.Drawing.Point(162, 86);
             this.CBSearch.Name = "CBSearch";
             this.CBSearch.Size = new System.Drawing.Size(167, 45);
             this.CBSearch.TabIndex = 5;
@@ -91,7 +85,7 @@
             this.RefreshBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.RefreshBtn.ForeColor = System.Drawing.Color.Gainsboro;
             this.RefreshBtn.Image = global::presentation_layer.Properties.Resources.Refresh1;
-            this.RefreshBtn.Location = new System.Drawing.Point(1135, 121);
+            this.RefreshBtn.Location = new System.Drawing.Point(1162, 121);
             this.RefreshBtn.Name = "RefreshBtn";
             this.RefreshBtn.Size = new System.Drawing.Size(43, 42);
             this.RefreshBtn.TabIndex = 3;
@@ -104,7 +98,7 @@
             this.LblSearchMethod.AutoSize = true;
             this.LblSearchMethod.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblSearchMethod.ForeColor = System.Drawing.Color.Black;
-            this.LblSearchMethod.Location = new System.Drawing.Point(425, 37);
+            this.LblSearchMethod.Location = new System.Drawing.Point(424, 26);
             this.LblSearchMethod.Name = "LblSearchMethod";
             this.LblSearchMethod.Size = new System.Drawing.Size(182, 46);
             this.LblSearchMethod.TabIndex = 2;
@@ -114,7 +108,7 @@
             // 
             this.TbSearch.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.TbSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TbSearch.Location = new System.Drawing.Point(371, 86);
+            this.TbSearch.Location = new System.Drawing.Point(384, 86);
             this.TbSearch.Name = "TbSearch";
             this.TbSearch.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.TbSearch.Size = new System.Drawing.Size(250, 44);
@@ -128,69 +122,12 @@
             this.SearchBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SearchBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.SearchBtn.ForeColor = System.Drawing.Color.Gainsboro;
-            this.SearchBtn.Location = new System.Drawing.Point(684, 72);
+            this.SearchBtn.Location = new System.Drawing.Point(697, 72);
             this.SearchBtn.Name = "SearchBtn";
             this.SearchBtn.Size = new System.Drawing.Size(148, 71);
             this.SearchBtn.TabIndex = 1;
             this.SearchBtn.Text = "بحث";
             this.SearchBtn.UseVisualStyleBackColor = false;
-            this.SearchBtn.Click += new System.EventHandler(this.SearchBtn_Click);
-            // 
-            // CmsList
-            // 
-            this.CmsList.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CmsList.ImageScalingSize = new System.Drawing.Size(24, 24);
-            this.CmsList.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.تعديلبياناتاللاعبToolStripMenuItem,
-            this.تجديدالاشتراكToolStripMenuItem,
-            this.QuickAddMoney,
-            this.DeleteSub});
-            this.CmsList.Name = "contextMenuStrip1";
-            this.CmsList.Size = new System.Drawing.Size(319, 213);
-            // 
-            // تعديلبياناتاللاعبToolStripMenuItem
-            // 
-            this.تعديلبياناتاللاعبToolStripMenuItem.Name = "تعديلبياناتاللاعبToolStripMenuItem";
-            this.تعديلبياناتاللاعبToolStripMenuItem.Size = new System.Drawing.Size(318, 44);
-            this.تعديلبياناتاللاعبToolStripMenuItem.Text = "تعديل بيانات اللاعب";
-            this.تعديلبياناتاللاعبToolStripMenuItem.Click += new System.EventHandler(this.EditToolStripMenuItem_Click);
-            // 
-            // تجديدالاشتراكToolStripMenuItem
-            // 
-            this.تجديدالاشتراكToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.QuickSubBtn,
-            this.ManualSubBtn});
-            this.تجديدالاشتراكToolStripMenuItem.Name = "تجديدالاشتراكToolStripMenuItem";
-            this.تجديدالاشتراكToolStripMenuItem.Size = new System.Drawing.Size(318, 44);
-            this.تجديدالاشتراكToolStripMenuItem.Text = "تجديد الاشتراك";
-            // 
-            // QuickSubBtn
-            // 
-            this.QuickSubBtn.Name = "QuickSubBtn";
-            this.QuickSubBtn.Size = new System.Drawing.Size(254, 46);
-            this.QuickSubBtn.Text = "تجديد سريع";
-            this.QuickSubBtn.Click += new System.EventHandler(this.QuickSubBtn_Click);
-            // 
-            // ManualSubBtn
-            // 
-            this.ManualSubBtn.Name = "ManualSubBtn";
-            this.ManualSubBtn.Size = new System.Drawing.Size(254, 46);
-            this.ManualSubBtn.Text = "تجديد يدوي";
-            this.ManualSubBtn.Click += new System.EventHandler(this.ManualSub_click);
-            // 
-            // QuickAddMoney
-            // 
-            this.QuickAddMoney.Name = "QuickAddMoney";
-            this.QuickAddMoney.Size = new System.Drawing.Size(318, 44);
-            this.QuickAddMoney.Text = "تسديد الفاتورة";
-            this.QuickAddMoney.Click += new System.EventHandler(this.QuickAddMoney_click);
-            // 
-            // DeleteSub
-            // 
-            this.DeleteSub.Name = "DeleteSub";
-            this.DeleteSub.Size = new System.Drawing.Size(318, 44);
-            this.DeleteSub.Text = "حذف الاشتراك";
-            this.DeleteSub.Click += new System.EventHandler(this.DeleteSub_Click);
             // 
             // DgvList
             // 
@@ -207,7 +144,6 @@
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.DgvList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.DgvList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DgvList.ContextMenuStrip = this.CmsList;
             this.DgvList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DgvList.Location = new System.Drawing.Point(0, 178);
             this.DgvList.Name = "DgvList";
@@ -224,42 +160,51 @@
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DgvList.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.DgvList.RowTemplate.Height = 28;
-            this.DgvList.Size = new System.Drawing.Size(1190, 358);
-            this.DgvList.TabIndex = 5;
+            this.DgvList.Size = new System.Drawing.Size(1217, 416);
+            this.DgvList.TabIndex = 13;
             // 
-            // SearchForm
+            // CmsList
+            // 
+            this.CmsList.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CmsList.ImageScalingSize = new System.Drawing.Size(24, 24);
+            this.CmsList.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.AddSub});
+            this.CmsList.Name = "contextMenuStrip1";
+            this.CmsList.Size = new System.Drawing.Size(252, 81);
+            // 
+            // AddSub
+            // 
+            this.AddSub.Name = "AddSub";
+            this.AddSub.Size = new System.Drawing.Size(251, 44);
+            this.AddSub.Text = "اضافة اشتراك";
+            // 
+            // NoSubsPlayers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1190, 536);
+            this.ClientSize = new System.Drawing.Size(1217, 594);
             this.Controls.Add(this.DgvList);
             this.Controls.Add(this.panel1);
-            this.Name = "SearchForm";
-            this.Text = "search";
-            this.Load += new System.EventHandler(this.SearchForm_Load);
+            this.Name = "NoSubsPlayers";
+            this.Text = "noSubsPlayers";
+            this.Load += new System.EventHandler(this.NoSubsPlayers_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.CmsList.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DgvList)).EndInit();
+            this.CmsList.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.ComboBox CBSearch;
+        private System.Windows.Forms.Button RefreshBtn;
+        private System.Windows.Forms.Label LblSearchMethod;
         private System.Windows.Forms.TextBox TbSearch;
         private System.Windows.Forms.Button SearchBtn;
-        private System.Windows.Forms.Label LblSearchMethod;
-        private System.Windows.Forms.ContextMenuStrip CmsList;
-        private System.Windows.Forms.ToolStripMenuItem تعديلبياناتاللاعبToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem تجديدالاشتراكToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem QuickSubBtn;
-        private System.Windows.Forms.ToolStripMenuItem ManualSubBtn;
-        private System.ComponentModel.BackgroundWorker backgroundWorker1;
-        private System.Windows.Forms.Button RefreshBtn;
-        private System.Windows.Forms.ToolStripMenuItem QuickAddMoney;
         private System.Windows.Forms.DataGridView DgvList;
-        private System.Windows.Forms.ComboBox CBSearch;
-        private System.Windows.Forms.ToolStripMenuItem DeleteSub;
+        private System.Windows.Forms.ContextMenuStrip CmsList;
+        private System.Windows.Forms.ToolStripMenuItem AddSub;
     }
 }

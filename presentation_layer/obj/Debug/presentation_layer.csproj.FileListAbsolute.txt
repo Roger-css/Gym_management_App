@@ -113,3 +113,4 @@ C:\Users\H1202\source\repos\Gym_management_App2\presentation_layer\obj\Debug\pre
 C:\Users\H1202\source\repos\Gym_management_App2\presentation_layer\obj\Debug\presentation_layer.csproj.CopyComplete
 C:\Users\H1202\source\repos\Gym_management_App2\presentation_layer\obj\Debug\presentation_layer.exe
 C:\Users\H1202\source\repos\Gym_management_App2\presentation_layer\obj\Debug\presentation_layer.pdb
+D:\Gym_management_App\presentation_layer\obj\Debug\presentation_layer.Forms.NoSubsPlayers.resources

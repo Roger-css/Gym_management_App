@@ -909,7 +909,7 @@ namespace GymDataAccesLayer
             }
         }
 
-        public static DataTable GetPalyersWithOutSubs()
+        public static DataTable GetPlayersWithOutSubs()
         {
                 using (SqlConnection connection = new SqlConnection(clsDataBaseSettings.ConnectionString))
             {

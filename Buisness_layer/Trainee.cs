@@ -186,5 +186,13 @@ namespace GymBussniesLayer
             => clsTraineeDataAccess.DeletePlayerSub(PlayerID);
         public static bool IsTraineeNameExists(string PalyerName)
             => clsTraineeDataAccess.IsTraineeNameExists(PalyerName);
+
+        public static DataTable GetPlayersWithOutSubsByName(string Name)
+            => clsTraineeDataAccess.GetPlayersWithOutSubsByName(Name);
+
+        public static DataTable GetPlayersWithOutSubsByID(int ID)
+          => clsTraineeDataAccess.GetPlayersWithOutSubsByID(ID);
+
+        
     }
 }

@@ -187,7 +187,7 @@ namespace GymDataAccesLayer
                     DataTable dt = new DataTable();
                     try
                     {
-                        connection.Open();
+                         connection.Open();
 
                         using (SqlDataReader reader = cmd.ExecuteReader())
                         {
@@ -926,6 +926,88 @@ namespace GymDataAccesLayer
 
                 using (SqlCommand cmd = new SqlCommand(query, connection))
                 {
+
+                    DataTable dt = new DataTable();
+                    try
+                    {
+                        connection.Open();
+
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            if (reader.HasRows)
+                            {
+                                dt.Load(reader);
+                            }
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        dt = null;
+                        // Handle the exception appropriately
+                    }
+
+                    return dt;
+                }
+            }
+        }
+        public static DataTable GetPlayersWithOutSubsByName(string Name)
+        {
+            using (SqlConnection connection = new SqlConnection(clsDataBaseSettings.ConnectionString))
+            {
+                string query = @" SELECT _id, Name, Phone
+                                    FROM Trainers
+                                    WHERE NOT EXISTS (
+                                        SELECT 1
+                                        FROM Subscriptions
+                                        WHERE Trainers._id = Subscriptions.Player_id 
+                                    )AND Trainers.Name COLLATE Arabic_CI_AI LIKE N'%' + @Name + N'%'           
+                                    ORDER BY Name;";
+
+
+                using (SqlCommand cmd = new SqlCommand(query, connection))
+                {
+                    cmd.Parameters.AddWithValue("@Name", Name);
+
+                    DataTable dt = new DataTable();
+                    try
+                    {
+                        connection.Open();
+
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            if (reader.HasRows)
+                            {
+                                dt.Load(reader);
+                            }
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        dt = null;
+                        // Handle the exception appropriately
+                    }
+
+                    return dt;
+                }
+            }
+        }
+        public static DataTable GetPlayersWithOutSubsByID(int ID)
+        {
+            using (SqlConnection connection = new SqlConnection(clsDataBaseSettings.ConnectionString))
+            {
+                string query = @" SELECT _id, Name, Phone
+                                    FROM Trainers
+                                    WHERE NOT EXISTS (
+                                        SELECT 1
+                                        FROM Subscriptions
+                                        WHERE Trainers._id = Subscriptions.Player_id 
+                                    )AND Trainers._id =   @ID         
+                                    ORDER BY Name;";
+
+
+                using (SqlCommand cmd = new SqlCommand(query, connection))
+                {
+                    cmd.Parameters.AddWithValue("@ID", ID);
 
                     DataTable dt = new DataTable();
                     try

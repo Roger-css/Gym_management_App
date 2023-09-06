@@ -52,6 +52,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\NoSubsPlayers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\NoSubsPlayers.Designer.cs">
+      <DependentUpon>NoSubsPlayers.cs</DependentUpon>
+    </Compile>
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -169,6 +175,9 @@
     <EmbeddedResource Include="Forms\Expired.resx">
       <DependentUpon>Expired.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\NoSubsPlayers.resx">
+      <DependentUpon>NoSubsPlayers.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
@@ -238,6 +247,7 @@
     <None Include="Resources\Refresh.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Delete User Male.png" />
     <Content Include="Resources\gym.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

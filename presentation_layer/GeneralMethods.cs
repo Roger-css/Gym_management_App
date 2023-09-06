@@ -74,5 +74,13 @@ namespace presentation_layer
                 }
             }
         }
+        static public void DeleteSub(object value)
+        {
+            int _id = (int)value;
+            if (MessageBox.Show("هل انت متأكد؟", "", MessageBoxButtons.OKCancel) == DialogResult.OK)
+            {
+                clsTrainee.DeletePlayerSub(_id);
+            }
+        }
     }
 }

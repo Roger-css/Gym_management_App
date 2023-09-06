@@ -58,5 +58,10 @@ namespace presentation_layer
         {
             OpenChildForm(new UncompleteSubs(), sender);
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new NoSubsPlayers(),sender);
+        }
     }
 }

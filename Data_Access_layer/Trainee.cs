@@ -951,8 +951,9 @@ namespace GymDataAccesLayer
             }
         }
 
-        public static DataTable DeletePlayerSub(int playerID)
+        public static bool DeletePlayerSub(int playerID)
         {
+            bool Success  = false;
             using (SqlConnection connection = new SqlConnection(clsDataBaseSettings.ConnectionString))
             {
                 string query = @"DELETE FROM Subscriptions
@@ -960,7 +961,7 @@ namespace GymDataAccesLayer
                                     SELECT TOP(1) s._id
                                     FROM Subscriptions s
                                     INNER JOIN Trainers  ON s.Player_id = Trainers._id
-                                    WHERE Trainers._id = 3
+                                    WHERE Trainers._id = @ID
                                     ORDER BY s.EnrollmentStart DESC
                                 );";
 
@@ -968,31 +969,30 @@ namespace GymDataAccesLayer
                 using (SqlCommand cmd = new SqlCommand(query, connection))
                 {
                     cmd.Parameters.AddWithValue("@ID", playerID);
-                    DataTable dt = new DataTable();
                     try
                     {
                         connection.Open();
 
-                        using (SqlDataReader reader = cmd.ExecuteReader())
-                        {
-                            if (reader.HasRows)
-                            {
-                                dt.Load(reader);
-                            }
-                        }
+                        int rowsAffected = cmd.ExecuteNonQuery();
+
+                        if (rowsAffected > 0)
+                         {
+                            Success = true;
+                         }
+                        
                     }
                     catch (Exception)
                     {
-                        dt = null;
+                        Success = false;
                         // Handle the exception appropriately
                     }
 
-                    return dt;
+                    return Success;
                 }
             }
         }
 
-        public static bool IsPlayerExisit(string palyerName)
+        public static bool IsTraineeNameExists(string palyerName)
         {
             bool IsFound = false;
             using (SqlConnection connection = new SqlConnection(clsDataBaseSettings.ConnectionString))

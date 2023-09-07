@@ -22,15 +22,18 @@ namespace presentation_layer.Forms
             DgvList.DataSource = clsTrainee.GetPlayersWithOutSubs();
             DgvList.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             DgvList.ForeColor = Color.Black;
-            
+            CBSearch.SelectedIndex = 0;
+            if (DgvList.Rows.Count != 0)
+            {
+                DgvList.Columns[0].Width = 60;
+                DgvList.Columns[1].Width = 300;
+            }
             GeneralMethods.ChangeColumnNames(ref DgvList);
         }
         private void NoSubsPlayers_Load(object sender, EventArgs e)
         {
             RefreshList();
-            CBSearch.SelectedIndex = 0;
-            DgvList.Columns[0].Width = 60;
-            DgvList.Columns[1].Width = 300;
+            
         }
 
         private void CBSearch_SelectedIndexChanged(object sender, EventArgs e)

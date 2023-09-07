@@ -49,9 +49,12 @@ namespace presentation_layer
                 }
             }
             DgvList.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            DgvList.Columns[0].Width = 80;
-            DgvList.Columns[1].Width = 300;
-            DgvList.Columns[8].Width = 300;
+            if (DgvList.Rows.Count != 0)
+            {
+                DgvList.Columns[0].Width = 80;
+                DgvList.Columns[1].Width = 300;
+                DgvList.Columns[8].Width = 300;
+            }
             GeneralMethods.ChangeColumnNames(ref DgvList);
         }
         public void RefreshList()

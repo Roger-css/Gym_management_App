@@ -85,7 +85,6 @@ namespace presentation_layer
                 {
                     case "الاسم":
                         dt = clsTrainee.GetTraineeLastSub(TbSearch.Text.Trim());
-                        ChangeListColors();
                         break;
                     case "رقم البطاقة":
                         if (!int.TryParse(TbSearch.Text, out int id))

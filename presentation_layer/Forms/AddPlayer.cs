@@ -53,13 +53,23 @@ namespace presentation_layer
             }
             if (ValidData)
             {
+                bool NameExists = clsTrainee.IsTraineeNameExists(TbName.Text.Trim());
+                if (NameExists)
+                {
+                    if (MessageBox.Show("هذا الاسم موجود بالفعل هل انت متأكد انك تود اضافة لاعب بنفس الاسم؟", "", MessageBoxButtons.OKCancel) == DialogResult.Cancel)
+                    {
+                        return;
+                    }
+                }
                 int added = clsTrainee.AddPalyerWithSubscribtion(TbName.Text, TbPhone.Text,
-                imagePath, DtpStartDate.Value, DtpEndDate.Value,
-                int.Parse(LbPrices.Text), paidPrices);
+                        imagePath, DtpStartDate.Value, DtpEndDate.Value,
+                        int.Parse(LbPrices.Text), paidPrices);
                 if (added != -1)
                 {
                     MessageBox.Show($"رقم بطاقة اللاعب هي {added}");
                 }
+                else
+                    MessageBox.Show("حدث خطأ يرجى التواصل مع المطور");
             }
         }
 
@@ -67,7 +77,7 @@ namespace presentation_layer
         {
             DtpEndDate.Value = DateTime.Now.AddMonths(1);
             LbPrices.SelectedIndex = 0;
-            LbPrices.Size = new System.Drawing.Size(259, 44);
+            LbPrices.Size = new Size(259, 44);
         } 
         private void PaidAmount_valueChanged(object sender, EventArgs e)
         {

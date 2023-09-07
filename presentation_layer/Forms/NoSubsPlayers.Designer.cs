@@ -68,8 +68,7 @@
             this.CBSearch.FormattingEnabled = true;
             this.CBSearch.Items.AddRange(new object[] {
             "الاسم",
-            "رقم البطاقة",
-            "رقم الهاتف"});
+            "رقم البطاقة"});
             this.CBSearch.Location = new System.Drawing.Point(162, 86);
             this.CBSearch.Name = "CBSearch";
             this.CBSearch.Size = new System.Drawing.Size(167, 45);
@@ -128,6 +127,7 @@
             this.SearchBtn.TabIndex = 1;
             this.SearchBtn.Text = "بحث";
             this.SearchBtn.UseVisualStyleBackColor = false;
+            this.SearchBtn.Click += new System.EventHandler(this.SearchBtn_Click);
             // 
             // DgvList
             // 
@@ -137,13 +137,14 @@
             this.DgvList.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.DgvList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.DgvList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DgvList.ContextMenuStrip = this.CmsList;
             this.DgvList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DgvList.Location = new System.Drawing.Point(0, 178);
             this.DgvList.Name = "DgvList";
@@ -157,9 +158,9 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.DgvList.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.DgvList.RowHeadersWidth = 62;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DgvList.RowsDefaultCellStyle = dataGridViewCellStyle3;
-            this.DgvList.RowTemplate.Height = 28;
+            this.DgvList.RowTemplate.Height = 35;
             this.DgvList.Size = new System.Drawing.Size(1217, 416);
             this.DgvList.TabIndex = 13;
             // 
@@ -170,13 +171,14 @@
             this.CmsList.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.AddSub});
             this.CmsList.Name = "contextMenuStrip1";
-            this.CmsList.Size = new System.Drawing.Size(252, 81);
+            this.CmsList.Size = new System.Drawing.Size(252, 48);
             // 
             // AddSub
             // 
             this.AddSub.Name = "AddSub";
             this.AddSub.Size = new System.Drawing.Size(251, 44);
             this.AddSub.Text = "اضافة اشتراك";
+            this.AddSub.Click += new System.EventHandler(this.AddSub_Click);
             // 
             // NoSubsPlayers
             // 

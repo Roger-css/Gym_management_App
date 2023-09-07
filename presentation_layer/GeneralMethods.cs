@@ -17,9 +17,9 @@ namespace presentation_layer
             form.Show();
         }
 
-        static public void ManualSub_click(object value)
+        static public void ManualSub_click(object value, bool firstSub = false)
         {
-            LongSubscriptionForm form = new LongSubscriptionForm((int) value);
+            LongSubscriptionForm form = new LongSubscriptionForm((int) value,firstSub);
             form.Show();
         }
         static public void QuickSubBtn_Click(object value)

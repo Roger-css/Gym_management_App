@@ -1032,8 +1032,44 @@ namespace GymDataAccesLayer
                 }
             }
         }
+        public static int GetPlayersCount()
+        {
+            using (SqlConnection connection = new SqlConnection(clsDataBaseSettings.ConnectionString))
+            {
+                int NumberOfPlayers = -1;
+                string query = @" SELECT Count(*) as PlayersCount
+                                    FROM Trainers";
+                                
 
-        public static bool DeletePlayerSub(int playerID)
+
+                using (SqlCommand cmd = new SqlCommand(query, connection))
+                {
+                   
+
+                    DataTable dt = new DataTable();
+                    try
+                    {
+                       
+                        connection.Open();
+                        object result = cmd.ExecuteScalar();
+                        if (result != null && int.TryParse(result.ToString(), out int value))
+                        {
+                            NumberOfPlayers = value;
+                        }
+
+
+                    }
+                    catch (Exception)
+                    {
+                        NumberOfPlayers = -1;
+                        // Handle the exception appropriately
+                    }
+
+                    return NumberOfPlayers;
+                }
+            }
+        }
+            public static bool DeletePlayerSub(int playerID)
         {
             bool Success  = false;
             using (SqlConnection connection = new SqlConnection(clsDataBaseSettings.ConnectionString))

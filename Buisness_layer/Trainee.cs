@@ -192,7 +192,10 @@ namespace GymBussniesLayer
 
         public static DataTable GetPlayersWithOutSubsByID(int ID)
           => clsTraineeDataAccess.GetPlayersWithOutSubsByID(ID);
+        public static int GetPlayersCount()
+            => clsTraineeDataAccess.GetPlayersCount();
 
-        
+
+
     }
 }

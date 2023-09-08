@@ -104,9 +104,10 @@
             this.DtpStart.CalendarForeColor = System.Drawing.Color.Black;
             this.DtpStart.CalendarTitleForeColor = System.Drawing.Color.Black;
             this.DtpStart.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DtpStart.Location = new System.Drawing.Point(379, 583);
+            this.DtpStart.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.DtpStart.Location = new System.Drawing.Point(520, 583);
             this.DtpStart.Name = "DtpStart";
-            this.DtpStart.Size = new System.Drawing.Size(321, 35);
+            this.DtpStart.Size = new System.Drawing.Size(180, 35);
             this.DtpStart.TabIndex = 5;
             // 
             // TbPhone
@@ -203,9 +204,10 @@
             this.DtpEnd.CalendarForeColor = System.Drawing.Color.Black;
             this.DtpEnd.CalendarTitleForeColor = System.Drawing.Color.Black;
             this.DtpEnd.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DtpEnd.Location = new System.Drawing.Point(379, 666);
+            this.DtpEnd.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.DtpEnd.Location = new System.Drawing.Point(520, 666);
             this.DtpEnd.Name = "DtpEnd";
-            this.DtpEnd.Size = new System.Drawing.Size(321, 35);
+            this.DtpEnd.Size = new System.Drawing.Size(180, 35);
             this.DtpEnd.TabIndex = 14;
             // 
             // label8
@@ -237,9 +239,9 @@
             "40000",
             "45000",
             "50000"});
-            this.SubPrices.Location = new System.Drawing.Point(578, 419);
+            this.SubPrices.Location = new System.Drawing.Point(561, 419);
             this.SubPrices.Name = "SubPrices";
-            this.SubPrices.Size = new System.Drawing.Size(122, 33);
+            this.SubPrices.Size = new System.Drawing.Size(139, 33);
             this.SubPrices.TabIndex = 17;
             this.SubPrices.SelectedIndexChanged += new System.EventHandler(this.ValueChanged);
             // 

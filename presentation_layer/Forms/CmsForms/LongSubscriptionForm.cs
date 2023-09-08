@@ -15,10 +15,16 @@ namespace presentation_layer.Forms.CmsForms
     public partial class LongSubscriptionForm : Form
     {
         int _id = -1;
-        public LongSubscriptionForm(int id = -1)
+        bool _firstSub;
+        public LongSubscriptionForm(int id = -1,bool firstSub = false)
         {
             InitializeComponent();
             _id = id;
+            _firstSub = firstSub;
+            if (firstSub)
+            {
+                LblName.Text = clsTrainee.Find(id).Name;
+            }
         }
         private void ShowTraineeDetails()
         {
@@ -32,7 +38,11 @@ namespace presentation_layer.Forms.CmsForms
         private void LongSubscriptionForm_Load(object sender, EventArgs e)
         {
             SubPrices.SelectedItem = SubPrices.Items[SubPrices.FindString(Convert.ToString(25))];
-            ShowTraineeDetails();
+            if (!_firstSub)
+            {
+                ShowTraineeDetails();
+            }
+            SubPrices.Size = new Size(154, 36);
         }
 
         private void ValueChanged(object sender, EventArgs e)

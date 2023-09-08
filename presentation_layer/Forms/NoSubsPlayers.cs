@@ -1,5 +1,6 @@
 ﻿using GymBussniesLayer;
 using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -22,12 +23,18 @@ namespace presentation_layer.Forms
             DgvList.DataSource = clsTrainee.GetPlayersWithOutSubs();
             DgvList.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             DgvList.ForeColor = Color.Black;
+            CBSearch.SelectedIndex = 0;
+            if (DgvList.Rows.Count != 0)
+            {
+                DgvList.Columns[0].Width = 60;
+                DgvList.Columns[1].Width = 300;
+            }
             GeneralMethods.ChangeColumnNames(ref DgvList);
         }
         private void NoSubsPlayers_Load(object sender, EventArgs e)
         {
             RefreshList();
-            CBSearch.SelectedIndex = 0;
+            
         }
 
         private void CBSearch_SelectedIndexChanged(object sender, EventArgs e)
@@ -38,6 +45,43 @@ namespace presentation_layer.Forms
         private void RefreshBtn_Click(object sender, EventArgs e)
         {
             RefreshList();
+        }
+        private void AddSub_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                GeneralMethods.ManualSub_click(DgvList.CurrentRow.Cells[0].Value, true);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void SearchBtn_Click(object sender, EventArgs e)
+        {
+            DataTable dt = new DataTable();
+            if (TbSearch.Text != string.Empty)
+            {
+                switch (CBSearch.SelectedItem.ToString())
+                {
+                    case "الاسم":
+                        dt = clsTrainee.GetPlayersWithOutSubsByName(TbSearch.Text.Trim());
+                        break;
+                    case "رقم البطاقة":
+                        if (!int.TryParse(TbSearch.Text, out int id))
+                        {
+                            MessageBox.Show("يرجى ادخال رقم صحيح");
+                            return;
+                        }
+                        dt = clsTrainee.GetPlayersWithOutSubsByID(id);
+                        break;
+                    default:
+                        MessageBox.Show("حدث خطأ غير متوقع تواصل مع المطور");
+                        break;
+                }
+            }
+            DgvList.DataSource = dt;
         }
     }
 }

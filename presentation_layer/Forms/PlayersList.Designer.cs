@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.DgvList = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.CBSearch = new System.Windows.Forms.ComboBox();
@@ -47,25 +47,25 @@
             this.DgvList.AllowUserToDeleteRows = false;
             this.DgvList.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.DgvList.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DgvList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DgvList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.DgvList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgvList.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.DgvList.Location = new System.Drawing.Point(0, 178);
+            this.DgvList.Location = new System.Drawing.Point(0, 169);
             this.DgvList.Name = "DgvList";
             this.DgvList.ReadOnly = true;
             this.DgvList.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.DgvList.RowHeadersWidth = 62;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DgvList.RowsDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DgvList.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.DgvList.RowTemplate.Height = 28;
-            this.DgvList.Size = new System.Drawing.Size(1185, 354);
+            this.DgvList.Size = new System.Drawing.Size(1185, 336);
             this.DgvList.TabIndex = 7;
             // 
             // panel1
@@ -79,7 +79,7 @@
             this.panel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1185, 178);
+            this.panel1.Size = new System.Drawing.Size(1185, 169);
             this.panel1.TabIndex = 6;
             // 
             // CBSearch
@@ -92,7 +92,7 @@
             "الاسم",
             "رقم البطاقة",
             "رقم الهاتف"});
-            this.CBSearch.Location = new System.Drawing.Point(146, 85);
+            this.CBSearch.Location = new System.Drawing.Point(146, 81);
             this.CBSearch.Name = "CBSearch";
             this.CBSearch.Size = new System.Drawing.Size(167, 45);
             this.CBSearch.TabIndex = 6;
@@ -107,9 +107,9 @@
             this.RefreshBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.RefreshBtn.ForeColor = System.Drawing.Color.Gainsboro;
             this.RefreshBtn.Image = global::presentation_layer.Properties.Resources.Refresh1;
-            this.RefreshBtn.Location = new System.Drawing.Point(1130, 119);
+            this.RefreshBtn.Location = new System.Drawing.Point(1130, 113);
             this.RefreshBtn.Name = "RefreshBtn";
-            this.RefreshBtn.Size = new System.Drawing.Size(43, 42);
+            this.RefreshBtn.Size = new System.Drawing.Size(43, 40);
             this.RefreshBtn.TabIndex = 4;
             this.RefreshBtn.UseVisualStyleBackColor = false;
             this.RefreshBtn.Click += new System.EventHandler(this.RefreshBtn_Click);
@@ -120,7 +120,7 @@
             this.LblSearchMethod.AutoSize = true;
             this.LblSearchMethod.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblSearchMethod.ForeColor = System.Drawing.Color.Black;
-            this.LblSearchMethod.Location = new System.Drawing.Point(424, 37);
+            this.LblSearchMethod.Location = new System.Drawing.Point(424, 35);
             this.LblSearchMethod.Name = "LblSearchMethod";
             this.LblSearchMethod.Size = new System.Drawing.Size(182, 46);
             this.LblSearchMethod.TabIndex = 2;
@@ -131,7 +131,7 @@
             // 
             this.TbSearch.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.TbSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TbSearch.Location = new System.Drawing.Point(368, 86);
+            this.TbSearch.Location = new System.Drawing.Point(368, 82);
             this.TbSearch.Name = "TbSearch";
             this.TbSearch.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.TbSearch.Size = new System.Drawing.Size(250, 44);
@@ -145,9 +145,9 @@
             this.SearchBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SearchBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
             this.SearchBtn.ForeColor = System.Drawing.Color.Gainsboro;
-            this.SearchBtn.Location = new System.Drawing.Point(681, 72);
+            this.SearchBtn.Location = new System.Drawing.Point(681, 68);
             this.SearchBtn.Name = "SearchBtn";
-            this.SearchBtn.Size = new System.Drawing.Size(148, 71);
+            this.SearchBtn.Size = new System.Drawing.Size(148, 67);
             this.SearchBtn.TabIndex = 1;
             this.SearchBtn.Text = "بحث";
             this.SearchBtn.UseVisualStyleBackColor = false;
@@ -155,9 +155,9 @@
             // 
             // PlayersList
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1185, 532);
+            this.ClientSize = new System.Drawing.Size(1185, 505);
             this.Controls.Add(this.DgvList);
             this.Controls.Add(this.panel1);
             this.Name = "PlayersList";

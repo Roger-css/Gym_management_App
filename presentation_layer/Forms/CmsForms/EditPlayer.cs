@@ -42,7 +42,7 @@ namespace presentation_layer.Forms.CmsForms
         {
             _id.Text = PlayerId.ToString();
             ShowTraineeDetails();
-            
+            SubPrices.Size = new Size(139, 33);
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)

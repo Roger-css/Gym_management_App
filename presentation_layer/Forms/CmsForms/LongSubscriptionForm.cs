@@ -21,6 +21,10 @@ namespace presentation_layer.Forms.CmsForms
             InitializeComponent();
             _id = id;
             _firstSub = firstSub;
+            if (firstSub)
+            {
+                LblName.Text = clsTrainee.Find(id).Name;
+            }
         }
         private void ShowTraineeDetails()
         {
@@ -38,7 +42,7 @@ namespace presentation_layer.Forms.CmsForms
             {
                 ShowTraineeDetails();
             }
-
+            SubPrices.Size = new Size(154, 36);
         }
 
         private void ValueChanged(object sender, EventArgs e)

@@ -48,10 +48,10 @@
             // 
             this.SubPrices.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.SubPrices.Cursor = System.Windows.Forms.Cursors.Default;
-            this.SubPrices.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SubPrices.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SubPrices.FormatString = "N0";
             this.SubPrices.FormattingEnabled = true;
-            this.SubPrices.ItemHeight = 29;
+            this.SubPrices.ItemHeight = 32;
             this.SubPrices.Items.AddRange(new object[] {
             "10000",
             "15000",
@@ -62,9 +62,9 @@
             "40000",
             "45000",
             "50000"});
-            this.SubPrices.Location = new System.Drawing.Point(400, 215);
+            this.SubPrices.Location = new System.Drawing.Point(368, 215);
             this.SubPrices.Name = "SubPrices";
-            this.SubPrices.Size = new System.Drawing.Size(122, 33);
+            this.SubPrices.Size = new System.Drawing.Size(154, 36);
             this.SubPrices.TabIndex = 35;
             this.SubPrices.SelectedValueChanged += new System.EventHandler(this.ValueChanged);
             // 
@@ -72,10 +72,10 @@
             // 
             this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.Location = new System.Drawing.Point(544, 219);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(127, 29);
+            this.label8.Size = new System.Drawing.Size(155, 32);
             this.label8.TabIndex = 34;
             this.label8.Text = ":سعر الاشتراك";
             // 
@@ -85,20 +85,21 @@
             this.DtpEnd.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DtpEnd.CalendarForeColor = System.Drawing.Color.Black;
             this.DtpEnd.CalendarTitleForeColor = System.Drawing.Color.Black;
-            this.DtpEnd.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DtpEnd.Location = new System.Drawing.Point(201, 469);
+            this.DtpEnd.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DtpEnd.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.DtpEnd.Location = new System.Drawing.Point(321, 469);
             this.DtpEnd.Name = "DtpEnd";
-            this.DtpEnd.Size = new System.Drawing.Size(321, 35);
+            this.DtpEnd.Size = new System.Drawing.Size(201, 39);
             this.DtpEnd.TabIndex = 33;
             // 
             // label7
             // 
             this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.Location = new System.Drawing.Point(541, 389);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(127, 29);
+            this.label7.Size = new System.Drawing.Size(155, 32);
             this.label7.TabIndex = 32;
             this.label7.Text = ":بداية الاشتراك";
             // 
@@ -106,10 +107,10 @@
             // 
             this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(534, 474);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(129, 29);
+            this.label6.Size = new System.Drawing.Size(156, 32);
             this.label6.TabIndex = 31;
             this.label6.Text = ":نهاية الاشتراك";
             // 
@@ -117,10 +118,10 @@
             // 
             this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(566, 134);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(105, 29);
+            this.label5.Size = new System.Drawing.Size(128, 32);
             this.label5.TabIndex = 30;
             this.label5.Text = ":اسم اللاعب";
             // 
@@ -128,10 +129,10 @@
             // 
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(544, 304);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(122, 29);
+            this.label4.Size = new System.Drawing.Size(148, 32);
             this.label4.TabIndex = 29;
             this.label4.Text = ":المبلغ المدفوع";
             // 
@@ -163,20 +164,21 @@
             this.DtpStart.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DtpStart.CalendarForeColor = System.Drawing.Color.Black;
             this.DtpStart.CalendarTitleForeColor = System.Drawing.Color.Black;
-            this.DtpStart.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DtpStart.Location = new System.Drawing.Point(201, 383);
+            this.DtpStart.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DtpStart.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.DtpStart.Location = new System.Drawing.Point(321, 383);
             this.DtpStart.Name = "DtpStart";
-            this.DtpStart.Size = new System.Drawing.Size(321, 35);
+            this.DtpStart.Size = new System.Drawing.Size(201, 39);
             this.DtpStart.TabIndex = 25;
             // 
             // TbPaid
             // 
             this.TbPaid.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.TbPaid.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TbPaid.Location = new System.Drawing.Point(383, 298);
+            this.TbPaid.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TbPaid.Location = new System.Drawing.Point(368, 298);
             this.TbPaid.Name = "TbPaid";
             this.TbPaid.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.TbPaid.Size = new System.Drawing.Size(139, 35);
+            this.TbPaid.Size = new System.Drawing.Size(154, 39);
             this.TbPaid.TabIndex = 23;
             this.TbPaid.TextChanged += new System.EventHandler(this.PaidAmount_valueChanged);
             // 
@@ -198,10 +200,10 @@
             // 
             this.LblName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.LblName.AutoSize = true;
-            this.LblName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblName.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblName.Location = new System.Drawing.Point(362, 134);
             this.LblName.Name = "LblName";
-            this.LblName.Size = new System.Drawing.Size(99, 29);
+            this.LblName.Size = new System.Drawing.Size(115, 32);
             this.LblName.TabIndex = 36;
             this.LblName.Text = "غير معرف";
             // 

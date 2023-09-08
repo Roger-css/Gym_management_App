@@ -1,5 +1,6 @@
 ﻿using GymBussniesLayer;
 using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -47,7 +48,14 @@ namespace presentation_layer.Forms
         }
         private void AddSub_Click(object sender, EventArgs e)
         {
-            GeneralMethods.ManualSub_click(DgvList.CurrentRow.Cells[0].Value,true);
+            try
+            {
+                GeneralMethods.ManualSub_click(DgvList.CurrentRow.Cells[0].Value, true);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void SearchBtn_Click(object sender, EventArgs e)

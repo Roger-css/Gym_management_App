@@ -70,7 +70,6 @@ namespace presentation_layer.Forms.CmsForms
             if (PaidAmount > Tprice)
             {
                 Valid = false;
-                MessageBox.Show("لايمكن ان يكون المبلغ المدفوع اكبر من سعر الاشتراك");
             }
 
             if (Valid)

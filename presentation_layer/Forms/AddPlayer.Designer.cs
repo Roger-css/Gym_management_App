@@ -67,7 +67,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1661, 734);
+            this.panel1.Size = new System.Drawing.Size(1661, 697);
             this.panel1.TabIndex = 0;
             // 
             // LbPrices
@@ -88,8 +88,8 @@
             "40000",
             "45000",
             "50000"});
-            this.LbPrices.Location = new System.Drawing.Point(962, 428);
-            this.LbPrices.MinimumSize = new System.Drawing.Size(211, 44);
+            this.LbPrices.Location = new System.Drawing.Point(962, 407);
+            this.LbPrices.MinimumSize = new System.Drawing.Size(211, 42);
             this.LbPrices.Name = "LbPrices";
             this.LbPrices.Size = new System.Drawing.Size(259, 44);
             this.LbPrices.TabIndex = 39;
@@ -101,7 +101,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(1023, 385);
+            this.label1.Location = new System.Drawing.Point(1023, 366);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(196, 40);
             this.label1.TabIndex = 38;
@@ -116,7 +116,7 @@
             this.DtpEndDate.CustomFormat = "";
             this.DtpEndDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DtpEndDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.DtpEndDate.Location = new System.Drawing.Point(633, 581);
+            this.DtpEndDate.Location = new System.Drawing.Point(633, 552);
             this.DtpEndDate.Name = "DtpEndDate";
             this.DtpEndDate.Size = new System.Drawing.Size(259, 48);
             this.DtpEndDate.TabIndex = 37;
@@ -127,7 +127,7 @@
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.Black;
-            this.label7.Location = new System.Drawing.Point(1026, 538);
+            this.label7.Location = new System.Drawing.Point(1026, 511);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(195, 40);
             this.label7.TabIndex = 36;
@@ -139,7 +139,7 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.Black;
-            this.label6.Location = new System.Drawing.Point(695, 538);
+            this.label6.Location = new System.Drawing.Point(695, 511);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(197, 40);
             this.label6.TabIndex = 35;
@@ -151,7 +151,7 @@
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.Black;
-            this.label9.Location = new System.Drawing.Point(719, 381);
+            this.label9.Location = new System.Drawing.Point(719, 362);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(187, 40);
             this.label9.TabIndex = 34;
@@ -165,7 +165,7 @@
             this.DtpStartDate.CalendarTitleForeColor = System.Drawing.Color.Black;
             this.DtpStartDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DtpStartDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.DtpStartDate.Location = new System.Drawing.Point(962, 581);
+            this.DtpStartDate.Location = new System.Drawing.Point(962, 552);
             this.DtpStartDate.Name = "DtpStartDate";
             this.DtpStartDate.Size = new System.Drawing.Size(259, 48);
             this.DtpStartDate.TabIndex = 33;
@@ -174,7 +174,7 @@
             // 
             this.TbPaidPrice.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.TbPaidPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TbPaidPrice.Location = new System.Drawing.Point(633, 424);
+            this.TbPaidPrice.Location = new System.Drawing.Point(633, 403);
             this.TbPaidPrice.Name = "TbPaidPrice";
             this.TbPaidPrice.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.TbPaidPrice.Size = new System.Drawing.Size(259, 48);
@@ -187,9 +187,9 @@
             this.SaveBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(119)))), ((int)(((byte)(186)))));
             this.SaveBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SaveBtn.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.SaveBtn.Location = new System.Drawing.Point(1103, 670);
+            this.SaveBtn.Location = new System.Drawing.Point(1103, 636);
             this.SaveBtn.Name = "SaveBtn";
-            this.SaveBtn.Size = new System.Drawing.Size(116, 61);
+            this.SaveBtn.Size = new System.Drawing.Size(116, 58);
             this.SaveBtn.TabIndex = 31;
             this.SaveBtn.Text = "حفظ";
             this.SaveBtn.UseVisualStyleBackColor = false;
@@ -201,7 +201,7 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.Black;
-            this.label5.Location = new System.Drawing.Point(1057, 75);
+            this.label5.Location = new System.Drawing.Point(1057, 71);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(162, 40);
             this.label5.TabIndex = 27;
@@ -213,7 +213,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(1068, 225);
+            this.label3.Location = new System.Drawing.Point(1068, 214);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(151, 40);
             this.label3.TabIndex = 25;
@@ -223,7 +223,7 @@
             // 
             this.TbPhone.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.TbPhone.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TbPhone.Location = new System.Drawing.Point(633, 268);
+            this.TbPhone.Location = new System.Drawing.Point(633, 255);
             this.TbPhone.Name = "TbPhone";
             this.TbPhone.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.TbPhone.Size = new System.Drawing.Size(586, 48);
@@ -233,9 +233,9 @@
             // 
             this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pictureBox1.InitialImage = null;
-            this.pictureBox1.Location = new System.Drawing.Point(89, 143);
+            this.pictureBox1.Location = new System.Drawing.Point(89, 136);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(314, 255);
+            this.pictureBox1.Size = new System.Drawing.Size(314, 242);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 22;
             this.pictureBox1.TabStop = false;
@@ -245,7 +245,7 @@
             // 
             this.TbName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.TbName.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TbName.Location = new System.Drawing.Point(633, 118);
+            this.TbName.Location = new System.Drawing.Point(633, 112);
             this.TbName.Name = "TbName";
             this.TbName.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.TbName.Size = new System.Drawing.Size(586, 48);
@@ -257,9 +257,9 @@
             // 
             // AddPlayer
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1661, 734);
+            this.ClientSize = new System.Drawing.Size(1661, 697);
             this.Controls.Add(this.panel1);
             this.Name = "AddPlayer";
             this.Text = "AddPlayer";

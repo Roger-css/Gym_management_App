@@ -84,3 +84,4 @@ C:\Users\H1202\source\repos\Gym_management_App-Production\presentation_layer\obj
 C:\Users\H1202\source\repos\Gym_management_App-Production\presentation_layer\obj\Release\presentation_layer.exe
 C:\Users\H1202\source\repos\Gym_management_App-Production\presentation_layer\obj\Release\presentation_layer.pdb
 D:\Gym_management_App\presentation_layer\obj\Release\presentation_layer.Forms.NoSubsPlayers.resources
+C:\Users\H1202\source\repos\Gym_management_App-Production\presentation_layer\obj\Release\presentation_layer.Forms.NoSubsPlayers.resources

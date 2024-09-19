@@ -1,21 +1,16 @@
 ﻿using GymBussniesLayer;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace presentation_layer.Forms.CmsForms
 {
     public partial class EditPlayer : Form
     {
-        int PlayerId = -1;
-        string imagePath = string.Empty;
-        int TotalPrice = 10,
+        private readonly int PlayerId = -1;
+        private string imagePath = string.Empty;
+        private int TotalPrice = 10,
             PaidPrice = 10;
 
         public EditPlayer(int playerId = -1)
@@ -43,11 +38,15 @@ namespace presentation_layer.Forms.CmsForms
             _id.Text = PlayerId.ToString();
             ShowTraineeDetails();
             SubPrices.Size = new Size(139, 33);
+            BeginInvoke(new Action(() =>
+            {
+                DtpStart.Focus();
+                SendKeys.Send("{F4}");
+            }));
         }
-
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            if(openFileDialog1.ShowDialog() == DialogResult.OK)
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 pictureBox1.Load(openFileDialog1.FileName);
                 imagePath = openFileDialog1.FileName;
@@ -62,13 +61,17 @@ namespace presentation_layer.Forms.CmsForms
 
         private void PaidPrice_Changed(object sender, EventArgs e)
         {
-            if(!int.TryParse(((MaskedTextBox)sender).Text, out PaidPrice) && ((MaskedTextBox)sender).Text != "")
+            if (!int.TryParse(((MaskedTextBox)sender).Text, out PaidPrice) && ((MaskedTextBox)sender).Text != "")
             {
                 MessageBox.Show("يرجى ادخال الارقام فقط في هذا الحقل");
             }
-            
+
         }
 
+        private void DtpStart_ValueChanged(object sender, EventArgs e)
+        {
+            DtpEnd.Value = DtpStart.Value.AddMonths(1);
+        }
         private void Button1_Click(object sender, EventArgs e)
         {
             bool ValidData = true;

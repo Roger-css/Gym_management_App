@@ -1,36 +1,31 @@
-﻿using presentation_layer.Forms.CmsForms;
-using System;
-using GymBussniesLayer;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using GymBussniesLayer;
+using presentation_layer.Forms.CmsForms;
 using System.Windows.Forms;
 
 namespace presentation_layer
 {
     internal class GeneralMethods
     {
-        static public void EditToolStripMenuItem_Click(object value)
+        public static void EditToolStripMenuItem_Click(object value)
         {
-            EditPlayer form = new EditPlayer((int) value);
+            EditPlayer form = new EditPlayer((int)value);
             form.Show();
         }
 
-        static public void ManualSub_click(object value, bool firstSub = false)
+        public static void ManualSub_click(object value, bool firstSub = false)
         {
-            LongSubscriptionForm form = new LongSubscriptionForm((int) value,firstSub);
+            LongSubscriptionForm form = new LongSubscriptionForm((int)value, firstSub);
             form.Show();
         }
-        static public void QuickSubBtn_Click(object value)
+        public static void QuickSubBtn_Click(object value)
         {
             int _id = (int)value;
-            if (MessageBox.Show("هل انت متأكد؟","",MessageBoxButtons.OKCancel) == DialogResult.OK)
+            if (MessageBox.Show("هل انت متأكد؟", "", MessageBoxButtons.OKCancel) == DialogResult.OK)
             {
                 clsTrainee.quickSubscribe(_id);
             }
         }
-        static public void QuickAddMoney_click(object value)
+        public static void QuickAddMoney_click(object value)
         {
             int _id = (int)value;
             if (MessageBox.Show("هل انت متأكد؟", "", MessageBoxButtons.OKCancel) == DialogResult.OK)
@@ -38,7 +33,7 @@ namespace presentation_layer
                 clsTrainee.AutoPayRemaining(_id);
             }
         }
-        static public void ChangeColumnNames(ref DataGridView dataGrid)
+        public static void ChangeColumnNames(ref DataGridView dataGrid)
         {
             foreach (DataGridViewColumn column in dataGrid.Columns)
             {
@@ -74,7 +69,7 @@ namespace presentation_layer
                 }
             }
         }
-        static public void DeleteSub(object value)
+        public static void DeleteSub(object value)
         {
             int _id = (int)value;
             if (MessageBox.Show("هل انت متأكد؟", "", MessageBoxButtons.OKCancel) == DialogResult.OK)

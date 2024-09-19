@@ -1,22 +1,16 @@
 ﻿using GymBussniesLayer;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Xml.Linq;
 
 namespace presentation_layer.Forms.CmsForms
 {
     public partial class LongSubscriptionForm : Form
     {
-        int _id = -1;
-        bool _firstSub;
-        public LongSubscriptionForm(int id = -1,bool firstSub = false)
+        private readonly int _id = -1;
+        private readonly bool _firstSub;
+        public LongSubscriptionForm(int id = -1, bool firstSub = false)
         {
             InitializeComponent();
             _id = id;
@@ -37,25 +31,29 @@ namespace presentation_layer.Forms.CmsForms
         }
         private void LongSubscriptionForm_Load(object sender, EventArgs e)
         {
-            SubPrices.SelectedItem = SubPrices.Items[SubPrices.FindString(Convert.ToString(25))];
+            SubPrices.SelectedItem = SubPrices.Items[SubPrices.FindString(25.ToString())];
             if (!_firstSub)
             {
                 ShowTraineeDetails();
             }
             SubPrices.Size = new Size(154, 36);
+            BeginInvoke(new Action(() =>
+            {
+                DtpStart.Focus();
+                SendKeys.Send("{F4}");
+            }));
         }
 
         private void ValueChanged(object sender, EventArgs e)
         {
             TbPaid.Text = SubPrices.Text;
-
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             bool Valid = true;
             int Tprice = Convert.ToInt32(SubPrices.Text);
-            if(!int.TryParse(TbPaid.Text, out int PaidAmount))
+            if (!int.TryParse(TbPaid.Text, out int PaidAmount))
             {
                 MessageBox.Show("المبلغ المدفوع ليس رقما صالحاً");
                 Valid = false;
@@ -89,6 +87,11 @@ namespace presentation_layer.Forms.CmsForms
             {
                 MessageBox.Show("يرجى ادخال الارقام فقط في هذا الحقل");
             }
+        }
+
+        private void DtpStart_ValueChanged(object sender, EventArgs e)
+        {
+            DtpEnd.Value = DtpStart.Value.AddMonths(1);
         }
     }
 }

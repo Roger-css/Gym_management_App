@@ -21,7 +21,7 @@ namespace presentation_layer.Forms
         {
             if(TbUserName.Text == "hm" && TbPassword.Text == "123456")
             {
-                Form frm = new Form1();
+                Form frm = new MainMenu();
                 frm.ShowDialog();
                 Close();
             }

@@ -16,3 +16,12 @@ C:\Users\H1202\source\repos\Gym_management_App-Production\Buisness_layer\obj\Rel
 C:\Users\H1202\source\repos\Gym_management_App-Production\Buisness_layer\obj\Release\Gym_Bussnies_Layer.csproj.CopyComplete
 C:\Users\H1202\source\repos\Gym_management_App-Production\Buisness_layer\obj\Release\Buisness_layer.dll
 C:\Users\H1202\source\repos\Gym_management_App-Production\Buisness_layer\obj\Release\Buisness_layer.pdb
+D:\GithubRepos\Gym_management_App\Buisness_layer\bin\Release\Buisness_layer.dll
+D:\GithubRepos\Gym_management_App\Buisness_layer\bin\Release\Buisness_layer.pdb
+D:\GithubRepos\Gym_management_App\Buisness_layer\bin\Release\Data_Access_layer.dll
+D:\GithubRepos\Gym_management_App\Buisness_layer\bin\Release\Data_Access_layer.pdb
+D:\GithubRepos\Gym_management_App\Buisness_layer\obj\Release\Gym_Bussnies_Layer.csproj.AssemblyReference.cache
+D:\GithubRepos\Gym_management_App\Buisness_layer\obj\Release\Gym_Bussnies_Layer.csproj.CoreCompileInputs.cache
+D:\GithubRepos\Gym_management_App\Buisness_layer\obj\Release\Gym_Buss.8CC76900.Up2Date
+D:\GithubRepos\Gym_management_App\Buisness_layer\obj\Release\Buisness_layer.dll
+D:\GithubRepos\Gym_management_App\Buisness_layer\obj\Release\Buisness_layer.pdb

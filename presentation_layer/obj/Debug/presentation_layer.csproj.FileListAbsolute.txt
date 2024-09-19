@@ -144,3 +144,6 @@ C:\Users\H1202\source\repos\Gym_management_App-Production\presentation_layer\obj
 C:\Users\H1202\source\repos\Gym_management_App-Production\presentation_layer\obj\Debug\presentation_layer.csproj.CopyComplete
 C:\Users\H1202\source\repos\Gym_management_App-Production\presentation_layer\obj\Debug\presentation_layer.exe
 C:\Users\H1202\source\repos\Gym_management_App-Production\presentation_layer\obj\Debug\presentation_layer.pdb
+D:\GithubRepos\Gym_management_App\presentation_layer\obj\Debug\presentation_layer.csproj.AssemblyReference.cache
+D:\GithubRepos\Gym_management_App\presentation_layer\obj\Debug\presentation_layer.exe
+D:\GithubRepos\Gym_management_App\presentation_layer\obj\Debug\presentation_layer.pdb

@@ -10,3 +10,9 @@ C:\Users\H1202\source\repos\Gym_management_App-Production\Data_Access_layer\obj\
 C:\Users\H1202\source\repos\Gym_management_App-Production\Data_Access_layer\obj\Release\Gym_Data_Acces_Layer.csproj.CoreCompileInputs.cache
 C:\Users\H1202\source\repos\Gym_management_App-Production\Data_Access_layer\obj\Release\Data_Access_layer.dll
 C:\Users\H1202\source\repos\Gym_management_App-Production\Data_Access_layer\obj\Release\Data_Access_layer.pdb
+D:\GithubRepos\Gym_management_App\Data_Access_layer\bin\Release\Data_Access_layer.dll
+D:\GithubRepos\Gym_management_App\Data_Access_layer\bin\Release\Data_Access_layer.pdb
+D:\GithubRepos\Gym_management_App\Data_Access_layer\obj\Release\Gym_Data_Acces_Layer.csproj.AssemblyReference.cache
+D:\GithubRepos\Gym_management_App\Data_Access_layer\obj\Release\Gym_Data_Acces_Layer.csproj.CoreCompileInputs.cache
+D:\GithubRepos\Gym_management_App\Data_Access_layer\obj\Release\Data_Access_layer.dll
+D:\GithubRepos\Gym_management_App\Data_Access_layer\obj\Release\Data_Access_layer.pdb

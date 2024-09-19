@@ -1,12 +1,6 @@
 ﻿using GymBussniesLayer;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace presentation_layer
@@ -17,7 +11,8 @@ namespace presentation_layer
         {
             InitializeComponent();
         }
-        string imagePath;
+
+        private string imagePath;
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             if (OfdPicture.ShowDialog() == DialogResult.OK)
@@ -46,7 +41,7 @@ namespace presentation_layer
             {
                 TbPaidPrice.Text = "0";
             }
-            if (!int.TryParse(TbPaidPrice.Text,out int paidPrices))
+            if (!int.TryParse(TbPaidPrice.Text, out int paidPrices))
             {
                 MessageBox.Show("يرجى ادخال الارقام فقط في حقل المبلغ المدفوع");
                 ValidData = false;
@@ -78,13 +73,20 @@ namespace presentation_layer
             DtpEndDate.Value = DateTime.Now.AddMonths(1);
             LbPrices.SelectedIndex = 0;
             LbPrices.Size = new Size(259, 44);
-        } 
+            DtpStartDate.Focus();
+            SendKeys.Send("{F4}");
+        }
         private void PaidAmount_valueChanged(object sender, EventArgs e)
         {
-            if (!int.TryParse(((MaskedTextBox)sender).Text, out int PaidPrice) && ((MaskedTextBox)sender).Text != "")
+            if (!int.TryParse(((MaskedTextBox)sender).Text, out _) && ((MaskedTextBox)sender).Text != "")
             {
                 MessageBox.Show("يرجى ادخال الارقام فقط في هذا الحقل");
             }
+        }
+
+        private void DtpStartDate_ValueChanged(object sender, EventArgs e)
+        {
+            DtpEndDate.Value = DtpStartDate.Value.AddMonths(1);
         }
     }
 }

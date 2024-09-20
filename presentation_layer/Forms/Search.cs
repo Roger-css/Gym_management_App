@@ -11,6 +11,7 @@ namespace presentation_layer
     public partial class SearchForm : Form
     {
         private readonly AutoComplete namesBank = new AutoComplete();
+        private bool _autoComplete = true;
         public SearchForm()
         {
             InitializeComponent();
@@ -166,6 +167,11 @@ namespace presentation_layer
         }
         private void TbSearch_TextChanged(object sender, EventArgs e)
         {
+            if (!_autoComplete)
+            {
+                return;
+            }
+
             if (TbSearch.Text.Length == 0)
             {
                 HideAutoComplete();
@@ -187,19 +193,26 @@ namespace presentation_layer
             AutoCompleteList.Enabled = false;
             AutoCompleteList.Visible = false;
         }
-
-        private void TbSearch_KeyPress(object sender, KeyPressEventArgs e)
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
-            if (e.KeyChar == (char)Keys.Enter)
+            if (keyData == Keys.Enter)
             {
                 SearchBtn_Click(null, null);
+                return true;
             }
+
+            return base.ProcessCmdKey(ref msg, keyData);
         }
         private void AutoCompleteSelected(object sender, EventArgs e)
         {
             var searchText = AutoCompleteList.SelectedItem.ToString();
             TbSearch.Text = searchText;
             HideAutoComplete();
+        }
+
+        private void ShowAutoCompleteCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            _autoComplete = !_autoComplete;
         }
     }
 }

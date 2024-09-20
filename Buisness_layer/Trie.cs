@@ -22,10 +22,11 @@ public class TrieNode
 public class Trie
 {
     private readonly TrieNode root;
-
+    private readonly Dictionary<string, List<string>> lookUpTable;
     public Trie()
     {
         root = new TrieNode();
+        lookUpTable = new Dictionary<string, List<string>>(1000);
     }
 
     // Insert a list of Arabic names into the Trie
@@ -33,7 +34,7 @@ public class Trie
     {
         foreach (string name in names)
         {
-            InsertName(name);
+            InsertName(name.Trim());
         }
     }
 
@@ -57,6 +58,8 @@ public class Trie
     // AutoComplete function to return all names starting with the given prefix.
     public List<string> AutoComplete(string prefix)
     {
+        if (lookUpTable.TryGetValue(prefix, out List<string> list))
+            return list;
         TrieNode node = root;
         List<string> result = new List<string>();
 
@@ -69,10 +72,9 @@ public class Trie
             }
             node = node.Children[c];
         }
-
         // Once the prefix is found, collect all names under this node.
         CollectAllNames(node, result);
-
+        lookUpTable.Add(prefix, result);
         return result;
     }
 

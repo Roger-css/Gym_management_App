@@ -1145,9 +1145,8 @@ namespace GymDataAccesLayer
         {
             using (SqlConnection connection = new SqlConnection(clsDataBaseSettings.ConnectionString))
             {
-                string query = @"SELECT Trainers.Name FROM Trainers 
-                            JOIN Subscriptions ON Trainers._id = Subscriptions.Player_id
-                            WHERE DATEDIFF(DAY, GETDATE(), Subscriptions.EnrollmentEnd) > -60";
+                string query = @"SELECT Distinct Trainers.Name FROM Trainers 
+                            JOIN Subscriptions ON Trainers._id = Subscriptions.Player_id";
 
                 var dt = new DataTable();
                 using (SqlCommand cmd = new SqlCommand(query, connection))

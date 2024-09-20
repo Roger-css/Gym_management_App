@@ -194,8 +194,6 @@ namespace GymBussniesLayer
         public static int GetPlayersCount()
             => clsTraineeDataAccess.GetPlayersCount();
         public static IEnumerable<string> GetAutoCompleteNames()
-        {
-            return clsTraineeDataAccess.GetPlayersForAutoComplete();
-        }
+            => clsTraineeDataAccess.GetPlayersForAutoComplete();
     }
 }

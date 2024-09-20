@@ -2,9 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Runtime.InteropServices.ComTypes;
-using System.Security.Policy;
-using System.Xml.Linq;
+using System.Linq;
 
 namespace GymDataAccesLayer
 {
@@ -187,7 +185,7 @@ namespace GymDataAccesLayer
                     DataTable dt = new DataTable();
                     try
                     {
-                         connection.Open();
+                        connection.Open();
 
                         using (SqlDataReader reader = cmd.ExecuteReader())
                         {
@@ -606,7 +604,7 @@ namespace GymDataAccesLayer
             {
                 connection.Close();
             }
-            return (rowsAffected > 0);
+            return rowsAffected > 0;
         }
         public static bool UpdateTraineeSubscription(int PalyerID, DateTime EnrollmentStartDate,
              DateTime EnrollmentEndDate, float totalAmount, float paidAmount)
@@ -1039,17 +1037,17 @@ namespace GymDataAccesLayer
                 int NumberOfPlayers = -1;
                 string query = @" SELECT Count(*) as PlayersCount
                                     FROM Trainers";
-                                
+
 
 
                 using (SqlCommand cmd = new SqlCommand(query, connection))
                 {
-                   
+
 
                     DataTable dt = new DataTable();
                     try
                     {
-                       
+
                         connection.Open();
                         object result = cmd.ExecuteScalar();
                         if (result != null && int.TryParse(result.ToString(), out int value))
@@ -1069,9 +1067,9 @@ namespace GymDataAccesLayer
                 }
             }
         }
-            public static bool DeletePlayerSub(int playerID)
+        public static bool DeletePlayerSub(int playerID)
         {
-            bool Success  = false;
+            bool Success = false;
             using (SqlConnection connection = new SqlConnection(clsDataBaseSettings.ConnectionString))
             {
                 string query = @"DELETE FROM Subscriptions
@@ -1094,10 +1092,10 @@ namespace GymDataAccesLayer
                         int rowsAffected = cmd.ExecuteNonQuery();
 
                         if (rowsAffected > 0)
-                         {
+                        {
                             Success = true;
-                         }
-                        
+                        }
+
                     }
                     catch (Exception)
                     {
@@ -1143,6 +1141,40 @@ namespace GymDataAccesLayer
                 }
             }
         }
+        public static IEnumerable<string> GetPlayersForAutoComplete()
+        {
+            using (SqlConnection connection = new SqlConnection(clsDataBaseSettings.ConnectionString))
+            {
+                string query = @"SELECT Trainers.Name FROM Trainers 
+                            JOIN Subscriptions ON Trainers._id = Subscriptions.Player_id
+                            WHERE DATEDIFF(DAY, GETDATE(), Subscriptions.EnrollmentEnd) > -60";
 
+                var dt = new DataTable();
+                using (SqlCommand cmd = new SqlCommand(query, connection))
+                {
+                    try
+                    {
+                        connection.Open();
+                        var reader = cmd.ExecuteReader();
+                        if (reader.HasRows)
+                        {
+                            dt.Load(reader);
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        return Enumerable.Empty<string>();
+                    }
+                    return ConvertDataTableToEnumerable(dt);
+                }
+            }
+        }
+        private static IEnumerable<string> ConvertDataTableToEnumerable(DataTable dt)
+        {
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                yield return dt.Rows[i][0].ToString();
+            }
+        }
     }
 }

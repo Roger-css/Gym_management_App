@@ -45,8 +45,8 @@
             this.ManualSubBtn = new System.Windows.Forms.ToolStripMenuItem();
             this.QuickAddMoney = new System.Windows.Forms.ToolStripMenuItem();
             this.DeleteSub = new System.Windows.Forms.ToolStripMenuItem();
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.DgvList = new System.Windows.Forms.DataGridView();
+            this.AutoCompleteList = new System.Windows.Forms.ListBox();
             this.panel1.SuspendLayout();
             this.CmsList.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvList)).BeginInit();
@@ -119,6 +119,8 @@
             this.TbSearch.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.TbSearch.Size = new System.Drawing.Size(250, 44);
             this.TbSearch.TabIndex = 0;
+            this.TbSearch.TextChanged += new System.EventHandler(this.TbSearch_TextChanged);
+            this.TbSearch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TbSearch_KeyPress);
             // 
             // SearchBtn
             // 
@@ -209,7 +211,8 @@
             this.DgvList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgvList.ContextMenuStrip = this.CmsList;
             this.DgvList.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.DgvList.Location = new System.Drawing.Point(0, 178);
+            this.DgvList.Location = new System.Drawing.Point(0, 0);
+            this.DgvList.MultiSelect = false;
             this.DgvList.Name = "DgvList";
             this.DgvList.ReadOnly = true;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -224,16 +227,29 @@
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DgvList.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.DgvList.RowTemplate.Height = 35;
-            this.DgvList.Size = new System.Drawing.Size(1190, 358);
+            this.DgvList.Size = new System.Drawing.Size(1190, 536);
             this.DgvList.TabIndex = 5;
+            // 
+            // AutoCompleteList
+            // 
+            this.AutoCompleteList.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.AutoCompleteList.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AutoCompleteList.FormattingEnabled = true;
+            this.AutoCompleteList.ItemHeight = 32;
+            this.AutoCompleteList.Location = new System.Drawing.Point(316, 146);
+            this.AutoCompleteList.Name = "AutoCompleteList";
+            this.AutoCompleteList.Size = new System.Drawing.Size(368, 228);
+            this.AutoCompleteList.TabIndex = 6;
+            this.AutoCompleteList.SelectedValueChanged += new System.EventHandler(this.AutoCompleteSelected);
             // 
             // SearchForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1190, 536);
-            this.Controls.Add(this.DgvList);
+            this.Controls.Add(this.AutoCompleteList);
             this.Controls.Add(this.panel1);
+            this.Controls.Add(this.DgvList);
             this.Name = "SearchForm";
             this.Text = "search";
             this.Load += new System.EventHandler(this.SearchForm_Load);
@@ -255,11 +271,11 @@
         private System.Windows.Forms.ToolStripMenuItem تجديدالاشتراكToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem QuickSubBtn;
         private System.Windows.Forms.ToolStripMenuItem ManualSubBtn;
-        private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.Button RefreshBtn;
         private System.Windows.Forms.ToolStripMenuItem QuickAddMoney;
         private System.Windows.Forms.DataGridView DgvList;
         private System.Windows.Forms.ComboBox CBSearch;
         private System.Windows.Forms.ToolStripMenuItem DeleteSub;
+        private System.Windows.Forms.ListBox AutoCompleteList;
     }
 }

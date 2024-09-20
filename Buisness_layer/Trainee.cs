@@ -1,8 +1,7 @@
-﻿using System;
+﻿using GymDataAccesLayer;
+using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Xml.Linq;
-using GymDataAccesLayer;
 
 namespace GymBussniesLayer
 {
@@ -15,11 +14,11 @@ namespace GymBussniesLayer
         public DateTime EnrollmentEndDate { get; set; }
 
 
-        private bool _AddNewTrainee()
+        private bool AddNewTrainee()
         {
             this.ID = clsTraineeDataAccess.AddNewTrainee(this.Name,
                 this.Phone, this.Photo);
-            return (this.ID != -1);
+            return this.ID != -1;
         }
 
         // 1-Name, 2- POHNE, 3- PHOTO, ENROLMENT START DATE, ENRLMMENT END DATE, 
@@ -33,7 +32,7 @@ namespace GymBussniesLayer
 
         public clsTrainee() : base(-1, "", "", "")
         {
-           
+
 
             Mode = enMode.AddNew;
         }
@@ -48,14 +47,16 @@ namespace GymBussniesLayer
             Mode = enMode.Update;
         }
 
-        public static int AddPalyerWithSubscribtion(string name, string phone, string photo,
+        public static int AddPlayerWithSubscribtion(string name, string phone, string photo,
             DateTime enrollmentStartDate, DateTime enrollmentEndDate, int totalAmount, int paidAmount)
         {
 
-            clsTrainee TrainneToAdd = new clsTrainee();
-            TrainneToAdd.Name = name;
-            TrainneToAdd.Phone = phone;
-            TrainneToAdd.Photo = photo;
+            clsTrainee TrainneToAdd = new clsTrainee
+            {
+                Name = name,
+                Phone = phone,
+                Photo = photo
+            };
             if (TrainneToAdd.Save())
             {
                 clsSubscription NewSubScription = new clsSubscription();
@@ -81,13 +82,13 @@ namespace GymBussniesLayer
             TrainneToUpdate.Photo = photo;
             if (TrainneToUpdate.Save())
             {
-               return  clsTraineeDataAccess.UpdateTraineeSubscription(PlayerID, enrollmentStartDate,
-                    enrollmentEndDate, totalAmount, paidAmount);
+                return clsTraineeDataAccess.UpdateTraineeSubscription(PlayerID, enrollmentStartDate,
+                     enrollmentEndDate, totalAmount, paidAmount);
             }
             return false;
         }
-        
-        public static bool quickSubscribe(int PlayerID)
+
+        public static bool QuickSubscribe(int PlayerID)
         {
             DataTable lastSub = clsTraineeDataAccess.GetLastSubscriptionByPlayerID(PlayerID);
             DataRow row = lastSub.Rows[0];
@@ -100,11 +101,11 @@ namespace GymBussniesLayer
 
             int SubNumber = clsTraineeDataAccess.AddNewSubscription(PlayerID, enrollmentStartDate,
                 enrollmentEndDate, TotalAmount, paidAmount);
-             return SubNumber > -1 ? true : false;
+            return SubNumber > -1 ? true : false;
         }
         public static bool AutoPayRemaining(int PlayerID)
         {
-             DataTable lastSub = clsTraineeDataAccess.GetLastSubscriptionByPlayerID(PlayerID);
+            DataTable lastSub = clsTraineeDataAccess.GetLastSubscriptionByPlayerID(PlayerID);
             DataRow row = lastSub.Rows[0];
 
             DateTime enrollmentStartDate = (DateTime)row["EnrollmentStart"];
@@ -129,14 +130,12 @@ namespace GymBussniesLayer
                 return null;
 
         }
-
-
         public bool Save()
         {
             switch (Mode)
             {
                 case enMode.AddNew:
-                    if (_AddNewTrainee())
+                    if (AddNewTrainee())
                     {
                         Mode = enMode.Update;
                         return true;
@@ -166,11 +165,11 @@ namespace GymBussniesLayer
             => clsTraineeDataAccess.GetTraineesExpiredSubscription();
 
         public static DataTable GetAllSubscriptionsByPlayerID(int PlayerID)
-        
+
             => clsTraineeDataAccess.GetAllSubscriptionsByPlayerID(PlayerID);
-        
+
         public static DataTable GetLastSubscriptionsByPlayerID(int PlayerID)
-        
+
             => clsTraineeDataAccess.GetLastSubscriptionByPlayerID(PlayerID);
 
         public static DataTable GetTraineeLastSubByPhone(string Phone)
@@ -194,8 +193,9 @@ namespace GymBussniesLayer
           => clsTraineeDataAccess.GetPlayersWithOutSubsByID(ID);
         public static int GetPlayersCount()
             => clsTraineeDataAccess.GetPlayersCount();
-
-
-
+        public static IEnumerable<string> GetAutoCompleteNames()
+        {
+            return clsTraineeDataAccess.GetPlayersForAutoComplete();
+        }
     }
 }

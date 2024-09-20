@@ -56,7 +56,7 @@ namespace presentation_layer
                         return;
                     }
                 }
-                int added = clsTrainee.AddPalyerWithSubscribtion(TbName.Text, TbPhone.Text,
+                int added = clsTrainee.AddPlayerWithSubscribtion(TbName.Text, TbPhone.Text,
                         imagePath, DtpStartDate.Value, DtpEndDate.Value,
                         int.Parse(LbPrices.Text), paidPrices);
                 if (added != -1)

@@ -1,6 +1,4 @@
 ﻿using System.ComponentModel.DataAnnotations;
-
-
 namespace GymBussniesLayer
 {
     public class Person

@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using GymDataAccesLayer;
+using System;
 using System.Data;
-using System.Diagnostics;
-using System.Runtime.InteropServices.ComTypes;
-using System.Xml.Linq;
-using GymDataAccesLayer;
 
 namespace GymBussniesLayer
 {
@@ -29,7 +25,7 @@ namespace GymBussniesLayer
         {
             this.ID = clsTraineeDataAccess.AddNewSubscription(this.PlayerID,
                 this.StartDate, this.EndDate, this.TotalAmount, this.PaidAmount);
-            return (this.ID != -1);
+            return this.ID != -1;
         }
 
 
@@ -49,10 +45,6 @@ namespace GymBussniesLayer
             this.PaidAmount = -1;
             Mode = enMode.AddNew;
         }
-
-
-
-
         private clsSubscription(int ID, int playerID, DateTime StartDate, DateTime EndDate,
             int totalAmount, float paidAmount, float remainingAmount,
             int daysTillSubscribtionEnds)
@@ -66,29 +58,6 @@ namespace GymBussniesLayer
 
             Mode = enMode.Update;
         }
-
-        //public static clsSubscription FindByPlayer(int PlayerID)
-        //{
-        //    int ID = -1;
-        //    DateTime StartDate = DateTime.MinValue,
-        //    EndDate = DateTime.MinValue;
-        //    int TotalAmount = -1;
-        //    float PaidAmount = -1f, RemainingAmount = -1f;
-        //    int DaysTillSubscribtionEnds = -1;
-
-        //    if (clsTraineeDataAccess.GetTraineeLastSub(
-        //        (ref ID, PlayerID, ref StartDate, ref EndDate,
-        //       ref TotalAmount, ref PaidAmount, ref RemainingAmount,
-        //       ref DaysTillSubscribtionEnds))
-
-        //        return new clsSubscription(ID, PlayerID, StartDate, EndDate, TotalAmount,
-        //            PaidAmount, RemainingAmount, DaysTillSubscribtionEnds);
-
-        //    else
-        //        return null;
-
-        //}
-
         public bool Save()
         {
             switch (Mode)
@@ -105,11 +74,7 @@ namespace GymBussniesLayer
             }
             return false;
         }
-
-
-    
-
-    public static decimal GetPaidByDates(DateTime startDate, DateTime endDate)
+        public static decimal GetPaidByDates(DateTime startDate, DateTime endDate)
         {
             return clsTraineeDataAccess.GetPaidByDates(startDate, endDate);
         }

@@ -1,24 +1,52 @@
-﻿using GymBussniesLayer;
-using presentation_layer.Forms.CmsForms;
+﻿using Buisness_layer;
+using GymBussniesLayer;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace presentation_layer
 {
     public partial class SearchForm : Form
     {
+        private readonly AutoComplete namesBank = new AutoComplete();
         public SearchForm()
         {
             InitializeComponent();
 
             Shown += Form_Shown;
+            AutoCompleteList.DrawMode = DrawMode.OwnerDrawFixed;
+
+            // Subscribe to the DrawItem event.
+            AutoCompleteList.DrawItem += new DrawItemEventHandler(ListBox1_DrawItem);
+        }
+        private void ListBox1_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            // Clear the background and draw it in the default way.
+            e.DrawBackground();
+            string itemText = "";
+            // Retrieve the item text.
+            if (e.Index >= 0)
+                itemText = AutoCompleteList.Items[e.Index].ToString();
+
+            // Create a StringFormat object to specify the text alignment.
+            StringFormat sf = new StringFormat
+            {
+                Alignment = StringAlignment.Far, // Center horizontally
+                LineAlignment = StringAlignment.Center // Center vertically
+            };
+
+            // Set the text color (highlighted if selected).
+            Brush textBrush = ((e.State & DrawItemState.Selected) == DrawItemState.Selected)
+                ? SystemBrushes.HighlightText
+                : SystemBrushes.ControlText;
+
+            // Draw the item text with custom alignment.
+            e.Graphics.DrawString(itemText, e.Font, textBrush, e.Bounds, sf);
+
+            // Draw the focus rectangle around the item.
+            e.DrawFocusRectangle();
         }
         private void Form_Shown(object sender, EventArgs e)
         {
@@ -31,7 +59,7 @@ namespace presentation_layer
         private void ChangeListColors()
         {
             DgvList.ForeColor = Color.Black;
-            if(DgvList.Rows.Count > 0)
+            if (DgvList.Rows.Count > 0)
                 DgvList.Columns[8].DefaultCellStyle.ForeColor = Color.White;
             for (int i = 0; i < DgvList.Rows.Count; i++)
             {
@@ -122,6 +150,8 @@ namespace presentation_layer
         private void SearchForm_Load(object sender, EventArgs e)
         {
             CBSearch.SelectedIndex = 0;
+            AutoCompleteList.Visible = false;
+            AutoCompleteList.Enabled = false;
         }
 
         private void CBSearch_SelectedIndexChanged(object sender, EventArgs e)
@@ -133,6 +163,43 @@ namespace presentation_layer
         {
             GeneralMethods.DeleteSub(DgvList.CurrentRow.Cells[0].Value);
             RefreshList();
+        }
+        private void TbSearch_TextChanged(object sender, EventArgs e)
+        {
+            if (TbSearch.Text.Length == 0)
+            {
+                HideAutoComplete();
+                return;
+            }
+            var names = namesBank.GetAutoComplete(TbSearch.Text).ToArray();
+            AutoCompleteList.Items.Clear();
+
+            AutoCompleteList.Items.AddRange(names);
+            if (AutoCompleteList.Items.Count > 0)
+            {
+                AutoCompleteList.Enabled = true;
+                AutoCompleteList.Visible = true;
+            }
+
+        }
+        private void HideAutoComplete()
+        {
+            AutoCompleteList.Enabled = false;
+            AutoCompleteList.Visible = false;
+        }
+
+        private void TbSearch_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                SearchBtn_Click(null, null);
+            }
+        }
+        private void AutoCompleteSelected(object sender, EventArgs e)
+        {
+            var searchText = AutoCompleteList.SelectedItem.ToString();
+            TbSearch.Text = searchText;
+            HideAutoComplete();
         }
     }
 }

@@ -22,7 +22,7 @@ namespace presentation_layer
             int _id = (int)value;
             if (MessageBox.Show("هل انت متأكد؟", "", MessageBoxButtons.OKCancel) == DialogResult.OK)
             {
-                clsTrainee.quickSubscribe(_id);
+                clsTrainee.QuickSubscribe(_id);
             }
         }
         public static void QuickAddMoney_click(object value)

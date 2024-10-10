@@ -37,6 +37,8 @@ namespace presentation_layer.Forms.CmsForms
                 ShowTraineeDetails();
             }
             SubPrices.Size = new Size(154, 36);
+            DtpStart.Value = DateTime.Now;
+            DtpEnd.Value = DateTime.Now.AddMonths(1);
             BeginInvoke(new Action(() =>
             {
                 DtpStart.Focus();
@@ -59,8 +61,9 @@ namespace presentation_layer.Forms.CmsForms
                 Valid = false;
             }
             DateTime Start = DtpStart.Value,
-                 End = DtpEnd.Value;
-            if (End <= Start)
+                 end = DtpEnd.Value,
+                 payDate = DtpPayDate.Value;
+            if (end <= Start)
             {
                 Valid = false;
                 MessageBox.Show("موعد انتهاء الاشتراك لايمكن ان يساوي موعد بداية الاشتراك او ان يكون قبله");
@@ -72,12 +75,14 @@ namespace presentation_layer.Forms.CmsForms
 
             if (Valid)
             {
-                int ok = clsSubscription.AddNewSubscription(_id, Start, End, Tprice, PaidAmount);
+                int ok = clsSubscription.AddNewSubscription(_id, Start, end, Tprice, PaidAmount, payDate);
                 if (ok != -1)
                 {
                     MessageBox.Show("تمت اضافة الاشتراك بنجاح");
                     Close();
                 }
+                else
+                    MessageBox.Show("حدث خطأ يرجى التواصل مع المطور");
             }
         }
 

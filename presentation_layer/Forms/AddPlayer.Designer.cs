@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.PayDate = new System.Windows.Forms.DateTimePicker();
             this.LbPrices = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
             this.DtpEndDate = new System.Windows.Forms.DateTimePicker();
@@ -50,6 +52,8 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.PayDate);
             this.panel1.Controls.Add(this.LbPrices);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.DtpEndDate);
@@ -67,8 +71,33 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1661, 734);
+            this.panel1.Size = new System.Drawing.Size(1661, 955);
             this.panel1.TabIndex = 0;
+            // 
+            // label2
+            // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.Black;
+            this.label2.Location = new System.Drawing.Point(1063, 516);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(154, 40);
+            this.label2.TabIndex = 41;
+            this.label2.Text = ":تاريخ الدفع";
+            // 
+            // PayDate
+            // 
+            this.PayDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.PayDate.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PayDate.CalendarForeColor = System.Drawing.Color.Black;
+            this.PayDate.CalendarTitleForeColor = System.Drawing.Color.Black;
+            this.PayDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PayDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.PayDate.Location = new System.Drawing.Point(960, 559);
+            this.PayDate.Name = "PayDate";
+            this.PayDate.Size = new System.Drawing.Size(259, 48);
+            this.PayDate.TabIndex = 40;
             // 
             // LbPrices
             // 
@@ -79,6 +108,7 @@
             this.LbPrices.FormattingEnabled = true;
             this.LbPrices.ItemHeight = 40;
             this.LbPrices.Items.AddRange(new object[] {
+            "0",
             "10000",
             "15000",
             "20000",
@@ -88,7 +118,7 @@
             "40000",
             "45000",
             "50000"});
-            this.LbPrices.Location = new System.Drawing.Point(962, 428);
+            this.LbPrices.Location = new System.Drawing.Point(960, 424);
             this.LbPrices.MinimumSize = new System.Drawing.Size(211, 44);
             this.LbPrices.Name = "LbPrices";
             this.LbPrices.Size = new System.Drawing.Size(259, 44);
@@ -101,7 +131,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(1023, 385);
+            this.label1.Location = new System.Drawing.Point(1023, 381);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(196, 40);
             this.label1.TabIndex = 38;
@@ -116,7 +146,7 @@
             this.DtpEndDate.CustomFormat = "";
             this.DtpEndDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DtpEndDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.DtpEndDate.Location = new System.Drawing.Point(633, 581);
+            this.DtpEndDate.Location = new System.Drawing.Point(631, 693);
             this.DtpEndDate.Name = "DtpEndDate";
             this.DtpEndDate.Size = new System.Drawing.Size(259, 48);
             this.DtpEndDate.TabIndex = 37;
@@ -127,7 +157,7 @@
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.Black;
-            this.label7.Location = new System.Drawing.Point(1026, 538);
+            this.label7.Location = new System.Drawing.Point(1024, 650);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(195, 40);
             this.label7.TabIndex = 36;
@@ -139,7 +169,7 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.Black;
-            this.label6.Location = new System.Drawing.Point(695, 538);
+            this.label6.Location = new System.Drawing.Point(693, 650);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(197, 40);
             this.label6.TabIndex = 35;
@@ -165,7 +195,7 @@
             this.DtpStartDate.CalendarTitleForeColor = System.Drawing.Color.Black;
             this.DtpStartDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DtpStartDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.DtpStartDate.Location = new System.Drawing.Point(962, 581);
+            this.DtpStartDate.Location = new System.Drawing.Point(960, 693);
             this.DtpStartDate.Name = "DtpStartDate";
             this.DtpStartDate.Size = new System.Drawing.Size(259, 48);
             this.DtpStartDate.TabIndex = 33;
@@ -188,7 +218,7 @@
             this.SaveBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(119)))), ((int)(((byte)(186)))));
             this.SaveBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SaveBtn.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.SaveBtn.Location = new System.Drawing.Point(1103, 669);
+            this.SaveBtn.Location = new System.Drawing.Point(1101, 781);
             this.SaveBtn.Name = "SaveBtn";
             this.SaveBtn.Size = new System.Drawing.Size(116, 61);
             this.SaveBtn.TabIndex = 31;
@@ -260,7 +290,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1661, 734);
+            this.ClientSize = new System.Drawing.Size(1661, 955);
             this.Controls.Add(this.panel1);
             this.Name = "AddPlayer";
             this.Text = "AddPlayer";
@@ -290,5 +320,7 @@
         private System.Windows.Forms.MaskedTextBox TbPaidPrice;
         private System.Windows.Forms.Button SaveBtn;
         private System.Windows.Forms.OpenFileDialog OfdPicture;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.DateTimePicker PayDate;
     }
 }

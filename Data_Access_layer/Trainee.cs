@@ -21,7 +21,7 @@ namespace GymDataAccesLayer
         public static bool GetTraineeInfoByID(int ID,
             ref string Name, ref string Phone, ref string Photo)
         {
-            SqlConnection connection = new SqlConnection(clsDataBaseSettings.ConnectionString);
+            SqlConnection connection = new SqlConnection(ClsDataBaseSettings.ConnectionString);
 
             bool isFound = false;
             // done
@@ -82,7 +82,7 @@ namespace GymDataAccesLayer
 
         public static DataTable GetTraineeLastSub(string Name)
         {
-            using (SqlConnection connection = new SqlConnection(clsDataBaseSettings.ConnectionString))
+            using (SqlConnection connection = new SqlConnection(ClsDataBaseSettings.ConnectionString))
             {
                 string query = @"SELECT _id, Name, Phone,
                     EnrollmentStart, EnrollmentEnd,
@@ -129,7 +129,7 @@ namespace GymDataAccesLayer
 
         public static DataTable GetTraineeAllSubsByName(string name)
         {
-            using (SqlConnection connection = new SqlConnection(clsDataBaseSettings.ConnectionString))
+            using (SqlConnection connection = new SqlConnection(ClsDataBaseSettings.ConnectionString))
             {
                 string query = "SELECT Trainers._id, Trainers.Name, Trainers.Phone, Subscriptions.EnrollmentStart, Subscriptions.EnrollmentEnd, Subscriptions.TotalAmount, Subscriptions.PaidAmount, (Subscriptions.TotalAmount - Subscriptions.PaidAmount) AS RemainingAmount, DATEDIFF(day, GETDATE(), EnrollmentEnd) AS DaysTillSubscriptionExpired FROM Subscriptions INNER JOIN Trainers ON Subscriptions.Player_id = Trainers._id WHERE Trainers.Name COLLATE Arabic_CI_AI LIKE N'%' + @Name + N'%' ORDER BY EnrollmentStart DESC";
 
@@ -163,22 +163,24 @@ namespace GymDataAccesLayer
 
         public static DataTable GetTraineesLastSub()
         {
-            using (SqlConnection connection = new SqlConnection(clsDataBaseSettings.ConnectionString))
+            using (SqlConnection connection = new SqlConnection(ClsDataBaseSettings.ConnectionString))
             {
                 string query = @"SELECT _id, Name, Phone,
                                    EnrollmentStart, EnrollmentEnd,
                                    TotalAmount, PaidAmount,
                                    (TotalAmount - PaidAmount) AS RemainingAmount,
+                                   PayDate,
                                    DATEDIFF(day, GETDATE(), EnrollmentEnd) AS DaysTillSubscriptionExpired
                             FROM (
                                 SELECT Trainers._id, Trainers.Name, Trainers.Phone,
                                        Subscriptions.EnrollmentStart, Subscriptions.EnrollmentEnd,
                                        Subscriptions.TotalAmount, Subscriptions.PaidAmount,
-                                       ROW_NUMBER() OVER (PARTITION BY Trainers._id ORDER BY Subscriptions.EnrollmentEnd DESC) AS RowNum
+                                       ROW_NUMBER() OVER (PARTITION BY Trainers._id ORDER BY Subscriptions.EnrollmentEnd DESC) AS RowNum,
+                                       Subscriptions.PayDate
                                 FROM Trainers
                                 INNER JOIN Subscriptions ON Trainers._id = Subscriptions.Player_id
                             ) R2
-                            WHERE RowNum = 1 ";
+                            WHERE RowNum = 1";
 
                 using (SqlCommand cmd = new SqlCommand(query, connection))
                 {
@@ -207,9 +209,15 @@ namespace GymDataAccesLayer
         }
         public static DataTable GetTraineesAllSubs()
         {
-            using (SqlConnection connection = new SqlConnection(clsDataBaseSettings.ConnectionString))
+            using (SqlConnection connection = new SqlConnection(ClsDataBaseSettings.ConnectionString))
             {
-                string query = "SELECT Trainers._id, Trainers.Name, Trainers.Phone,Subscriptions.EnrollmentStart, Subscriptions.EnrollmentEnd,Subscriptions.TotalAmount, Subscriptions.PaidAmount,(Subscriptions.TotalAmount - Subscriptions.PaidAmount) AS RemainingAmount,DATEDIFF(day, GETDATE(), EnrollmentEnd) AS DaysTillSubscriptionExpired FROM Subscriptions INNER JOIN Trainers ON Subscriptions.[Player_id] = Trainers._id ORDER BY Trainers.Name";
+                string query = @"SELECT Trainers._id, Trainers.Name, Trainers.Phone,Subscriptions.EnrollmentStart,
+                                    Subscriptions.EnrollmentEnd,Subscriptions.TotalAmount, Subscriptions.PaidAmount,
+                                    (Subscriptions.TotalAmount - Subscriptions.PaidAmount) AS RemainingAmount,
+                                    Subscriptions.PayDate,
+                                    DATEDIFF(day, GETDATE(), EnrollmentEnd) AS DaysTillSubscriptionExpired
+                                    FROM Subscriptions INNER JOIN Trainers ON Subscriptions.[Player_id] = Trainers._id
+                                    ORDER BY Trainers.Name";
 
                 using (SqlCommand cmd = new SqlCommand(query, connection))
                 {
@@ -227,10 +235,9 @@ namespace GymDataAccesLayer
                             }
                         }
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
                         dt = null;
-                        // Handle the exception appropriately
                     }
 
                     return dt;
@@ -240,7 +247,7 @@ namespace GymDataAccesLayer
 
         public static DataTable GetTraineesExpiredSubscription()
         {
-            using (SqlConnection connection = new SqlConnection(clsDataBaseSettings.ConnectionString))
+            using (SqlConnection connection = new SqlConnection(ClsDataBaseSettings.ConnectionString))
             {
                 string query = @"SELECT _id, Name, Phone,
                                    EnrollmentStart, EnrollmentEnd,
@@ -289,7 +296,7 @@ namespace GymDataAccesLayer
         public static int AddNewTrainee(string Name, string Phone, string Photo)
         {
             int TrainneID = -1;
-            using (SqlConnection connection = new SqlConnection(clsDataBaseSettings.ConnectionString))
+            using (SqlConnection connection = new SqlConnection(ClsDataBaseSettings.ConnectionString))
             {
                 string query = @"
                             INSERT INTO Trainers (Name, Phone, Photo)
@@ -329,48 +336,11 @@ namespace GymDataAccesLayer
         {
             decimal totalAmount = 0;
 
-            using (SqlConnection connection = new SqlConnection(clsDataBaseSettings.ConnectionString))
+            using (SqlConnection connection = new SqlConnection(ClsDataBaseSettings.ConnectionString))
             {
                 string query = @"SELECT SUM(Subscriptions.PaidAmount) As PaidAmount
                          FROM  Subscriptions 
-                         WHERE Subscriptions.EnrollmentStart BETWEEN @StartDate AND @EndDate";
-
-                using (SqlCommand cmd = new SqlCommand(query, connection))
-                {
-                    cmd.Parameters.AddWithValue("@StartDate", startDate);
-                    cmd.Parameters.AddWithValue("@EndDate", endDate);
-
-                    try
-                    {
-                        connection.Open();
-                        object result = cmd.ExecuteScalar();
-
-                        if (result != null && decimal.TryParse(result.ToString(),
-                            out decimal value))
-                        {
-                            totalAmount = value;
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        // Handle the exception here or log it
-                        // Return an appropriate value or rethrow the exception
-                        return -1;
-                    }
-                }
-            }
-            return totalAmount;
-        }
-
-        public static decimal GetBalanceByDates(DateTime startDate, DateTime endDate)
-        {
-            decimal totalAmount = 0;
-
-            using (SqlConnection connection = new SqlConnection(clsDataBaseSettings.ConnectionString))
-            {
-                string query = @"SELECT SUM(Subscriptions.TotalAmount) As TotalAmount
-                         FROM  Subscriptions 
-                         WHERE Subscriptions.EnrollmentStart BETWEEN @StartDate AND @EndDate";
+                         WHERE Subscriptions.PayDate BETWEEN @StartDate AND @EndDate";
 
                 using (SqlCommand cmd = new SqlCommand(query, connection))
                 {
@@ -402,7 +372,7 @@ namespace GymDataAccesLayer
         {
             decimal totalAmount = 0;
 
-            using (SqlConnection connection = new SqlConnection(clsDataBaseSettings.ConnectionString))
+            using (SqlConnection connection = new SqlConnection(ClsDataBaseSettings.ConnectionString))
             {
                 string query = @"SELECT SUM(RemainingAmount) As TotalAmount
                                 FROM (
@@ -439,7 +409,7 @@ namespace GymDataAccesLayer
         }
         public static DataTable GetTraineesByDatesWithRemaining(DateTime startDate, DateTime endDate)
         {
-            using (SqlConnection connection = new SqlConnection(clsDataBaseSettings.ConnectionString))
+            using (SqlConnection connection = new SqlConnection(ClsDataBaseSettings.ConnectionString))
             {
                 string query = @"SELECT *
                 FROM (
@@ -484,7 +454,7 @@ namespace GymDataAccesLayer
         }
         public static DataTable GetTraineesWithRemaining()
         {
-            using (SqlConnection connection = new SqlConnection(clsDataBaseSettings.ConnectionString))
+            using (SqlConnection connection = new SqlConnection(ClsDataBaseSettings.ConnectionString))
             {
                 string query = @"SELECT *
                 FROM (
@@ -527,17 +497,17 @@ namespace GymDataAccesLayer
 
         public static DataTable GetTraineesSubscriptionsByDates(DateTime startDate, DateTime endDate)
         {
-            using (SqlConnection connection = new SqlConnection(clsDataBaseSettings.ConnectionString))
+            using (SqlConnection connection = new SqlConnection(ClsDataBaseSettings.ConnectionString))
             {
                 string query = @" 
                                SELECT Trainers._id, Trainers.Name, Trainers.Phone,
                                Subscriptions.EnrollmentStart, Subscriptions.EnrollmentEnd,
                                Subscriptions.TotalAmount, Subscriptions.PaidAmount,
                                (Subscriptions.TotalAmount - Subscriptions.PaidAmount) AS RemainingAmount,
-                               DATEDIFF(day, GETDATE(), Subscriptions.EnrollmentEnd) AS DaysTillSubscriptionExpired
+                               PayDate
                                 FROM Subscriptions
                                 INNER JOIN Trainers ON Subscriptions.[Player_id] = Trainers._id
-                                WHERE Subscriptions.EnrollmentStart BETWEEN @StartDate AND @EndDate";
+                                WHERE Subscriptions.PayDate BETWEEN @StartDate AND @EndDate";
 
                 using (SqlCommand cmd = new SqlCommand(query, connection))
                 {
@@ -571,7 +541,7 @@ namespace GymDataAccesLayer
         public static bool UpdateTrainee(int ID, string Name, string Phone, string Photo)
         {
             int rowsAffected = 0;
-            SqlConnection connection = new SqlConnection(clsDataBaseSettings.ConnectionString);
+            SqlConnection connection = new SqlConnection(ClsDataBaseSettings.ConnectionString);
 
             string query = @"UPDATE Trainers
                  SET Name = @Name,
@@ -607,11 +577,11 @@ namespace GymDataAccesLayer
             return rowsAffected > 0;
         }
         public static bool UpdateTraineeSubscription(int PalyerID, DateTime EnrollmentStartDate,
-             DateTime EnrollmentEndDate, float totalAmount, float paidAmount)
+             DateTime EnrollmentEndDate, float totalAmount, float paidAmount, DateTime payDate)
         {
 
             bool success = false;
-            using (SqlConnection connection = new SqlConnection(clsDataBaseSettings.ConnectionString))
+            using (SqlConnection connection = new SqlConnection(ClsDataBaseSettings.ConnectionString))
             {
 
                 string query = @"WITH LatestSubscription AS (
@@ -624,7 +594,8 @@ namespace GymDataAccesLayer
                                 SET EnrollmentStart = @EnrollmentStartDate,
                                      EnrollmentEnd = @EnrollmentEndDate,
                                     TotalAmount = @TotalAmount,
-                                    PaidAmount = @PaidAmount;";
+                                    PaidAmount = @PaidAmount,
+                                    PayDate = @PayDate;";
 
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
@@ -633,6 +604,7 @@ namespace GymDataAccesLayer
                     command.Parameters.AddWithValue("@TotalAmount", totalAmount);
                     command.Parameters.AddWithValue("@PaidAmount", paidAmount);
                     command.Parameters.AddWithValue("@PlayerID", PalyerID);
+                    command.Parameters.AddWithValue("@PayDate", payDate);
 
                     try
                     {
@@ -643,7 +615,7 @@ namespace GymDataAccesLayer
                             success = true;
                         }
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
                         success = false;
                     }
@@ -654,13 +626,14 @@ namespace GymDataAccesLayer
 
         public static DataTable GetLastSubscriptionByPlayerID(int ID)
         {
-            using (SqlConnection connection = new SqlConnection(clsDataBaseSettings.ConnectionString))
+            using (SqlConnection connection = new SqlConnection(ClsDataBaseSettings.ConnectionString))
             {
                 string query = @"SELECT TOP(1) Trainers._id, Trainers.Name, Trainers.Phone,Trainers.Photo,
                                Subscriptions.EnrollmentStart, Subscriptions.EnrollmentEnd,
                                Subscriptions.TotalAmount, Subscriptions.PaidAmount,
                                (Subscriptions.TotalAmount - Subscriptions.PaidAmount) AS RemainingAmount,
-                               DATEDIFF(day, GETDATE(), Subscriptions.EnrollmentEnd) AS DaysTillSubscriptionExpired
+                               DATEDIFF(day, GETDATE(), Subscriptions.EnrollmentEnd) AS DaysTillSubscriptionExpired,
+                                Subscriptions.PayDate
                                 FROM Subscriptions
                                 INNER JOIN Trainers ON Subscriptions.[Player_id] = Trainers._id
                                 WHERE Trainers._id = @ID
@@ -698,7 +671,7 @@ namespace GymDataAccesLayer
         {
             DataTable dt = new DataTable();
 
-            SqlConnection connection = new SqlConnection(clsDataBaseSettings.ConnectionString);
+            SqlConnection connection = new SqlConnection(ClsDataBaseSettings.ConnectionString);
 
 
             string query = @"SELECT Trainers._id, Trainers.Name, Trainers.Phone,
@@ -739,15 +712,15 @@ namespace GymDataAccesLayer
 
 
         public static int AddNewSubscription(int playerID, DateTime startDate, DateTime endDate,
-     int totalAmount, float paidAmount)
+     int totalAmount, float paidAmount, DateTime PayDate)
         {
             int subscriptionID = -1;
-            using (SqlConnection connection = new SqlConnection(clsDataBaseSettings.ConnectionString))
+            using (SqlConnection connection = new SqlConnection(ClsDataBaseSettings.ConnectionString))
             {
                 string query = @"INSERT INTO Subscriptions
-                         (Player_id, EnrollmentStart, EnrollmentEnd, TotalAmount, PaidAmount )
+                         (Player_id, EnrollmentStart, EnrollmentEnd, TotalAmount, PaidAmount, PayDate)
                          VALUES
-                         (@playerID, @startDate, @endDate, @totalAmount, @paidAmount)
+                         (@playerID, @startDate, @endDate, @totalAmount, @paidAmount, @payDate)
                          SELECT SCOPE_IDENTITY()";
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
@@ -756,6 +729,7 @@ namespace GymDataAccesLayer
                     command.Parameters.AddWithValue("@endDate", endDate);
                     command.Parameters.AddWithValue("@totalAmount", totalAmount);
                     command.Parameters.AddWithValue("@paidAmount", paidAmount);
+                    command.Parameters.AddWithValue("@payDate", PayDate);
                     try
                     {
                         connection.Open();
@@ -778,7 +752,7 @@ namespace GymDataAccesLayer
         public static DataTable GetTraineeLastSubByPhone(string phone)
         {
             DataTable dt = new DataTable();
-            using (SqlConnection connection = new SqlConnection(clsDataBaseSettings.ConnectionString))
+            using (SqlConnection connection = new SqlConnection(ClsDataBaseSettings.ConnectionString))
             {
                 string query = @"SELECT _id, Name, Phone,
                                    EnrollmentStart, EnrollmentEnd,
@@ -826,7 +800,7 @@ namespace GymDataAccesLayer
         public static DataTable GetTraineeAllSubByPhone(string phone)
         {
             DataTable dt = new DataTable();
-            using (SqlConnection connection = new SqlConnection(clsDataBaseSettings.ConnectionString))
+            using (SqlConnection connection = new SqlConnection(ClsDataBaseSettings.ConnectionString))
             {
                 string query = @"select r1._id, r1.Name, r1.Phone,
                                  r1.EnrollmentStart, r1.EnrollmentEnd,
@@ -868,7 +842,7 @@ namespace GymDataAccesLayer
         }
         public static DataTable GetLastSubscriptionByPlayerIDWithoutPhoto(int ID)
         {
-            using (SqlConnection connection = new SqlConnection(clsDataBaseSettings.ConnectionString))
+            using (SqlConnection connection = new SqlConnection(ClsDataBaseSettings.ConnectionString))
             {
                 string query = @"SELECT TOP(1) Trainers._id, Trainers.Name, Trainers.Phone,
                                Subscriptions.EnrollmentStart, Subscriptions.EnrollmentEnd,
@@ -910,7 +884,7 @@ namespace GymDataAccesLayer
 
         public static DataTable GetPlayersWithOutSubs()
         {
-            using (SqlConnection connection = new SqlConnection(clsDataBaseSettings.ConnectionString))
+            using (SqlConnection connection = new SqlConnection(ClsDataBaseSettings.ConnectionString))
             {
                 string query = @" SELECT _id, Name, Phone
                                     FROM Trainers
@@ -950,7 +924,7 @@ namespace GymDataAccesLayer
         }
         public static DataTable GetPlayersWithOutSubsByName(string Name)
         {
-            using (SqlConnection connection = new SqlConnection(clsDataBaseSettings.ConnectionString))
+            using (SqlConnection connection = new SqlConnection(ClsDataBaseSettings.ConnectionString))
             {
                 string query = @" SELECT _id, Name, Phone
                                     FROM Trainers
@@ -991,7 +965,7 @@ namespace GymDataAccesLayer
         }
         public static DataTable GetPlayersWithOutSubsByID(int ID)
         {
-            using (SqlConnection connection = new SqlConnection(clsDataBaseSettings.ConnectionString))
+            using (SqlConnection connection = new SqlConnection(ClsDataBaseSettings.ConnectionString))
             {
                 string query = @" SELECT _id, Name, Phone
                                     FROM Trainers
@@ -1032,7 +1006,7 @@ namespace GymDataAccesLayer
         }
         public static int GetPlayersCount()
         {
-            using (SqlConnection connection = new SqlConnection(clsDataBaseSettings.ConnectionString))
+            using (SqlConnection connection = new SqlConnection(ClsDataBaseSettings.ConnectionString))
             {
                 int NumberOfPlayers = -1;
                 string query = @" SELECT Count(*) as PlayersCount
@@ -1070,7 +1044,7 @@ namespace GymDataAccesLayer
         public static bool DeletePlayerSub(int playerID)
         {
             bool Success = false;
-            using (SqlConnection connection = new SqlConnection(clsDataBaseSettings.ConnectionString))
+            using (SqlConnection connection = new SqlConnection(ClsDataBaseSettings.ConnectionString))
             {
                 string query = @"DELETE FROM Subscriptions
                                 WHERE Subscriptions._id IN (
@@ -1111,7 +1085,7 @@ namespace GymDataAccesLayer
         public static bool IsTraineeNameExists(string palyerName)
         {
             bool IsFound = false;
-            using (SqlConnection connection = new SqlConnection(clsDataBaseSettings.ConnectionString))
+            using (SqlConnection connection = new SqlConnection(ClsDataBaseSettings.ConnectionString))
             {
                 string query = @"select 1 from Trainers where Trainers.Name = @palyerName";
 
@@ -1143,10 +1117,12 @@ namespace GymDataAccesLayer
         }
         public static IEnumerable<string> GetPlayersForAutoComplete()
         {
-            using (SqlConnection connection = new SqlConnection(clsDataBaseSettings.ConnectionString))
+            using (SqlConnection connection = new SqlConnection(ClsDataBaseSettings.ConnectionString))
             {
-                string query = @"SELECT Distinct Trainers.Name FROM Trainers 
-                            JOIN Subscriptions ON Trainers._id = Subscriptions.Player_id";
+                string query = @"SELECT Distinct Trainers.Name FROM Trainers
+                            JOIN Subscriptions ON Trainers._id = Subscriptions.Player_id
+                            where DATEDIFF(day, GETDATE(), Subscriptions.EnrollmentEnd)  > -60;
+";
 
                 var dt = new DataTable();
                 using (SqlCommand cmd = new SqlCommand(query, connection))

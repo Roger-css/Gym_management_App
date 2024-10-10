@@ -1,13 +1,8 @@
 ﻿using GymBussniesLayer;
 using System;
-using System.CodeDom;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
 using System.Windows.Forms;
 
 namespace presentation_layer.Forms
@@ -24,9 +19,10 @@ namespace presentation_layer.Forms
             DgvList.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             DgvList.ForeColor = Color.Black;
             CBSearch.SelectedIndex = 0;
+            DgvList.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             if (DgvList.Rows.Count != 0)
             {
-                DgvList.Columns[0].Width = 60;
+                DgvList.Columns[0].Width = 80;
                 DgvList.Columns[1].Width = 300;
             }
             GeneralMethods.ChangeColumnNames(ref DgvList);
@@ -34,9 +30,8 @@ namespace presentation_layer.Forms
         private void NoSubsPlayers_Load(object sender, EventArgs e)
         {
             RefreshList();
-            
-        }
 
+        }
         private void CBSearch_SelectedIndexChanged(object sender, EventArgs e)
         {
             LblSearchMethod.Text = $": {CBSearch.Text}";
@@ -54,7 +49,11 @@ namespace presentation_layer.Forms
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                using (var sw = new StreamWriter(@"C:\Gym_manegement.txt"))
+                {
+                    sw.WriteLine(ex.Message);
+                }
+                MessageBox.Show("An Exception has been thrown look log files at C:\\");
             }
         }
 

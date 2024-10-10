@@ -55,5 +55,10 @@ namespace presentation_layer
         {
             OpenChildForm(new NoSubsPlayers(), sender);
         }
+
+        private void MainMenu_Load(object sender, EventArgs e)
+        {
+            LogoText.Left = (panelLogo.Width - LogoText.Width) / 2;
+        }
     }
 }

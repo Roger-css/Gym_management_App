@@ -1,46 +1,21 @@
 ﻿using GymBussniesLayer;
 using presentation_layer.Forms.BalanceForms;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Runtime.InteropServices.ComTypes;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace presentation_layer.Forms
 {
     public partial class Balance : Form
     {
-        Form activeForm;
-        yearly YearControl = new yearly();
-        Daily DailyControl = new Daily();
-        monthly MonthlyControl = new monthly();
-        Custom CustomControl = new Custom();
+        private Form activeForm;
+        private readonly yearly YearControl = new yearly();
+        private readonly Daily DailyControl = new Daily();
+        private readonly monthly MonthlyControl = new monthly();
+        private readonly Custom CustomControl = new Custom();
         public Balance()
         {
             InitializeComponent();
-        }
-        public string GetLastDayOfMonth(int year, int month)
-        {
-            if (month == 2)
-            {
-                return DateTime.IsLeapYear(year) ? "29" : "28";
-            }
-            
-            int[] months = {1,3,5,7,8,10,12};
-            
-            for (int i = 0; i < 7; i++)
-            {
-                if (month == months[i])
-                {
-                    return "31";
-                }
-            }
-            return "30";
         }
         private void OpenChildForm(Form childForm)
         {
@@ -82,6 +57,12 @@ namespace presentation_layer.Forms
             button1.PerformClick();
             Dgv.ForeColor = Color.Black;
             Dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            if (Dgv.Rows.Count != 0)
+            {
+                Dgv.Columns[0].Width = 80;
+                Dgv.Columns[1].Width = 200;
+                Dgv.Columns[8].Width = 200;
+            }
             GeneralMethods.ChangeColumnNames(ref Dgv);
         }
 
@@ -89,11 +70,11 @@ namespace presentation_layer.Forms
         {
             if (activeForm == CustomControl)
             {
-                Dgv.DataSource = clsSubscription.GetTraineesSubscriptionsByDates(CustomControl.Start,CustomControl.End);
+                Dgv.DataSource = clsSubscription.GetTraineesSubscriptionsByDates(CustomControl.Start, CustomControl.End);
                 LblTotalAmount.Text = Convert.ToString(clsSubscription.GetBalanceByDates
                     (Convert.ToDateTime(CustomControl.Start), Convert.ToDateTime(CustomControl.End)));
             }
-            else if(activeForm == MonthlyControl)
+            else if (activeForm == MonthlyControl)
             {
                 string startDate = MonthlyControl.Date.Year.ToString();
                 startDate += "-";
@@ -103,7 +84,7 @@ namespace presentation_layer.Forms
                 endDate += "-";
                 endDate += MonthlyControl.Date.Month.ToString();
                 endDate += "-";
-                endDate += GetLastDayOfMonth(MonthlyControl.Date.Year, MonthlyControl.Date.Month);
+                endDate += DateTime.DaysInMonth(MonthlyControl.Date.Year, MonthlyControl.Date.Month);
                 Dgv.DataSource =
                 clsSubscription.GetTraineesSubscriptionsByDates
                 (Convert.ToDateTime(startDate), Convert.ToDateTime(endDate));

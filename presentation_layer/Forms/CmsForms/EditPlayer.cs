@@ -12,7 +12,7 @@ namespace presentation_layer.Forms.CmsForms
         private string imagePath = string.Empty;
         private int TotalPrice = 10,
             PaidPrice = 10;
-
+        private string name;
         public EditPlayer(int playerId = -1)
         {
             InitializeComponent();
@@ -21,6 +21,7 @@ namespace presentation_layer.Forms.CmsForms
         private void ShowTraineeDetails()
         {
             DataTable trainee = clsTrainee.GetLastSubscriptionsByPlayerID(PlayerId);
+            name = trainee.Rows[0]["Name"].ToString();
             TbName.Text = trainee.Rows[0]["Name"].ToString();
             TbPhone.Text = trainee.Rows[0]["Phone"].ToString();
             SubPrices.SelectedIndex = SubPrices.FindString(trainee.Rows[0]["TotalAmount"].ToString());
@@ -32,6 +33,7 @@ namespace presentation_layer.Forms.CmsForms
             TbPaid.Text = trainee.Rows[0]["PaidAmount"].ToString();
             DtpStart.Text = trainee.Rows[0]["EnrollmentStart"].ToString();
             DtpEnd.Text = trainee.Rows[0]["EnrollmentEnd"].ToString();
+            DtpPayDate.Text = trainee.Rows[0]["PayDate"].ToString();
         }
         private void EditPlayer_Load(object sender, EventArgs e)
         {
@@ -93,11 +95,20 @@ namespace presentation_layer.Forms.CmsForms
                 MessageBox.Show("يرجى ادخال الارقام فقط في حقل المبلغ المدفوع");
                 ValidData = false;
             }
+            if (TbName.Text != name)
+            {
+                var nameAlreadyExist = clsTrainee.IsTraineeNameExists(TbName.Text);
+                if (nameAlreadyExist)
+                {
+                    MessageBox.Show("يوجد لاعب بهذا الاسم مسبقاً");
+                    ValidData = false;
+                }
+            }
             if (ValidData)
             {
-                bool ok = clsTrainee.UpdatePlayerSubScription(PlayerId, TbName.Text, DtpStart.Value, DtpEnd.Value
+                bool ok = clsTrainee.UpdatePlayerSubscription(PlayerId, TbName.Text, DtpStart.Value, DtpEnd.Value
                 , TbPhone.Text, imagePath, TotalPrice,
-                PaidPrice);
+                PaidPrice, DtpPayDate.Value);
                 if (ok)
                 {
                     MessageBox.Show("تم تعديل بيانات اللاعب بنجاح");

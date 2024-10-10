@@ -48,7 +48,7 @@ namespace GymBussniesLayer
         }
 
         public static int AddPlayerWithSubscribtion(string name, string phone, string photo,
-            DateTime enrollmentStartDate, DateTime enrollmentEndDate, int totalAmount, int paidAmount)
+            DateTime enrollmentStartDate, DateTime enrollmentEndDate, int totalAmount, int paidAmount, DateTime PayDate)
         {
 
             clsTrainee TrainneToAdd = new clsTrainee
@@ -59,31 +59,32 @@ namespace GymBussniesLayer
             };
             if (TrainneToAdd.Save())
             {
-                clsSubscription NewSubScription = new clsSubscription();
-
-                NewSubScription.PlayerID = TrainneToAdd.ID;
-                NewSubScription.StartDate = enrollmentStartDate;
-                NewSubScription.EndDate = enrollmentEndDate;
-                NewSubScription.TotalAmount = totalAmount;
-                NewSubScription.PaidAmount = paidAmount;
+                clsSubscription NewSubScription = new clsSubscription
+                {
+                    PlayerID = TrainneToAdd.ID,
+                    StartDate = enrollmentStartDate,
+                    EndDate = enrollmentEndDate,
+                    TotalAmount = totalAmount,
+                    PaidAmount = paidAmount
+                };
                 if (NewSubScription.Save())
                     return TrainneToAdd.ID;
             }
             return -1;
         }
 
-        public static bool UpdatePlayerSubScription(int PlayerID, string name, DateTime enrollmentStartDate
-            , DateTime enrollmentEndDate, string phone, string photo, int totalAmount, int paidAmount)
+        public static bool UpdatePlayerSubscription(int PlayerID, string name, DateTime enrollmentStartDate
+            , DateTime enrollmentEndDate, string phone, string photo, int totalAmount, int paidAmount, DateTime payDate)
         {
 
-            clsTrainee TrainneToUpdate = clsTrainee.Find(PlayerID);
+            clsTrainee TrainneToUpdate = Find(PlayerID);
             TrainneToUpdate.Name = name;
             TrainneToUpdate.Phone = phone;
             TrainneToUpdate.Photo = photo;
             if (TrainneToUpdate.Save())
             {
                 return clsTraineeDataAccess.UpdateTraineeSubscription(PlayerID, enrollmentStartDate,
-                     enrollmentEndDate, totalAmount, paidAmount);
+                     enrollmentEndDate, totalAmount, paidAmount, payDate);
             }
             return false;
         }
@@ -100,8 +101,8 @@ namespace GymBussniesLayer
             int paidAmount = TotalAmount;
 
             int SubNumber = clsTraineeDataAccess.AddNewSubscription(PlayerID, enrollmentStartDate,
-                enrollmentEndDate, TotalAmount, paidAmount);
-            return SubNumber > -1 ? true : false;
+                enrollmentEndDate, TotalAmount, paidAmount, enrollmentStartDate);
+            return SubNumber > -1;
         }
         public static bool AutoPayRemaining(int PlayerID)
         {
@@ -110,11 +111,12 @@ namespace GymBussniesLayer
 
             DateTime enrollmentStartDate = (DateTime)row["EnrollmentStart"];
             DateTime enrollmentEndDate = (DateTime)row["EnrollmentEnd"];
+            DateTime payDate = (DateTime)row["PayDate"];
             double typ = (double)row["TotalAmount"];
             int totalAmount = (int)typ;
             //float totalAmount = (float)row["TotalAmount"];
             return clsTraineeDataAccess.UpdateTraineeSubscription(PlayerID, enrollmentStartDate,
-                    enrollmentEndDate, totalAmount, totalAmount);
+                    enrollmentEndDate, totalAmount, totalAmount, payDate);
 
         }
 
@@ -185,7 +187,6 @@ namespace GymBussniesLayer
             => clsTraineeDataAccess.DeletePlayerSub(PlayerID);
         public static bool IsTraineeNameExists(string PalyerName)
             => clsTraineeDataAccess.IsTraineeNameExists(PalyerName);
-
         public static DataTable GetPlayersWithOutSubsByName(string Name)
             => clsTraineeDataAccess.GetPlayersWithOutSubsByName(Name);
 

@@ -58,7 +58,8 @@ namespace presentation_layer
                 }
                 int added = clsTrainee.AddPlayerWithSubscribtion(TbName.Text, TbPhone.Text,
                         imagePath, DtpStartDate.Value, DtpEndDate.Value,
-                        int.Parse(LbPrices.Text), paidPrices);
+                        int.Parse(LbPrices.Text), paidPrices, PayDate.Value
+                        );
                 if (added != -1)
                 {
                     MessageBox.Show($"رقم بطاقة اللاعب هي {added}");
@@ -71,7 +72,7 @@ namespace presentation_layer
         private void AddPlayer_Load(object sender, EventArgs e)
         {
             DtpEndDate.Value = DateTime.Now.AddMonths(1);
-            LbPrices.SelectedIndex = 0;
+            LbPrices.SelectedIndex = 4;
             LbPrices.Size = new Size(259, 44);
             DtpStartDate.Focus();
             SendKeys.Send("{F4}");

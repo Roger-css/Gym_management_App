@@ -8,13 +8,18 @@ namespace presentation_layer
     {
         public static void EditToolStripMenuItem_Click(object value)
         {
-            EditPlayer form = new EditPlayer((int)value);
+            EditPlayer form = new EditPlayer((int)value)
+            {
+                Top = 30
+            };
             form.Show();
         }
-
         public static void ManualSub_click(object value, bool firstSub = false)
         {
-            LongSubscriptionForm form = new LongSubscriptionForm((int)value, firstSub);
+            LongSubscriptionForm form = new LongSubscriptionForm((int)value, firstSub)
+            {
+                Top = 30
+            };
             form.Show();
         }
         public static void QuickSubBtn_Click(object value)
@@ -65,6 +70,9 @@ namespace presentation_layer
                         break;
                     case "RemainingAmount":
                         column.HeaderText = "المبلغ المتبقي";
+                        break;
+                    case "PayDate":
+                        column.HeaderText = "موعد الدفع";
                         break;
                 }
             }

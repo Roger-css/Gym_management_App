@@ -1,7 +1,22 @@
-﻿namespace GymDataAccesLayer
+﻿using System.Configuration;
+
+namespace GymDataAccesLayer
 {
-    internal static class clsDataBaseSettings
+    internal static class ClsDataBaseSettings
     {
-        public static string ConnectionString = "server=.;database=Gym_management;User id=sa;password=sa123456;";//"Data Source=DESKTOP-MH7VVJ1\\SQLEXPRESS;Initial Catalog=Gym_management;User ID=rm;Password=rm123456;";
+        private const string _myDb = "PersonalConnectionString";
+        private const string _customerDb = "CustomerConnectionString";
+        public static string ConnectionString
+        {
+            get
+            {
+                return GetConnectionStringFromConfigFile();
+            }
+        }
+        private static string GetConnectionStringFromConfigFile()
+        {
+            string connectionString = ConfigurationManager.ConnectionStrings[_myDb].ConnectionString;
+            return connectionString;
+        }
     }
 }

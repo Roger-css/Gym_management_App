@@ -30,7 +30,7 @@
         {
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.panelLogo = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
+            this.LogoText = new System.Windows.Forms.Label();
             this.AddBtn = new System.Windows.Forms.Button();
             this.SearchBtn = new System.Windows.Forms.Button();
             this.playersListBtn = new System.Windows.Forms.Button();
@@ -66,25 +66,26 @@
             // panelLogo
             // 
             this.panelLogo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(58)))));
-            this.panelLogo.Controls.Add(this.label1);
+            this.panelLogo.Controls.Add(this.LogoText);
             this.panelLogo.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelLogo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panelLogo.Location = new System.Drawing.Point(3, 3);
             this.panelLogo.Name = "panelLogo";
-            this.panelLogo.Size = new System.Drawing.Size(269, 75);
+            this.panelLogo.Size = new System.Drawing.Size(261, 77);
             this.panelLogo.TabIndex = 0;
             this.panelLogo.Tag = "";
             // 
-            // label1
+            // LogoText
             // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Felix Titling", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(33, 23);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(194, 28);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "نظام ادارة النادي الرياضي";
+            this.LogoText.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.LogoText.AutoSize = true;
+            this.LogoText.Font = new System.Drawing.Font("Felix Titling", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LogoText.Location = new System.Drawing.Point(29, 24);
+            this.LogoText.Name = "LogoText";
+            this.LogoText.Size = new System.Drawing.Size(194, 28);
+            this.LogoText.TabIndex = 0;
+            this.LogoText.Text = "نظام ادارة النادي الرياضي";
+            this.LogoText.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // AddBtn
             // 
@@ -99,7 +100,7 @@
             this.AddBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AddBtn.ForeColor = System.Drawing.Color.Gainsboro;
             this.AddBtn.Image = global::presentation_layer.Properties.Resources.Plus_Math;
-            this.AddBtn.Location = new System.Drawing.Point(3, 84);
+            this.AddBtn.Location = new System.Drawing.Point(3, 86);
             this.AddBtn.Name = "AddBtn";
             this.AddBtn.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
             this.AddBtn.Size = new System.Drawing.Size(247, 99);
@@ -122,7 +123,7 @@
             this.SearchBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SearchBtn.ForeColor = System.Drawing.Color.Gainsboro;
             this.SearchBtn.Image = global::presentation_layer.Properties.Resources.Add4;
-            this.SearchBtn.Location = new System.Drawing.Point(3, 189);
+            this.SearchBtn.Location = new System.Drawing.Point(3, 191);
             this.SearchBtn.Name = "SearchBtn";
             this.SearchBtn.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
             this.SearchBtn.Size = new System.Drawing.Size(247, 99);
@@ -145,7 +146,7 @@
             this.playersListBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.playersListBtn.ForeColor = System.Drawing.Color.Gainsboro;
             this.playersListBtn.Image = global::presentation_layer.Properties.Resources.list;
-            this.playersListBtn.Location = new System.Drawing.Point(3, 294);
+            this.playersListBtn.Location = new System.Drawing.Point(3, 296);
             this.playersListBtn.Name = "playersListBtn";
             this.playersListBtn.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.playersListBtn.Size = new System.Drawing.Size(247, 99);
@@ -168,7 +169,7 @@
             this.ExpiredListBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ExpiredListBtn.ForeColor = System.Drawing.Color.Gainsboro;
             this.ExpiredListBtn.Image = global::presentation_layer.Properties.Resources.Cancel1;
-            this.ExpiredListBtn.Location = new System.Drawing.Point(3, 399);
+            this.ExpiredListBtn.Location = new System.Drawing.Point(3, 401);
             this.ExpiredListBtn.Name = "ExpiredListBtn";
             this.ExpiredListBtn.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.ExpiredListBtn.Size = new System.Drawing.Size(247, 99);
@@ -191,7 +192,7 @@
             this.UncompleteSubs.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.UncompleteSubs.ForeColor = System.Drawing.Color.Gainsboro;
             this.UncompleteSubs.Image = global::presentation_layer.Properties.Resources.Donate1;
-            this.UncompleteSubs.Location = new System.Drawing.Point(3, 504);
+            this.UncompleteSubs.Location = new System.Drawing.Point(3, 506);
             this.UncompleteSubs.Name = "UncompleteSubs";
             this.UncompleteSubs.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
             this.UncompleteSubs.Size = new System.Drawing.Size(247, 99);
@@ -214,7 +215,7 @@
             this.BalanceBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BalanceBtn.ForeColor = System.Drawing.Color.Gainsboro;
             this.BalanceBtn.Image = global::presentation_layer.Properties.Resources.MoneyBag;
-            this.BalanceBtn.Location = new System.Drawing.Point(3, 609);
+            this.BalanceBtn.Location = new System.Drawing.Point(3, 611);
             this.BalanceBtn.Name = "BalanceBtn";
             this.BalanceBtn.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.BalanceBtn.Size = new System.Drawing.Size(247, 99);
@@ -237,7 +238,7 @@
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.Gainsboro;
             this.button1.Image = global::presentation_layer.Properties.Resources.Delete_User_Male1;
-            this.button1.Location = new System.Drawing.Point(3, 714);
+            this.button1.Location = new System.Drawing.Point(3, 716);
             this.button1.Name = "button1";
             this.button1.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.button1.Size = new System.Drawing.Size(247, 99);
@@ -278,7 +279,7 @@
             this.panelDesktopPane.Size = new System.Drawing.Size(1198, 751);
             this.panelDesktopPane.TabIndex = 2;
             // 
-            // Form1
+            // MainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -287,9 +288,10 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.flowLayoutPanel1);
             this.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.Name = "Form1";
+            this.Name = "MainMenu";
             this.Text = "Gym Management System";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.MainMenu_Load);
             this.flowLayoutPanel1.ResumeLayout(false);
             this.panelLogo.ResumeLayout(false);
             this.panelLogo.PerformLayout();
@@ -309,7 +311,7 @@
         private System.Windows.Forms.Button ExpiredListBtn;
         private System.Windows.Forms.Button BalanceBtn;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label LogoText;
         private System.Windows.Forms.Label LblTitle;
         private System.Windows.Forms.Panel panelDesktopPane;
         private System.Windows.Forms.Button UncompleteSubs;

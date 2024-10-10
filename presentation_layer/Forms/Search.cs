@@ -21,7 +21,19 @@ namespace presentation_layer
 
             // Subscribe to the DrawItem event.
             AutoCompleteList.DrawItem += new DrawItemEventHandler(ListBox1_DrawItem);
+            DgvList.SelectionChanged += DgvList_SelectionChanged;
         }
+
+        private void DgvList_SelectionChanged(object sender, EventArgs e)
+        {
+            var item = CmsList.Items.Find("QuickAddMoney", true);
+            var test = DgvList.CurrentRow.Cells[7];
+            if (Convert.ToInt32(DgvList.CurrentRow.Cells[7].Value) == 0)
+                item[0].Enabled = false;
+            else
+                item[0].Enabled = true;
+        }
+
         private void ListBox1_DrawItem(object sender, DrawItemEventArgs e)
         {
             // Clear the background and draw it in the default way.
@@ -61,19 +73,19 @@ namespace presentation_layer
         {
             DgvList.ForeColor = Color.Black;
             if (DgvList.Rows.Count > 0)
-                DgvList.Columns[8].DefaultCellStyle.ForeColor = Color.White;
+                DgvList.Columns[9].DefaultCellStyle.ForeColor = Color.White;
             for (int i = 0; i < DgvList.Rows.Count; i++)
             {
 
-                if (int.TryParse(DgvList.Rows[i].Cells[8].Value.ToString(), out int cellValue))
+                if (int.TryParse(DgvList.Rows[i].Cells[9].Value.ToString(), out int cellValue))
                 {
                     if (cellValue < 0)
                     {
-                        DgvList.Rows[i].Cells[8].Style.BackColor = Color.Firebrick;
+                        DgvList.Rows[i].Cells[9].Style.BackColor = Color.Firebrick;
                     }
                     else
                     {
-                        DgvList.Rows[i].Cells[8].Style.BackColor = Color.Green;
+                        DgvList.Rows[i].Cells[9].Style.BackColor = Color.Green;
                     }
                 }
             }
@@ -81,8 +93,9 @@ namespace presentation_layer
             if (DgvList.Rows.Count != 0)
             {
                 DgvList.Columns[0].Width = 80;
-                DgvList.Columns[1].Width = 300;
-                DgvList.Columns[8].Width = 300;
+                DgvList.Columns[1].Width = 200;
+                DgvList.Columns[8].Width = 200;
+                DgvList.Columns[9].Width = 200;
             }
             GeneralMethods.ChangeColumnNames(ref DgvList);
         }

@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
 
 namespace GymDataAccesLayer
 {
@@ -88,11 +86,13 @@ namespace GymDataAccesLayer
                     EnrollmentStart, EnrollmentEnd,
                     TotalAmount, PaidAmount,
                     (TotalAmount - PaidAmount) AS RemainingAmount,
+                    PayDate,
                     DATEDIFF(day, GETDATE(), EnrollmentEnd) AS DaysTillSubscriptionExpired
                 FROM (
                     SELECT Trainers._id, Trainers.Name, Trainers.Phone,
                            Subscriptions.EnrollmentStart, Subscriptions.EnrollmentEnd,
                            Subscriptions.TotalAmount, Subscriptions.PaidAmount,
+                           Subscriptions.PayDate,
                            ROW_NUMBER() OVER (PARTITION BY Trainers._id ORDER BY Subscriptions.EnrollmentEnd DESC) AS RowNum
                     FROM Trainers
                     INNER JOIN Subscriptions ON Trainers._id = Subscriptions.Player_id
@@ -131,7 +131,7 @@ namespace GymDataAccesLayer
         {
             using (SqlConnection connection = new SqlConnection(ClsDataBaseSettings.ConnectionString))
             {
-                string query = "SELECT Trainers._id, Trainers.Name, Trainers.Phone, Subscriptions.EnrollmentStart, Subscriptions.EnrollmentEnd, Subscriptions.TotalAmount, Subscriptions.PaidAmount, (Subscriptions.TotalAmount - Subscriptions.PaidAmount) AS RemainingAmount, DATEDIFF(day, GETDATE(), EnrollmentEnd) AS DaysTillSubscriptionExpired FROM Subscriptions INNER JOIN Trainers ON Subscriptions.Player_id = Trainers._id WHERE Trainers.Name COLLATE Arabic_CI_AI LIKE N'%' + @Name + N'%' ORDER BY EnrollmentStart DESC";
+                string query = "SELECT Trainers._id, Trainers.Name, Trainers.Phone, Subscriptions.EnrollmentStart, Subscriptions.EnrollmentEnd, Subscriptions.TotalAmount, Subscriptions.PaidAmount, (Subscriptions.TotalAmount - Subscriptions.PaidAmount) AS RemainingAmount, Subscriptions.PayDate, DATEDIFF(day, GETDATE(), EnrollmentEnd) AS DaysTillSubscriptionExpired FROM Subscriptions INNER JOIN Trainers ON Subscriptions.Player_id = Trainers._id WHERE Trainers.Name COLLATE Arabic_CI_AI LIKE N'%' + @Name + N'%' ORDER BY EnrollmentStart DESC";
 
                 using (SqlCommand cmd = new SqlCommand(query, connection))
                 {
@@ -253,12 +253,14 @@ namespace GymDataAccesLayer
                                    EnrollmentStart, EnrollmentEnd,
                                    TotalAmount, PaidAmount,
                                    (TotalAmount - PaidAmount) AS RemainingAmount,
+                                    PayDate,
                                     DaysTillSubscriptionExpired
                             FROM (
                                 SELECT Trainers._id, Trainers.Name, Trainers.Phone,
                                        Subscriptions.EnrollmentStart, Subscriptions.EnrollmentEnd,
                                        Subscriptions.TotalAmount, Subscriptions.PaidAmount,
-                                    DATEDIFF(day, GETDATE(), EnrollmentEnd) AS DaysTillSubscriptionExpired,                              
+                                    DATEDIFF(day, GETDATE(), EnrollmentEnd) AS DaysTillSubscriptionExpired,
+                                    Subscriptions.PayDate,
                                        ROW_NUMBER() OVER (PARTITION BY Trainers._id ORDER BY Subscriptions.EnrollmentEnd DESC) AS RowNum
                                 FROM Trainers
                                 INNER JOIN Subscriptions ON Trainers._id = Subscriptions.Player_id
@@ -378,7 +380,7 @@ namespace GymDataAccesLayer
                                 FROM (
                                     SELECT (Subscriptions.TotalAmount - Subscriptions.PaidAmount) AS RemainingAmount
                                     FROM Subscriptions
-                                    WHERE Subscriptions.EnrollmentStart BETWEEN @StartDate AND @EndDate
+                                    WHERE Subscriptions.PayDate BETWEEN @StartDate AND @EndDate
                                     )";
 
                 using (SqlCommand cmd = new SqlCommand(query, connection))
@@ -417,10 +419,11 @@ namespace GymDataAccesLayer
                            Subscriptions.EnrollmentStart, Subscriptions.EnrollmentEnd,
                            Subscriptions.TotalAmount, Subscriptions.PaidAmount,
                            (Subscriptions.TotalAmount - Subscriptions.PaidAmount) AS RemainingAmount,
+                           Subscriptions.PayDate,
                            DATEDIFF(day, EnrollmentEnd, EnrollmentStart) AS DaysTillSubscriptionExpired
                     FROM Subscriptions
                     INNER JOIN Trainers ON Subscriptions.[Player_id] = Trainers._id
-                    WHERE Subscriptions.EnrollmentStart BETWEEN @StartDate AND @EndDate
+                    WHERE Subscriptions.PayDate BETWEEN @StartDate AND @EndDate
                 ) DateRemaining
                 WHERE RemainingAmount > 0";
 
@@ -462,6 +465,7 @@ namespace GymDataAccesLayer
                            Subscriptions.EnrollmentStart, Subscriptions.EnrollmentEnd,
                            Subscriptions.TotalAmount, Subscriptions.PaidAmount,
                            (Subscriptions.TotalAmount - Subscriptions.PaidAmount) AS RemainingAmount,
+                            Subscriptions.PayDate,
                            DATEDIFF(day, GETDATE(), EnrollmentEnd) AS DaysTillSubscriptionExpired
                     FROM Subscriptions
                     INNER JOIN Trainers ON Subscriptions.[Player_id] = Trainers._id
@@ -678,6 +682,7 @@ namespace GymDataAccesLayer
                                  Subscriptions.EnrollmentStart, Subscriptions.EnrollmentEnd,
                                  Subscriptions.TotalAmount, Subscriptions.PaidAmount,
                                  (Subscriptions.TotalAmount - Subscriptions.PaidAmount) AS RemainingAmount,
+                                 Subscriptions.PayDate,
                                  DATEDIFF(day, GETDATE(), Subscriptions.EnrollmentEnd) AS DaysTillSubscriptionExpired
                             FROM Subscriptions
                             INNER JOIN Trainers ON Subscriptions.[Player_id] = Trainers._id
@@ -758,13 +763,15 @@ namespace GymDataAccesLayer
                                    EnrollmentStart, EnrollmentEnd,
                                    TotalAmount, PaidAmount,
                                    (TotalAmount - PaidAmount) AS RemainingAmount,
+                                   PayDate,
                                     DaysTillSubscriptionExpired
                             FROM (
                                 SELECT Trainers._id, Trainers.Name, Trainers.Phone,
                                        Subscriptions.EnrollmentStart, Subscriptions.EnrollmentEnd,
                                        Subscriptions.TotalAmount, Subscriptions.PaidAmount,
-                                    DATEDIFF(day, GETDATE(), EnrollmentEnd) AS DaysTillSubscriptionExpired,                              
-                                       ROW_NUMBER() OVER (PARTITION BY Trainers._id ORDER BY Subscriptions.EnrollmentEnd DESC) AS RowNum
+                                       DATEDIFF(day, GETDATE(), EnrollmentEnd) AS DaysTillSubscriptionExpired,                              
+                                       ROW_NUMBER() OVER (PARTITION BY Trainers._id ORDER BY Subscriptions.EnrollmentEnd DESC) AS RowNum,
+                                       Subscriptions.PayDate
                                 FROM Trainers
                                 INNER JOIN Subscriptions ON Trainers._id = Subscriptions.Player_id
                             ) R2
@@ -806,10 +813,11 @@ namespace GymDataAccesLayer
                                  r1.EnrollmentStart, r1.EnrollmentEnd,
                                  r1.TotalAmount, r1.PaidAmount,
                                 (r1.TotalAmount - r1.PaidAmount) AS RemainingAmount,
+                                r1.PayDate,
                                 DATEDIFF(day, GETDATE(), EnrollmentEnd) AS DaysTillSubscriptionExpired
                                 from (SELECT Trainers._id, Trainers.Name,
                                 Trainers.Phone, Subscriptions.EnrollmentStart, Subscriptions.EnrollmentEnd,
-                                Subscriptions.TotalAmount, Subscriptions.PaidAmount
+                                Subscriptions.TotalAmount, Subscriptions.PaidAmount, Subscriptions.PayDate
                                 FROM   Subscriptions INNER JOIN
                                 Trainers ON Subscriptions.Player_id = Trainers._id) r1
                                 where r1.Phone like '%' + @Phone + '%'
@@ -848,6 +856,7 @@ namespace GymDataAccesLayer
                                Subscriptions.EnrollmentStart, Subscriptions.EnrollmentEnd,
                                Subscriptions.TotalAmount, Subscriptions.PaidAmount,
                                (Subscriptions.TotalAmount - Subscriptions.PaidAmount) AS RemainingAmount,
+                               Subscriptions.PayDate,
                                DATEDIFF(day, GETDATE(), Subscriptions.EnrollmentEnd) AS DaysTillSubscriptionExpired
                                 FROM Subscriptions
                                 INNER JOIN Trainers ON Subscriptions.[Player_id] = Trainers._id
@@ -1113,42 +1122,6 @@ namespace GymDataAccesLayer
                     }
                     return IsFound;
                 }
-            }
-        }
-        public static IEnumerable<string> GetPlayersForAutoComplete()
-        {
-            using (SqlConnection connection = new SqlConnection(ClsDataBaseSettings.ConnectionString))
-            {
-                string query = @"SELECT Distinct Trainers.Name FROM Trainers
-                            JOIN Subscriptions ON Trainers._id = Subscriptions.Player_id
-                            where DATEDIFF(day, GETDATE(), Subscriptions.EnrollmentEnd)  > -60;
-";
-
-                var dt = new DataTable();
-                using (SqlCommand cmd = new SqlCommand(query, connection))
-                {
-                    try
-                    {
-                        connection.Open();
-                        var reader = cmd.ExecuteReader();
-                        if (reader.HasRows)
-                        {
-                            dt.Load(reader);
-                        }
-                    }
-                    catch (Exception)
-                    {
-                        return Enumerable.Empty<string>();
-                    }
-                    return ConvertDataTableToEnumerable(dt);
-                }
-            }
-        }
-        private static IEnumerable<string> ConvertDataTableToEnumerable(DataTable dt)
-        {
-            for (int i = 0; i < dt.Rows.Count; i++)
-            {
-                yield return dt.Rows[i][0].ToString();
             }
         }
     }

@@ -42,12 +42,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AutoComplete.cs" />
     <Compile Include="Person.cs" />
     <Compile Include="Subscription.cs" />
     <Compile Include="Trainee.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Trie.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Data_Access_layer\Gym_Data_Acces_Layer.csproj">

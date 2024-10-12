@@ -10,13 +10,8 @@ namespace GymDataAccesLayer
         {
             get
             {
-                return GetConnectionStringFromConfigFile();
+                return ConfigurationManager.ConnectionStrings[_myDb].ConnectionString;
             }
-        }
-        private static string GetConnectionStringFromConfigFile()
-        {
-            string connectionString = ConfigurationManager.ConnectionStrings[_myDb].ConnectionString;
-            return connectionString;
         }
     }
 }

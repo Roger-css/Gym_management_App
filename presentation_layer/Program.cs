@@ -1,4 +1,5 @@
-﻿using System;
+﻿using presentation_layer.Forms;
+using System;
 using System.Windows.Forms;
 namespace presentation_layer
 {
@@ -16,7 +17,7 @@ namespace presentation_layer
             }
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainMenu());
+            Application.Run(new Login());
         }
         [System.Runtime.InteropServices.DllImport("user32.dll")]
         private static extern void SetProcessDPIAware();

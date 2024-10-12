@@ -32,12 +32,10 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.ShowAutoCompleteCheckBox = new System.Windows.Forms.CheckBox();
             this.CBSearch = new System.Windows.Forms.ComboBox();
             this.RefreshBtn = new System.Windows.Forms.Button();
             this.LblSearchMethod = new System.Windows.Forms.Label();
             this.TbSearch = new System.Windows.Forms.TextBox();
-            this.SearchBtn = new System.Windows.Forms.Button();
             this.CmsList = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.تعديلبياناتاللاعبToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.تجديدالاشتراكToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -45,7 +43,6 @@
             this.ManualSubBtn = new System.Windows.Forms.ToolStripMenuItem();
             this.QuickAddMoney = new System.Windows.Forms.ToolStripMenuItem();
             this.DeleteSub = new System.Windows.Forms.ToolStripMenuItem();
-            this.AutoCompleteList = new System.Windows.Forms.ListBox();
             this.DgvList = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
             this.CmsList.SuspendLayout();
@@ -54,37 +51,16 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.ShowAutoCompleteCheckBox);
             this.panel1.Controls.Add(this.CBSearch);
             this.panel1.Controls.Add(this.RefreshBtn);
             this.panel1.Controls.Add(this.LblSearchMethod);
             this.panel1.Controls.Add(this.TbSearch);
-            this.panel1.Controls.Add(this.SearchBtn);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1190, 178);
             this.panel1.TabIndex = 4;
-            // 
-            // ShowAutoCompleteCheckBox
-            // 
-            this.ShowAutoCompleteCheckBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.ShowAutoCompleteCheckBox.AutoSize = true;
-            this.ShowAutoCompleteCheckBox.Checked = true;
-            this.ShowAutoCompleteCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.ShowAutoCompleteCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ShowAutoCompleteCheckBox.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.ShowAutoCompleteCheckBox.Location = new System.Drawing.Point(1004, 59);
-            this.ShowAutoCompleteCheckBox.Name = "ShowAutoCompleteCheckBox";
-            this.ShowAutoCompleteCheckBox.Padding = new System.Windows.Forms.Padding(10);
-            this.ShowAutoCompleteCheckBox.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.ShowAutoCompleteCheckBox.Size = new System.Drawing.Size(174, 56);
-            this.ShowAutoCompleteCheckBox.TabIndex = 6;
-            this.ShowAutoCompleteCheckBox.Text = "تكملة النص";
-            this.ShowAutoCompleteCheckBox.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.ShowAutoCompleteCheckBox.UseVisualStyleBackColor = true;
-            this.ShowAutoCompleteCheckBox.CheckedChanged += new System.EventHandler(this.ShowAutoCompleteCheckBox_CheckedChanged);
             // 
             // CBSearch
             // 
@@ -139,23 +115,6 @@
             this.TbSearch.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.TbSearch.Size = new System.Drawing.Size(250, 44);
             this.TbSearch.TabIndex = 0;
-            this.TbSearch.TextChanged += new System.EventHandler(this.TbSearch_TextChanged);
-            // 
-            // SearchBtn
-            // 
-            this.SearchBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.SearchBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(119)))), ((int)(((byte)(186)))));
-            this.SearchBtn.FlatAppearance.BorderSize = 0;
-            this.SearchBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.SearchBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.SearchBtn.ForeColor = System.Drawing.Color.Gainsboro;
-            this.SearchBtn.Location = new System.Drawing.Point(684, 72);
-            this.SearchBtn.Name = "SearchBtn";
-            this.SearchBtn.Size = new System.Drawing.Size(148, 71);
-            this.SearchBtn.TabIndex = 1;
-            this.SearchBtn.Text = "بحث";
-            this.SearchBtn.UseVisualStyleBackColor = false;
-            this.SearchBtn.Click += new System.EventHandler(this.SearchBtn_Click);
             // 
             // CmsList
             // 
@@ -213,18 +172,6 @@
             this.DeleteSub.Text = "حذف الاشتراك";
             this.DeleteSub.Click += new System.EventHandler(this.DeleteSub_Click);
             // 
-            // AutoCompleteList
-            // 
-            this.AutoCompleteList.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.AutoCompleteList.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AutoCompleteList.FormattingEnabled = true;
-            this.AutoCompleteList.ItemHeight = 32;
-            this.AutoCompleteList.Location = new System.Drawing.Point(330, 149);
-            this.AutoCompleteList.Name = "AutoCompleteList";
-            this.AutoCompleteList.Size = new System.Drawing.Size(368, 228);
-            this.AutoCompleteList.TabIndex = 6;
-            this.AutoCompleteList.SelectedValueChanged += new System.EventHandler(this.AutoCompleteSelected);
-            // 
             // DgvList
             // 
             this.DgvList.AllowUserToAddRows = false;
@@ -259,7 +206,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1190, 536);
-            this.Controls.Add(this.AutoCompleteList);
             this.Controls.Add(this.DgvList);
             this.Controls.Add(this.panel1);
             this.Name = "SearchForm";
@@ -276,7 +222,6 @@
         #endregion
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TextBox TbSearch;
-        private System.Windows.Forms.Button SearchBtn;
         private System.Windows.Forms.Label LblSearchMethod;
         private System.Windows.Forms.ContextMenuStrip CmsList;
         private System.Windows.Forms.ToolStripMenuItem تعديلبياناتاللاعبToolStripMenuItem;
@@ -287,8 +232,6 @@
         private System.Windows.Forms.ToolStripMenuItem QuickAddMoney;
         private System.Windows.Forms.ComboBox CBSearch;
         private System.Windows.Forms.ToolStripMenuItem DeleteSub;
-        private System.Windows.Forms.ListBox AutoCompleteList;
         private System.Windows.Forms.DataGridView DgvList;
-        private System.Windows.Forms.CheckBox ShowAutoCompleteCheckBox;
     }
 }

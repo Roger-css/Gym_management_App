@@ -1,6 +1,5 @@
 ﻿using GymDataAccesLayer;
 using System;
-using System.Collections.Generic;
 using System.Data;
 
 namespace GymBussniesLayer
@@ -194,7 +193,5 @@ namespace GymBussniesLayer
           => clsTraineeDataAccess.GetPlayersWithOutSubsByID(ID);
         public static int GetPlayersCount()
             => clsTraineeDataAccess.GetPlayersCount();
-        public static IEnumerable<string> GetAutoCompleteNames()
-            => clsTraineeDataAccess.GetPlayersForAutoComplete();
     }
 }

@@ -1,65 +1,45 @@
-﻿using Buisness_layer;
-using GymBussniesLayer;
+﻿using GymBussniesLayer;
 using System;
 using System.Data;
 using System.Drawing;
-using System.Linq;
 using System.Windows.Forms;
 
 namespace presentation_layer
 {
     public partial class SearchForm : Form
     {
-        private readonly AutoComplete namesBank = new AutoComplete();
-        private bool _autoComplete = true;
+        private readonly Timer debounceTimer = new Timer();
+        private readonly int debounceInterval = 500;
         public SearchForm()
         {
             InitializeComponent();
 
             Shown += Form_Shown;
-            AutoCompleteList.DrawMode = DrawMode.OwnerDrawFixed;
-
-            // Subscribe to the DrawItem event.
-            AutoCompleteList.DrawItem += new DrawItemEventHandler(ListBox1_DrawItem);
             DgvList.SelectionChanged += DgvList_SelectionChanged;
+
+            // Debounce functionality
+            debounceTimer.Interval = debounceInterval;
+            debounceTimer.Tick += DebounceTimer_Tick;
+            TbSearch.TextChanged += TextBox_TextChanged;
+        }
+        private void TextBox_TextChanged(object sender, EventArgs e)
+        {
+            debounceTimer.Stop();
+            debounceTimer.Start();
         }
 
+        private void DebounceTimer_Tick(object sender, EventArgs e)
+        {
+            debounceTimer.Stop();
+            SearchBtn_Click();
+        }
         private void DgvList_SelectionChanged(object sender, EventArgs e)
         {
             var item = CmsList.Items.Find("QuickAddMoney", true);
-            var test = DgvList.CurrentRow.Cells[7];
             if (Convert.ToInt32(DgvList.CurrentRow.Cells[7].Value) == 0)
                 item[0].Enabled = false;
             else
                 item[0].Enabled = true;
-        }
-
-        private void ListBox1_DrawItem(object sender, DrawItemEventArgs e)
-        {
-            // Clear the background and draw it in the default way.
-            e.DrawBackground();
-            string itemText = "";
-            // Retrieve the item text.
-            if (e.Index >= 0)
-                itemText = AutoCompleteList.Items[e.Index].ToString();
-
-            // Create a StringFormat object to specify the text alignment.
-            StringFormat sf = new StringFormat
-            {
-                Alignment = StringAlignment.Far, // Center horizontally
-                LineAlignment = StringAlignment.Center // Center vertically
-            };
-
-            // Set the text color (highlighted if selected).
-            Brush textBrush = ((e.State & DrawItemState.Selected) == DrawItemState.Selected)
-                ? SystemBrushes.HighlightText
-                : SystemBrushes.ControlText;
-
-            // Draw the item text with custom alignment.
-            e.Graphics.DrawString(itemText, e.Font, textBrush, e.Bounds, sf);
-
-            // Draw the focus rectangle around the item.
-            e.DrawFocusRectangle();
         }
         private void Form_Shown(object sender, EventArgs e)
         {
@@ -101,6 +81,7 @@ namespace presentation_layer
         }
         public void RefreshList()
         {
+            TbSearch.Text = string.Empty;
             DgvList.DataSource = clsTrainee.GetTraineesLastSub();
             ChangeListColors();
         }
@@ -121,18 +102,24 @@ namespace presentation_layer
             GeneralMethods.QuickSubBtn_Click(DgvList.CurrentRow.Cells[0].Value);
             RefreshList();
         }
-        private void SearchBtn_Click(object sender, EventArgs e)
+        private void SearchBtn_Click()
         {
             DataTable dt = new DataTable();
+            var searchText = TbSearch.Text.Trim();
+            if (searchText.Length == 0)
+            {
+                RefreshList();
+                return;
+            }
             if (TbSearch.Text != string.Empty)
             {
                 switch (CBSearch.SelectedItem.ToString())
                 {
                     case "الاسم":
-                        dt = clsTrainee.GetTraineeLastSub(TbSearch.Text.Trim());
+                        dt = clsTrainee.GetTraineeLastSub(searchText);
                         break;
                     case "رقم البطاقة":
-                        if (!int.TryParse(TbSearch.Text, out int id))
+                        if (!int.TryParse(searchText, out int id))
                         {
                             MessageBox.Show("يرجى ادخال رقم صحيح");
                             return;
@@ -140,7 +127,7 @@ namespace presentation_layer
                         dt = clsTrainee.GetLastSubscriptionByPlayerIDWithoutPhoto(id);
                         break;
                     case "رقم الهاتف":
-                        dt = clsTrainee.GetTraineeLastSubByPhone(TbSearch.Text.Trim());
+                        dt = clsTrainee.GetTraineeLastSubByPhone(searchText);
                         break;
                     default:
                         MessageBox.Show("حدث خطأ غير متوقع تواصل مع المطور");
@@ -164,8 +151,6 @@ namespace presentation_layer
         private void SearchForm_Load(object sender, EventArgs e)
         {
             CBSearch.SelectedIndex = 0;
-            AutoCompleteList.Visible = false;
-            AutoCompleteList.Enabled = false;
         }
 
         private void CBSearch_SelectedIndexChanged(object sender, EventArgs e)
@@ -177,55 +162,6 @@ namespace presentation_layer
         {
             GeneralMethods.DeleteSub(DgvList.CurrentRow.Cells[0].Value);
             RefreshList();
-        }
-        private void TbSearch_TextChanged(object sender, EventArgs e)
-        {
-            if (!_autoComplete)
-            {
-                return;
-            }
-
-            if (TbSearch.Text.Length == 0)
-            {
-                HideAutoComplete();
-                return;
-            }
-            var names = namesBank.GetAutoComplete(TbSearch.Text).ToArray();
-            AutoCompleteList.Items.Clear();
-
-            AutoCompleteList.Items.AddRange(names);
-            if (AutoCompleteList.Items.Count > 0)
-            {
-                AutoCompleteList.Enabled = true;
-                AutoCompleteList.Visible = true;
-            }
-
-        }
-        private void HideAutoComplete()
-        {
-            AutoCompleteList.Enabled = false;
-            AutoCompleteList.Visible = false;
-        }
-        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
-        {
-            if (keyData == Keys.Enter)
-            {
-                SearchBtn_Click(null, null);
-                return true;
-            }
-
-            return base.ProcessCmdKey(ref msg, keyData);
-        }
-        private void AutoCompleteSelected(object sender, EventArgs e)
-        {
-            var searchText = AutoCompleteList.SelectedItem.ToString();
-            TbSearch.Text = searchText;
-            HideAutoComplete();
-        }
-
-        private void ShowAutoCompleteCheckBox_CheckedChanged(object sender, EventArgs e)
-        {
-            _autoComplete = !_autoComplete;
         }
     }
 }

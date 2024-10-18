@@ -105,7 +105,6 @@ D:\GithubRepos\Gym_management_App\presentation_layer\obj\Release\presentation_la
 D:\GithubRepos\Gym_management_App\presentation_layer\obj\Release\presentation_layer.csproj.CoreCompileInputs.cache
 D:\GithubRepos\Gym_management_App\presentation_layer\obj\Release\presentation_layer.exe
 D:\GithubRepos\Gym_management_App\presentation_layer\obj\Release\presentation_layer.pdb
-D:\GithubRepos\Gym_management_App\presentation_layer\bin\Release\presentation_layer.exe.config
 D:\GithubRepos\Gym_management_App\presentation_layer\bin\Release\presentation_layer.exe
 D:\GithubRepos\Gym_management_App\presentation_layer\bin\Release\presentation_layer.pdb
 D:\GithubRepos\Gym_management_App\presentation_layer\bin\Release\Buisness_layer.dll
@@ -118,3 +117,4 @@ D:\GithubRepos\Gym_management_App\presentation_layer\bin\Release\presentation_la
 D:\GithubRepos\Gym_management_App\presentation_layer\bin\Release\presentation_layer.application
 D:\GithubRepos\Gym_management_App\presentation_layer\obj\Release\presentation_layer.exe.manifest
 D:\GithubRepos\Gym_management_App\presentation_layer\obj\Release\presentation_layer.application
+D:\GithubRepos\Gym_management_App\presentation_layer\bin\Release\presentation_layer.exe.config

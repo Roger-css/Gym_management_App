@@ -10,7 +10,7 @@ namespace GymDataAccesLayer
         {
             get
             {
-                return ConfigurationManager.ConnectionStrings[_myDb].ConnectionString;
+                return ConfigurationManager.ConnectionStrings[_customerDb].ConnectionString;
             }
         }
     }

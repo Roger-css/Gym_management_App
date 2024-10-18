@@ -64,7 +64,8 @@ namespace GymBussniesLayer
                     StartDate = enrollmentStartDate,
                     EndDate = enrollmentEndDate,
                     TotalAmount = totalAmount,
-                    PaidAmount = paidAmount
+                    PaidAmount = paidAmount,
+                    PayDate = PayDate
                 };
                 if (NewSubScription.Save())
                     return TrainneToAdd.ID;

@@ -43,15 +43,17 @@ namespace presentation_layer.Forms
         }
         private void AddSub_Click(object sender, EventArgs e)
         {
+            var val = DgvList.CurrentRow.Cells[0].Value;
             try
             {
-                GeneralMethods.ManualSub_click(DgvList.CurrentRow.Cells[0].Value, true);
+                GeneralMethods.ManualSub_click(val, true);
             }
             catch (Exception ex)
             {
                 using (var sw = new StreamWriter(@"C:\Gym_manegement.txt"))
                 {
                     sw.WriteLine(ex.Message);
+                    sw.WriteLine(val);
                 }
                 MessageBox.Show("An Exception has been thrown look log files at C:\\");
             }

@@ -36,7 +36,7 @@ namespace presentation_layer.Forms.CmsForms
             {
                 ShowTraineeDetails();
             }
-            SubPrices.Size = new Size(154, 36);
+            SubPrices.Size = new Size(100, 36);
             DtpStart.Value = DateTime.Now;
             DtpEnd.Value = DateTime.Now.AddMonths(1);
             BeginInvoke(new Action(() =>
